@@ -42,7 +42,7 @@ const ServicesSection = () => {
     <section id="services" className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in typing-animation">
+          <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in shimmer-text-animation">
             Our Services
           </h2>
           <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-1">
@@ -54,7 +54,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`service-card scroll-fade-in stagger-${index + 1}`}
+              className={`service-card-premium scroll-fade-in stagger-${index + 1}`}
               onMouseEnter={() => setHoveredService(index)}
               onMouseLeave={() => setHoveredService(null)}
               onMouseMove={(e) => handleMouseMove(e, index)}
@@ -66,7 +66,7 @@ const ServicesSection = () => {
                       {service.tools.slice(0, 4).map((tool, i) => (
                         <div 
                           key={tool} 
-                          className={`workflow-icon ${hoveredService === index ? 'workflow-icon-hover' : ''}`}
+                          className={`workflow-icon-premium ${hoveredService === index ? 'workflow-icon-elevated' : ''}`}
                           style={{ animationDelay: `${i * 0.1}s` }}
                         >
                           {tool.charAt(0)}
@@ -77,12 +77,12 @@ const ServicesSection = () => {
                   
                   {index === 1 && (
                     <div className="chatbot-container">
-                      <div className="chat-bubble chat-bubble-1">
-                        AI: How can I help?
+                      <div className="chat-bubble-premium chat-bubble-1">
+                        AI Assistant: I've pulled up your pipeline metrics. Want to auto-follow-up with prospects?
                       </div>
                       {hoveredService === index && (
-                        <div className="chat-bubble chat-bubble-2">
-                          AI: I can automate that for you!
+                        <div className="chat-bubble-premium chat-bubble-2">
+                          AI: I can set up the entire sequence for you in 3 minutes.
                         </div>
                       )}
                     </div>
@@ -91,21 +91,21 @@ const ServicesSection = () => {
                   {index === 2 && (
                     <div 
                       ref={graphRef}
-                      className="consulting-graph"
+                      className="consulting-graph-premium"
                     >
                       <div className="graph-grid">
                         {Array.from({ length: 20 }).map((_, i) => (
                           <div key={i} className="graph-line"></div>
                         ))}
                       </div>
+                      <div className="graph-trend-line-premium"></div>
                       <div 
-                        className="graph-point"
+                        className="graph-point-premium"
                         style={{
                           left: `${mousePosition.x}%`,
                           top: `${mousePosition.y}%`
                         }}
                       ></div>
-                      <div className="graph-trend-line"></div>
                     </div>
                   )}
                 </div>
@@ -122,7 +122,7 @@ const ServicesSection = () => {
                   {service.tools.map((tool, i) => (
                     <span 
                       key={tool}
-                      className="service-tool-tag"
+                      className="service-tool-tag-premium"
                       style={{ animationDelay: `${i * 0.1}s` }}
                     >
                       {tool}
