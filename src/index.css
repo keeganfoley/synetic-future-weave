@@ -123,7 +123,7 @@
   }
 
   .nav-link {
-    @apply text-cosmic-white/80 hover:text-cosmic-gold transition-all duration-400 relative font-body font-medium;
+    @apply text-cosmic-white/80 hover:text-cosmic-gold transition-all duration-[400ms] relative font-body font-medium;
     position: relative;
   }
 
