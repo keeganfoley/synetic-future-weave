@@ -19,47 +19,35 @@ const Index = () => {
         <MainSections />
       </main>
       
-      {/* Footer with Logo */}
+      {/* Enhanced Minimalist Footer */}
       <footer className="relative z-10 py-20 px-8 border-t border-cosmic-gold/30 glass-nav">
-        <div className="max-w-6xl mx-auto">
+        {/* Star Dust Animation */}
+        <div className="footer-stardust"></div>
+        
+        <div className="max-w-4xl mx-auto text-center">
           <div className="section-divider mb-16"></div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-center md:text-left">
-              <div className="footer-logo-container mb-8">
-                <img 
-                  src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
-                  alt="Synetic AI" 
-                  className="brand-logo-footer mx-auto md:mx-0"
-                />
-              </div>
-              <div className="space-y-4 mb-8">
-                <p className="text-cosmic-white/90 text-lg font-light leading-relaxed tracking-wide opacity-fade-in">
-                  Intelligence in Motion.
-                </p>
-                <p className="text-cosmic-gold text-lg font-light leading-relaxed tracking-wide text-glow-subtle opacity-fade-in delay-200">
-                  Automation Without Friction.
-                </p>
-              </div>
+          
+          <div className="space-y-8">
+            <h3 className="text-3xl font-heading font-light text-cosmic-gold text-glow-subtle">
+              SyneticAI
+            </h3>
+            
+            <p className="text-lg text-cosmic-white/80 font-light tracking-wide">
+              Automation Without Friction
+            </p>
+            
+            <div className="space-y-4">
               <a 
                 href="mailto:team@syneticai.com" 
-                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-shadow-lg"
+                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium inline-block email-glow-hover"
               >
                 team@syneticai.com
               </a>
             </div>
-            <div className="text-center md:text-right">
-              <div className="space-y-4 mb-8">
-                <p className="text-cosmic-white/80 text-lg font-light leading-relaxed tracking-wide opacity-fade-in">
-                  Let's build something
-                </p>
-                <p className="text-cosmic-gold text-lg font-light leading-relaxed tracking-wide text-glow-subtle opacity-fade-in delay-200">
-                  intelligent.
-                </p>
-              </div>
-              <p className="text-cosmic-white/50 text-sm tracking-wider">
-                © 2025 Synetic AI. All rights reserved.
-              </p>
-            </div>
+            
+            <p className="text-cosmic-white/50 text-sm tracking-wider pt-8">
+              © 2025 SyneticAI. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>

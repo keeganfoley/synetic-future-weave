@@ -19,7 +19,7 @@ const MainSections = () => {
             <div>Friction Reduced: 97%</div>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-12 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation">
+          <h2 className="text-4xl md:text-6xl font-heading font-light mb-12 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
             Our Vision
           </h2>
           
@@ -37,7 +37,7 @@ const MainSections = () => {
       {/* Mission Section */}
       <section className="py-32 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-12 text-cosmic-white scroll-fade-in typing-animation">
+          <h2 className="text-4xl md:text-6xl font-heading font-light mb-12 text-cosmic-white scroll-fade-in typing-animation-enhanced">
             Our Mission
           </h2>
           
@@ -58,11 +58,11 @@ const MainSections = () => {
       {/* Services Section */}
       <ServicesSection />
 
-      {/* Solutions Section */}
+      {/* Enhanced Systems That Think Section */}
       <section id="solutions" className="py-32 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation">
+            <h2 className="text-4xl md:text-6xl font-heading font-light mb-6 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
               Systems That Think
             </h2>
             <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-1">
@@ -71,40 +71,46 @@ const MainSections = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-20">
-            <div className="elite-glass-card p-8 scroll-fade-in stagger-1 solution-card">
+            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-1 solution-card-enhanced">
+              <div className="card-particle-orbit"></div>
               <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
                 Cognitive Intelligence
               </h3>
               <p className="text-cosmic-white/90 leading-relaxed">
-                AI systems that adapt and evolve.
+                Self-evolving logic for every workflow.
               </p>
             </div>
 
-            <div className="elite-glass-card p-8 scroll-fade-in stagger-2 solution-card">
+            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-2 solution-card-enhanced">
+              <div className="card-particle-orbit"></div>
               <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
                 Neural CRM
               </h3>
               <p className="text-cosmic-white/90 leading-relaxed">
-                Predictive insights that convert.
+                Predict behaviors. Build relationships. Automate at scale.
               </p>
             </div>
 
-            <div className="elite-glass-card p-8 scroll-fade-in stagger-3 solution-card">
+            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-3 solution-card-enhanced">
+              <div className="card-particle-orbit"></div>
               <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
                 Infinite Automation
               </h3>
               <p className="text-cosmic-white/90 leading-relaxed">
-                Elite prospect identification.
+                Always on. Always optimizing.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Enhanced Contact Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
+        {/* Light Trails Background */}
+        <div className="light-trails-bg"></div>
+        
         <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation">
+          <h2 className="text-4xl md:text-6xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-blink-animation">
             Automate the Impossible
           </h2>
           
@@ -118,7 +124,7 @@ const MainSections = () => {
           </div>
 
           <div className="scroll-fade-in stagger-2">
-            <button className="elite-cta-button-enhanced text-lg group relative">
+            <button className="elite-cta-button-glass text-lg group relative">
               <span className="relative z-10 inline-flex items-center">
                 Get Started
                 <svg 
@@ -130,7 +136,7 @@ const MainSections = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-              <div className="cta-enhanced-pulse"></div>
+              <div className="cta-sonar-pulse"></div>
             </button>
           </div>
 
@@ -140,7 +146,7 @@ const MainSections = () => {
             </p>
             <a 
               href="mailto:team@syneticai.com" 
-              className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium block"
+              className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium block email-glow-hover"
             >
               team@syneticai.com
             </a>
