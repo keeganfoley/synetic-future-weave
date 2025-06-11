@@ -33,24 +33,28 @@ const Navigation = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         isScrolled ? 'glass-nav' : ''
       }`}>
-        <div className="max-w-7xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-32 py-4">
-            {/* Logo */}
-            <div className="flex-shrink-0 mr-12">
-              <img 
-                src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
-                alt="Synetic AI" 
-                className="brand-logo-hero"
-              />
+        <div className="max-w-8xl mx-auto px-12 lg:px-20">
+          <div className="flex items-center justify-between h-28 py-4">
+            {/* Enhanced Logo */}
+            <div className="flex-shrink-0 mr-16 relative">
+              <div className="logo-container">
+                <img 
+                  src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
+                  alt="Synetic AI" 
+                  className="brand-logo-elite"
+                />
+                <div className="logo-glare"></div>
+                <div className="logo-glow-ring"></div>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-20">
+            <div className="hidden md:flex items-center space-x-16">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link text-lg"
+                  className="nav-link-elite text-base"
                 >
                   {link.name}
                 </button>
@@ -87,7 +91,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link text-xl w-full text-left"
+                  className="block nav-link-elite text-lg w-full text-left"
                 >
                   {link.name}
                 </button>
