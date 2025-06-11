@@ -19,7 +19,7 @@ const MainSections = () => {
             <div>Friction Reduced: 97%</div>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-12 text-cosmic-gold text-glow-premium scroll-fade-in shimmer-text-animation">
+          <h2 className="text-4xl md:text-5xl font-heading font-light mb-12 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation">
             Our Vision
           </h2>
           
@@ -37,7 +37,7 @@ const MainSections = () => {
       {/* Mission Section */}
       <section className="py-32 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-12 text-cosmic-white scroll-fade-in shimmer-text-animation">
+          <h2 className="text-4xl md:text-5xl font-heading font-light mb-12 text-cosmic-white scroll-fade-in typing-animation">
             Our Mission
           </h2>
           
@@ -62,7 +62,7 @@ const MainSections = () => {
       <section id="solutions" className="py-32 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-gold text-glow-premium scroll-fade-in shimmer-text-animation">
+            <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation">
               Systems That Think
             </h2>
             <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-1">
@@ -71,7 +71,7 @@ const MainSections = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-20">
-            <div className="premium-glass-card p-8 scroll-fade-in stagger-1 solution-card-premium">
+            <div className="elite-glass-card p-8 scroll-fade-in stagger-1 solution-card">
               <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
                 Cognitive Intelligence
               </h3>
@@ -80,7 +80,7 @@ const MainSections = () => {
               </p>
             </div>
 
-            <div className="premium-glass-card p-8 scroll-fade-in stagger-2 solution-card-premium">
+            <div className="elite-glass-card p-8 scroll-fade-in stagger-2 solution-card">
               <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
                 Neural CRM
               </h3>
@@ -89,7 +89,7 @@ const MainSections = () => {
               </p>
             </div>
 
-            <div className="premium-glass-card p-8 scroll-fade-in stagger-3 solution-card-premium">
+            <div className="elite-glass-card p-8 scroll-fade-in stagger-3 solution-card">
               <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
                 Infinite Automation
               </h3>
@@ -104,7 +104,7 @@ const MainSections = () => {
       {/* Contact Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-premium">
+          <h2 className="text-4xl md:text-5xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation">
             Automate the Impossible
           </h2>
           
@@ -118,11 +118,11 @@ const MainSections = () => {
           </div>
 
           <div className="scroll-fade-in stagger-2">
-            <button className="ultimate-cta-button text-xl group relative">
+            <button className="elite-cta-button-enhanced text-lg group relative">
               <span className="relative z-10 inline-flex items-center">
                 Get Started
                 <svg 
-                  className="ml-4 w-6 h-6 transition-transform duration-500 group-hover:translate-x-2" 
+                  className="ml-4 w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -130,7 +130,7 @@ const MainSections = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-              <div className="cta-ultimate-pulse"></div>
+              <div className="cta-enhanced-pulse"></div>
             </button>
           </div>
 
@@ -140,7 +140,7 @@ const MainSections = () => {
             </p>
             <a 
               href="mailto:team@syneticai.com" 
-              className="premium-email-link text-lg font-medium tracking-wider block"
+              className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium block"
             >
               team@syneticai.com
             </a>
