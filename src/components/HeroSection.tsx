@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
@@ -15,10 +14,6 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Ambient floating glow */}
-      <div className="absolute top-1/3 left-1/4 ambient-glow"></div>
-      <div className="absolute bottom-1/3 right-1/4 ambient-glow" style={{ animationDelay: '-4s' }}></div>
-      
       {/* Orbital element */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="orbital-element animate-orbital-line"></div>
@@ -28,20 +23,21 @@ const HeroSection = () => {
       <div className={`text-center z-10 px-8 transition-all duration-1500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-light mb-16 leading-[0.9]">
-          <span className="block hero-tagline-primary mb-8 animate-fade-in-up text-etched">
+        <h1 className="font-heading font-light mb-12 leading-[0.9]">
+          <span className="block hero-tagline-primary mb-6 animate-fade-in-up text-etched">
             Intelligence in Motion.
           </span>
-          <span className="block hero-tagline-secondary mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <span className="block hero-tagline-secondary mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             Automation Without Friction.
           </span>
         </h1>
         
-        <p className={`text-xl md:text-2xl text-cosmic-white/80 mb-20 max-w-4xl mx-auto leading-relaxed font-light transition-all duration-1500 delay-1000 ${
+        <p className={`text-lg md:text-xl text-cosmic-white/80 mb-16 max-w-3xl mx-auto leading-relaxed font-light transition-all duration-1500 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          Synetic AI revolutionizes lives by automating the ordinary with unparalleled intelligence, 
-          delivering precision solutions that free time and unlock infinite possibilities.
+          We design systems that eliminate the ordinary.
+          <br />
+          <span className="text-cosmic-gold font-normal">Precision automation. Time reclaimed.</span>
         </p>
 
         <div className={`transition-all duration-1500 delay-1400 ${

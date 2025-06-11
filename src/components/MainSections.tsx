@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Brain, Zap, Infinity } from 'lucide-react';
@@ -19,20 +18,20 @@ const MainSections = () => {
   const solutions = [
     {
       title: "Cognitive Intelligence",
-      description: "Seamlessly automate complex workflows with precision-engineered AI systems that adapt and evolve with your business needs.",
-      icon: Brain,
+      description: "Precision-engineered AI systems that adapt and evolve with your business.",
+      icon: "icon-ai-chip",
       delay: "stagger-1"
     },
     {
       title: "Neural CRM Systems", 
-      description: "Transform customer relationships with AI-powered insights that predict needs, optimize engagement, and amplify results.",
-      icon: Zap,
+      description: "AI-powered insights that predict needs and amplify results.",
+      icon: "icon-power",
       delay: "stagger-2"
     },
     {
       title: "Infinite Automation",
-      description: "Elite prospect identification with automated engagement systems that convert opportunities into measurable results.",
-      icon: Infinity,
+      description: "Elite prospect identification with automated engagement systems.",
+      icon: "icon-infinity",
       delay: "stagger-3"
     }
   ];
@@ -44,23 +43,23 @@ const MainSections = () => {
         <div className="section-divider absolute top-0"></div>
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
-            <h2 className="scroll-fade-in text-4xl md:text-6xl font-heading font-light text-cosmic-gold mb-16 text-glow-premium">
+            <h2 className="scroll-fade-in text-3xl md:text-5xl font-heading font-light text-cosmic-gold mb-12 text-glow-premium">
               Our Vision
             </h2>
-            <p className="scroll-slide-left stagger-2 text-2xl md:text-3xl text-cosmic-white/90 mb-24 leading-relaxed max-w-5xl mx-auto font-light text-etched">
-              Synetic AI envisions a world where automation liberates humanity, empowering you to 
-              <span className="text-cosmic-gold font-normal"> dream bigger</span>, 
-              <span className="text-cosmic-gold font-normal"> create freely</span>, and 
-              <span className="text-cosmic-gold font-normal"> live fully</span>.
+            <p className="scroll-slide-left stagger-2 text-xl md:text-2xl text-cosmic-white/90 mb-16 leading-relaxed max-w-4xl mx-auto font-light text-etched">
+              Synetic AI envisions automation that liberates humanity.
+              <br />
+              <span className="text-cosmic-gold font-normal">Dream bigger. Create freely. Live fully.</span>
             </p>
             
             <div className="scroll-fade-in stagger-4">
-              <h3 className="text-2xl md:text-4xl font-heading font-light text-cosmic-white mb-12">
+              <h3 className="text-xl md:text-3xl font-heading font-light text-cosmic-white mb-8">
                 Our Mission
               </h3>
-              <p className="text-xl md:text-2xl text-cosmic-white/80 leading-relaxed max-w-5xl mx-auto font-light">
-                We engineer intelligent systems that erase complexity, delivering seamless automation 
-                with precision and grace—because your time is priceless.
+              <p className="text-lg md:text-xl text-cosmic-white/80 leading-relaxed max-w-4xl mx-auto font-light">
+                We engineer intelligent systems that erase complexity.
+                <br />
+                <span className="text-cosmic-gold">Seamless automation with precision and grace.</span>
               </p>
             </div>
           </div>
@@ -71,31 +70,30 @@ const MainSections = () => {
       <section id="solutions" className="min-h-screen flex items-center py-32 px-8 relative">
         <div className="section-divider absolute top-0"></div>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="scroll-fade-in text-4xl md:text-6xl font-heading font-light text-cosmic-gold mb-12 text-glow-premium">
-              Engineered Systems That Think for You
+          <div className="text-center mb-20">
+            <h2 className="scroll-fade-in text-3xl md:text-5xl font-heading font-light text-cosmic-gold mb-8 text-glow-premium">
+              Systems That Think
             </h2>
-            <p className="scroll-slide-right stagger-2 text-xl md:text-2xl text-cosmic-white/80 max-w-4xl mx-auto font-light">
-              Discover how our intelligent automation reshapes your workflow with precision and elegance
+            <p className="scroll-slide-right stagger-2 text-lg md:text-xl text-cosmic-white/80 max-w-3xl mx-auto font-light">
+              Intelligent automation that reshapes workflow with precision
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-12">
             {solutions.map((solution, index) => {
-              const IconComponent = solution.icon;
               return (
                 <div
                   key={solution.title}
                   className={`scroll-fade-in ${solution.delay} group`}
                 >
                   <div className="glass-card p-10 h-full group transition-all duration-700">
-                    <div className="text-cosmic-gold mb-8 group-hover:animate-gentle-float transition-all duration-500 relative z-10">
-                      <IconComponent size={40} strokeWidth={1} />
+                    <div className="text-cosmic-gold mb-6 group-hover:animate-gentle-float transition-all duration-500 relative z-10">
+                      <div className={`${solution.icon} opacity-80 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     </div>
-                    <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-8 relative z-10">
+                    <h3 className="text-xl font-heading font-light text-cosmic-gold mb-6 relative z-10">
                       {solution.title}
                     </h3>
-                    <p className="text-cosmic-white/80 leading-relaxed font-light text-lg relative z-10">
+                    <p className="text-cosmic-white/80 leading-relaxed font-light relative z-10">
                       {solution.description}
                     </p>
                   </div>
@@ -109,26 +107,28 @@ const MainSections = () => {
       {/* CTA Section */}
       <section id="contact" className="min-h-screen flex items-center py-32 px-8 relative">
         <div className="section-divider absolute top-0"></div>
-        {/* Background gradient pulse */}
+        
+        {/* Animated background flare */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-full h-1 bg-gradient-to-r from-transparent via-cosmic-gold/30 to-transparent opacity-50 animate-pulse-subtle"></div>
         </div>
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="scroll-fade-in">
-            <h2 className="text-4xl md:text-6xl font-heading font-light text-cosmic-gold mb-12 text-glow-premium">
-              Automate the Impossible. Today.
+            <h2 className="text-3xl md:text-5xl font-heading font-light text-cosmic-gold mb-8 text-glow-premium" style={{ animation: 'text-glow-pulse 3s ease-in-out infinite' }}>
+              Automate the Impossible
             </h2>
-            <p className="scroll-slide-left stagger-2 text-xl md:text-2xl text-cosmic-white/80 mb-20 leading-relaxed font-light max-w-4xl mx-auto">
-              Ready to transform your business with intelligent automation? 
-              Let's explore the possibilities together.
+            <p className="scroll-slide-left stagger-2 text-lg md:text-xl text-cosmic-white/80 mb-16 leading-relaxed font-light max-w-3xl mx-auto">
+              Ready to transform your business with intelligent automation?
+              <br />
+              <span className="text-cosmic-gold">Let's explore the possibilities.</span>
             </p>
             
-            <div className="scroll-fade-in stagger-3 space-y-10">
+            <div className="scroll-fade-in stagger-3 space-y-8">
               <button className="luxury-button text-xl">
                 Get Started
               </button>
-              <div className="text-cosmic-white/60 text-lg font-light space-y-3">
+              <div className="text-cosmic-white/60 text-base font-light space-y-2">
                 <p>Free consultation within 24 hours</p>
                 <p className="text-cosmic-gold/90 font-medium tracking-wider">team@syneticai.com</p>
               </div>

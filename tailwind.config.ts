@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -127,6 +126,14 @@ export default {
 						opacity: '1'
 					}
 				},
+				'fade-in': {
+					'0%': {
+						opacity: '0'
+					},
+					'100%': {
+						opacity: '1'
+					}
+				},
 				'fade-in-left': {
 					'0%': {
 						transform: 'translateX(-30px)',
@@ -170,6 +177,7 @@ export default {
 				'gentle-float': 'gentle-float 12s ease-in-out infinite',
 				'pulse-subtle': 'pulse-subtle 4s ease-in-out infinite',
 				'fade-in-up': 'fade-in-up 0.8s ease-out',
+				'fade-in': 'fade-in 0.8s ease-out',
 				'fade-in-left': 'fade-in-left 0.8s ease-out',
 				'fade-in-right': 'fade-in-right 0.8s ease-out',
 				'underline-reveal': 'underline-reveal 1.2s ease-out',

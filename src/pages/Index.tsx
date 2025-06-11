@@ -1,5 +1,7 @@
 
 import ParticleField from '../components/ParticleField';
+import AnimatedBackground from '../components/AnimatedBackground';
+import FloatingWidget from '../components/FloatingWidget';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import MainSections from '../components/MainSections';
@@ -9,6 +11,12 @@ const Index = () => {
     <div className="relative min-h-screen">
       {/* Ambient Particle Background */}
       <ParticleField />
+      
+      {/* Animated Background Elements */}
+      <AnimatedBackground />
+      
+      {/* Floating Widget */}
+      <FloatingWidget />
       
       {/* Navigation */}
       <Navigation />
@@ -30,21 +38,21 @@ const Index = () => {
                 alt="Synetic AI" 
                 className="brand-logo mb-6"
               />
-              <p className="text-cosmic-white/80 text-xl mb-6 font-light leading-relaxed">
+              <p className="text-cosmic-white/80 text-lg mb-6 font-light leading-relaxed">
                 Intelligence Unleashed. Your Future, Now.
               </p>
               <a 
                 href="mailto:team@syneticai.com" 
-                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-xl font-medium tracking-wide"
+                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wide"
               >
                 team@syneticai.com
               </a>
             </div>
             <div className="text-right">
-              <p className="text-cosmic-white/70 text-xl mb-6 font-light">
+              <p className="text-cosmic-white/70 text-lg mb-6 font-light">
                 Let's build something intelligent.
               </p>
-              <p className="text-cosmic-white/50 text-base">
+              <p className="text-cosmic-white/50 text-sm">
                 © 2024 Synetic AI. All rights reserved.
               </p>
             </div>
