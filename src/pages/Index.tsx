@@ -1,7 +1,5 @@
 
-import ParticleField from '../components/ParticleField';
-import AnimatedBackground from '../components/AnimatedBackground';
-import FloatingWidget from '../components/FloatingWidget';
+import GalacticBackground from '../components/GalacticBackground';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import MainSections from '../components/MainSections';
@@ -9,14 +7,8 @@ import MainSections from '../components/MainSections';
 const Index = () => {
   return (
     <div className="relative min-h-screen">
-      {/* Ambient Particle Background */}
-      <ParticleField />
-      
-      {/* Animated Background Elements */}
-      <AnimatedBackground />
-      
-      {/* Floating Widget */}
-      <FloatingWidget />
+      {/* Galactic Background */}
+      <GalacticBackground />
       
       {/* Navigation */}
       <Navigation />
@@ -27,7 +19,7 @@ const Index = () => {
         <MainSections />
       </main>
       
-      {/* Premium Footer */}
+      {/* Footer with Logo */}
       <footer className="relative z-10 py-20 px-8 border-t border-cosmic-gold/30 glass-nav">
         <div className="max-w-6xl mx-auto">
           <div className="section-divider mb-16"></div>
@@ -37,7 +29,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                   alt="Synetic AI" 
-                  className="brand-logo-footer-refined mx-auto md:mx-0"
+                  className="brand-logo-footer mx-auto md:mx-0"
                 />
               </div>
               <div className="space-y-4 mb-8">
