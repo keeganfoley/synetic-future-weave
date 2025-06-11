@@ -1,67 +1,64 @@
 
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useEffect } from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Brain, Zap, Infinity } from 'lucide-react';
 
 const MainSections = () => {
-  const visibleElements = useScrollAnimation();
+  const visibleElements = useScrollReveal();
+
+  useEffect(() => {
+    // Add scroll reveal animations to elements
+    const scrollElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right');
+    scrollElements.forEach(el => {
+      if (!el.classList.contains('visible')) {
+        el.classList.add('scroll-fade-in');
+      }
+    });
+  }, []);
 
   const solutions = [
     {
-      title: "Engineered Intelligence",
+      title: "Cognitive Intelligence",
       description: "Seamlessly automate complex workflows with precision-engineered AI systems that adapt and evolve with your business needs.",
-      icon: (
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-        </svg>
-      )
+      icon: Brain,
+      delay: "stagger-1"
     },
     {
-      title: "Cognitive CRM Systems", 
+      title: "Neural CRM Systems", 
       description: "Transform customer relationships with AI-powered insights that predict needs, optimize engagement, and amplify results.",
-      icon: (
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      )
+      icon: Zap,
+      delay: "stagger-2"
     },
     {
-      title: "Precision Lead Generation",
+      title: "Infinite Automation",
       description: "Elite prospect identification with automated engagement systems that convert opportunities into measurable results.",
-      icon: (
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-        </svg>
-      )
+      icon: Infinity,
+      delay: "stagger-3"
     }
   ];
 
   return (
     <div className="relative">
       {/* Vision Section */}
-      <section id="vision" className="min-h-screen flex items-center py-24 px-8 relative">
+      <section id="vision" className="min-h-screen flex items-center py-32 px-8 relative">
         <div className="section-divider absolute top-0"></div>
-        <div className="max-w-5xl mx-auto">
-          <div 
-            id="vision-content"
-            data-scroll-animation
-            className={`text-center transition-all duration-1000 ${
-              visibleElements.has('vision-content') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <h2 className="text-3xl md:text-5xl font-heading font-normal text-cosmic-gold mb-12 text-glow-subtle">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <h2 className="scroll-fade-in text-4xl md:text-6xl font-heading font-light text-cosmic-gold mb-16 text-glow-premium">
               Our Vision
             </h2>
-            <p className="text-xl md:text-2xl text-cosmic-white/90 mb-20 leading-relaxed max-w-4xl mx-auto font-light">
+            <p className="scroll-slide-left stagger-2 text-2xl md:text-3xl text-cosmic-white/90 mb-24 leading-relaxed max-w-5xl mx-auto font-light text-etched">
               Synetic AI envisions a world where automation liberates humanity, empowering you to 
-              <span className="text-cosmic-gold font-medium"> dream bigger</span>, 
-              <span className="text-cosmic-gold font-medium"> create freely</span>, and 
-              <span className="text-cosmic-gold font-medium"> live fully</span>.
+              <span className="text-cosmic-gold font-normal"> dream bigger</span>, 
+              <span className="text-cosmic-gold font-normal"> create freely</span>, and 
+              <span className="text-cosmic-gold font-normal"> live fully</span>.
             </p>
             
-            <div className="mt-20">
-              <h3 className="text-xl md:text-3xl font-heading font-normal text-cosmic-white mb-8">
+            <div className="scroll-fade-in stagger-4">
+              <h3 className="text-2xl md:text-4xl font-heading font-light text-cosmic-white mb-12">
                 Our Mission
               </h3>
-              <p className="text-lg md:text-xl text-cosmic-white/80 leading-relaxed max-w-4xl mx-auto font-light">
+              <p className="text-xl md:text-2xl text-cosmic-white/80 leading-relaxed max-w-5xl mx-auto font-light">
                 We engineer intelligent systems that erase complexity, delivering seamless automation 
                 with precision and grace—because your time is priceless.
               </p>
@@ -71,79 +68,69 @@ const MainSections = () => {
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="min-h-screen flex items-center py-24 px-8 relative">
+      <section id="solutions" className="min-h-screen flex items-center py-32 px-8 relative">
         <div className="section-divider absolute top-0"></div>
-        <div className="max-w-6xl mx-auto">
-          <div 
-            id="solutions-title"
-            data-scroll-animation
-            className={`text-center mb-20 transition-all duration-1000 ${
-              visibleElements.has('solutions-title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <h2 className="text-3xl md:text-5xl font-heading font-normal text-cosmic-gold mb-10 text-glow-subtle">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+            <h2 className="scroll-fade-in text-4xl md:text-6xl font-heading font-light text-cosmic-gold mb-12 text-glow-premium">
               Engineered Systems That Think for You
             </h2>
-            <p className="text-lg md:text-xl text-cosmic-white/80 max-w-3xl mx-auto font-light">
+            <p className="scroll-slide-right stagger-2 text-xl md:text-2xl text-cosmic-white/80 max-w-4xl mx-auto font-light">
               Discover how our intelligent automation reshapes your workflow with precision and elegance
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
-              <div
-                key={solution.title}
-                id={`solution-${index}`}
-                data-scroll-animation
-                className={`group transition-all duration-700 ${
-                  visibleElements.has(`solution-${index}`) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="glass-card p-8 h-full group transition-all duration-500">
-                  <div className="text-cosmic-gold mb-6 group-hover:animate-gentle-float transition-all duration-300 relative z-10">
-                    {solution.icon}
+          <div className="grid lg:grid-cols-3 gap-12">
+            {solutions.map((solution, index) => {
+              const IconComponent = solution.icon;
+              return (
+                <div
+                  key={solution.title}
+                  className={`scroll-fade-in ${solution.delay} group`}
+                >
+                  <div className="glass-card p-10 h-full group transition-all duration-700">
+                    <div className="text-cosmic-gold mb-8 group-hover:animate-gentle-float transition-all duration-500 relative z-10">
+                      <IconComponent size={40} strokeWidth={1} />
+                    </div>
+                    <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-8 relative z-10">
+                      {solution.title}
+                    </h3>
+                    <p className="text-cosmic-white/80 leading-relaxed font-light text-lg relative z-10">
+                      {solution.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-heading font-normal text-cosmic-gold mb-6 relative z-10">
-                    {solution.title}
-                  </h3>
-                  <p className="text-cosmic-white/80 leading-relaxed font-light relative z-10">
-                    {solution.description}
-                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="min-h-screen flex items-center py-24 px-8 relative">
+      <section id="contact" className="min-h-screen flex items-center py-32 px-8 relative">
         <div className="section-divider absolute top-0"></div>
-        <div className="max-w-4xl mx-auto text-center">
-          <div 
-            id="cta-content"
-            data-scroll-animation
-            className={`transition-all duration-1000 ${
-              visibleElements.has('cta-content') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="section-divider mb-12 max-w-md mx-auto"></div>
-            <h2 className="text-3xl md:text-5xl font-heading font-normal text-cosmic-gold mb-10 text-glow-subtle animate-pulse-subtle">
+        {/* Background gradient pulse */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-full h-1 bg-gradient-to-r from-transparent via-cosmic-gold/30 to-transparent opacity-50 animate-pulse-subtle"></div>
+        </div>
+        
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <div className="scroll-fade-in">
+            <h2 className="text-4xl md:text-6xl font-heading font-light text-cosmic-gold mb-12 text-glow-premium">
               Automate the Impossible. Today.
             </h2>
-            <p className="text-lg md:text-xl text-cosmic-white/80 mb-16 leading-relaxed font-light">
+            <p className="scroll-slide-left stagger-2 text-xl md:text-2xl text-cosmic-white/80 mb-20 leading-relaxed font-light max-w-4xl mx-auto">
               Ready to transform your business with intelligent automation? 
               Let's explore the possibilities together.
             </p>
             
-            <div className="space-y-8">
-              <button className="luxury-button text-lg animate-pulse-subtle">
+            <div className="scroll-fade-in stagger-3 space-y-10">
+              <button className="luxury-button text-xl">
                 Get Started
               </button>
-              <div className="text-cosmic-white/60 text-sm font-light space-y-2">
+              <div className="text-cosmic-white/60 text-lg font-light space-y-3">
                 <p>Free consultation within 24 hours</p>
-                <p className="text-cosmic-gold/80">team@syneticai.com</p>
+                <p className="text-cosmic-gold/90 font-medium tracking-wider">team@syneticai.com</p>
               </div>
             </div>
           </div>

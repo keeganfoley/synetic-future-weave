@@ -19,32 +19,32 @@ const Index = () => {
         <MainSections />
       </main>
       
-      {/* Refined Footer */}
-      <footer className="relative z-10 py-16 px-8 border-t border-cosmic-gold/20 glass-nav">
-        <div className="max-w-5xl mx-auto">
-          <div className="section-divider mb-12"></div>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+      {/* Premium Footer */}
+      <footer className="relative z-10 py-20 px-8 border-t border-cosmic-gold/30 glass-nav">
+        <div className="max-w-6xl mx-auto">
+          <div className="section-divider mb-16"></div>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
                 src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                 alt="Synetic AI" 
-                className="h-8 w-auto brand-logo mb-4"
+                className="brand-logo mb-6"
               />
-              <p className="text-cosmic-white/80 text-lg mb-4 font-light">
+              <p className="text-cosmic-white/80 text-xl mb-6 font-light leading-relaxed">
                 Intelligence Unleashed. Your Future, Now.
               </p>
               <a 
                 href="mailto:team@syneticai.com" 
-                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-300 text-lg font-medium"
+                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-xl font-medium tracking-wide"
               >
                 team@syneticai.com
               </a>
             </div>
             <div className="text-right">
-              <p className="text-cosmic-white/60 text-lg mb-4 font-light">
+              <p className="text-cosmic-white/70 text-xl mb-6 font-light">
                 Let's build something intelligent.
               </p>
-              <p className="text-cosmic-white/40 text-sm">
+              <p className="text-cosmic-white/50 text-base">
                 © 2024 Synetic AI. All rights reserved.
               </p>
             </div>
