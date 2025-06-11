@@ -61,6 +61,27 @@
 }
 
 @layer components {
+  /* Navigation Logo Styling - Made Extra Large */
+  .logo-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .brand-logo-nav-xl {
+    height: 100px;
+    width: auto;
+    filter: 
+      drop-shadow(0 0 30px rgba(210, 175, 97, 0.6)) 
+      drop-shadow(0 0 60px rgba(210, 175, 97, 0.3))
+      brightness(1.2)
+      contrast(1.15);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    position: relative;
+    z-index: 2;
+  }
+
   /* Navigation Logo Styling - Made Much Larger */
   .logo-container {
     position: relative;
