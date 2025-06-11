@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [logoHovered, setLogoHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 80);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -31,20 +32,24 @@ const Navigation = () => {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        isScrolled ? 'glass-nav' : ''
+        isScrolled ? 'glass-nav-enhanced' : ''
       }`}>
         <div className="max-w-8xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Enhanced Logo with Orbital System */}
-            <div className="flex-shrink-0 relative logo-container-orbital">
-              <div className="logo-nebula-glow"></div>
-              <div className="logo-orbital-ring"></div>
+            {/* Enhanced Logo with Sentient Node */}
+            <div 
+              className="flex-shrink-0 relative logo-sentient-node"
+              onMouseEnter={() => setLogoHovered(true)}
+              onMouseLeave={() => setLogoHovered(false)}
+            >
+              <div className="logo-floating-glow"></div>
+              <div className={`logo-aura-ring ${logoHovered ? 'logo-aura-expanded' : ''}`}></div>
               <img 
                 src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                 alt="Synetic AI" 
-                className="brand-logo-enhanced"
+                className="brand-logo-sentient"
               />
-              <div className="logo-ripple-hover"></div>
+              <div className="logo-interaction-pulse"></div>
             </div>
 
             {/* Desktop Navigation */}
@@ -53,7 +58,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link-elite text-base font-light tracking-wide"
+                  className="nav-link-hud text-base font-light tracking-wide"
                 >
                   {link.name}
                 </button>
@@ -84,13 +89,13 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden glass-nav border-t border-cosmic-gold/20">
+          <div className="md:hidden glass-nav-enhanced border-t border-cosmic-gold/20">
             <div className="px-8 py-8 space-y-8">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-elite text-lg w-full text-left"
+                  className="block nav-link-hud text-lg w-full text-left"
                 >
                   {link.name}
                 </button>
