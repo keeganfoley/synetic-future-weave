@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -245,7 +246,7 @@
 
   /* Elite CTA Buttons */
   .elite-cta-button {
-    @apply relative bg-transparent border border-cosmic-gold/60 text-cosmic-gold px-12 py-6 rounded-xl font-medium tracking-wider transition-all duration-800 overflow-hidden;
+    @apply relative bg-transparent border border-cosmic-gold/60 text-cosmic-gold px-12 py-6 rounded-xl font-medium tracking-wider transition-all duration-700 overflow-hidden;
     font-family: 'Inter', 'Satoshi', sans-serif;
     backdrop-filter: blur(20px);
     font-weight: 400;
