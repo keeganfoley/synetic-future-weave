@@ -147,14 +147,15 @@
   .text-glow-premium {
     text-shadow: 
       0 0 30px rgba(210, 175, 97, 0.4),
-      0 0 60px rgba(210, 175, 97, 0.2);
+      0 0 60px rgba(210, 175, 97, 0.2),
+      0 0 90px rgba(210, 175, 97, 0.1);
   }
 
   .nav-link {
     @apply text-cosmic-white/90 hover:text-cosmic-gold transition-all duration-500 relative font-medium;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     position: relative;
   }
 
@@ -261,6 +262,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: -0.02em;
   }
 
   .hero-tagline-secondary {
@@ -270,6 +272,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.01em;
   }
 
   .hero-tagline-primary::after {
@@ -325,6 +328,7 @@
     text-shadow: 
       0 1px 0 rgba(255, 255, 255, 0.1),
       0 0 30px rgba(210, 175, 97, 0.2);
+    letter-spacing: 0.02em;
   }
 
   .scroll-fade-in {
