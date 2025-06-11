@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [logoHovered, setLogoHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,14 +36,20 @@ const Navigation = () => {
       }`}>
         <div className="max-w-8xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Clean Logo */}
-            <div className="flex-shrink-0 relative logo-clean-hover">
+            {/* Enhanced Logo with Sentient Node */}
+            <div 
+              className="flex-shrink-0 relative logo-sentient-node"
+              onMouseEnter={() => setLogoHovered(true)}
+              onMouseLeave={() => setLogoHovered(false)}
+            >
+              <div className="logo-floating-glow"></div>
+              <div className={`logo-aura-ring ${logoHovered ? 'logo-aura-expanded' : ''}`}></div>
               <img 
                 src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                 alt="Synetic AI" 
-                className="h-8 w-auto transition-all duration-300 hover:drop-shadow-gold"
+                className="brand-logo-sentient"
               />
-              <div className="logo-pulse-ring"></div>
+              <div className="logo-interaction-pulse"></div>
             </div>
 
             {/* Desktop Navigation */}
@@ -51,7 +58,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link-clean text-base font-light tracking-wide"
+                  className="nav-link-hud text-base font-light tracking-wide"
                 >
                   {link.name}
                 </button>
@@ -62,7 +69,7 @@ const Navigation = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-cosmic-white hover:text-cosmic-gold transition-colors duration-300"
+                className="text-cosmic-white hover:text-cosmic-gold transition-colors duration-500"
               >
                 <div className="w-7 h-7 flex flex-col justify-center items-center">
                   <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
@@ -88,7 +95,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-clean text-lg w-full text-left"
+                  className="block nav-link-hud text-lg w-full text-left"
                 >
                   {link.name}
                 </button>

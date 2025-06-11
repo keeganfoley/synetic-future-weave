@@ -1,58 +1,61 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { InteractiveGlobeModal } from './SmartWidgets';
 
 const ProcessSection = () => {
   useScrollReveal();
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-  const [expandedStep, setExpandedStep] = useState<number | null>(null);
-  const [globeModalOpen, setGlobeModalOpen] = useState(false);
+  const [mouseGlobePos, setMouseGlobePos] = useState({ x: 0, y: 0 });
+  const [globeClicked, setGlobeClicked] = useState(false);
 
   const processSteps = [
     {
       number: "01",
       title: "Discovery",
       description: "Let's dive into the bottlenecks and challenges your business currently faces and explore how AI automation can offer effective solutions.",
-      preview: "Deep analysis of workflows • Identify automation opportunities",
+      tooltip: "🔍 Sonar scan initiated",
       fidgetType: "sonar"
     },
     {
       number: "02", 
       title: "Strategy",
       description: "We will develop a customized plan to integrate AI automation into your business, addressing the identified challenges and maximizing efficiency.",
-      preview: "Custom automation roadmap • Resource optimization plan",
+      tooltip: "🧠 Neural pathways mapping",
       fidgetType: "neural"
     },
     {
       number: "03",
       title: "Implementation", 
       description: "In this phase, we will execute the AI automation plan, ensuring seamless integration into your existing processes.",
-      preview: "Live deployment • Real-time integration • Testing protocols",
+      tooltip: "⚡ Glass panel activated",
       fidgetType: "warp"
     },
     {
       number: "04",
       title: "Test & Optimize",
       description: "We either approve or request revisions - we're dedicated to refining our builds until you're fully satisfied.",
-      preview: "Performance monitoring • Continuous improvement • Quality assurance",
+      tooltip: "📊 Pulse graphs active",
       fidgetType: "pulse"
     },
     {
       number: "05",
       title: "Become an Industry Leader",
       description: "Continue requesting as many workflow automations and AI applications as you wish, and transform your organization into a formidable industry leader.",
-      preview: "Scale globally • Market dominance • Competitive advantage",
+      tooltip: "🌍 Global command online",
       fidgetType: "globe"
     }
   ];
 
-  const handleStepClick = (index: number) => {
-    if (index === 4) {
-      setGlobeModalOpen(true);
-    } else {
-      setExpandedStep(expandedStep === index ? null : index);
-    }
+  const handleGlobeMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouseGlobePos({
+      x: (e.clientX - rect.left - rect.width / 2) * 0.15,
+      y: (e.clientY - rect.top - rect.height / 2) * 0.15
+    });
+  };
+
+  const handleGlobeClick = () => {
+    setGlobeClicked(!globeClicked);
   };
 
   return (
@@ -71,54 +74,71 @@ const ProcessSection = () => {
           {processSteps.map((step, index) => (
             <div
               key={step.number}
-              className={`process-card-interactive scroll-fade-in stagger-${index + 1} ${expandedStep === index ? 'card-expanded' : ''}`}
+              className={`holographic-command-module scroll-fade-in stagger-${index + 1}`}
               onMouseEnter={() => setHoveredStep(index)}
               onMouseLeave={() => setHoveredStep(null)}
-              onClick={() => handleStepClick(index)}
+              onMouseMove={index === 4 ? handleGlobeMouseMove : undefined}
+              onClick={index === 4 ? handleGlobeClick : undefined}
             >
-              <div className="card-core-interactive">
-                <div className="card-number-glow">{step.number}</div>
+              <div className="command-module-core">
+                <div className="module-number-display">{step.number}</div>
                 
-                <div className={`fidget-zone-optimized ${hoveredStep === index ? 'zone-active' : ''}`}>
+                <div className={`fidget-interaction-zone ${hoveredStep === index ? 'zone-activated' : ''}`}>
                   {step.fidgetType === 'sonar' && (
-                    <div className="sonar-optimized">
-                      <div className="sonar-pulse"></div>
-                      <div className="sonar-center"></div>
+                    <div className="sonar-scanner-module">
+                      <div className="sonar-wave-1"></div>
+                      <div className="sonar-wave-2"></div>
+                      <div className="sonar-wave-3"></div>
+                      <div className="scanner-dot"></div>
                     </div>
                   )}
                   
                   {step.fidgetType === 'neural' && (
-                    <div className="neural-optimized">
-                      <div className="neural-bar neural-1"></div>
-                      <div className="neural-bar neural-2"></div>
-                      <div className="neural-bar neural-3"></div>
+                    <div className="neural-flow-module">
+                      <div className="neural-bar neural-bar-1"></div>
+                      <div className="neural-bar neural-bar-2"></div>
+                      <div className="neural-bar neural-bar-3"></div>
+                      <div className="synaptic-spark synaptic-spark-1"></div>
+                      <div className="synaptic-spark synaptic-spark-2"></div>
                     </div>
                   )}
                   
                   {step.fidgetType === 'warp' && (
-                    <div className="warp-optimized">
-                      <div className="warp-surface-smooth"></div>
+                    <div className="glass-warp-module">
+                      <div className="warp-surface"></div>
+                      <div className="touch-ripple"></div>
+                      <div className="energy-field-lines"></div>
                     </div>
                   )}
                   
                   {step.fidgetType === 'pulse' && (
-                    <div className="pulse-optimized">
-                      <div className="pulse-bar pulse-1"></div>
-                      <div className="pulse-bar pulse-2"></div>
-                      <div className="pulse-bar pulse-3"></div>
+                    <div className="pulse-graph-module">
+                      <div className="graph-line graph-line-1"></div>
+                      <div className="graph-line graph-line-2"></div>
+                      <div className="graph-line graph-line-3"></div>
+                      <div className="pulse-indicator pulse-indicator-1"></div>
+                      <div className="pulse-indicator pulse-indicator-2"></div>
                     </div>
                   )}
                   
                   {step.fidgetType === 'globe' && (
-                    <div className="globe-interactive-optimized">
-                      <div className="globe-core"></div>
-                      <div className="globe-ring globe-ring-1"></div>
-                      <div className="globe-ring globe-ring-2"></div>
+                    <div 
+                      className={`interactive-command-globe ${globeClicked ? 'globe-spinning' : ''}`}
+                      style={{
+                        transform: `rotateX(${mouseGlobePos.y}deg) rotateY(${mouseGlobePos.x}deg)`
+                      }}
+                    >
+                      <div className="globe-wireframe-tactical"></div>
+                      <div className="orbital-ring orbital-ring-1"></div>
+                      <div className="orbital-ring orbital-ring-2"></div>
+                      <div className="orbital-ring orbital-ring-3"></div>
+                      <div className="globe-pulse-core"></div>
+                      <div className="command-aura"></div>
                     </div>
                   )}
                 </div>
 
-                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-4 card-title-glow">
+                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-4 module-title">
                   {step.title}
                 </h3>
                 
@@ -126,25 +146,24 @@ const ProcessSection = () => {
                   {step.description}
                 </p>
 
-                {expandedStep === index && (
-                  <div className="card-preview-expanded">
-                    <div className="preview-content">
-                      {step.preview}
-                    </div>
+                {/* Enhanced Whisper Tooltip */}
+                {hoveredStep === index && (
+                  <div className="holographic-tooltip">
+                    <div className="tooltip-glow"></div>
+                    <div className="tooltip-text">{step.tooltip}</div>
                   </div>
                 )}
               </div>
               
-              <div className={`card-energy-field ${hoveredStep === index ? 'field-active' : ''}`}></div>
+              {/* Energy Field Effect */}
+              <div className={`module-energy-field ${hoveredStep === index ? 'field-active' : ''}`}></div>
+              
+              {/* Materialization Effect */}
+              <div className="materialization-shimmer"></div>
             </div>
           ))}
         </div>
       </div>
-
-      <InteractiveGlobeModal 
-        isOpen={globeModalOpen} 
-        onClose={() => setGlobeModalOpen(false)} 
-      />
     </section>
   );
 };
