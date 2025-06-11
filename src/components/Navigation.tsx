@@ -30,16 +30,18 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'glass-morphism' : ''
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        isScrolled ? 'glass-nav' : ''
       }`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <div className="text-3xl font-heading font-bold text-cosmic-gold text-glow">
-                Synetic AI
-              </div>
+              <img 
+                src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
+                alt="Synetic AI" 
+                className="h-8 w-auto brand-logo"
+              />
             </div>
 
             {/* Desktop Navigation */}
@@ -48,7 +50,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link text-lg"
+                  className="nav-link text-sm tracking-wide"
                 >
                   {link.name}
                 </button>
@@ -61,15 +63,15 @@ const Navigation = () => {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="text-cosmic-white hover:text-cosmic-gold transition-colors duration-300"
               >
-                <div className="w-7 h-7 flex flex-col justify-center items-center">
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-2' : '-translate-y-1'
+                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-6 transform ${
+                    isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1'
                   }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 ${
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-6 ${
                     isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
                   }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-2' : 'translate-y-1'
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-6 transform ${
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1'
                   }`} />
                 </div>
               </button>
@@ -79,13 +81,13 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden glass-morphism border-t border-cosmic-gold/20">
-            <div className="px-6 py-8 space-y-8">
+          <div className="md:hidden glass-nav border-t border-cosmic-gold/10">
+            <div className="px-8 py-6 space-y-6">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link text-xl w-full text-left"
+                  className="block nav-link text-lg w-full text-left"
                 >
                   {link.name}
                 </button>

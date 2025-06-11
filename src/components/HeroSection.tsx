@@ -15,41 +15,42 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated hero rings */}
-      <div className="hero-ring w-96 h-96 opacity-20" style={{ animationDelay: '0s' }}></div>
-      <div className="hero-ring w-[600px] h-[600px] opacity-10" style={{ animationDelay: '2s' }}></div>
+      {/* Ambient orbital element */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="orbital-element animate-orbital-line"></div>
+      </div>
       
       {/* Hero Content */}
-      <div className={`text-center z-10 px-6 transition-all duration-1000 ${
+      <div className={`text-center z-10 px-8 transition-all duration-1000 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold mb-8 leading-tight">
-          <span className="block text-cosmic-white text-glow mb-4 animate-slide-in-left">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-normal mb-12 leading-tight">
+          <span className="block text-cosmic-white hero-tagline mb-6 animate-fade-in-up">
             Intelligence in Motion.
           </span>
-          <span className="block text-cosmic-gold text-depth mb-8 animate-slide-in-right" style={{ animationDelay: '0.3s' }}>
+          <span className="block text-cosmic-white/90 mb-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Automation Without Friction.
           </span>
         </h1>
         
-        <p className={`text-xl md:text-2xl text-cosmic-white/80 mb-16 max-w-4xl mx-auto leading-relaxed font-light transition-all duration-1000 delay-500 ${
+        <p className={`text-lg md:text-xl text-cosmic-white/70 mb-16 max-w-3xl mx-auto leading-relaxed font-light transition-all duration-1000 delay-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
           Synetic AI revolutionizes lives by automating the ordinary with unparalleled intelligence, 
           delivering precision solutions that free time and unlock infinite possibilities.
         </p>
 
-        <div className={`transition-all duration-1000 delay-700 ${
+        <div className={`transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
           <button 
             onClick={scrollToNextSection}
-            className="elite-button text-xl group relative"
+            className="luxury-button text-lg group relative animate-pulse-subtle"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
               <svg 
-                className="ml-3 w-6 h-6 transition-transform duration-300 group-hover:translate-x-2" 
+                className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -61,10 +62,10 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Elegant scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-gentle-float">
-        <div className="w-6 h-10 border-2 border-cosmic-gold/50 rounded-full flex justify-center opacity-70">
-          <div className="w-1 h-3 bg-cosmic-gold/70 rounded-full mt-2 animate-gentle-float"></div>
+      {/* Refined scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-gentle-float">
+        <div className="w-5 h-8 border border-cosmic-gold/30 rounded-full flex justify-center opacity-60">
+          <div className="w-0.5 h-2 bg-cosmic-gold/50 rounded-full mt-1.5 animate-pulse-subtle"></div>
         </div>
       </div>
     </section>
