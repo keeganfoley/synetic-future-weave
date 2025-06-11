@@ -233,6 +233,27 @@
     opacity: 1;
   }
 
+  .brand-logo-hero {
+    filter: drop-shadow(0 8px 40px rgba(210, 175, 97, 0.5)) 
+            drop-shadow(0 0 80px rgba(210, 175, 97, 0.25))
+            drop-shadow(0 4px 20px rgba(210, 175, 97, 0.4));
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    max-height: 200px;
+    width: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    opacity: 0.98;
+    animation: logo-glow-pulse 4s ease-in-out infinite;
+  }
+
+  .brand-logo-hero:hover {
+    filter: drop-shadow(0 12px 50px rgba(210, 175, 97, 0.7)) 
+            drop-shadow(0 0 120px rgba(210, 175, 97, 0.4))
+            drop-shadow(0 6px 30px rgba(210, 175, 97, 0.6));
+    transform: translateY(-3px) scale(1.05);
+    opacity: 1;
+  }
+
   .hero-tagline-primary {
     position: relative;
     background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
@@ -447,6 +468,19 @@
     text-shadow: 
       0 0 30px rgba(210, 175, 97, 0.6),
       0 0 60px rgba(210, 175, 97, 0.3);
+  }
+}
+
+@keyframes logo-glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 8px 40px rgba(210, 175, 97, 0.5)) 
+            drop-shadow(0 0 80px rgba(210, 175, 97, 0.25))
+            drop-shadow(0 4px 20px rgba(210, 175, 97, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 10px 50px rgba(210, 175, 97, 0.6)) 
+            drop-shadow(0 0 100px rgba(210, 175, 97, 0.35))
+            drop-shadow(0 6px 25px rgba(210, 175, 97, 0.5));
   }
 }
 

@@ -33,24 +33,24 @@ const Navigation = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         isScrolled ? 'glass-nav' : ''
       }`}>
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex items-center justify-between h-28">
+        <div className="max-w-7xl mx-auto px-8 lg:px-16">
+          <div className="flex items-center justify-between h-32 py-4">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 mr-12">
               <img 
                 src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                 alt="Synetic AI" 
-                className="brand-logo-large"
+                className="brand-logo-hero"
               />
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-16">
+            <div className="hidden md:flex items-center space-x-20">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link text-base"
+                  className="nav-link text-lg"
                 >
                   {link.name}
                 </button>
