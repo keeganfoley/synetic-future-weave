@@ -33,14 +33,14 @@ const Navigation = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         isScrolled ? 'glass-nav' : ''
       }`}>
-        <div className="max-w-8xl mx-auto px-12 lg:px-20">
-          <div className="flex items-center justify-between h-20 py-4">
-            {/* Logo - Proper Top Left Position */}
+        <div className="max-w-8xl mx-auto px-8 lg:px-16">
+          <div className="flex items-center justify-between h-24 py-4">
+            {/* Logo - Made Much Larger and More Prominent */}
             <div className="flex-shrink-0 relative logo-container">
               <img 
                 src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                 alt="Synetic AI" 
-                className="brand-logo-nav"
+                className="brand-logo-nav-large"
               />
               <div className="logo-gleam"></div>
             </div>
