@@ -34,15 +34,17 @@ const Navigation = () => {
         isScrolled ? 'glass-nav' : ''
       }`}>
         <div className="max-w-8xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-28 py-4">
-            {/* Logo - Made Much Larger and More Prominent */}
-            <div className="flex-shrink-0 relative logo-container">
+          <div className="flex items-center justify-between h-32 py-4">
+            {/* Enhanced Logo with Futuristic Glow */}
+            <div className="flex-shrink-0 relative logo-container-enhanced">
+              <div className="logo-burst-bg"></div>
               <img 
                 src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                 alt="Synetic AI" 
-                className="brand-logo-nav-xl"
+                className="brand-logo-nav-futuristic"
               />
-              <div className="logo-gleam"></div>
+              <div className="logo-gleam-enhanced"></div>
+              <div className="logo-pulse-ring"></div>
             </div>
 
             {/* Desktop Navigation */}
@@ -51,7 +53,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link-galactic text-base font-light tracking-wide"
+                  className="nav-link-futuristic text-base font-light tracking-wide"
                 >
                   {link.name}
                 </button>
@@ -88,7 +90,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-galactic text-lg w-full text-left"
+                  className="block nav-link-futuristic text-lg w-full text-left"
                 >
                   {link.name}
                 </button>
