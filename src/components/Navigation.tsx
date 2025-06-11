@@ -20,30 +20,38 @@ const Navigation = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'backdrop-cosmic border-b border-cosmic-gold/20' : ''
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'backdrop-premium border-b border-cosmic-gold/10' : ''
       }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <div className="text-2xl font-cosmic font-bold text-cosmic-gold animate-pulse-gold">
+              <div className="text-2xl font-heading font-bold text-cosmic-gold">
                 Synetic AI
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-10">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.name}
-                  href={link.href}
-                  className="cosmic-nav-link text-lg font-medium tracking-wide"
+                  onClick={() => scrollToSection(link.href)}
+                  className="premium-nav-link text-base"
                 >
                   {link.name}
-                </a>
+                </button>
               ))}
             </div>
 
@@ -71,17 +79,16 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden backdrop-cosmic border-t border-cosmic-gold/20">
-            <div className="px-6 py-4 space-y-4">
+          <div className="md:hidden backdrop-premium border-t border-cosmic-gold/10">
+            <div className="px-6 py-6 space-y-6">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.name}
-                  href={link.href}
-                  className="block cosmic-nav-link text-lg font-medium tracking-wide"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => scrollToSection(link.href)}
+                  className="block premium-nav-link text-lg w-full text-left"
                 >
                   {link.name}
-                </a>
+                </button>
               ))}
             </div>
           </div>
