@@ -35,26 +35,23 @@ const Navigation = () => {
       }`}>
         <div className="max-w-8xl mx-auto px-12 lg:px-20">
           <div className="flex items-center justify-between h-28 py-4">
-            {/* Enhanced Logo */}
+            {/* Enhanced Logo - No Container */}
             <div className="flex-shrink-0 mr-16 relative">
-              <div className="logo-container">
-                <img 
-                  src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
-                  alt="Synetic AI" 
-                  className="brand-logo-elite"
-                />
-                <div className="logo-glare"></div>
-                <div className="logo-glow-ring"></div>
-              </div>
+              <img 
+                src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
+                alt="Synetic AI" 
+                className="brand-logo-elite-refined"
+              />
+              <div className="logo-glare-refined"></div>
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Brighter Text */}
             <div className="hidden md:flex items-center space-x-16">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link-elite text-base"
+                  className="nav-link-refined text-base"
                 >
                   {link.name}
                 </button>
@@ -91,7 +88,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-elite text-lg w-full text-left"
+                  className="block nav-link-refined text-lg w-full text-left"
                 >
                   {link.name}
                 </button>

@@ -37,16 +37,15 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                   alt="Synetic AI" 
-                  className="brand-logo-footer mx-auto md:mx-0"
+                  className="brand-logo-footer-refined mx-auto md:mx-0"
                 />
-                <div className="footer-logo-glow"></div>
               </div>
               <div className="space-y-4 mb-8">
-                <p className="text-cosmic-white/90 text-lg font-light leading-relaxed tracking-wide">
-                  Intelligence Unleashed.
+                <p className="text-cosmic-white/90 text-lg font-light leading-relaxed tracking-wide opacity-fade-in">
+                  Intelligence in Motion.
                 </p>
-                <p className="text-cosmic-gold text-lg font-light leading-relaxed tracking-wide text-glow-subtle">
-                  Your Future, Now.
+                <p className="text-cosmic-gold text-lg font-light leading-relaxed tracking-wide text-glow-subtle opacity-fade-in delay-200">
+                  Automation Without Friction.
                 </p>
               </div>
               <a 
@@ -58,15 +57,15 @@ const Index = () => {
             </div>
             <div className="text-center md:text-right">
               <div className="space-y-4 mb-8">
-                <p className="text-cosmic-white/80 text-lg font-light leading-relaxed tracking-wide">
+                <p className="text-cosmic-white/80 text-lg font-light leading-relaxed tracking-wide opacity-fade-in">
                   Let's build something
                 </p>
-                <p className="text-cosmic-gold text-lg font-light leading-relaxed tracking-wide text-glow-subtle">
+                <p className="text-cosmic-gold text-lg font-light leading-relaxed tracking-wide text-glow-subtle opacity-fade-in delay-200">
                   intelligent.
                 </p>
               </div>
               <p className="text-cosmic-white/50 text-sm tracking-wider">
-                © 2024 Synetic AI. All rights reserved.
+                © 2025 Synetic AI. All rights reserved.
               </p>
             </div>
           </div>
