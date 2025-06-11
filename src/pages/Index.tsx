@@ -6,7 +6,7 @@ import MainSections from '../components/MainSections';
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen galaxy-command-surface">
       {/* Galactic Background */}
       <GalacticBackground />
       
@@ -19,12 +19,12 @@ const Index = () => {
         <MainSections />
       </main>
       
-      {/* Minimalist Footer */}
-      <footer className="relative z-10 py-16 px-8 border-t border-cosmic-gold/30 glass-nav-enhanced">
-        <div className="panning-nebula-footer"></div>
+      {/* Galaxy Footer */}
+      <footer className="relative z-10 py-12 px-8 border-t border-cosmic-gold/20 galaxy-footer-interface">
+        <div className="galaxy-stardust-trail"></div>
         
         <div className="max-w-4xl mx-auto text-center">
-          <div className="space-y-3">
+          <div className="space-y-2">
             <h3 className="text-2xl font-heading font-light text-cosmic-gold text-glow-subtle">
               SyneticAI
             </h3>
@@ -36,7 +36,7 @@ const Index = () => {
             <div className="py-2">
               <a 
                 href="mailto:team@syneticai.com" 
-                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium email-link-interactive"
+                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium galaxy-email-glow"
               >
                 team@syneticai.com
               </a>

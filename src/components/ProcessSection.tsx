@@ -6,53 +6,63 @@ const ProcessSection = () => {
   useScrollReveal();
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
   const [mouseGlobePos, setMouseGlobePos] = useState({ x: 0, y: 0 });
+  const [globeClicked, setGlobeClicked] = useState(false);
 
   const processSteps = [
     {
       number: "01",
       title: "Discovery",
       description: "Let's dive into the bottlenecks and challenges your business currently faces and explore how AI automation can offer effective solutions.",
-      tooltip: "Neural pattern recognized"
+      tooltip: "🔍 Sonar scan initiated",
+      fidgetType: "sonar"
     },
     {
       number: "02", 
       title: "Strategy",
       description: "We will develop a customized plan to integrate AI automation into your business, addressing the identified challenges and maximizing efficiency.",
-      tooltip: "Strategic matrix active"
+      tooltip: "🧠 Neural pathways mapping",
+      fidgetType: "neural"
     },
     {
       number: "03",
       title: "Implementation", 
       description: "In this phase, we will execute the AI automation plan, ensuring seamless integration into your existing processes.",
-      tooltip: "System deployment initiated"
+      tooltip: "⚡ Glass panel activated",
+      fidgetType: "warp"
     },
     {
       number: "04",
       title: "Test & Optimize",
       description: "We either approve or request revisions - we're dedicated to refining our builds until you're fully satisfied.",
-      tooltip: "Predictive logic active"
+      tooltip: "📊 Pulse graphs active",
+      fidgetType: "pulse"
     },
     {
       number: "05",
       title: "Become an Industry Leader",
       description: "Continue requesting as many workflow automations and AI applications as you wish, and transform your organization into a formidable industry leader.",
-      tooltip: "Global command enabled"
+      tooltip: "🌍 Global command online",
+      fidgetType: "globe"
     }
   ];
 
   const handleGlobeMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMouseGlobePos({
-      x: (e.clientX - rect.left - rect.width / 2) * 0.1,
-      y: (e.clientY - rect.top - rect.height / 2) * 0.1
+      x: (e.clientX - rect.left - rect.width / 2) * 0.15,
+      y: (e.clientY - rect.top - rect.height / 2) * 0.15
     });
+  };
+
+  const handleGlobeClick = () => {
+    setGlobeClicked(!globeClicked);
   };
 
   return (
     <section id="process" className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in cinematic-header">
+          <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in galaxy-header-reveal">
             Our Process
           </h2>
           <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-1">
@@ -64,48 +74,71 @@ const ProcessSection = () => {
           {processSteps.map((step, index) => (
             <div
               key={step.number}
-              className={`holographic-panel scroll-fade-in stagger-${index + 1}`}
+              className={`holographic-command-module scroll-fade-in stagger-${index + 1}`}
               onMouseEnter={() => setHoveredStep(index)}
               onMouseLeave={() => setHoveredStep(null)}
               onMouseMove={index === 4 ? handleGlobeMouseMove : undefined}
+              onClick={index === 4 ? handleGlobeClick : undefined}
             >
-              <div className="holographic-panel-inner">
-                <div className="process-number-hud">{step.number}</div>
+              <div className="command-module-core">
+                <div className="module-number-display">{step.number}</div>
                 
-                <div className={`process-icon-hud ${hoveredStep === index ? 'process-icon-active' : ''}`}>
-                  {index === 0 && <div className="discovery-hologram"></div>}
-                  {index === 1 && (
-                    <div className="strategy-neural-grid">
-                      <div className="neural-line neural-line-1"></div>
-                      <div className="neural-line neural-line-2"></div>
-                      <div className="neural-line neural-line-3"></div>
+                <div className={`fidget-interaction-zone ${hoveredStep === index ? 'zone-activated' : ''}`}>
+                  {step.fidgetType === 'sonar' && (
+                    <div className="sonar-scanner-module">
+                      <div className="sonar-wave-1"></div>
+                      <div className="sonar-wave-2"></div>
+                      <div className="sonar-wave-3"></div>
+                      <div className="scanner-dot"></div>
                     </div>
                   )}
-                  {index === 2 && <div className="implementation-field"></div>}
-                  {index === 3 && (
-                    <div className="optimization-scanner">
-                      <div className="scanner-spark scanner-spark-1"></div>
-                      <div className="scanner-spark scanner-spark-2"></div>
-                      <div className="scanner-spark scanner-spark-3"></div>
-                      <div className="data-grid-lines"></div>
+                  
+                  {step.fidgetType === 'neural' && (
+                    <div className="neural-flow-module">
+                      <div className="neural-bar neural-bar-1"></div>
+                      <div className="neural-bar neural-bar-2"></div>
+                      <div className="neural-bar neural-bar-3"></div>
+                      <div className="synaptic-spark synaptic-spark-1"></div>
+                      <div className="synaptic-spark synaptic-spark-2"></div>
                     </div>
                   )}
-                  {index === 4 && (
+                  
+                  {step.fidgetType === 'warp' && (
+                    <div className="glass-warp-module">
+                      <div className="warp-surface"></div>
+                      <div className="touch-ripple"></div>
+                      <div className="energy-field-lines"></div>
+                    </div>
+                  )}
+                  
+                  {step.fidgetType === 'pulse' && (
+                    <div className="pulse-graph-module">
+                      <div className="graph-line graph-line-1"></div>
+                      <div className="graph-line graph-line-2"></div>
+                      <div className="graph-line graph-line-3"></div>
+                      <div className="pulse-indicator pulse-indicator-1"></div>
+                      <div className="pulse-indicator pulse-indicator-2"></div>
+                    </div>
+                  )}
+                  
+                  {step.fidgetType === 'globe' && (
                     <div 
-                      className="command-globe-3d"
+                      className={`interactive-command-globe ${globeClicked ? 'globe-spinning' : ''}`}
                       style={{
                         transform: `rotateX(${mouseGlobePos.y}deg) rotateY(${mouseGlobePos.x}deg)`
                       }}
                     >
-                      <div className="globe-wireframe-gold"></div>
-                      <div className="globe-orbital-ring-1"></div>
-                      <div className="globe-orbital-ring-2"></div>
-                      <div className="globe-command-glow"></div>
+                      <div className="globe-wireframe-tactical"></div>
+                      <div className="orbital-ring orbital-ring-1"></div>
+                      <div className="orbital-ring orbital-ring-2"></div>
+                      <div className="orbital-ring orbital-ring-3"></div>
+                      <div className="globe-pulse-core"></div>
+                      <div className="command-aura"></div>
                     </div>
                   )}
                 </div>
 
-                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-4">
+                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-4 module-title">
                   {step.title}
                 </h3>
                 
@@ -113,16 +146,20 @@ const ProcessSection = () => {
                   {step.description}
                 </p>
 
-                {/* Whisper Tooltip */}
+                {/* Enhanced Whisper Tooltip */}
                 {hoveredStep === index && (
-                  <div className="whisper-tooltip">
-                    {step.tooltip}
+                  <div className="holographic-tooltip">
+                    <div className="tooltip-glow"></div>
+                    <div className="tooltip-text">{step.tooltip}</div>
                   </div>
                 )}
               </div>
               
-              {/* Glass Sheen Effect */}
-              <div className={`glass-sheen ${hoveredStep === index ? 'glass-sheen-active' : ''}`}></div>
+              {/* Energy Field Effect */}
+              <div className={`module-energy-field ${hoveredStep === index ? 'field-active' : ''}`}></div>
+              
+              {/* Materialization Effect */}
+              <div className="materialization-shimmer"></div>
             </div>
           ))}
         </div>
