@@ -63,7 +63,6 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Synetic AI premium palette
 				cosmic: {
 					black: '#1a1a1a',
 					gold: '#d2af61',
@@ -73,7 +72,7 @@ export default {
 				}
 			},
 			fontFamily: {
-				'heading': ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
+				'heading': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
 				'body': ['Inter', 'system-ui', 'sans-serif']
 			},
 			borderRadius: {
@@ -103,23 +102,43 @@ export default {
 						transform: 'translateY(0px) translateX(0px)'
 					},
 					'33%': {
-						transform: 'translateY(-8px) translateX(4px)'
+						transform: 'translateY(-4px) translateX(2px)'
 					},
 					'66%': {
-						transform: 'translateY(4px) translateX(-6px)'
+						transform: 'translateY(2px) translateX(-3px)'
 					}
 				},
-				'subtle-glow': {
+				'pulse-glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(210, 175, 97, 0.1)'
+						boxShadow: '0 0 20px rgba(210, 175, 97, 0.3), 0 0 40px rgba(210, 175, 97, 0.1)'
 					},
 					'50%': {
-						boxShadow: '0 0 30px rgba(210, 175, 97, 0.2)'
+						boxShadow: '0 0 30px rgba(210, 175, 97, 0.5), 0 0 60px rgba(210, 175, 97, 0.2)'
+					}
+				},
+				'slide-in-left': {
+					'0%': {
+						transform: 'translateX(-50px)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateX(0)',
+						opacity: '1'
+					}
+				},
+				'slide-in-right': {
+					'0%': {
+						transform: 'translateX(50px)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateX(0)',
+						opacity: '1'
 					}
 				},
 				'fade-in-up': {
 					'0%': {
-						transform: 'translateY(20px)',
+						transform: 'translateY(30px)',
 						opacity: '0'
 					},
 					'100%': {
@@ -127,12 +146,14 @@ export default {
 						opacity: '1'
 					}
 				},
-				'shimmer': {
+				'scale-in': {
 					'0%': {
-						transform: 'translateX(-100%)'
+						transform: 'scale(0.95)',
+						opacity: '0'
 					},
 					'100%': {
-						transform: 'translateX(100%)'
+						transform: 'scale(1)',
+						opacity: '1'
 					}
 				}
 			},
@@ -140,9 +161,11 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'gentle-float': 'gentle-float 8s ease-in-out infinite',
-				'subtle-glow': 'subtle-glow 4s ease-in-out infinite',
-				'fade-in-up': 'fade-in-up 0.6s ease-out',
-				'shimmer': 'shimmer 2s ease-in-out infinite'
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'slide-in-left': 'slide-in-left 0.8s ease-out',
+				'slide-in-right': 'slide-in-right 0.8s ease-out',
+				'fade-in-up': 'fade-in-up 0.8s ease-out',
+				'scale-in': 'scale-in 0.6s ease-out'
 			}
 		}
 	},
