@@ -19,74 +19,51 @@ const Index = () => {
         <MainSections />
       </main>
       
-      {/* Enhanced Footer */}
-      <footer className="relative z-10 py-16 px-8 border-t border-cosmic-gold/20 galaxy-footer-enhanced">
-        <div className="absolute inset-0 galaxy-unified-background"></div>
-        <div className="footer-starfield-enhanced"></div>
+      {/* Tier 2: The Terminus Footer */}
+      <footer className="relative z-10 py-8 px-8 border-t border-cosmic-gold/20 terminus-footer">
+        <div className="absolute inset-0 terminus-background"></div>
+        <div className="star-trails-background"></div>
         
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Logo Section */}
-            <div className="text-left">
-              <h3 className="text-xl font-heading font-light text-cosmic-gold text-glow-subtle mb-2">
-                SyneticAI
-              </h3>
-              <p className="text-cosmic-white/60 text-sm">
-                Automation Without Friction
-              </p>
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/954eb314-e07f-4e2c-bc93-0f4e5430a309.png" 
+                alt="SyneticAI"
+                className="footer-logo"
+              />
             </div>
             
             {/* Center Links */}
-            <div className="text-center">
-              <div className="flex justify-center space-x-8">
-                <button 
-                  onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm nav-link-enhanced"
-                >
-                  Vision
-                </button>
-                <button 
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm nav-link-enhanced"
-                >
-                  Services
-                </button>
-                <button 
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm nav-link-enhanced"
-                >
-                  Contact
-                </button>
-              </div>
+            <div className="flex space-x-8">
+              <button 
+                onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+              >
+                Vision
+              </button>
+              <button 
+                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+              >
+                Contact
+              </button>
             </div>
             
-            {/* Contact Section */}
+            {/* Copyright */}
             <div className="text-right">
-              <a 
-                href="mailto:team@syneticai.com" 
-                className="galaxy-email-beacon text-cosmic-gold text-sm font-medium block mb-2"
-              >
-                team@syneticai.com
-              </a>
               <p className="text-cosmic-white/40 text-xs">
                 © 2025 SyneticAI. All rights reserved.
               </p>
             </div>
           </div>
-        </div>
-        
-        {/* Enhanced Particle Effect */}
-        <div className="footer-particle-enhanced">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div 
-              key={i} 
-              className="footer-particle-star"
-              style={{
-                '--delay': `${i * 0.3}s`,
-                '--x': `${Math.random() * 100}%`
-              } as React.CSSProperties}
-            />
-          ))}
         </div>
       </footer>
     </div>

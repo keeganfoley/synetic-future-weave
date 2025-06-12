@@ -1,11 +1,9 @@
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [textAnimationStage, setTextAnimationStage] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer1 = setTimeout(() => setTextAnimationStage(1), 800);
@@ -19,109 +17,52 @@ const HeroSection = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width - 0.5,
-          y: (e.clientY - rect.top) / rect.height - 0.5
-        });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   const scrollToNextSection = () => {
     document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section 
-      ref={heroRef} 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden galaxy-hero-control-room"
-    >
-      {/* Enhanced Galactic Control Room Background */}
-      <div className="absolute inset-0 control-room-background"></div>
-      
-      {/* Hyperspace Starfield */}
-      <div className="absolute inset-0 hyperspace-starfield">
-        {Array.from({ length: 100 }).map((_, i) => (
-          <div 
-            key={i} 
-            className="hyperspace-star"
-            style={{
-              '--delay': `${i * 0.1}s`,
-              '--x': `${Math.random() * 100}%`,
-              '--y': `${Math.random() * 100}%`,
-              '--speed': `${Math.random() * 3 + 1}s`,
-              '--size': `${Math.random() * 2 + 1}px`
-            } as React.CSSProperties}
-          />
-        ))}
-      </div>
-
-      {/* Command Center Orbit System */}
-      <div className="absolute inset-0 command-center-orbits">
-        <div className="orbit-ring orbit-primary-enhanced" style={{
-          transform: `rotate(${mousePosition.x * 10}deg)`
-        }}></div>
-        <div className="orbit-ring orbit-secondary-enhanced" style={{
-          transform: `rotate(${-mousePosition.x * 15}deg)`
-        }}></div>
-        <div className="orbit-ring orbit-tertiary-enhanced" style={{
-          transform: `rotate(${mousePosition.x * 8}deg)`
-        }}></div>
-      </div>
-
-      {/* Data Transmission Beams */}
-      <div className="absolute inset-0 data-transmission-grid">
-        <div className="transmission-beam beam-horizontal"></div>
-        <div className="transmission-beam beam-vertical"></div>
-        <div className="transmission-beam beam-diagonal"></div>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden galactic-hero-redesign">
+      {/* Multi-layered Parallax Starfield */}
+      <div className="absolute inset-0 parallax-starfield">
+        <div className="starfield-layer-distant"></div>
+        <div className="starfield-layer-mid"></div>
+        <div className="starfield-layer-close"></div>
+        <div className="ambient-nebula-cloud"></div>
       </div>
       
-      {/* Hero Content - Centered Transmission Style */}
+      {/* Hero Content with Synetic Core */}
       <div className="text-center z-10 px-8 max-w-6xl mx-auto">
-        <div className="hero-transmission-container">
-          <h1 className="font-heading font-light leading-tight tracking-tight hero-title-transmission">
-            <div className={`hero-line-enhanced ${textAnimationStage >= 1 ? 'transmit-in' : ''}`}>
-              <span className="text-cosmic-white transmission-text">Intelligence in Motion.</span>
-              <div className="kinetic-light-rays"></div>
+        <div className="hero-transmission-enhanced">
+          <h1 className="font-heading font-light leading-tight tracking-tight hero-title-refined">
+            <div className={`hero-line-transmission ${textAnimationStage >= 1 ? 'transmit-active' : ''}`}>
+              <span className="text-cosmic-white transmission-text-enhanced">Intelligence in Motion.</span>
+              <div className="kinetic-light-rays-refined"></div>
             </div>
-            <div className={`hero-line-enhanced ${textAnimationStage >= 2 ? 'transmit-in' : ''}`}>
-              <span className="text-cosmic-gold transmission-text-gold">Automation Without Friction.</span>
-              <div className="kinetic-light-rays-gold"></div>
+            <div className={`hero-line-transmission ${textAnimationStage >= 2 ? 'transmit-active' : ''}`}>
+              <span className="text-cosmic-gold transmission-text-gold-enhanced">Automation Without Friction.</span>
+              <div className="kinetic-light-rays-gold-refined"></div>
             </div>
           </h1>
         </div>
-        
-        <div className={`space-y-6 mt-12 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <div className="transmission-pulse-container">
-            <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
-              We design systems that eliminate the ordinary.
-            </p>
-            <div className="data-pulse-indicators">
-              <div className="pulse-dot"></div>
-              <div className="pulse-dot"></div>
-              <div className="pulse-dot"></div>
+
+        {/* The Synetic Core */}
+        <div className={`synetic-core-container ${isVisible ? 'core-active' : ''}`}>
+          <div className="synetic-core">
+            <div className="geodesic-sphere">
+              <div className="sphere-geometry"></div>
+              <div className="data-trails"></div>
+              <div className="energy-field-core"></div>
             </div>
           </div>
-          <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-enhanced">
-            Precision automation. Time reclaimed.
-          </p>
         </div>
-
+        
         <div className={`mt-16 transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <button 
             onClick={scrollToNextSection}
-            className="control-room-cta text-xl group relative"
+            className="galactic-cta-refined text-xl group relative"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
@@ -134,28 +75,17 @@ const HeroSection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
-            <div className="cta-holographic-overlay"></div>
-            <div className="cta-particle-stream"></div>
+            <div className="cta-holographic-enhanced"></div>
+            <div className="cta-energy-flow"></div>
           </button>
-        </div>
-
-        {/* Orbiting Nodes */}
-        <div className="orbiting-nodes-container">
-          <div className="orbiting-node node-1"></div>
-          <div className="orbiting-node node-2"></div>
-          <div className="orbiting-node node-3"></div>
         </div>
       </div>
 
-      {/* Control Room Scroll Indicator */}
+      {/* Elegant Scroll Indicator */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-gentle-float">
-        <div className="control-room-scroll-beacon">
-          <div className="scroll-energy-core"></div>
-          <div className="scroll-beam-indicators">
-            <div className="beam-indicator"></div>
-            <div className="beam-indicator"></div>
-            <div className="beam-indicator"></div>
-          </div>
+        <div className="scroll-beacon-refined">
+          <div className="beacon-core-pulse"></div>
+          <div className="beacon-orbit-ring"></div>
         </div>
       </div>
     </section>

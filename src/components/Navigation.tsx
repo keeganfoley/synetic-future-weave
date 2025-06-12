@@ -21,19 +21,21 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'galaxy-nav-scrolled' : 'galaxy-nav-transparent'
+      isScrolled ? 'nav-scrolled' : 'nav-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Enhanced Logo */}
-          <div className="logo-control-room-enhanced">
-            <div className="logo-holographic-base">
-              <div className="logo-particle-trail"></div>
-              <div className="logo-beam-shadow"></div>
-              <h1 className="control-room-logo-text">
-                SyneticAI
-              </h1>
-              <div className="logo-floating-glow"></div>
+          {/* Living Logo Emblem */}
+          <div className="living-logo-emblem">
+            <div className="logo-holographic-container">
+              <img 
+                src="/lovable-uploads/954eb314-e07f-4e2c-bc93-0f4e5430a309.png" 
+                alt="SyneticAI"
+                className="logo-image"
+              />
+              <div className="logo-energy-pulse"></div>
+              <div className="logo-electrical-texture"></div>
+              <div className="logo-shadow-glow"></div>
             </div>
           </div>
 
@@ -41,31 +43,31 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-12">
             <button 
               onClick={() => scrollToSection('vision')}
-              className="nav-link-control-room"
+              className="nav-link-galactic"
             >
               <span>Vision</span>
-              <div className="nav-beam-underline"></div>
+              <div className="nav-data-stream"></div>
             </button>
             <button 
               onClick={() => scrollToSection('process')}
-              className="nav-link-control-room"
+              className="nav-link-galactic"
             >
               <span>Process</span>
-              <div className="nav-beam-underline"></div>
+              <div className="nav-data-stream"></div>
             </button>
             <button 
               onClick={() => scrollToSection('services')}
-              className="nav-link-control-room"
+              className="nav-link-galactic"
             >
               <span>Services</span>
-              <div className="nav-beam-underline"></div>
+              <div className="nav-data-stream"></div>
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="nav-link-control-room"
+              className="nav-link-galactic"
             >
               <span>Contact</span>
-              <div className="nav-beam-underline"></div>
+              <div className="nav-data-stream"></div>
             </button>
           </div>
 
@@ -82,7 +84,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden galaxy-mobile-menu">
+          <div className="md:hidden galactic-mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <button 
                 onClick={() => scrollToSection('vision')}
