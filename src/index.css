@@ -614,7 +614,7 @@
   }
 
   .galaxy-module-activator-enhanced {
-    @apply bg-transparent border border-cosmic-gold/60 text-cosmic-gold px-8 py-3 rounded-xl text-sm transition-all duration-400 relative overflow-hidden;
+    @apply bg-transparent border border-cosmic-gold/60 text-cosmic-gold px-8 py-3 rounded-xl text-sm transition-all duration-300 relative overflow-hidden;
     font-weight: 500;
   }
 
