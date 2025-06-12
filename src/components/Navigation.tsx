@@ -25,49 +25,56 @@ const Navigation = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Living Logo Emblem */}
-          <div className="living-logo-emblem">
-            <div className="logo-holographic-container">
+          {/* Integrated Living Logo */}
+          <div className="living-logo-integrated">
+            <div className="logo-holographic-chamber">
               <img 
                 src="/lovable-uploads/954eb314-e07f-4e2c-bc93-0f4e5430a309.png" 
                 alt="SyneticAI"
-                className="logo-image"
+                className="logo-integrated-image"
               />
-              <div className="logo-energy-pulse"></div>
-              <div className="logo-electrical-texture"></div>
-              <div className="logo-shadow-glow"></div>
+              <div className="logo-internal-pulse"></div>
+              <div className="logo-lens-flare"></div>
+              <div className="logo-holographic-sheath"></div>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-12">
             <button 
               onClick={() => scrollToSection('vision')}
-              className="nav-link-galactic"
+              className="nav-link-refined"
             >
               <span>Vision</span>
-              <div className="nav-data-stream"></div>
+              <div className="nav-beam-effect"></div>
             </button>
             <button 
               onClick={() => scrollToSection('process')}
-              className="nav-link-galactic"
+              className="nav-link-refined"
             >
               <span>Process</span>
-              <div className="nav-data-stream"></div>
+              <div className="nav-beam-effect"></div>
             </button>
             <button 
               onClick={() => scrollToSection('services')}
-              className="nav-link-galactic"
+              className="nav-link-refined"
             >
               <span>Services</span>
-              <div className="nav-data-stream"></div>
+              <div className="nav-beam-effect"></div>
+            </button>
+            <button 
+              onClick={() => scrollToSection('engines')}
+              className="nav-link-refined"
+            >
+              <span>AI Cores</span>
+              <div className="nav-beam-effect"></div>
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="nav-link-galactic"
+              className="nav-link-refined"
             >
               <span>Contact</span>
-              <div className="nav-data-stream"></div>
+              <div className="nav-beam-effect"></div>
             </button>
           </div>
 
@@ -103,6 +110,12 @@ const Navigation = () => {
                 className="block px-3 py-2 text-cosmic-white/80 hover:text-cosmic-gold transition-colors duration-300"
               >
                 Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('engines')}
+                className="block px-3 py-2 text-cosmic-white/80 hover:text-cosmic-gold transition-colors duration-300"
+              >
+                AI Cores
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}

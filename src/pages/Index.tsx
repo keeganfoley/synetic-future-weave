@@ -7,7 +7,7 @@ import MainSections from '../components/MainSections';
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-cosmic-black">
-      {/* Enhanced Galactic Background */}
+      {/* Galactic Background */}
       <GalacticBackground />
       
       {/* Navigation */}

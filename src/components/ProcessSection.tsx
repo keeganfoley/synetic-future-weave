@@ -1,103 +1,116 @@
 
-import { useState } from 'react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useState, useEffect } from 'react';
 
 const ProcessSection = () => {
-  useScrollReveal();
-  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
+  const [hoveredModule, setHoveredModule] = useState<number | null>(null);
+  const [visibleModules, setVisibleModules] = useState<number[]>([]);
 
-  const processSteps = [
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const moduleIndex = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleModules(prev => [...prev, moduleIndex]);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const modules = document.querySelectorAll('.process-module');
+    modules.forEach(module => observer.observe(module));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const processModules = [
     {
       number: "01",
       title: "Discovery",
-      description: "Let's dive into the bottlenecks and challenges your business currently faces and explore how AI automation can offer effective solutions.",
+      description: "We analyze your current workflows and identify automation opportunities through comprehensive system mapping.",
       artifact: "planetary-scan",
-      interaction: "grid-focus"
+      interaction: "radar-sweep"
     },
     {
       number: "02", 
       title: "Strategy",
-      description: "We will develop a customized plan to integrate AI automation into your business, addressing the identified challenges and maximizing efficiency.",
+      description: "Custom automation blueprint tailored to your specific business needs and objectives.",
       artifact: "blueprint-schematic",
       interaction: "lines-draw"
     },
     {
       number: "03",
       title: "Implementation", 
-      description: "In this phase, we will execute the AI automation plan, ensuring seamless integration into your existing processes.",
-      artifact: "energy-cascade",
-      interaction: "nodes-fire"
+      description: "Seamless integration of AI automation into your existing infrastructure and workflows.",
+      artifact: "energy-nodes",
+      interaction: "nodes-activate"
     },
     {
       number: "04",
-      title: "Test & Optimize",
-      description: "We either approve or request revisions - we're dedicated to refining our builds until you're fully satisfied.",
-      artifact: "crystalline-structure",
+      title: "Optimization",
+      description: "Continuous refinement and performance enhancement to maximize efficiency and results.",
+      artifact: "crystalline-matrix",
       interaction: "facets-realign"
-    },
-    {
-      number: "05",
-      title: "Become an Industry Leader",
-      description: "Continue requesting as many workflow automations and AI applications as you wish, and transform your organization into a formidable industry leader.",
-      artifact: "leadership-crown",
-      interaction: "crown-illuminate"
     }
   ];
 
   return (
     <section id="process" className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 galactic-background-refined"></div>
+      <div className="absolute inset-0 section-background-refined"></div>
       
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in galactic-section-header">
+          <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white section-header-enhanced">
             Our Process
           </h2>
-          <div className="galactic-divider-refined scroll-fade-in stagger-1"></div>
-          <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-2 mt-6">
-            Interactive command modules for business transformation
+          <div className="section-divider-refined"></div>
+          <p className="text-xl text-cosmic-white/80 font-light mt-6">
+            Interactive command modules for seamless transformation
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {processSteps.map((step, index) => (
+        {/* Grid of Interactive Modules */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {processModules.map((module, index) => (
             <div
-              key={step.number}
-              className={`interactive-process-module scroll-fade-in stagger-${index + 1} ${
-                hoveredStep === index ? 'module-active' : ''
-              }`}
-              onMouseEnter={() => setHoveredStep(index)}
-              onMouseLeave={() => setHoveredStep(null)}
+              key={module.number}
+              data-index={index}
+              className={`process-module interactive-control-square ${
+                visibleModules.includes(index) ? 'module-visible' : ''
+              } ${hoveredModule === index ? 'module-active' : ''}`}
+              onMouseEnter={() => setHoveredModule(index)}
+              onMouseLeave={() => setHoveredModule(null)}
             >
-              <div className="module-container">
-                <div className="module-header-refined">
-                  <div className="step-number-beacon">{step.number}</div>
-                  <div className="status-array">
-                    <div className="status-light active"></div>
-                    <div className="status-light standby"></div>
-                    <div className="status-light offline"></div>
+              <div className="module-chassis">
+                <div className="module-header">
+                  <div className="status-beacon">{module.number}</div>
+                  <div className="status-indicators">
+                    <div className="status-dot active"></div>
+                    <div className="status-dot standby"></div>
                   </div>
                 </div>
                 
-                <div className="artifact-display">
-                  <div className={`interactive-artifact artifact-${step.artifact}`}>
+                <div className="artifact-chamber">
+                  <div className={`interactive-artifact artifact-${module.artifact}`}>
                     <div className="artifact-core"></div>
-                    <div className={`artifact-interaction interaction-${step.interaction} ${
-                      hoveredStep === index ? 'active' : ''
+                    <div className={`artifact-animation anim-${module.interaction} ${
+                      hoveredModule === index ? 'animation-active' : ''
                     }`}></div>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-3 module-title-refined">
-                  {step.title}
+                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-3 module-title">
+                  {module.title}
                 </h3>
                 
-                <p className="text-cosmic-white/80 text-sm leading-relaxed module-description">
-                  {step.description}
+                <p className="text-cosmic-white/80 text-sm leading-relaxed">
+                  {module.description}
                 </p>
               </div>
               
-              <div className="module-energy-boundary"></div>
+              <div className="module-glow-field"></div>
+              <div className="module-3d-tilt"></div>
             </div>
           ))}
         </div>
