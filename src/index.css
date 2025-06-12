@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,175 +84,110 @@
 }
 
 @layer components {
-  /* Hero Section */
-  .galaxy-hero-container {
+  /* Galaxy Unified Background */
+  .galaxy-unified-background {
     background: 
       radial-gradient(ellipse at center, rgba(210, 175, 97, 0.03) 0%, transparent 50%),
       linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    position: relative;
   }
 
-  .cosmic-grid-background {
+  .galaxy-unified-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: 
       linear-gradient(rgba(210, 175, 97, 0.1) 1px, transparent 1px),
       linear-gradient(90deg, rgba(210, 175, 97, 0.1) 1px, transparent 1px);
-    background-size: 100px 100px;
-    opacity: 0.3;
-    animation: grid-pulse 10s ease-in-out infinite;
-  }
-
-  .galaxy-orbit-system {
-    perspective: 1000px;
-  }
-
-  .orbit-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border: 1px solid rgba(210, 175, 97, 0.2);
-    border-radius: 50%;
-    transform-origin: center;
-  }
-
-  .orbit-primary {
-    width: 400px;
-    height: 200px;
-    margin-left: -200px;
-    margin-top: -100px;
-    animation: orbit-float 20s linear infinite;
-  }
-
-  .orbit-secondary {
-    width: 600px;
-    height: 300px;
-    margin-left: -300px;
-    margin-top: -150px;
-    animation: orbit-float 30s linear infinite reverse;
-    opacity: 0.6;
-  }
-
-  .orbit-tertiary {
-    width: 800px;
-    height: 400px;
-    margin-left: -400px;
-    margin-top: -200px;
-    animation: orbit-float 40s linear infinite;
-    opacity: 0.4;
-  }
-
-  .ambient-particle-field {
+    background-size: 50px 50px;
+    opacity: 0.2;
+    animation: galaxy-grid-pulse 8s ease-in-out infinite;
     pointer-events: none;
   }
 
-  .floating-particle {
+  .galaxy-starfield {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    background: rgba(210, 175, 97, 0.6);
-    border-radius: 50%;
-    left: var(--x);
-    top: var(--y);
-    animation: particle-drift 8s ease-in-out infinite;
-    animation-delay: var(--delay);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(2px 2px at 20px 30px, rgba(210, 175, 97, 0.4), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(210, 175, 97, 0.6), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.4), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: star-drift 20s linear infinite;
+    pointer-events: none;
   }
 
-  /* Hero Text */
-  .hero-title-container {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  /* Enhanced Logo Styles */
+  .logo-galaxy-enhanced {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .hero-text-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    background: linear-gradient(135deg, #ffffff 0%, #d2af61 50%, #ffffff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% 100%;
-    transition: all 1s ease-out;
-  }
-
-  .hero-text-reveal.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-    animation: text-shimmer 2s ease-out;
-  }
-
-  .hero-text-reveal-alt {
-    opacity: 0;
-    transform: translateY(30px);
-    background: linear-gradient(135deg, #d2af61 0%, #ffffff 50%, #d2af61 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% 100%;
-    transition: all 1s ease-out;
-  }
-
-  .hero-text-reveal-alt.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-    animation: text-shimmer 2s ease-out 0.5s;
-  }
-
-  /* Enhanced CTA Button */
-  .galaxy-cta-premium {
-    @apply relative bg-transparent border-2 border-cosmic-gold/60 text-cosmic-gold px-12 py-4 rounded-xl font-medium tracking-wider transition-all duration-500 overflow-hidden;
-    backdrop-filter: blur(20px);
-    background: linear-gradient(135deg, rgba(210, 175, 97, 0.1), rgba(255, 255, 255, 0.05));
-  }
-
-  .galaxy-cta-premium:hover {
-    border-color: rgba(210, 175, 97, 1);
-    background: linear-gradient(135deg, rgba(210, 175, 97, 0.2), rgba(255, 255, 255, 0.1));
-    color: #ffffff;
-    box-shadow: 0 0 40px rgba(210, 175, 97, 0.5);
-    transform: translateY(-2px) scale(1.02);
-  }
-
-  .cta-pulse-rings {
+  .logo-stellar-glow {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    border: 2px solid rgba(210, 175, 97, 0.3);
-    border-radius: 12px;
-    animation: pulse-expand 3s ease-in-out infinite;
-    pointer-events: none;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(210, 175, 97, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: stellar-pulse 4s ease-in-out infinite;
   }
 
-  .cta-energy-flow {
+  .logo-galaxy-enhanced:hover .logo-stellar-glow {
+    opacity: 1;
+  }
+
+  .galaxy-logo-enhanced {
+    position: relative;
+    z-index: 2;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 12px rgba(210, 175, 97, 0.4));
+    transition: all 0.4s ease;
+  }
+
+  .logo-galaxy-enhanced:hover .galaxy-logo-enhanced {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(210, 175, 97, 0.7));
+    transform: scale(1.05);
+  }
+
+  .logo-solar-flare {
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.3), transparent);
-    animation: energy-sweep 6s ease-in-out infinite;
+    animation: solar-flare-sweep 6s ease-in-out infinite;
     pointer-events: none;
   }
 
-  /* Scroll Beacon */
-  .galaxy-scroll-beacon {
-    width: 6px;
-    height: 10px;
-    border: 2px solid rgba(210, 175, 97, 0.6);
-    border-radius: 20px;
-    position: relative;
-    background: rgba(210, 175, 97, 0.1);
+  .logo-shimmer-cascade {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: linear-gradient(45deg, transparent, rgba(210, 175, 97, 0.2), transparent);
+    animation: shimmer-cascade 8s ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0;
   }
 
-  .scroll-beacon-core {
-    width: 2px;
-    height: 3px;
-    background: rgba(210, 175, 97, 0.8);
-    border-radius: 2px;
-    position: absolute;
-    top: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: beacon-pulse 2s ease-in-out infinite;
+  .logo-galaxy-enhanced:hover .logo-shimmer-cascade {
+    opacity: 1;
   }
 
   /* Navigation */
@@ -260,388 +196,232 @@
   }
 
   .galaxy-nav-scrolled {
-    background: rgba(10, 10, 10, 0.9);
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(210, 175, 97, 0.2);
   }
 
-  .logo-galaxy-refined {
-    transition: all 0.3s ease;
+  .nav-link-enhanced {
+    @apply text-cosmic-white/80 hover:text-cosmic-gold transition-all duration-400 relative;
+    position: relative;
   }
 
-  .logo-galaxy-refined:hover {
-    transform: scale(1.05);
+  .nav-link-enhanced::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d2af61, transparent);
+    transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .logo-ambient-glow {
+  .nav-link-enhanced:hover::after {
+    width: 100%;
+  }
+
+  .galaxy-mobile-menu {
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(30px);
+    border-top: 1px solid rgba(210, 175, 97, 0.3);
+  }
+
+  /* Hero Text Enhancements */
+  .hero-text-shimmer {
+    background: linear-gradient(135deg, #ffffff 0%, #d2af61 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 100%;
+    animation: text-shimmer-enhanced 3s ease-in-out infinite;
+  }
+
+  .hero-orbital-rings {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 150%;
-    height: 150%;
-    background: radial-gradient(circle, rgba(210, 175, 97, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .orbital-ring {
+    position: absolute;
+    border: 1px solid rgba(210, 175, 97, 0.2);
     border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    animation: orbit-rotation 20s linear infinite;
   }
 
-  .logo-galaxy-refined:hover .logo-ambient-glow {
-    opacity: 1;
+  .ring-primary {
+    width: 300px;
+    height: 150px;
+    margin-left: -150px;
+    margin-top: -75px;
   }
 
-  .galaxy-logo-integrated {
-    opacity: 0.9;
-    filter: drop-shadow(0 0 10px rgba(210, 175, 97, 0.3));
-    transition: all 0.3s ease;
+  .ring-secondary {
+    width: 450px;
+    height: 225px;
+    margin-left: -225px;
+    margin-top: -112px;
+    animation-direction: reverse;
+    animation-duration: 30s;
+    opacity: 0.6;
   }
 
-  .logo-galaxy-refined:hover .galaxy-logo-integrated {
-    opacity: 1;
-    filter: drop-shadow(0 0 15px rgba(210, 175, 97, 0.6));
+  /* Enhanced CTA Button */
+  .galaxy-cta-enhanced {
+    @apply relative bg-transparent border-2 border-cosmic-gold/70 text-cosmic-gold px-12 py-4 rounded-xl font-medium tracking-wider transition-all duration-500 overflow-hidden;
+    backdrop-filter: blur(25px);
+    background: linear-gradient(135deg, rgba(210, 175, 97, 0.1), rgba(255, 255, 255, 0.05));
   }
 
-  .logo-shimmer-trail {
+  .galaxy-cta-enhanced:hover {
+    border-color: rgba(210, 175, 97, 1);
+    background: linear-gradient(135deg, rgba(210, 175, 97, 0.2), rgba(255, 255, 255, 0.1));
+    color: #ffffff;
+    box-shadow: 0 0 50px rgba(210, 175, 97, 0.6);
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  .cta-stellar-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130%;
+    height: 130%;
+    border: 2px solid rgba(210, 175, 97, 0.3);
+    border-radius: 14px;
+    animation: stellar-ring-pulse 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .cta-energy-cascade {
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.4), transparent);
-    animation: shimmer-trail 4s ease-in-out infinite;
+    animation: energy-cascade-flow 7s ease-in-out infinite;
     pointer-events: none;
   }
 
-  .nav-link-galaxy {
-    @apply text-cosmic-white/80 hover:text-cosmic-gold transition-colors duration-300 relative;
+  /* Scroll Beacon */
+  .galaxy-scroll-enhanced {
+    width: 8px;
+    height: 14px;
+    border: 2px solid rgba(210, 175, 97, 0.7);
+    border-radius: 25px;
+    position: relative;
+    background: rgba(210, 175, 97, 0.1);
   }
 
-  .nav-link-galaxy::after {
-    content: '';
+  .scroll-pulse-enhanced {
+    width: 3px;
+    height: 4px;
+    background: rgba(210, 175, 97, 0.9);
+    border-radius: 3px;
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #d2af61, transparent);
-    transition: width 0.3s ease;
-  }
-
-  .nav-link-galaxy:hover::after {
-    width: 100%;
-  }
-
-  .galaxy-mobile-menu {
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(210, 175, 97, 0.2);
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-pulse-enhanced 2.5s ease-in-out infinite;
   }
 
   /* Section Headers */
   .galaxy-section-header {
-    animation: header-materialize 1.5s ease-out;
+    animation: header-materialize 1.8s ease-out;
   }
 
-  .galaxy-divider-line {
+  .galaxy-divider-enhanced {
     width: 0;
-    height: 2px;
+    height: 3px;
     background: linear-gradient(90deg, transparent, #d2af61, transparent);
     margin: 0 auto;
-    animation: divider-expand 2s ease-out;
-    box-shadow: 0 0 10px rgba(210, 175, 97, 0.5);
+    animation: divider-expand-enhanced 2.5s ease-out;
+    box-shadow: 0 0 15px rgba(210, 175, 97, 0.6);
   }
 
-  /* Word Reveal Animation */
-  .word-reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: word-reveal-in 0.6s ease-out forwards;
-  }
-
-  /* Status Panel */
-  .galaxy-status-panel {
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(210, 175, 97, 0.3);
-    border-radius: 8px;
-    padding: 12px 16px;
-    backdrop-filter: blur(10px);
-    position: relative;
-  }
-
-  .status-readout {
-    font-size: 12px;
-    color: rgba(210, 175, 97, 0.8);
-    margin-bottom: 4px;
-    font-family: 'Inter', monospace;
-  }
-
-  .status-pulse {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 8px;
-    height: 8px;
-    background: rgba(210, 175, 97, 0.8);
-    border-radius: 50%;
-    animation: status-blink 2s ease-in-out infinite;
-  }
-
-  /* Process Modules */
-  .galaxy-process-module {
-    @apply bg-cosmic-black/40 border border-cosmic-gold/30 rounded-2xl backdrop-blur-xl relative overflow-hidden cursor-pointer;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  }
-
-  .galaxy-process-module:hover,
-  .galaxy-process-module.module-activated {
-    transform: translateY(-8px) rotateX(2deg) scale(1.02);
-    border-color: rgba(210, 175, 97, 0.6);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(210, 175, 97, 0.3);
-  }
-
-  .module-surface {
-    padding: 2rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .module-number-beacon {
-    @apply text-cosmic-gold text-lg font-light mb-4;
-    font-family: 'DM Serif Display', serif;
-    text-shadow: 0 0 10px rgba(210, 175, 97, 0.5);
-  }
-
-  .module-icon-container {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .process-icon {
-    width: 60px;
-    height: 60px;
-    position: relative;
-    border: 2px solid rgba(210, 175, 97, 0.5);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .icon-core {
-    width: 20px;
-    height: 20px;
-    background: rgba(210, 175, 97, 0.8);
-    border-radius: 50%;
-    animation: core-pulse 2s ease-in-out infinite;
-  }
-
-  .icon-orbits {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 1px solid rgba(210, 175, 97, 0.3);
-    border-radius: 50%;
-    animation: orbit-spin 8s linear infinite;
-  }
-
-  .icon-particles {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(circle, rgba(210, 175, 97, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: particle-glow 3s ease-in-out infinite;
-  }
-
-  .module-title-text {
-    text-shadow: 0 0 8px rgba(210, 175, 97, 0.4);
-  }
-
-  .galaxy-hover-reveal {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(210, 175, 97, 0.5);
-    border-radius: 6px;
-    padding: 8px 12px;
-    animation: hover-reveal-in 0.3s ease-out;
-    backdrop-filter: blur(10px);
-  }
-
-  .hover-text-glow {
-    font-size: 11px;
-    color: rgba(210, 175, 97, 0.9);
-    text-shadow: 0 0 8px rgba(210, 175, 97, 0.4);
-    font-family: 'Inter', monospace;
-  }
-
-  .module-energy-field {
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, transparent, rgba(210, 175, 97, 0.1), transparent);
-    border-radius: 18px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
-
-  .galaxy-process-module:hover .module-energy-field {
-    opacity: 1;
-    animation: energy-flow 2s ease-in-out infinite;
-  }
-
-  .module-activation-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 110%;
-    height: 110%;
-    border: 2px solid rgba(210, 175, 97, 0.2);
-    border-radius: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-
-  .galaxy-process-module:hover .module-activation-ring {
-    opacity: 1;
-    animation: activation-ring-pulse 2s ease-in-out infinite;
-  }
-
-  /* Service Terminals */
-  .galaxy-service-terminal {
-    @apply bg-cosmic-black/30 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative overflow-hidden cursor-pointer;
+  /* Process Modules Enhanced */
+  .galaxy-process-enhanced {
+    @apply bg-cosmic-black/50 border border-cosmic-gold/30 rounded-3xl backdrop-blur-xl relative overflow-hidden cursor-pointer;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
   }
 
-  .galaxy-service-terminal:hover,
-  .galaxy-service-terminal.terminal-active {
-    transform: translateY(-10px) scale(1.02);
-    border-color: rgba(210, 175, 97, 0.6);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(210, 175, 97, 0.3);
+  .galaxy-process-enhanced:hover {
+    transform: translateY(-12px) rotateX(3deg) scale(1.03);
+    border-color: rgba(210, 175, 97, 0.7);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(210, 175, 97, 0.4);
   }
 
-  .terminal-surface {
+  .process-surface-enhanced {
     padding: 2.5rem;
     position: relative;
+    z-index: 2;
   }
 
-  .terminal-header {
+  .process-number-enhanced {
+    @apply text-cosmic-gold text-xl font-light mb-4;
+    font-family: 'DM Serif Display', serif;
+    text-shadow: 0 0 12px rgba(210, 175, 97, 0.6);
+  }
+
+  .process-icon-enhanced {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 24px;
+    position: relative;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(210, 175, 97, 0.2);
+    justify-content: center;
   }
 
-  .status-indicators {
-    display: flex;
-    gap: 6px;
-  }
-
-  .status-dot {
-    width: 8px;
-    height: 8px;
+  .icon-core-enhanced {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    border: 2px solid rgba(210, 175, 97, 0.6);
     border-radius: 50%;
-  }
-
-  .status-active { background: #4ade80; }
-  .status-standby { background: #fbbf24; }
-  .status-offline { background: #ef4444; opacity: 0.5; }
-
-  .terminal-id {
-    font-family: 'Inter', monospace;
-    font-size: 12px;
-    color: rgba(210, 175, 97, 0.7);
-  }
-
-  .terminal-display {
-    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    position: relative;
-  }
-
-  .service-icon {
-    width: 80px;
-    height: 80px;
-    border: 2px solid rgba(210, 175, 97, 0.5);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     background: rgba(210, 175, 97, 0.1);
   }
 
-  .icon-hologram {
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle, rgba(210, 175, 97, 0.6) 0%, transparent 70%);
+  .core-pulse-enhanced {
+    width: 25px;
+    height: 25px;
+    background: rgba(210, 175, 97, 0.9);
     border-radius: 50%;
-    animation: hologram-pulse 3s ease-in-out infinite;
+    animation: core-pulse-enhanced 2.5s ease-in-out infinite;
   }
 
-  .icon-data-streams {
+  .icon-orbits-enhanced {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border: 1px solid rgba(210, 175, 97, 0.3);
-    border-radius: 25px;
-    animation: data-stream-flow 4s linear infinite;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 1px solid rgba(210, 175, 97, 0.4);
+    border-radius: 50%;
+    animation: orbit-spin-enhanced 10s linear infinite;
   }
 
-  .service-title {
-    text-shadow: 0 0 12px rgba(210, 175, 97, 0.5);
-  }
-
-  .galaxy-module-activator {
-    @apply bg-transparent border border-cosmic-gold/50 text-cosmic-gold px-6 py-2 rounded-lg text-sm transition-all duration-300 relative overflow-hidden;
-  }
-
-  .galaxy-module-activator:hover {
-    border-color: rgba(210, 175, 97, 1);
-    background: rgba(210, 175, 97, 0.1);
-    box-shadow: 0 0 20px rgba(210, 175, 97, 0.4);
-  }
-
-  .activator-pulse {
+  .sonar-wave-enhanced {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(210, 175, 97, 0.3);
-    border-radius: 8px;
-    animation: activator-pulse-expand 2s ease-in-out infinite;
-    pointer-events: none;
+    width: 150%;
+    height: 150%;
+    border: 2px solid rgba(210, 175, 97, 0.3);
+    border-radius: 50%;
+    animation: sonar-wave-pulse 3s ease-out infinite;
   }
 
-  .terminal-energy-grid {
+  .blueprint-grid-enhanced {
     position: absolute;
     top: 0;
     left: 0;
@@ -651,249 +431,381 @@
       linear-gradient(90deg, transparent 48%, rgba(210, 175, 97, 0.1) 50%, transparent 52%),
       linear-gradient(0deg, transparent 48%, rgba(210, 175, 97, 0.1) 50%, transparent 52%);
     opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
+    animation: blueprint-draw 2s ease-in-out infinite;
   }
 
-  .galaxy-service-terminal:hover .terminal-energy-grid {
-    opacity: 1;
-    animation: grid-pulse 2s ease-in-out infinite;
-  }
-
-  .terminal-scan-lines {
+  .connecting-wires-enhanced {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, transparent 0%, rgba(210, 175, 97, 0.05) 50%, transparent 100%);
-    animation: scan-lines 3s ease-in-out infinite;
-    pointer-events: none;
+    top: 50%;
+    left: -20px;
+    right: -20px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.5), transparent);
+    animation: wire-connect 1.5s ease-in-out infinite;
+    transform: scaleX(0);
+    transform-origin: center;
   }
 
-  /* Thinking Modules */
-  .galaxy-thinking-module {
-    @apply bg-cosmic-black/25 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative;
-    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  .data-bars-enhanced {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3px;
   }
 
-  .galaxy-thinking-module:hover {
-    transform: translateY(-12px) rotateX(2deg) rotateY(1deg) scale(1.02);
-    border-color: rgba(210, 175, 97, 0.6);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(210, 175, 97, 0.3);
+  .data-bar {
+    width: 3px;
+    background: rgba(210, 175, 97, 0.6);
+    border-radius: 2px;
+    animation: data-bars-animate 1s ease-in-out infinite;
   }
 
-  .thinking-surface {
-    padding: 2.5rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .neural-particle-field {
+  .constellation-map-enhanced {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 25% 25%, rgba(210, 175, 97, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 25% 25%, rgba(210, 175, 97, 0.2) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(210, 175, 97, 0.2) 2px, transparent 2px),
+      radial-gradient(circle at 50% 80%, rgba(210, 175, 97, 0.2) 2px, transparent 2px);
     opacity: 0;
-    transition: opacity 0.8s ease;
-    animation: particle-drift 8s ease-in-out infinite;
+    animation: constellation-pulse 2s ease-in-out infinite;
   }
 
-  .galaxy-thinking-module:hover .neural-particle-field {
+  /* Service Terminals Enhanced */
+  .galaxy-service-enhanced {
+    @apply bg-cosmic-black/40 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative overflow-hidden cursor-pointer;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  }
+
+  .galaxy-service-enhanced:hover,
+  .galaxy-service-enhanced.terminal-active {
+    transform: translateY(-12px) scale(1.03);
+    border-color: rgba(210, 175, 97, 0.7);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(210, 175, 97, 0.4);
+  }
+
+  .terminal-surface-enhanced {
+    padding: 2.5rem;
+    position: relative;
+  }
+
+  .terminal-header-enhanced {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(210, 175, 97, 0.3);
+  }
+
+  .status-indicators-enhanced {
+    display: flex;
+    gap: 8px;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .status-active { background: #4ade80; }
+  .status-standby { background: #fbbf24; }
+  .status-offline { background: #ef4444; opacity: 0.5; }
+
+  .terminal-id-enhanced {
+    font-family: 'Inter', monospace;
+    font-size: 13px;
+    color: rgba(210, 175, 97, 0.8);
+    font-weight: 500;
+  }
+
+  .terminal-display-enhanced {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .service-icon-unique {
+    width: 90px;
+    height: 90px;
+    border: 2px solid rgba(210, 175, 97, 0.6);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: rgba(210, 175, 97, 0.1);
+  }
+
+  .icon-hologram-enhanced {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(210, 175, 97, 0.7) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: hologram-pulse-enhanced 3s ease-in-out infinite;
+  }
+
+  .unique-visual {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .visual-connecting-blocks {
+    width: 30px;
+    height: 30px;
+    background: 
+      linear-gradient(45deg, rgba(210, 175, 97, 0.4) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(210, 175, 97, 0.4) 25%, transparent 25%);
+    background-size: 6px 6px;
+    animation: blocks-connect 2s ease-in-out infinite;
+  }
+
+  .visual-blinking-prompt {
+    width: 3px;
+    height: 20px;
+    background: rgba(210, 175, 97, 0.8);
+    animation: prompt-blink 1.2s ease-in-out infinite;
+  }
+
+  .visual-orbiting-data {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(210, 175, 97, 0.4);
+    border-radius: 50%;
+    animation: data-orbit 4s linear infinite;
+  }
+
+  .visual-orbiting-data::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: rgba(210, 175, 97, 0.8);
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+
+  .icon-data-streams-enhanced {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border: 1px solid rgba(210, 175, 97, 0.4);
+    border-radius: 28px;
+    animation: data-stream-flow 5s linear infinite;
+  }
+
+  .service-title-enhanced {
+    text-shadow: 0 0 15px rgba(210, 175, 97, 0.6);
+  }
+
+  .galaxy-module-activator-enhanced {
+    @apply bg-transparent border border-cosmic-gold/60 text-cosmic-gold px-8 py-3 rounded-xl text-sm transition-all duration-400 relative overflow-hidden;
+    font-weight: 500;
+  }
+
+  .galaxy-module-activator-enhanced:hover {
+    border-color: rgba(210, 175, 97, 1);
+    background: rgba(210, 175, 97, 0.15);
+    box-shadow: 0 0 25px rgba(210, 175, 97, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .activator-pulse-enhanced {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 110%;
+    border: 1px solid rgba(210, 175, 97, 0.4);
+    border-radius: 12px;
+    animation: activator-pulse-expand 2.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .terminal-energy-grid-enhanced {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(90deg, transparent 48%, rgba(210, 175, 97, 0.08) 50%, transparent 52%),
+      linear-gradient(0deg, transparent 48%, rgba(210, 175, 97, 0.08) 50%, transparent 52%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .galaxy-service-enhanced:hover .terminal-energy-grid-enhanced {
+    opacity: 1;
+    animation: grid-pulse 2.5s ease-in-out infinite;
+  }
+
+  .terminal-scan-lines-enhanced {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(210, 175, 97, 0.06) 50%, transparent 100%);
+    animation: scan-lines 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* Thinking Modules Enhanced */
+  .galaxy-thinking-enhanced {
+    @apply bg-cosmic-black/30 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative;
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+  }
+
+  .galaxy-thinking-enhanced:hover {
+    transform: translateY(-15px) rotateX(3deg) rotateY(2deg) scale(1.03);
+    border-color: rgba(210, 175, 97, 0.7);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 70px rgba(210, 175, 97, 0.4);
+  }
+
+  .thinking-surface-enhanced {
+    padding: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .neural-particle-field-enhanced {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 30% 30%, rgba(210, 175, 97, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    animation: particle-drift 10s ease-in-out infinite;
+  }
+
+  .galaxy-thinking-enhanced:hover .neural-particle-field-enhanced {
     opacity: 1;
   }
 
-  .system-icon-matrix {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 20px;
+  .system-icon-enhanced {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 24px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .thinking-icon {
-    width: 50px;
-    height: 50px;
-    border: 2px solid rgba(210, 175, 97, 0.5);
+  .thinking-icon-enhanced {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(210, 175, 97, 0.6);
     border-radius: 50%;
     position: relative;
     background: rgba(210, 175, 97, 0.1);
   }
 
-  .synaptic-core {
+  .brain-pulse-enhanced {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    background: rgba(210, 175, 97, 0.9);
+    border-radius: 50%;
+    animation: brain-pulse 2.5s ease-in-out infinite;
+  }
+
+  .user-web-enhanced {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background: rgba(210, 175, 97, 0.8);
-    border-radius: 50%;
-    animation: synaptic-pulse 2s ease-in-out infinite;
-  }
-
-  .neural-connections {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 1px solid rgba(210, 175, 97, 0.3);
-    border-radius: 50%;
-    animation: neural-rotation 6s linear infinite;
-  }
-
-  .system-status-tooltip {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(210, 175, 97, 0.5);
-    border-radius: 6px;
-    padding: 6px 10px;
-    font-size: 11px;
-    color: rgba(210, 175, 97, 0.9);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-    backdrop-filter: blur(10px);
-    text-shadow: 0 0 8px rgba(210, 175, 97, 0.4);
-  }
-
-  .galaxy-thinking-module:hover .system-status-tooltip {
-    opacity: 1;
-  }
-
-  .thinking-energy-waves {
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, transparent, rgba(210, 175, 97, 0.08), transparent);
-    border-radius: 26px;
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    pointer-events: none;
-  }
-
-  .galaxy-thinking-module:hover .thinking-energy-waves {
-    opacity: 1;
-    animation: energy-wave-flow 3s ease-in-out infinite;
-  }
-
-  .neural-scan-grid {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     background: 
-      linear-gradient(90deg, transparent 48%, rgba(210, 175, 97, 0.05) 50%, transparent 52%),
-      linear-gradient(0deg, transparent 48%, rgba(210, 175, 97, 0.05) 50%, transparent 52%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
+      radial-gradient(circle at center, rgba(210, 175, 97, 0.6) 2px, transparent 2px),
+      linear-gradient(0deg, transparent 48%, rgba(210, 175, 97, 0.3) 50%, transparent 52%),
+      linear-gradient(45deg, transparent 48%, rgba(210, 175, 97, 0.3) 50%, transparent 52%);
+    animation: user-web-pulse 3s ease-in-out infinite;
   }
 
-  .galaxy-thinking-module:hover .neural-scan-grid {
-    opacity: 1;
-    animation: scan-grid-pulse 4s ease-in-out infinite;
-  }
-
-  /* Ultimate CTA */
-  .galaxy-cta-ultimate {
-    @apply relative bg-transparent border-2 border-cosmic-gold/70 text-cosmic-gold px-16 py-6 rounded-xl font-medium tracking-wider transition-all duration-700 overflow-hidden;
-    backdrop-filter: blur(30px);
-    background: linear-gradient(135deg, rgba(210, 175, 97, 0.12), rgba(255, 255, 255, 0.05));
-  }
-
-  .galaxy-cta-ultimate:hover {
-    border-color: rgba(210, 175, 97, 1);
-    background: linear-gradient(135deg, rgba(210, 175, 97, 0.25), rgba(255, 255, 255, 0.1));
-    color: #ffffff;
-    box-shadow: 0 0 60px rgba(210, 175, 97, 0.6);
-    transform: translateY(-3px) scale(1.03);
-  }
-
-  .cta-gravitational-field {
+  .infinity-loop-enhanced {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150%;
-    height: 150%;
-    border: 2px solid rgba(210, 175, 97, 0.3);
-    border-radius: 12px;
-    animation: gravitational-pulse 4s ease-in-out infinite;
-    pointer-events: none;
+    width: 30px;
+    height: 15px;
+    border: 2px solid rgba(210, 175, 97, 0.7);
+    border-radius: 15px 15px 0 0;
+    animation: infinity-rotate 4s linear infinite;
   }
 
-  .cta-particle-stream {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.4), transparent);
-    animation: particle-stream 8s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  /* Email Beacon */
-  .galaxy-email-beacon {
-    text-decoration: none;
-    position: relative;
-    transition: all 0.3s ease;
-  }
-
-  .galaxy-email-beacon:hover {
-    text-shadow: 0 0 20px rgba(210, 175, 97, 0.8);
-  }
-
-  .galaxy-email-beacon::after {
+  .infinity-loop-enhanced::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: -15px;
     left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #d2af61, transparent);
-    transition: width 0.3s ease;
+    width: 30px;
+    height: 15px;
+    border: 2px solid rgba(210, 175, 97, 0.7);
+    border-radius: 0 0 15px 15px;
   }
 
-  .galaxy-email-beacon:hover::after {
-    width: 100%;
+  .neural-connections-enhanced {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 1px solid rgba(210, 175, 97, 0.4);
+    border-radius: 50%;
+    animation: neural-rotation 8s linear infinite;
   }
 
-  /* Footer Styles */
-  .galaxy-footer-refined {
-    background: linear-gradient(180deg, transparent, rgba(210, 175, 97, 0.02));
-    backdrop-filter: blur(15px);
+  /* Footer Enhanced */
+  .galaxy-footer-enhanced {
+    background: linear-gradient(180deg, transparent, rgba(210, 175, 97, 0.03));
+    backdrop-filter: blur(20px);
     position: relative;
   }
 
-  .galaxy-footer-ambient {
+  .footer-starfield-enhanced {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(210, 175, 97, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
-    animation: footer-ambient-drift 12s ease-in-out infinite;
+      radial-gradient(1px 1px at 25% 25%, rgba(210, 175, 97, 0.4), transparent),
+      radial-gradient(1px 1px at 75% 75%, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(1px 1px at 50% 10%, rgba(210, 175, 97, 0.5), transparent);
+    background-size: 150px 150px;
+    animation: footer-starfield-drift 15s ease-in-out infinite;
+    pointer-events: none;
   }
 
-  .footer-particle-drift {
+  .footer-particle-enhanced {
     position: absolute;
     top: 0;
     left: 0;
@@ -902,38 +814,27 @@
     pointer-events: none;
   }
 
-  .footer-particle {
+  .footer-particle-star {
     position: absolute;
     bottom: 100%;
     left: var(--x);
     width: 2px;
     height: 2px;
-    background: rgba(210, 175, 97, 0.6);
+    background: rgba(210, 175, 97, 0.7);
     border-radius: 50%;
-    animation: footer-particle-rise 6s ease-out infinite;
+    animation: footer-star-rise 8s ease-out infinite;
     animation-delay: var(--delay);
   }
 
-  /* Ambient Effects */
-  .galaxy-nebula-ambient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(circle at 25% 75%, rgba(210, 175, 97, 0.04) 0%, transparent 60%),
-      radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
-    animation: nebula-drift 15s ease-in-out infinite;
+  /* Global Text Effects */
+  .text-glow-subtle {
+    text-shadow: 0 0 15px rgba(210, 175, 97, 0.4);
   }
 
-  .galaxy-section-divider {
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #d2af61, transparent);
-    margin: 0 auto;
-    animation: divider-expand 2s ease-out;
-    box-shadow: 0 0 15px rgba(210, 175, 97, 0.6);
+  .text-glow-premium {
+    text-shadow: 
+      0 0 20px rgba(210, 175, 97, 0.6),
+      0 0 40px rgba(210, 175, 97, 0.3);
   }
 
   /* Scroll Effects */
@@ -951,231 +852,19 @@
   .stagger-1 { transition-delay: 0.1s; }
   .stagger-2 { transition-delay: 0.2s; }
   .stagger-3 { transition-delay: 0.3s; }
-
-  /* Text Effects */
-  .text-glow-subtle {
-    text-shadow: 0 0 15px rgba(210, 175, 97, 0.4);
-  }
-
-  .text-glow-premium {
-    text-shadow: 
-      0 0 20px rgba(210, 175, 97, 0.6),
-      0 0 40px rgba(210, 175, 97, 0.3);
-  }
-
-  /* Floating Animation */
-  .animate-gentle-float {
-    animation: gentle-float 3s ease-in-out infinite;
-  }
 }
 
 /* Keyframe Animations */
-@keyframes grid-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.5; }
-}
-
-@keyframes orbit-float {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes particle-drift {
-  0%, 100% { 
-    transform: translateY(0) translateX(0);
-    opacity: 0.6;
-  }
-  50% { 
-    transform: translateY(-20px) translateX(10px);
-    opacity: 1;
-  }
-}
-
-@keyframes text-shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes pulse-expand {
-  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.3); }
-}
-
-@keyframes energy-sweep {
-  0%, 100% { left: -100%; }
-  50% { left: 100%; }
-}
-
-@keyframes beacon-pulse {
-  0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-  50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
-}
-
-@keyframes shimmer-trail {
-  0%, 100% { left: -100%; }
-  50% { left: 100%; }
-}
-
-@keyframes header-materialize {
-  0% { 
-    opacity: 0; 
-    transform: translateY(20px);
-    filter: blur(10px);
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes divider-expand {
-  0% { width: 0; }
-  100% { width: 200px; }
-}
-
-@keyframes word-reveal-in {
-  0% { 
-    opacity: 0; 
-    transform: translateY(20px);
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateY(0);
-  }
-}
-
-@keyframes status-blink {
-  0%, 50%, 100% { opacity: 0.8; }
-  25%, 75% { opacity: 1; }
-}
-
-@keyframes core-pulse {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-@keyframes orbit-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes particle-glow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes hover-reveal-in {
-  0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
-  100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-@keyframes energy-flow {
-  0% { background-position: -100% 0; }
-  100% { background-position: 100% 0; }
-}
-
-@keyframes activation-ring-pulse {
-  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.05); }
-}
-
-@keyframes hologram-pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
-@keyframes data-stream-flow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes activator-pulse-expand {
-  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
-}
-
-@keyframes scan-lines {
-  0%, 100% { transform: translateY(-100%); }
-  50% { transform: translateY(100%); }
-}
-
-@keyframes synaptic-pulse {
-  0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-}
-
-@keyframes neural-rotation {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes energy-wave-flow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes scan-grid-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-}
-
-@keyframes gravitational-pulse {
-  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.2); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
-}
-
-@keyframes particle-stream {
-  0%, 100% { left: -100%; }
-  50% { left: 100%; }
-}
-
-@keyframes nebula-drift {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(20px); }
-}
-
-@keyframes gentle-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes footer-ambient-drift {
-  0%, 100% { transform: translateX(0) translateY(0); }
-  25% { transform: translateX(10px) translateY(-5px); }
-  50% { transform: translateX(-5px) translateY(5px); }
-  75% { transform: translateX(5px) translateY(-3px); }
-}
-
-@keyframes footer-particle-rise {
-  0% { 
-    opacity: 0; 
-    transform: translateY(0) scale(0.5);
-  }
-  20% { 
-    opacity: 1; 
-    transform: translateY(-20px) scale(1);
-  }
-  80% { 
-    opacity: 0.8; 
-    transform: translateY(-60px) scale(0.8);
-  }
-  100% { 
-    opacity: 0; 
-    transform: translateY(-100px) scale(0.3);
-  }
-}
-
-/* Enhanced Galaxy Unified Background */
 @keyframes galaxy-grid-pulse {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
 }
 
-/* Enhanced Logo Styles */
+@keyframes star-drift {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-200px) translateY(-100px); }
+}
+
 @keyframes stellar-pulse {
   0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
@@ -1190,17 +879,6 @@
   0% { opacity: 0; transform: translateX(-100%); }
   50% { opacity: 1; transform: translateX(0); }
   100% { opacity: 0; transform: translateX(100%); }
-}
-
-@keyframes star-drift {
-  0%, 100% { 
-    transform: translateY(0) translateX(0) scale(1);
-    opacity: 0.6;
-  }
-  50% { 
-    transform: translateY(-30px) translateX(15px) scale(1.2);
-    opacity: 1;
-  }
 }
 
 @keyframes orbit-rotation {
@@ -1227,6 +905,19 @@
 @keyframes scroll-pulse-enhanced {
   0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
   50% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+}
+
+@keyframes header-materialize {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 @keyframes divider-expand-enhanced {
@@ -1290,6 +981,38 @@
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
+@keyframes data-stream-flow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes activator-pulse-expand {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes scan-lines {
+  0%, 100% { transform: translateY(-100%); }
+  50% { transform: translateY(100%); }
+}
+
+@keyframes particle-drift {
+  0%, 100% { 
+    transform: translateY(0) translateX(0);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-30px) translateX(15px);
+    opacity: 1;
+  }
+}
+
 @keyframes brain-pulse {
   0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
@@ -1303,6 +1026,11 @@
 @keyframes infinity-rotate {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes neural-rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes footer-starfield-drift {
@@ -1341,4 +1069,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #d2af61, rgba(210, 
+  background: linear-gradient(180deg, #d2af61, rgba(210, 175, 97, 0.5));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(210, 175, 97, 0.8), rgba(210, 175, 97, 0.3));
+}
