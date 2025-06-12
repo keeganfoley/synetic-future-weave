@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,15 +84,17 @@
 }
 
 @layer components {
-  /* Galaxy Unified Background */
-  .galaxy-unified-background {
+  /* Control Room Unified Background */
+  .control-room-background {
     background: 
-      radial-gradient(ellipse at center, rgba(210, 175, 97, 0.03) 0%, transparent 50%),
-      linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      radial-gradient(ellipse at center, rgba(210, 175, 97, 0.04) 0%, transparent 60%),
+      radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.02) 0%, transparent 40%),
+      linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #0e0e0e 70%, #1a1a1a 100%);
     position: relative;
   }
 
-  .galaxy-unified-background::before {
+  .control-room-background::before {
     content: '';
     position: absolute;
     top: 0;
@@ -99,116 +102,90 @@
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(rgba(210, 175, 97, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(210, 175, 97, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.2;
-    animation: galaxy-grid-pulse 8s ease-in-out infinite;
+      linear-gradient(rgba(210, 175, 97, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(210, 175, 97, 0.08) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.3;
+    animation: control-grid-pulse 12s ease-in-out infinite;
     pointer-events: none;
   }
 
-  .galaxy-starfield {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(2px 2px at 20px 30px, rgba(210, 175, 97, 0.4), transparent),
-      radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.3), transparent),
-      radial-gradient(1px 1px at 90px 40px, rgba(210, 175, 97, 0.6), transparent),
-      radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.4), transparent);
-    background-repeat: repeat;
-    background-size: 200px 100px;
-    animation: star-drift 20s linear infinite;
-    pointer-events: none;
-  }
-
-  /* Enhanced Logo Styles */
-  .logo-galaxy-enhanced {
+  /* Enhanced Logo - Control Room Style */
+  .logo-control-room-enhanced {
     position: relative;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .logo-stellar-glow {
+  .logo-holographic-base {
+    position: relative;
+    padding: 0.5rem 1rem;
+    background: rgba(210, 175, 97, 0.05);
+    border: 1px solid rgba(210, 175, 97, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+  }
+
+  .control-room-logo-text {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #d2af61;
+    text-shadow: 
+      0 0 20px rgba(210, 175, 97, 0.6),
+      0 0 40px rgba(210, 175, 97, 0.3);
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo-beam-shadow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, transparent, rgba(210, 175, 97, 0.2), transparent);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: beam-sweep 4s ease-in-out infinite;
+  }
+
+  .logo-particle-trail {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(210, 175, 97, 0.8), transparent);
+    animation: particle-trail-flow 3s ease-in-out infinite;
+  }
+
+  .logo-floating-glow {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 140%;
-    height: 140%;
-    background: radial-gradient(circle, rgba(210, 175, 97, 0.2) 0%, transparent 70%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(210, 175, 97, 0.15) 0%, transparent 70%);
     border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    animation: stellar-pulse 4s ease-in-out infinite;
+    animation: floating-glow-pulse 6s ease-in-out infinite;
   }
 
-  .logo-galaxy-enhanced:hover .logo-stellar-glow {
+  .logo-control-room-enhanced:hover .logo-beam-shadow {
     opacity: 1;
   }
 
-  .galaxy-logo-enhanced {
-    position: relative;
-    z-index: 2;
-    opacity: 0.95;
-    filter: drop-shadow(0 0 12px rgba(210, 175, 97, 0.4));
-    transition: all 0.4s ease;
-  }
-
-  .logo-galaxy-enhanced:hover .galaxy-logo-enhanced {
-    opacity: 1;
-    filter: drop-shadow(0 0 20px rgba(210, 175, 97, 0.7));
-    transform: scale(1.05);
-  }
-
-  .logo-solar-flare {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.3), transparent);
-    animation: solar-flare-sweep 6s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  .logo-shimmer-cascade {
-    position: absolute;
-    top: -20%;
-    left: -20%;
-    width: 140%;
-    height: 140%;
-    background: linear-gradient(45deg, transparent, rgba(210, 175, 97, 0.2), transparent);
-    animation: shimmer-cascade 8s ease-in-out infinite;
-    pointer-events: none;
-    opacity: 0;
-  }
-
-  .logo-galaxy-enhanced:hover .logo-shimmer-cascade {
-    opacity: 1;
-  }
-
-  /* Navigation */
-  .galaxy-nav-transparent {
-    background: transparent;
-  }
-
-  .galaxy-nav-scrolled {
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(210, 175, 97, 0.2);
-  }
-
-  .nav-link-enhanced {
+  /* Navigation Links - Control Room Style */
+  .nav-link-control-room {
     @apply text-cosmic-white/80 hover:text-cosmic-gold transition-all duration-300 relative;
     position: relative;
+    padding: 0.5rem 1rem;
   }
 
-  .nav-link-enhanced::after {
-    content: '';
+  .nav-beam-underline {
     position: absolute;
-    bottom: -6px;
+    bottom: -2px;
     left: 0;
     width: 0;
     height: 2px;
@@ -216,27 +193,38 @@
     transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .nav-link-enhanced:hover::after {
+  .nav-link-control-room:hover .nav-beam-underline {
     width: 100%;
   }
 
-  .galaxy-mobile-menu {
-    background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(30px);
-    border-top: 1px solid rgba(210, 175, 97, 0.3);
+  /* Hero Section - Control Room Enhancement */
+  .galaxy-hero-control-room {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    position: relative;
   }
 
-  /* Hero Text Enhancements */
-  .hero-text-shimmer {
-    background: linear-gradient(135deg, #ffffff 0%, #d2af61 50%, #ffffff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% 100%;
-    animation: text-shimmer-enhanced 3s ease-in-out infinite;
+  .hyperspace-starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
   }
 
-  .hero-orbital-rings {
+  .hyperspace-star {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: rgba(210, 175, 97, 0.8);
+    border-radius: 50%;
+    animation: hyperspace-drift var(--speed) linear infinite;
+    animation-delay: var(--delay);
+  }
+
+  .command-center-orbits {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -244,38 +232,211 @@
     pointer-events: none;
   }
 
-  .orbital-ring {
-    position: absolute;
-    border: 1px solid rgba(210, 175, 97, 0.2);
+  .orbit-primary-enhanced {
+    width: 500px;
+    height: 250px;
+    margin-left: -250px;
+    margin-top: -125px;
+    border: 1px solid rgba(210, 175, 97, 0.3);
     border-radius: 50%;
-    animation: orbit-rotation 20s linear infinite;
+    animation: orbit-enhanced-rotation 25s linear infinite;
   }
 
-  .ring-primary {
-    width: 300px;
-    height: 150px;
-    margin-left: -150px;
-    margin-top: -75px;
-  }
-
-  .ring-secondary {
-    width: 450px;
-    height: 225px;
-    margin-left: -225px;
-    margin-top: -112px;
-    animation-direction: reverse;
-    animation-duration: 30s;
+  .orbit-secondary-enhanced {
+    width: 750px;
+    height: 375px;
+    margin-left: -375px;
+    margin-top: -187px;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 50%;
+    animation: orbit-enhanced-rotation 35s linear infinite reverse;
     opacity: 0.6;
   }
 
+  .orbit-tertiary-enhanced {
+    width: 1000px;
+    height: 500px;
+    margin-left: -500px;
+    margin-top: -250px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 50%;
+    animation: orbit-enhanced-rotation 45s linear infinite;
+    opacity: 0.4;
+  }
+
+  .data-transmission-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .transmission-beam {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.2), transparent);
+  }
+
+  .beam-horizontal {
+    top: 30%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    animation: beam-sweep-horizontal 8s ease-in-out infinite;
+  }
+
+  .beam-vertical {
+    top: 0;
+    left: 70%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, rgba(210, 175, 97, 0.2), transparent);
+    animation: beam-sweep-vertical 10s ease-in-out infinite;
+  }
+
+  .beam-diagonal {
+    top: 0;
+    left: 0;
+    width: 141%;
+    height: 2px;
+    background: linear-gradient(45deg, transparent, rgba(210, 175, 97, 0.15), transparent);
+    transform: rotate(45deg);
+    transform-origin: 0 0;
+    animation: beam-sweep-diagonal 12s ease-in-out infinite;
+  }
+
+  /* Hero Text - Transmission Style */
+  .hero-transmission-container {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title-transmission {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+  }
+
+  .hero-line-enhanced {
+    position: relative;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s ease-out;
+  }
+
+  .hero-line-enhanced.transmit-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .transmission-text {
+    position: relative;
+    z-index: 2;
+    text-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 0 40px rgba(210, 175, 97, 0.2);
+  }
+
+  .transmission-text-gold {
+    position: relative;
+    z-index: 2;
+    text-shadow: 
+      0 0 20px rgba(210, 175, 97, 0.6),
+      0 0 40px rgba(210, 175, 97, 0.3),
+      0 0 60px rgba(210, 175, 97, 0.1);
+  }
+
+  .kinetic-light-rays {
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    right: -10%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: light-ray-sweep 2s ease-out;
+    pointer-events: none;
+  }
+
+  .kinetic-light-rays-gold {
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    right: -10%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.2), transparent);
+    animation: light-ray-sweep 2s ease-out 0.5s;
+    pointer-events: none;
+  }
+
+  .transmission-pulse-container {
+    position: relative;
+    padding: 1rem 0;
+  }
+
+  .data-pulse-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(210, 175, 97, 0.6);
+    border-radius: 50%;
+    animation: pulse-sequence 2s ease-in-out infinite;
+  }
+
+  .pulse-dot:nth-child(2) { animation-delay: 0.3s; }
+  .pulse-dot:nth-child(3) { animation-delay: 0.6s; }
+
+  .orbiting-nodes-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+  }
+
+  .orbiting-node {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: rgba(210, 175, 97, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(210, 175, 97, 0.6);
+  }
+
+  .node-1 {
+    top: 10%;
+    left: 50%;
+    animation: node-orbit-1 15s linear infinite;
+  }
+
+  .node-2 {
+    top: 50%;
+    right: 10%;
+    animation: node-orbit-2 20s linear infinite;
+  }
+
+  .node-3 {
+    bottom: 10%;
+    left: 30%;
+    animation: node-orbit-3 18s linear infinite;
+  }
+
   /* Enhanced CTA Button */
-  .galaxy-cta-enhanced {
+  .control-room-cta {
     @apply relative bg-transparent border-2 border-cosmic-gold/70 text-cosmic-gold px-12 py-4 rounded-xl font-medium tracking-wider transition-all duration-500 overflow-hidden;
     backdrop-filter: blur(25px);
     background: linear-gradient(135deg, rgba(210, 175, 97, 0.1), rgba(255, 255, 255, 0.05));
   }
 
-  .galaxy-cta-enhanced:hover {
+  .control-room-cta:hover {
     border-color: rgba(210, 175, 97, 1);
     background: linear-gradient(135deg, rgba(210, 175, 97, 0.2), rgba(255, 255, 255, 0.1));
     color: #ffffff;
@@ -283,7 +444,7 @@
     transform: translateY(-3px) scale(1.02);
   }
 
-  .cta-stellar-rings {
+  .cta-holographic-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -292,209 +453,423 @@
     height: 130%;
     border: 2px solid rgba(210, 175, 97, 0.3);
     border-radius: 14px;
-    animation: stellar-ring-pulse 3s ease-in-out infinite;
+    animation: holographic-pulse 3s ease-in-out infinite;
     pointer-events: none;
   }
 
-  .cta-energy-cascade {
+  .cta-particle-stream {
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.4), transparent);
-    animation: energy-cascade-flow 7s ease-in-out infinite;
+    animation: particle-stream-flow 7s ease-in-out infinite;
     pointer-events: none;
   }
 
-  /* Scroll Beacon */
-  .galaxy-scroll-enhanced {
-    width: 8px;
-    height: 14px;
+  /* Control Room Scroll Beacon */
+  .control-room-scroll-beacon {
+    width: 12px;
+    height: 20px;
     border: 2px solid rgba(210, 175, 97, 0.7);
     border-radius: 25px;
     position: relative;
     background: rgba(210, 175, 97, 0.1);
+    backdrop-filter: blur(5px);
   }
 
-  .scroll-pulse-enhanced {
-    width: 3px;
-    height: 4px;
+  .scroll-energy-core {
+    width: 4px;
+    height: 6px;
     background: rgba(210, 175, 97, 0.9);
     border-radius: 3px;
     position: absolute;
-    top: 3px;
+    top: 4px;
     left: 50%;
     transform: translateX(-50%);
-    animation: scroll-pulse-enhanced 2.5s ease-in-out infinite;
+    animation: scroll-energy-pulse 2.5s ease-in-out infinite;
   }
+
+  .scroll-beam-indicators {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2px;
+  }
+
+  .beam-indicator {
+    width: 2px;
+    height: 4px;
+    background: rgba(210, 175, 97, 0.5);
+    animation: beam-indicator-pulse 1.5s ease-in-out infinite;
+  }
+
+  .beam-indicator:nth-child(2) { animation-delay: 0.2s; }
+  .beam-indicator:nth-child(3) { animation-delay: 0.4s; }
 
   /* Section Headers */
-  .galaxy-section-header {
-    animation: header-materialize 1.8s ease-out;
+  .control-room-section-header {
+    animation: header-materialize-enhanced 2s ease-out;
+    text-shadow: 
+      0 0 20px rgba(210, 175, 97, 0.4),
+      0 0 40px rgba(210, 175, 97, 0.2);
   }
 
-  .galaxy-divider-enhanced {
+  .control-room-divider {
     width: 0;
     height: 3px;
-    background: linear-gradient(90deg, transparent, #d2af61, transparent);
+    background: linear-gradient(90deg, transparent, #d2af61, rgba(96, 165, 250, 0.5), #d2af61, transparent);
     margin: 0 auto;
-    animation: divider-expand-enhanced 2.5s ease-out;
+    animation: control-divider-expand 3s ease-out;
     box-shadow: 0 0 15px rgba(210, 175, 97, 0.6);
   }
 
-  /* Process Modules Enhanced */
-  .galaxy-process-enhanced {
-    @apply bg-cosmic-black/50 border border-cosmic-gold/30 rounded-3xl backdrop-blur-xl relative overflow-hidden cursor-pointer;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+  /* Section Pulsating Beacon */
+  .section-beacon-container {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 5;
   }
 
-  .galaxy-process-enhanced:hover {
-    transform: translateY(-12px) rotateX(3deg) scale(1.03);
+  .pulsating-beacon {
+    width: 15px;
+    height: 15px;
+    background: rgba(210, 175, 97, 0.9);
+    border-radius: 50%;
+    animation: beacon-pulse-enhanced 3s ease-in-out infinite;
+  }
+
+  .beacon-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(210, 175, 97, 0.3);
+    border-radius: 50%;
+    animation: beacon-ring-expand 4s ease-out infinite;
+  }
+
+  /* Command Status Panel */
+  .command-status-panel {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(210, 175, 97, 0.4);
+    border-radius: 8px;
+    padding: 16px 20px;
+    backdrop-filter: blur(15px);
+    position: relative;
+  }
+
+  .status-readout {
+    font-size: 13px;
+    color: rgba(210, 175, 97, 0.8);
+    margin-bottom: 6px;
+    font-family: 'Inter', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  .status-pulse-indicator {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 10px;
+    height: 10px;
+    background: rgba(210, 175, 97, 0.8);
+    border-radius: 50%;
+    animation: status-pulse-blink 2s ease-in-out infinite;
+  }
+
+  /* Control Room Dashboard Cards */
+  .control-room-dashboard {
+    @apply bg-cosmic-black/60 border border-cosmic-gold/40 rounded-2xl backdrop-blur-xl relative overflow-hidden cursor-pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    transform-style: preserve-3d;
+  }
+
+  .control-room-dashboard:hover,
+  .control-room-dashboard.dashboard-activated {
+    transform: translateY(-10px) rotateX(2deg) scale(1.02);
     border-color: rgba(210, 175, 97, 0.7);
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(210, 175, 97, 0.4);
   }
 
-  .process-surface-enhanced {
-    padding: 2.5rem;
+  .dashboard-panel {
+    padding: 2rem;
     position: relative;
     z-index: 2;
   }
 
-  .process-number-enhanced {
-    @apply text-cosmic-gold text-xl font-light mb-4;
-    font-family: 'DM Serif Display', serif;
-    text-shadow: 0 0 12px rgba(210, 175, 97, 0.6);
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(210, 175, 97, 0.3);
   }
 
-  .process-icon-enhanced {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 24px;
+  .panel-number-beacon {
+    @apply text-cosmic-gold text-lg font-light;
+    font-family: 'DM Serif Display', serif;
+    text-shadow: 0 0 10px rgba(210, 175, 97, 0.6);
+    background: rgba(210, 175, 97, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid rgba(210, 175, 97, 0.3);
+  }
+
+  .status-indicators {
+    display: flex;
+    gap: 6px;
+  }
+
+  .status-light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .status-light.active { 
+    background: #4ade80; 
+    box-shadow: 0 0 8px #4ade80;
+    animation: status-active-pulse 2s ease-in-out infinite;
+  }
+  .status-light.standby { 
+    background: #fbbf24; 
+    opacity: 0.7;
+  }
+  .status-light.offline { 
+    background: #ef4444; 
+    opacity: 0.4;
+  }
+
+  .holographic-display {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .hologram-container {
+    width: 80px;
+    height: 80px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .icon-core-enhanced {
-    width: 70px;
-    height: 70px;
-    position: relative;
+  .hologram-core {
+    width: 60px;
+    height: 60px;
     border: 2px solid rgba(210, 175, 97, 0.6);
     border-radius: 50%;
+    background: rgba(210, 175, 97, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(210, 175, 97, 0.1);
+    position: relative;
   }
 
-  .core-pulse-enhanced {
-    width: 25px;
-    height: 25px;
-    background: rgba(210, 175, 97, 0.9);
-    border-radius: 50%;
-    animation: core-pulse-enhanced 2.5s ease-in-out infinite;
-  }
-
-  .icon-orbits-enhanced {
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    border: 1px solid rgba(210, 175, 97, 0.4);
-    border-radius: 50%;
-    animation: orbit-spin-enhanced 10s linear infinite;
-  }
-
-  .sonar-wave-enhanced {
+  .dashboard-effect {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 150%;
-    height: 150%;
-    border: 2px solid rgba(210, 175, 97, 0.3);
+    transform: translate(-50%, -50%);
+  }
+
+  .effect-sonar-pulse {
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(210, 175, 97, 0.4);
     border-radius: 50%;
-    animation: sonar-wave-pulse 3s ease-out infinite;
+    animation: sonar-pulse-effect 3s ease-out infinite;
   }
 
-  .blueprint-grid-enhanced {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  .effect-blueprint-animation {
+    width: 80px;
+    height: 80px;
     background: 
-      linear-gradient(90deg, transparent 48%, rgba(210, 175, 97, 0.1) 50%, transparent 52%),
-      linear-gradient(0deg, transparent 48%, rgba(210, 175, 97, 0.1) 50%, transparent 52%);
-    opacity: 0;
-    animation: blueprint-draw 2s ease-in-out infinite;
+      linear-gradient(90deg, transparent 48%, rgba(210, 175, 97, 0.3) 50%, transparent 52%),
+      linear-gradient(0deg, transparent 48%, rgba(210, 175, 97, 0.3) 50%, transparent 52%);
+    animation: blueprint-lines-draw 2s ease-in-out infinite;
   }
 
-  .connecting-wires-enhanced {
+  .effect-circuit-connection {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at center, rgba(210, 175, 97, 0.4) 2px, transparent 2px),
+                radial-gradient(circle at 20% 20%, rgba(210, 175, 97, 0.3) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, rgba(210, 175, 97, 0.3) 1px, transparent 1px);
+    animation: circuit-pulse-connect 2s ease-in-out infinite;
+  }
+
+  .effect-dynamic-graphs {
+    width: 50px;
+    height: 30px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+  }
+
+  .effect-dynamic-graphs::before,
+  .effect-dynamic-graphs::after {
+    content: '';
+    width: 8px;
+    background: rgba(210, 175, 97, 0.6);
+    animation: graph-bars-animate 1.5s ease-in-out infinite;
+  }
+
+  .effect-dynamic-graphs::before { height: 20px; }
+  .effect-dynamic-graphs::after { height: 15px; animation-delay: 0.3s; }
+
+  .effect-constellation-crown {
+    width: 70px;
+    height: 70px;
+    background: 
+      radial-gradient(circle at 50% 20%, rgba(210, 175, 97, 0.4) 2px, transparent 2px),
+      radial-gradient(circle at 20% 60%, rgba(210, 175, 97, 0.4) 2px, transparent 2px),
+      radial-gradient(circle at 80% 60%, rgba(210, 175, 97, 0.4) 2px, transparent 2px);
+    animation: constellation-crown-pulse 2.5s ease-in-out infinite;
+  }
+
+  .particle-overlay {
     position: absolute;
-    top: 50%;
-    left: -20px;
-    right: -20px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.5), transparent);
-    animation: wire-connect 1.5s ease-in-out infinite;
-    transform: scaleX(0);
-    transform-origin: center;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px solid rgba(210, 175, 97, 0.3);
+    border-radius: 50%;
+    animation: particle-overlay-rotate 8s linear infinite;
   }
 
-  .data-bars-enhanced {
+  .dashboard-title {
+    text-shadow: 0 0 12px rgba(210, 175, 97, 0.5);
+  }
+
+  .dashboard-hover-interface {
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    gap: 3px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(210, 175, 97, 0.6);
+    border-radius: 6px;
+    padding: 8px 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(10px);
   }
 
-  .data-bar {
-    width: 3px;
-    background: rgba(210, 175, 97, 0.6);
-    border-radius: 2px;
-    animation: data-bars-animate 1s ease-in-out infinite;
+  .dashboard-hover-interface.interface-visible {
+    opacity: 1;
   }
 
-  .constellation-map-enhanced {
+  .hover-text-transmission {
+    font-size: 11px;
+    color: rgba(210, 175, 97, 0.9);
+    text-shadow: 0 0 8px rgba(210, 175, 97, 0.4);
+    font-family: 'Inter', monospace;
+  }
+
+  .interface-scan-line {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(circle at 25% 25%, rgba(210, 175, 97, 0.2) 2px, transparent 2px),
-      radial-gradient(circle at 75% 75%, rgba(210, 175, 97, 0.2) 2px, transparent 2px),
-      radial-gradient(circle at 50% 80%, rgba(210, 175, 97, 0.2) 2px, transparent 2px);
-    opacity: 0;
-    animation: constellation-pulse 2s ease-in-out infinite;
+    height: 1px;
+    background: rgba(210, 175, 97, 0.8);
+    animation: interface-scan 2s ease-in-out infinite;
   }
 
-  /* Service Terminals Enhanced */
-  .galaxy-service-enhanced {
-    @apply bg-cosmic-black/40 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative overflow-hidden cursor-pointer;
+  .dashboard-activation-sequence {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .activation-energy-wave {
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgba(210, 175, 97, 0.6);
+    border-radius: 50%;
+    animation: energy-wave-expand 1.5s ease-out infinite;
+  }
+
+  .activation-text {
+    margin-top: 0.5rem;
+    text-shadow: 0 0 10px rgba(210, 175, 97, 0.6);
+  }
+
+  .dashboard-energy-field {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, rgba(210, 175, 97, 0.1), transparent);
+    border-radius: 18px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .control-room-dashboard:hover .dashboard-energy-field {
+    opacity: 1;
+    animation: energy-field-flow 2s ease-in-out infinite;
+  }
+
+  .holographic-border-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 110%;
+    border: 1px solid rgba(210, 175, 97, 0.2);
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .control-room-dashboard:hover .holographic-border-ring {
+    opacity: 1;
+    animation: holographic-border-pulse 2s ease-in-out infinite;
+  }
+
+  /* AI Software Modules (Services) */
+  .ai-software-module {
+    @apply bg-cosmic-black/50 border border-cosmic-gold/40 rounded-3xl backdrop-blur-2xl relative overflow-hidden cursor-pointer;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    transform-style: preserve-3d;
   }
 
-  .galaxy-service-enhanced:hover,
-  .galaxy-service-enhanced.terminal-active {
+  .ai-software-module:hover,
+  .ai-software-module.module-active {
     transform: translateY(-12px) scale(1.03);
     border-color: rgba(210, 175, 97, 0.7);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(210, 175, 97, 0.4);
   }
 
-  .terminal-surface-enhanced {
+  .module-chassis {
     padding: 2.5rem;
     position: relative;
   }
 
-  .terminal-header-enhanced {
+  .module-header-panel {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -503,29 +878,32 @@
     border-bottom: 1px solid rgba(210, 175, 97, 0.3);
   }
 
-  .status-indicators-enhanced {
+  .module-status-grid {
     display: flex;
     gap: 8px;
   }
 
-  .status-dot {
+  .status-indicator {
     width: 10px;
     height: 10px;
     border-radius: 50%;
   }
 
-  .status-active { background: #4ade80; }
-  .status-standby { background: #fbbf24; }
-  .status-offline { background: #ef4444; opacity: 0.5; }
+  .status-indicator.active { 
+    background: #4ade80; 
+    box-shadow: 0 0 10px #4ade80;
+  }
+  .status-indicator.standby { background: #fbbf24; }
+  .status-indicator.offline { background: #ef4444; opacity: 0.5; }
 
-  .terminal-id-enhanced {
+  .module-id-display {
     font-family: 'Inter', monospace;
     font-size: 13px;
     color: rgba(210, 175, 97, 0.8);
     font-weight: 500;
   }
 
-  .terminal-display-enhanced {
+  .module-visual-display {
     height: 140px;
     display: flex;
     align-items: center;
@@ -534,7 +912,7 @@
     position: relative;
   }
 
-  .service-icon-unique {
+  .ai-module-core {
     width: 90px;
     height: 90px;
     border: 2px solid rgba(210, 175, 97, 0.6);
@@ -546,59 +924,50 @@
     background: rgba(210, 175, 97, 0.1);
   }
 
-  .icon-hologram-enhanced {
+  .core-energy-field {
     width: 50px;
     height: 50px;
     background: radial-gradient(circle, rgba(210, 175, 97, 0.7) 0%, transparent 70%);
     border-radius: 50%;
-    animation: hologram-pulse-enhanced 3s ease-in-out infinite;
+    animation: core-energy-pulse 3s ease-in-out infinite;
   }
 
-  .unique-visual {
+  .visual-effect {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-  .visual-connecting-blocks {
-    width: 30px;
-    height: 30px;
+  .effect-connecting-nodes {
+    width: 60px;
+    height: 60px;
     background: 
-      linear-gradient(45deg, rgba(210, 175, 97, 0.4) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(210, 175, 97, 0.4) 25%, transparent 25%);
-    background-size: 6px 6px;
-    animation: blocks-connect 2s ease-in-out infinite;
+      radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.4) 3px, transparent 3px),
+      radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.4) 3px, transparent 3px),
+      radial-gradient(circle at 50% 50%, rgba(210, 175, 97, 0.4) 2px, transparent 2px);
+    animation: connecting-nodes-pulse 2s ease-in-out infinite;
   }
 
-  .visual-blinking-prompt {
-    width: 3px;
-    height: 20px;
-    background: rgba(210, 175, 97, 0.8);
-    animation: prompt-blink 1.2s ease-in-out infinite;
-  }
-
-  .visual-orbiting-data {
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(210, 175, 97, 0.4);
+  .effect-neural-network-pulse {
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgba(168, 85, 247, 0.4);
     border-radius: 50%;
-    animation: data-orbit 4s linear infinite;
+    animation: neural-pulse-expand 2.5s ease-out infinite;
   }
 
-  .visual-orbiting-data::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 50%;
-    width: 4px;
-    height: 4px;
-    background: rgba(210, 175, 97, 0.8);
-    border-radius: 50%;
-    transform: translateX(-50%);
+  .effect-data-constellation {
+    width: 50px;
+    height: 50px;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(210, 175, 97, 0.3) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(210, 175, 97, 0.3) 2px, transparent 2px),
+      radial-gradient(circle at 50% 80%, rgba(210, 175, 97, 0.3) 2px, transparent 2px);
+    animation: data-constellation-twinkle 2s ease-in-out infinite;
   }
 
-  .icon-data-streams-enhanced {
+  .energy-streams {
     position: absolute;
     top: -12px;
     left: -12px;
@@ -606,26 +975,74 @@
     bottom: -12px;
     border: 1px solid rgba(210, 175, 97, 0.4);
     border-radius: 28px;
-    animation: data-stream-flow 5s linear infinite;
+    animation: energy-stream-rotation 5s linear infinite;
   }
 
-  .service-title-enhanced {
+  .module-online-sequence {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .online-energy-burst {
+    width: 120px;
+    height: 120px;
+    border: 3px solid rgba(210, 175, 97, 0.6);
+    border-radius: 50%;
+    animation: energy-burst-expand 1.2s ease-out infinite;
+  }
+
+  .system-status-display {
+    margin-top: 0.5rem;
+    font-size: 12px;
+    color: rgba(210, 175, 97, 0.9);
+    font-weight: 500;
+    text-shadow: 0 0 8px rgba(210, 175, 97, 0.5);
+  }
+
+  .module-info-panel {
+    position: relative;
+  }
+
+  .module-title-glow {
     text-shadow: 0 0 15px rgba(210, 175, 97, 0.6);
   }
 
-  .galaxy-module-activator-enhanced {
+  .dashboard-activation-switch {
     @apply bg-transparent border border-cosmic-gold/60 text-cosmic-gold px-8 py-3 rounded-xl text-sm transition-all duration-300 relative overflow-hidden;
     font-weight: 500;
   }
 
-  .galaxy-module-activator-enhanced:hover {
+  .dashboard-activation-switch:hover {
     border-color: rgba(210, 175, 97, 1);
     background: rgba(210, 175, 97, 0.15);
     box-shadow: 0 0 25px rgba(210, 175, 97, 0.5);
     transform: translateY(-1px);
   }
 
-  .activator-pulse-enhanced {
+  .activation-switch-blue:hover {
+    box-shadow: 0 0 25px rgba(96, 165, 250, 0.5);
+    border-color: rgba(96, 165, 250, 1);
+  }
+
+  .activation-switch-green:hover {
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.5);
+    border-color: rgba(34, 197, 94, 1);
+  }
+
+  .activation-switch-gold:hover {
+    box-shadow: 0 0 25px rgba(210, 175, 97, 0.5);
+    border-color: rgba(210, 175, 97, 1);
+  }
+
+  .switch-label {
+    position: relative;
+    z-index: 2;
+  }
+
+  .switch-energy-core {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -634,11 +1051,22 @@
     height: 110%;
     border: 1px solid rgba(210, 175, 97, 0.4);
     border-radius: 12px;
-    animation: activator-pulse-expand 2.5s ease-in-out infinite;
+    animation: switch-energy-pulse 2.5s ease-in-out infinite;
     pointer-events: none;
   }
 
-  .terminal-energy-grid-enhanced {
+  .switch-beam-indicator {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(210, 175, 97, 0.3), transparent);
+    animation: switch-beam-sweep 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .module-energy-lattice {
     position: absolute;
     top: 0;
     left: 0;
@@ -652,62 +1080,44 @@
     pointer-events: none;
   }
 
-  .galaxy-service-enhanced:hover .terminal-energy-grid-enhanced {
+  .ai-software-module:hover .module-energy-lattice {
     opacity: 1;
-    animation: grid-pulse 2.5s ease-in-out infinite;
+    animation: energy-lattice-pulse 2.5s ease-in-out infinite;
   }
 
-  .terminal-scan-lines-enhanced {
+  .module-motion-blur {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(180deg, transparent 0%, rgba(210, 175, 97, 0.06) 50%, transparent 100%);
-    animation: scan-lines 4s ease-in-out infinite;
+    animation: motion-blur-scan 4s ease-in-out infinite;
     pointer-events: none;
   }
 
-  /* Thinking Modules Enhanced */
-  .galaxy-thinking-enhanced {
-    @apply bg-cosmic-black/30 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative;
+  /* AI Intelligence Engines */
+  .ai-intelligence-engine {
+    @apply bg-cosmic-black/40 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative;
     transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
   }
 
-  .galaxy-thinking-enhanced:hover {
-    transform: translateY(-15px) rotateX(3deg) rotateY(2deg) scale(1.03);
-    border-color: rgba(210, 175, 97, 0.7);
-    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 70px rgba(210, 175, 97, 0.4);
+  .ai-intelligence-engine:hover {
+    transform: translateY(-15px) rotateX(2deg) rotateY(1deg) scale(1.02);
+    border-color: rgba(210, 175, 97, 0.6);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 70px rgba(210, 175, 97, 0.3);
   }
 
-  .thinking-surface-enhanced {
+  .engine-housing {
     padding: 2.5rem;
     position: relative;
     z-index: 2;
   }
 
-  .neural-particle-field-enhanced {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(circle at 30% 30%, rgba(210, 175, 97, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    animation: particle-drift 10s ease-in-out infinite;
-  }
-
-  .galaxy-thinking-enhanced:hover .neural-particle-field-enhanced {
-    opacity: 1;
-  }
-
-  .system-icon-enhanced {
-    width: 70px;
-    height: 70px;
+  .engine-core-display {
+    width: 80px;
+    height: 80px;
     margin: 0 auto 24px;
     position: relative;
     display: flex;
@@ -715,96 +1125,195 @@
     justify-content: center;
   }
 
-  .thinking-icon-enhanced {
-    width: 60px;
-    height: 60px;
-    border: 2px solid rgba(210, 175, 97, 0.6);
+  .intelligence-core {
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgba(210, 175, 97, 0.5);
     border-radius: 50%;
     position: relative;
     background: rgba(210, 175, 97, 0.1);
   }
 
-  .brain-pulse-enhanced {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 25px;
-    height: 25px;
-    background: rgba(210, 175, 97, 0.9);
-    border-radius: 50%;
-    animation: brain-pulse 2.5s ease-in-out infinite;
-  }
-
-  .user-web-enhanced {
+  .core-energy-matrix {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: 
-      radial-gradient(circle at center, rgba(210, 175, 97, 0.6) 2px, transparent 2px),
-      linear-gradient(0deg, transparent 48%, rgba(210, 175, 97, 0.3) 50%, transparent 52%),
-      linear-gradient(45deg, transparent 48%, rgba(210, 175, 97, 0.3) 50%, transparent 52%);
-    animation: user-web-pulse 3s ease-in-out infinite;
+    width: 30px;
+    height: 30px;
+    background: rgba(210, 175, 97, 0.8);
+    border-radius: 50%;
+    animation: energy-matrix-pulse 2.5s ease-in-out infinite;
   }
 
-  .infinity-loop-enhanced {
+  .animation-system {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30px;
-    height: 15px;
-    border: 2px solid rgba(210, 175, 97, 0.7);
-    border-radius: 15px 15px 0 0;
-    animation: infinity-rotate 4s linear infinite;
+    transform: translate(-50%, -50%);
   }
 
-  .infinity-loop-enhanced::after {
+  .animation-brain-pulse-network {
+    width: 50px;
+    height: 50px;
+    background: 
+      radial-gradient(circle at center, rgba(168, 85, 247, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 30% 30%, rgba(210, 175, 97, 0.2) 0%, transparent 30%);
+    border-radius: 50%;
+    animation: brain-network-pulse 3s ease-in-out infinite;
+  }
+
+  .animation-network-flow-lines {
+    width: 60px;
+    height: 60px;
+    background: 
+      linear-gradient(0deg, transparent 48%, rgba(96, 165, 250, 0.3) 50%, transparent 52%),
+      linear-gradient(45deg, transparent 48%, rgba(96, 165, 250, 0.3) 50%, transparent 52%),
+      linear-gradient(90deg, transparent 48%, rgba(96, 165, 250, 0.3) 50%, transparent 52%);
+    animation: network-lines-flow 2s ease-in-out infinite;
+  }
+
+  .animation-infinite-loop-motion {
+    width: 40px;
+    height: 20px;
+    border: 2px solid rgba(210, 175, 97, 0.7);
+    border-radius: 20px 20px 0 0;
+    animation: infinite-loop-rotate 4s linear infinite;
+  }
+
+  .animation-infinite-loop-motion::after {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -20px;
     left: 0;
-    width: 30px;
-    height: 15px;
+    width: 40px;
+    height: 20px;
     border: 2px solid rgba(210, 175, 97, 0.7);
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 20px 20px;
   }
 
-  .neural-connections-enhanced {
+  .neural-pathways {
     position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
     border: 1px solid rgba(210, 175, 97, 0.4);
     border-radius: 50%;
-    animation: neural-rotation 8s linear infinite;
+    animation: neural-pathway-rotation 8s linear infinite;
   }
 
-  /* Footer Enhanced */
-  .galaxy-footer-enhanced {
-    background: linear-gradient(180deg, transparent, rgba(210, 175, 97, 0.03));
-    backdrop-filter: blur(20px);
-    position: relative;
+  .engine-status-display {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(210, 175, 97, 0.3);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: rgba(210, 175, 97, 0.8);
+    font-family: 'Inter', monospace;
+    text-align: center;
+    margin-top: 1rem;
   }
 
-  .footer-starfield-enhanced {
+  .engine-energy-field {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(1px 1px at 25% 25%, rgba(210, 175, 97, 0.4), transparent),
-      radial-gradient(1px 1px at 75% 75%, rgba(255, 255, 255, 0.3), transparent),
-      radial-gradient(1px 1px at 50% 10%, rgba(210, 175, 97, 0.5), transparent);
-    background-size: 150px 150px;
-    animation: footer-starfield-drift 15s ease-in-out infinite;
+      radial-gradient(circle at 25% 25%, rgba(210, 175, 97, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    animation: engine-particle-drift 10s ease-in-out infinite;
+  }
+
+  .ai-intelligence-engine:hover .engine-energy-field {
+    opacity: 1;
+  }
+
+  .engine-scan-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(210, 175, 97, 0.05) 50%, transparent 100%);
+    animation: engine-scan-lines 6s ease-in-out infinite;
     pointer-events: none;
   }
 
-  .footer-particle-enhanced {
+  /* Cinematic CTA Section */
+  .cinematic-cta-container {
+    position: relative;
+  }
+
+  .nebula-flare-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+  }
+
+  .nebula-pulse-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(210, 175, 97, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: nebula-pulse-expand 8s ease-in-out infinite;
+  }
+
+  .nebula-energy-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 250px;
+    border: 2px solid rgba(210, 175, 97, 0.2);
+    border-radius: 50%;
+    animation: nebula-ring-rotation 12s linear infinite;
+  }
+
+  .star-wars-control-interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .control-interface-line {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(210, 175, 97, 0.3);
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+  }
+
+  .control-interface-email {
+    text-decoration: none;
+  }
+
+  .interface-separator {
+    width: 2px;
+    height: 20px;
+    background: rgba(210, 175, 97, 0.5);
+  }
+
+  .ambient-holographic-animation {
     position: absolute;
     top: 0;
     left: 0;
@@ -813,27 +1322,74 @@
     pointer-events: none;
   }
 
-  .footer-particle-star {
+  .floating-orb {
     position: absolute;
-    bottom: 100%;
-    left: var(--x);
-    width: 2px;
-    height: 2px;
-    background: rgba(210, 175, 97, 0.7);
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(210, 175, 97, 0.6) 0%, transparent 70%);
     border-radius: 50%;
-    animation: footer-star-rise 8s ease-out infinite;
-    animation-delay: var(--delay);
   }
 
-  /* Global Text Effects */
-  .text-glow-subtle {
-    text-shadow: 0 0 15px rgba(210, 175, 97, 0.4);
+  .orb-1 {
+    top: 20%;
+    left: 20%;
+    animation: orb-float-1 15s ease-in-out infinite;
   }
 
-  .text-glow-premium {
+  .orb-2 {
+    top: 60%;
+    right: 25%;
+    animation: orb-float-2 18s ease-in-out infinite;
+  }
+
+  .orb-3 {
+    bottom: 30%;
+    left: 30%;
+    animation: orb-float-3 20s ease-in-out infinite;
+  }
+
+  .spinning-3d-symbol {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(210, 175, 97, 0.4);
+    transform-style: preserve-3d;
+  }
+
+  .symbol-1 {
+    top: 30%;
+    right: 20%;
+    border-radius: 50%;
+    animation: symbol-3d-rotate-1 25s linear infinite;
+  }
+
+  .symbol-2 {
+    bottom: 40%;
+    left: 15%;
+    border-radius: 4px;
+    animation: symbol-3d-rotate-2 30s linear infinite;
+  }
+
+  .drifting-stars-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(2px 2px at 25% 30%, rgba(210, 175, 97, 0.3), transparent),
+      radial-gradient(1px 1px at 75% 70%, rgba(255, 255, 255, 0.2), transparent),
+      radial-gradient(1px 1px at 45% 20%, rgba(210, 175, 97, 0.4), transparent);
+    background-size: 300px 300px;
+    animation: drifting-stars-flow 25s linear infinite;
+  }
+
+  /* Text Effects */
+  .text-glow-enhanced {
     text-shadow: 
       0 0 20px rgba(210, 175, 97, 0.6),
-      0 0 40px rgba(210, 175, 97, 0.3);
+      0 0 40px rgba(210, 175, 97, 0.3),
+      0 0 60px rgba(210, 175, 97, 0.1);
   }
 
   /* Scroll Effects */
@@ -851,65 +1407,123 @@
   .stagger-1 { transition-delay: 0.1s; }
   .stagger-2 { transition-delay: 0.2s; }
   .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+
+  /* Word Reveal Animation */
+  .word-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: word-reveal-in 0.6s ease-out forwards;
+  }
 }
 
-/* Keyframe Animations */
-@keyframes galaxy-grid-pulse {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.4; }
+/* Enhanced Keyframe Animations */
+@keyframes control-grid-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
 }
 
-@keyframes star-drift {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-200px) translateY(-100px); }
-}
-
-@keyframes stellar-pulse {
-  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
-}
-
-@keyframes solar-flare-sweep {
+@keyframes beam-sweep {
   0%, 100% { left: -100%; }
   50% { left: 100%; }
 }
 
-@keyframes shimmer-cascade {
-  0% { opacity: 0; transform: translateX(-100%); }
+@keyframes particle-trail-flow {
+  0% { opacity: 0; transform: translateX(-20px); }
   50% { opacity: 1; transform: translateX(0); }
-  100% { opacity: 0; transform: translateX(100%); }
+  100% { opacity: 0; transform: translateX(20px); }
 }
 
-@keyframes orbit-rotation {
+@keyframes floating-glow-pulse {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes hyperspace-drift {
+  0% { 
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: translateY(-100px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes orbit-enhanced-rotation {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-@keyframes text-shimmer-enhanced {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes beam-sweep-horizontal {
+  0%, 100% { transform: translateX(-100%); opacity: 0; }
+  50% { transform: translateX(0); opacity: 1; }
 }
 
-@keyframes stellar-ring-pulse {
+@keyframes beam-sweep-vertical {
+  0%, 100% { transform: translateY(-100%); opacity: 0; }
+  50% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes beam-sweep-diagonal {
+  0%, 100% { transform: translateX(-100%) rotate(45deg); opacity: 0; }
+  50% { transform: translateX(0) rotate(45deg); opacity: 1; }
+}
+
+@keyframes light-ray-sweep {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes pulse-sequence {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes node-orbit-1 {
+  0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@keyframes node-orbit-2 {
+  0% { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+  100% { transform: rotate(-360deg) translateX(180px) rotate(360deg); }
+}
+
+@keyframes node-orbit-3 {
+  0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+@keyframes holographic-pulse {
   0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.4); }
 }
 
-@keyframes energy-cascade-flow {
+@keyframes particle-stream-flow {
   0%, 100% { left: -100%; }
   50% { left: 100%; }
 }
 
-@keyframes scroll-pulse-enhanced {
+@keyframes scroll-energy-pulse {
   0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
   50% { opacity: 1; transform: translateX(-50%) scale(1.3); }
 }
 
-@keyframes header-materialize {
+@keyframes beam-indicator-pulse {
+  0%, 100% { opacity: 0.5; height: 4px; }
+  50% { opacity: 1; height: 8px; }
+}
+
+@keyframes header-materialize-enhanced {
   0% { 
     opacity: 0; 
-    transform: translateY(20px);
+    transform: translateY(30px);
     filter: blur(10px);
   }
   100% { 
@@ -919,142 +1533,226 @@
   }
 }
 
-@keyframes divider-expand-enhanced {
+@keyframes control-divider-expand {
   0% { width: 0; }
-  100% { width: 250px; }
+  100% { width: 300px; }
 }
 
-@keyframes core-pulse-enhanced {
+@keyframes beacon-pulse-enhanced {
   0%, 100% { opacity: 0.8; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-@keyframes orbit-spin-enhanced {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes beacon-ring-expand {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
 }
 
-@keyframes sonar-wave-pulse {
+@keyframes status-pulse-blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+
+@keyframes status-active-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes sonar-pulse-effect {
   0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
   50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
   100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
 }
 
-@keyframes blueprint-draw {
+@keyframes blueprint-lines-draw {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-@keyframes wire-connect {
-  0% { transform: scaleX(0); }
-  100% { transform: scaleX(1); }
-}
-
-@keyframes data-bars-animate {
-  0%, 100% { height: 4px; }
-  50% { height: 8px; }
-}
-
-@keyframes constellation-pulse {
+@keyframes circuit-pulse-connect {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
 
-@keyframes hologram-pulse-enhanced {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
+@keyframes graph-bars-animate {
+  0%, 100% { height: 15px; }
+  50% { height: 25px; }
 }
 
-@keyframes blocks-connect {
-  0%, 100% { background-position: 0 0; }
-  50% { background-position: 10px 10px; }
+@keyframes constellation-crown-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
-@keyframes prompt-blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0.3; }
-}
-
-@keyframes data-orbit {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes data-stream-flow {
+@keyframes particle-overlay-rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-@keyframes activator-pulse-expand {
+@keyframes interface-scan {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+@keyframes energy-wave-expand {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(0.5); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2); }
+}
+
+@keyframes energy-field-flow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes holographic-border-pulse {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.05); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes core-energy-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes connecting-nodes-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes neural-pulse-expand {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+@keyframes data-constellation-twinkle {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes energy-stream-rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes energy-burst-expand {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(0.5); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2.5); }
+}
+
+@keyframes switch-energy-pulse {
   0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
 }
 
-@keyframes grid-pulse {
+@keyframes switch-beam-sweep {
+  0%, 100% { left: -100%; }
+  50% { left: 100%; }
+}
+
+@keyframes energy-lattice-pulse {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 0.6; }
 }
 
-@keyframes scan-lines {
+@keyframes motion-blur-scan {
   0%, 100% { transform: translateY(-100%); }
   50% { transform: translateY(100%); }
 }
 
-@keyframes particle-drift {
+@keyframes energy-matrix-pulse {
+  0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+@keyframes brain-network-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes network-lines-flow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes infinite-loop-rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes neural-pathway-rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes engine-particle-drift {
   0%, 100% { 
     transform: translateY(0) translateX(0);
     opacity: 0.6;
   }
   50% { 
-    transform: translateY(-30px) translateX(15px);
+    transform: translateY(-20px) translateX(10px);
     opacity: 1;
   }
 }
 
-@keyframes brain-pulse {
+@keyframes engine-scan-lines {
+  0%, 100% { transform: translateY(-100%); }
+  50% { transform: translateY(100%); }
+}
+
+@keyframes nebula-pulse-expand {
   0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
 }
 
-@keyframes user-web-pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.9; }
-}
-
-@keyframes infinity-rotate {
+@keyframes nebula-ring-rotation {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes neural-rotation {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes orb-float-1 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-20px) translateX(10px); }
+  66% { transform: translateY(10px) translateX(-15px); }
 }
 
-@keyframes footer-starfield-drift {
-  0%, 100% { transform: translateX(0) translateY(0); }
-  25% { transform: translateX(10px) translateY(-5px); }
-  50% { transform: translateX(-5px) translateY(5px); }
-  75% { transform: translateX(5px) translateY(-3px); }
+@keyframes orb-float-2 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-15px) translateX(-10px); }
+  75% { transform: translateY(15px) translateX(20px); }
 }
 
-@keyframes footer-star-rise {
-  0% { 
-    opacity: 0; 
-    transform: translateY(0) scale(0.5);
+@keyframes orb-float-3 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-25px) translateX(15px); }
+}
+
+@keyframes symbol-3d-rotate-1 {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+@keyframes symbol-3d-rotate-2 {
+  0% { transform: rotateX(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(360deg) rotateZ(360deg); }
+}
+
+@keyframes drifting-stars-flow {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-300px) translateY(-100px); }
+}
+
+@keyframes word-reveal-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  20% { 
-    opacity: 1; 
-    transform: translateY(-30px) scale(1);
-  }
-  80% { 
-    opacity: 0.8; 
-    transform: translateY(-80px) scale(0.8);
-  }
-  100% { 
-    opacity: 0; 
-    transform: translateY(-120px) scale(0.3);
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

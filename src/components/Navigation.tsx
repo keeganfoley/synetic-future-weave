@@ -10,96 +10,109 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'Vision', href: '#vision' },
-    { name: 'Contact', href: '#contact' }
-  ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
   };
 
   return (
-    <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'galaxy-nav-scrolled' : 'galaxy-nav-transparent'
-      }`}>
-        <div className="max-w-8xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-20 py-4">
-            {/* Enhanced Logo */}
-            <div className="flex-shrink-0 relative logo-galaxy-enhanced">
-              <div className="logo-stellar-glow"></div>
-              <img 
-                src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
-                alt="Synetic AI" 
-                className="galaxy-logo-enhanced h-12 w-auto relative z-10"
-              />
-              <div className="logo-solar-flare"></div>
-              <div className="logo-shimmer-cascade"></div>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-10">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="nav-link-enhanced text-base font-light tracking-wide"
-                >
-                  {link.name}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-cosmic-white hover:text-cosmic-gold transition-colors duration-300"
-              >
-                <div className="w-6 h-6 flex flex-col justify-center items-center">
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-6 transform ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1'
-                  }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-6 ${
-                    isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
-                  }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-6 transform ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1'
-                  }`} />
-                </div>
-              </button>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled ? 'galaxy-nav-scrolled' : 'galaxy-nav-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Enhanced Logo */}
+          <div className="logo-control-room-enhanced">
+            <div className="logo-holographic-base">
+              <div className="logo-particle-trail"></div>
+              <div className="logo-beam-shadow"></div>
+              <h1 className="control-room-logo-text">
+                SyneticAI
+              </h1>
+              <div className="logo-floating-glow"></div>
             </div>
           </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-12">
+            <button 
+              onClick={() => scrollToSection('vision')}
+              className="nav-link-control-room"
+            >
+              <span>Vision</span>
+              <div className="nav-beam-underline"></div>
+            </button>
+            <button 
+              onClick={() => scrollToSection('process')}
+              className="nav-link-control-room"
+            >
+              <span>Process</span>
+              <div className="nav-beam-underline"></div>
+            </button>
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="nav-link-control-room"
+            >
+              <span>Services</span>
+              <div className="nav-beam-underline"></div>
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="nav-link-control-room"
+            >
+              <span>Contact</span>
+              <div className="nav-beam-underline"></div>
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-cosmic-gold p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden galaxy-mobile-menu">
-            <div className="px-8 py-6 space-y-6">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-enhanced text-lg w-full text-left"
-                >
-                  {link.name}
-                </button>
-              ))}
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <button 
+                onClick={() => scrollToSection('vision')}
+                className="block px-3 py-2 text-cosmic-white/80 hover:text-cosmic-gold transition-colors duration-300"
+              >
+                Vision
+              </button>
+              <button 
+                onClick={() => scrollToSection('process')}
+                className="block px-3 py-2 text-cosmic-white/80 hover:text-cosmic-gold transition-colors duration-300"
+              >
+                Process
+              </button>
+              <button 
+                onClick={() => scrollToSection('services')}
+                className="block px-3 py-2 text-cosmic-white/80 hover:text-cosmic-gold transition-colors duration-300"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="block px-3 py-2 text-cosmic-white/80 hover:text-cosmic-gold transition-colors duration-300"
+              >
+                Contact
+              </button>
             </div>
           </div>
         )}
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 
