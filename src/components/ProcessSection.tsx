@@ -1,65 +1,58 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { InteractiveGlobeModal } from './SmartWidgets';
 
 const ProcessSection = () => {
   useScrollReveal();
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-  const [expandedStep, setExpandedStep] = useState<number | null>(null);
-  const [globeModalOpen, setGlobeModalOpen] = useState(false);
+  const [mouseGlobePos, setMouseGlobePos] = useState({ x: 0, y: 0 });
 
   const processSteps = [
     {
       number: "01",
       title: "Discovery",
       description: "Let's dive into the bottlenecks and challenges your business currently faces and explore how AI automation can offer effective solutions.",
-      preview: "Deep analysis of workflows • Identify automation opportunities",
-      fidgetType: "sonar"
+      tooltip: "Neural pattern recognized"
     },
     {
       number: "02", 
       title: "Strategy",
       description: "We will develop a customized plan to integrate AI automation into your business, addressing the identified challenges and maximizing efficiency.",
-      preview: "Custom automation roadmap • Resource optimization plan",
-      fidgetType: "neural"
+      tooltip: "Strategic matrix active"
     },
     {
       number: "03",
       title: "Implementation", 
       description: "In this phase, we will execute the AI automation plan, ensuring seamless integration into your existing processes.",
-      preview: "Live deployment • Real-time integration • Testing protocols",
-      fidgetType: "warp"
+      tooltip: "System deployment initiated"
     },
     {
       number: "04",
       title: "Test & Optimize",
       description: "We either approve or request revisions - we're dedicated to refining our builds until you're fully satisfied.",
-      preview: "Performance monitoring • Continuous improvement • Quality assurance",
-      fidgetType: "pulse"
+      tooltip: "Predictive logic active"
     },
     {
       number: "05",
       title: "Become an Industry Leader",
       description: "Continue requesting as many workflow automations and AI applications as you wish, and transform your organization into a formidable industry leader.",
-      preview: "Scale globally • Market dominance • Competitive advantage",
-      fidgetType: "globe"
+      tooltip: "Global command enabled"
     }
   ];
 
-  const handleStepClick = (index: number) => {
-    if (index === 4) {
-      setGlobeModalOpen(true);
-    } else {
-      setExpandedStep(expandedStep === index ? null : index);
-    }
+  const handleGlobeMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouseGlobePos({
+      x: (e.clientX - rect.left - rect.width / 2) * 0.1,
+      y: (e.clientY - rect.top - rect.height / 2) * 0.1
+    });
   };
 
   return (
     <section id="process" className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in galaxy-header-reveal">
+          <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in cinematic-header">
             Our Process
           </h2>
           <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-1">
@@ -71,54 +64,48 @@ const ProcessSection = () => {
           {processSteps.map((step, index) => (
             <div
               key={step.number}
-              className={`process-card-interactive scroll-fade-in stagger-${index + 1} ${expandedStep === index ? 'card-expanded' : ''}`}
+              className={`holographic-panel scroll-fade-in stagger-${index + 1}`}
               onMouseEnter={() => setHoveredStep(index)}
               onMouseLeave={() => setHoveredStep(null)}
-              onClick={() => handleStepClick(index)}
+              onMouseMove={index === 4 ? handleGlobeMouseMove : undefined}
             >
-              <div className="card-core-interactive">
-                <div className="card-number-glow">{step.number}</div>
+              <div className="holographic-panel-inner">
+                <div className="process-number-hud">{step.number}</div>
                 
-                <div className={`fidget-zone-optimized ${hoveredStep === index ? 'zone-active' : ''}`}>
-                  {step.fidgetType === 'sonar' && (
-                    <div className="sonar-optimized">
-                      <div className="sonar-pulse"></div>
-                      <div className="sonar-center"></div>
+                <div className={`process-icon-hud ${hoveredStep === index ? 'process-icon-active' : ''}`}>
+                  {index === 0 && <div className="discovery-hologram"></div>}
+                  {index === 1 && (
+                    <div className="strategy-neural-grid">
+                      <div className="neural-line neural-line-1"></div>
+                      <div className="neural-line neural-line-2"></div>
+                      <div className="neural-line neural-line-3"></div>
                     </div>
                   )}
-                  
-                  {step.fidgetType === 'neural' && (
-                    <div className="neural-optimized">
-                      <div className="neural-bar neural-1"></div>
-                      <div className="neural-bar neural-2"></div>
-                      <div className="neural-bar neural-3"></div>
+                  {index === 2 && <div className="implementation-field"></div>}
+                  {index === 3 && (
+                    <div className="optimization-scanner">
+                      <div className="scanner-spark scanner-spark-1"></div>
+                      <div className="scanner-spark scanner-spark-2"></div>
+                      <div className="scanner-spark scanner-spark-3"></div>
+                      <div className="data-grid-lines"></div>
                     </div>
                   )}
-                  
-                  {step.fidgetType === 'warp' && (
-                    <div className="warp-optimized">
-                      <div className="warp-surface-smooth"></div>
-                    </div>
-                  )}
-                  
-                  {step.fidgetType === 'pulse' && (
-                    <div className="pulse-optimized">
-                      <div className="pulse-bar pulse-1"></div>
-                      <div className="pulse-bar pulse-2"></div>
-                      <div className="pulse-bar pulse-3"></div>
-                    </div>
-                  )}
-                  
-                  {step.fidgetType === 'globe' && (
-                    <div className="globe-interactive-optimized">
-                      <div className="globe-core"></div>
-                      <div className="globe-ring globe-ring-1"></div>
-                      <div className="globe-ring globe-ring-2"></div>
+                  {index === 4 && (
+                    <div 
+                      className="command-globe-3d"
+                      style={{
+                        transform: `rotateX(${mouseGlobePos.y}deg) rotateY(${mouseGlobePos.x}deg)`
+                      }}
+                    >
+                      <div className="globe-wireframe-gold"></div>
+                      <div className="globe-orbital-ring-1"></div>
+                      <div className="globe-orbital-ring-2"></div>
+                      <div className="globe-command-glow"></div>
                     </div>
                   )}
                 </div>
 
-                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-4 card-title-glow">
+                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-4">
                   {step.title}
                 </h3>
                 
@@ -126,25 +113,20 @@ const ProcessSection = () => {
                   {step.description}
                 </p>
 
-                {expandedStep === index && (
-                  <div className="card-preview-expanded">
-                    <div className="preview-content">
-                      {step.preview}
-                    </div>
+                {/* Whisper Tooltip */}
+                {hoveredStep === index && (
+                  <div className="whisper-tooltip">
+                    {step.tooltip}
                   </div>
                 )}
               </div>
               
-              <div className={`card-energy-field ${hoveredStep === index ? 'field-active' : ''}`}></div>
+              {/* Glass Sheen Effect */}
+              <div className={`glass-sheen ${hoveredStep === index ? 'glass-sheen-active' : ''}`}></div>
             </div>
           ))}
         </div>
       </div>
-
-      <InteractiveGlobeModal 
-        isOpen={globeModalOpen} 
-        onClose={() => setGlobeModalOpen(false)} 
-      />
     </section>
   );
 };
