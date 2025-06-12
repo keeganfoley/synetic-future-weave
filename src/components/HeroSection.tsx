@@ -1,20 +1,20 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [headlineStage, setHeadlineStage] = useState(0);
+  const [bootupComplete, setBootupComplete] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setHeadlineStage(1), 800);
-    const timer2 = setTimeout(() => setHeadlineStage(2), 1600);
-    const timer3 = setTimeout(() => setIsVisible(true), 2400);
+    // Optimized cinematic intro
+    const bootupTimer = setTimeout(() => {
+      setBootupComplete(true);
+      const visibilityTimer = setTimeout(() => setIsVisible(true), 200);
+      return () => clearTimeout(visibilityTimer);
+    }, 600);
     
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-    };
+    return () => clearTimeout(bootupTimer);
   }, []);
 
   const scrollToNextSection = () => {
@@ -22,54 +22,62 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden galactic-hero-reset">
-      {/* Starfield Background */}
-      <div className="absolute inset-0 starfield-background">
-        <div className="starfield-distant"></div>
-        <div className="starfield-mid"></div>
-        <div className="starfield-close"></div>
-        <div className="nebula-ambience"></div>
+    <section 
+      ref={heroRef} 
+      className="min-h-screen flex items-center justify-center relative overflow-hidden hero-optimized"
+    >
+      {/* Optimized Bootup Flash */}
+      {!bootupComplete && (
+        <div className="fixed inset-0 bg-black z-50 animate-bootup-flash-fast"></div>
+      )}
+      
+      {/* Performance-Optimized Background */}
+      <div className="absolute inset-0 hero-bg-optimized"></div>
+      
+      {/* Minimal Orbit Rings - GPU Optimized */}
+      <div className="absolute inset-0 orbit-system-optimized">
+        <div className="orbit-ring-optimized orbit-1"></div>
+        <div className="orbit-ring-optimized orbit-2"></div>
       </div>
+
+      {/* High-Performance Cursor */}
+      <div className="cursor-high-performance"></div>
       
       {/* Hero Content */}
-      <div className="text-center z-10 px-8 max-w-6xl mx-auto">
-        {/* Primary Headline */}
-        <div className="hero-headline-container">
-          <h1 className="hero-title-commanding font-heading font-light leading-tight tracking-tight">
-            <div className={`headline-transmission ${headlineStage >= 1 ? 'transmission-active' : ''}`}>
-              <span className="text-cosmic-white title-text-enhanced">Intelligence in Motion.</span>
-              <div className="kinetic-light-sweep"></div>
-            </div>
-            <div className={`headline-transmission ${headlineStage >= 2 ? 'transmission-active' : ''}`}>
-              <span className="text-cosmic-gold title-text-gold-enhanced">Automation Without Friction.</span>
-              <div className="kinetic-light-sweep-gold"></div>
-            </div>
-          </h1>
+      <div className={`text-center z-10 px-8 transition-all duration-1500 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}>
+        <h1 className="font-heading font-light mb-12 leading-[0.85] tracking-tight hero-title-optimized">
+          <span className="block hero-headline-shimmer mb-6 hero-text-rise">
+            Intelligence in Motion.
+          </span>
+          <span className="block hero-headline-shimmer-alt mb-10 hero-text-rise-delay">
+            Automation Without Friction.
+          </span>
+        </h1>
+        
+        <div className={`space-y-6 transition-all duration-1200 delay-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+        }`}>
+          <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
+            We design systems that eliminate the ordinary.
+          </p>
+          <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
+            Precision automation. Time reclaimed.
+          </p>
         </div>
 
-        {/* The Synetic Core */}
-        <div className={`synetic-core-container ${isVisible ? 'core-materialized' : ''}`}>
-          <div className="synetic-core-chamber">
-            <div className="geodesic-sphere-core">
-              <div className="sphere-wireframe"></div>
-              <div className="data-convergence-trails"></div>
-              <div className="golden-energy-field"></div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Enhanced Call to Action */}
-        <div className={`mt-16 transition-all duration-1000 delay-500 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        <div className={`mt-16 transition-all duration-1200 delay-1500 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
           <button 
             onClick={scrollToNextSection}
-            className="galactic-cta-enhanced text-xl group relative"
+            className="hero-cta-optimized text-xl group relative"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
               <svg 
-                className="ml-4 w-6 h-6 transition-transform duration-500 group-hover:translate-x-2" 
+                className="ml-4 w-6 h-6 transition-transform duration-300 group-hover:translate-x-2" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -77,18 +85,14 @@ const HeroSection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
-            <div className="cta-holographic-field"></div>
-            <div className="cta-pulsing-beam"></div>
+            <div className="cta-click-feedback"></div>
           </button>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-gentle-float">
-        <div className="scroll-indicator-refined">
-          <div className="indicator-core-pulse"></div>
-          <div className="indicator-orbit-ring"></div>
-        </div>
+      {/* Optimized scroll indicator */}
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 scroll-indicator-optimized">
+        <div className="scroll-dot-optimized"></div>
       </div>
     </section>
   );
