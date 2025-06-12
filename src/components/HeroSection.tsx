@@ -3,81 +3,37 @@ import { useEffect, useState, useRef } from 'react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [bootupComplete, setBootupComplete] = useState(false);
+  const [textAnimationStage, setTextAnimationStage] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [globeRotation, setGlobeRotation] = useState({ x: 0, y: 0 });
-  const [orbitalSpherePos, setOrbitalSpherePos] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const globeRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const sphereRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Cinematic intro sequence
-    const bootupTimer = setTimeout(() => {
-      setBootupComplete(true);
-      const visibilityTimer = setTimeout(() => setIsVisible(true), 300);
-      return () => clearTimeout(visibilityTimer);
-    }, 800);
+    // Smooth text animation sequence
+    const timer1 = setTimeout(() => setTextAnimationStage(1), 500);
+    const timer2 = setTimeout(() => setTextAnimationStage(2), 1200);
+    const timer3 = setTimeout(() => setIsVisible(true), 1800);
     
-    return () => clearTimeout(bootupTimer);
-  }, []);
-
-  useEffect(() => {
-    let rafId: number;
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      if (rafId) cancelAnimationFrame(rafId);
-      
-      rafId = requestAnimationFrame(() => {
-        if (heroRef.current) {
-          const rect = heroRef.current.getBoundingClientRect();
-          setMousePosition({
-            x: (e.clientX - rect.left) / rect.width - 0.5,
-            y: (e.clientY - rect.top) / rect.height - 0.5
-          });
-        }
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      if (rafId) cancelAnimationFrame(rafId);
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
     };
   }, []);
 
-  const handleGlobeInteraction = (e: React.MouseEvent) => {
-    if (globeRef.current) {
-      const rect = globeRef.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      
-      setGlobeRotation({
-        x: (e.clientY - centerY) * 0.08,
-        y: (e.clientX - centerX) * 0.08
-      });
-    }
-  };
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: (e.clientX - rect.left) / rect.width - 0.5,
+          y: (e.clientY - rect.top) / rect.height - 0.5
+        });
+      }
+    };
 
-  const handleSphereMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    e.preventDefault();
-  };
-
-  const handleSphereMouseMove = (e: React.MouseEvent) => {
-    if (isDragging && sphereRef.current) {
-      const rect = sphereRef.current.getBoundingClientRect();
-      setOrbitalSpherePos({
-        x: e.clientX - rect.width / 2,
-        y: e.clientY - rect.height / 2
-      });
-    }
-  };
-
-  const handleSphereMouseUp = () => {
-    setIsDragging(false);
-  };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const scrollToNextSection = () => {
     document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' });
@@ -86,93 +42,51 @@ const HeroSection = () => {
   return (
     <section 
       ref={heroRef} 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      onMouseMove={handleSphereMouseMove}
-      onMouseUp={handleSphereMouseUp}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden galaxy-hero-container"
     >
-      {/* Cinematic Bootup Flash */}
-      {!bootupComplete && (
-        <div className="fixed inset-0 bg-black z-50 animate-bootup-flash"></div>
-      )}
+      {/* Cosmic Background Grid */}
+      <div className="absolute inset-0 cosmic-grid-background"></div>
       
-      {/* AI Scanner Sweep */}
-      <div className="ai-scanner-sweep"></div>
-      
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 galaxy-radar-bg"></div>
-      <div className="absolute inset-0 breathing-nebula"></div>
-      
-      {/* Pulsating Orbit Rings */}
-      <div className="absolute inset-0 orbital-ring-system">
-        <div className="orbit-ring orbit-ring-1" style={{
-          transform: `rotate(${mousePosition.x * 5}deg)`
+      {/* Floating Orbit Rings */}
+      <div className="absolute inset-0 galaxy-orbit-system">
+        <div className="orbit-ring orbit-primary" style={{
+          transform: `rotate(${mousePosition.x * 10}deg)`
         }}></div>
-        <div className="orbit-ring orbit-ring-2" style={{
-          transform: `rotate(${-mousePosition.x * 3}deg)`
+        <div className="orbit-ring orbit-secondary" style={{
+          transform: `rotate(${-mousePosition.x * 15}deg)`
         }}></div>
-        <div className="orbit-ring orbit-ring-3" style={{
-          transform: `rotate(${mousePosition.x * 7}deg)`
+        <div className="orbit-ring orbit-tertiary" style={{
+          transform: `rotate(${mousePosition.x * 8}deg)`
         }}></div>
       </div>
 
-      {/* Cursor Trail Effect */}
-      <div 
-        className="cursor-trail-orb"
-        style={{
-          left: `${(mousePosition.x + 0.5) * 100}%`,
-          top: `${(mousePosition.y + 0.5) * 100}%`
-        }}
-      ></div>
-      
-      {/* Interactive 3D Globe */}
-      <div 
-        ref={globeRef}
-        className="floating-globe-tactile"
-        style={{
-          transform: `rotateX(${globeRotation.x}deg) rotateY(${globeRotation.y}deg)`
-        }}
-        onMouseMove={handleGlobeInteraction}
-      >
-        <div className="globe-surface-interactive"></div>
-        <div className="globe-orbital-rings"></div>
-        <div className="globe-energy-core"></div>
-      </div>
-
-      {/* Fidget Orbital Sphere */}
-      <div 
-        ref={sphereRef}
-        className={`orbital-fidget-sphere ${isDragging ? 'sphere-active' : ''}`}
-        style={{
-          transform: `translate(${orbitalSpherePos.x}px, ${orbitalSpherePos.y}px)`
-        }}
-        onMouseDown={handleSphereMouseDown}
-      >
-        <div className="sphere-liquid-core"></div>
-        <div className="sphere-particle-emission"></div>
-        <div className="sphere-magnetic-field"></div>
-      </div>
-
-      {/* Galaxy Power Lines */}
-      <div className="galaxy-power-grid">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className={`power-beam power-beam-${i + 1}`}></div>
+      {/* Ambient Particle Field */}
+      <div className="absolute inset-0 ambient-particle-field">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div 
+            key={i} 
+            className="floating-particle"
+            style={{
+              '--delay': `${i * 0.5}s`,
+              '--x': `${Math.random() * 100}%`,
+              '--y': `${Math.random() * 100}%`
+            } as React.CSSProperties}
+          />
         ))}
       </div>
       
       {/* Hero Content */}
-      <div className={`text-center z-10 px-8 transition-all duration-2000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      }`}>
-        <h1 className="font-heading font-light mb-12 leading-[0.85] tracking-tight hero-title-galaxy">
-          <span className="block hero-headline-shimmer-enhanced mb-6 ai-typewriter-galaxy">
+      <div className="text-center z-10 px-8 max-w-5xl mx-auto">
+        <h1 className="font-heading font-light leading-[0.9] tracking-tight hero-title-container">
+          <span className={`block mb-6 hero-text-reveal ${textAnimationStage >= 1 ? 'animate-in' : ''}`}>
             Intelligence in Motion.
           </span>
-          <span className="block hero-headline-shimmer-alt-enhanced mb-10 ai-typewriter-galaxy delay-1000">
+          <span className={`block mb-10 hero-text-reveal-alt ${textAnimationStage >= 2 ? 'animate-in' : ''}`}>
             Automation Without Friction.
           </span>
         </h1>
         
-        <div className={`space-y-6 transition-all duration-1500 delay-1500 ${
+        <div className={`space-y-6 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
@@ -183,12 +97,12 @@ const HeroSection = () => {
           </p>
         </div>
 
-        <div className={`mt-16 transition-all duration-1500 delay-2000 ${
+        <div className={`mt-16 transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <button 
             onClick={scrollToNextSection}
-            className="galaxy-cta-command text-xl group relative"
+            className="galaxy-cta-premium text-xl group relative"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
@@ -201,16 +115,16 @@ const HeroSection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
-            <div className="command-sonar-rings"></div>
-            <div className="button-energy-field"></div>
+            <div className="cta-pulse-rings"></div>
+            <div className="cta-energy-flow"></div>
           </button>
         </div>
       </div>
 
       {/* Enhanced scroll indicator */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-gentle-float">
-        <div className="w-6 h-10 border-2 border-cosmic-gold/40 rounded-full flex justify-center opacity-70 galaxy-scroll-indicator">
-          <div className="w-1 h-3 bg-cosmic-gold/60 rounded-full mt-2 animate-pulse-subtle"></div>
+        <div className="galaxy-scroll-beacon">
+          <div className="scroll-beacon-core"></div>
         </div>
       </div>
     </section>

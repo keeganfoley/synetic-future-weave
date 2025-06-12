@@ -6,8 +6,8 @@ import MainSections from '../components/MainSections';
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen galaxy-command-surface">
-      {/* Galactic Background */}
+    <div className="relative min-h-screen bg-cosmic-black">
+      {/* Enhanced Galactic Background */}
       <GalacticBackground />
       
       {/* Navigation */}
@@ -19,33 +19,73 @@ const Index = () => {
         <MainSections />
       </main>
       
-      {/* Galaxy Footer */}
-      <footer className="relative z-10 py-12 px-8 border-t border-cosmic-gold/20 galaxy-footer-interface">
-        <div className="galaxy-stardust-trail"></div>
+      {/* Refined Footer */}
+      <footer className="relative z-10 py-16 px-8 border-t border-cosmic-gold/20 galaxy-footer-refined">
+        <div className="galaxy-footer-ambient"></div>
         
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="space-y-2">
-            <h3 className="text-2xl font-heading font-light text-cosmic-gold text-glow-subtle">
-              SyneticAI
-            </h3>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            {/* Logo Section */}
+            <div className="text-left">
+              <h3 className="text-xl font-heading font-light text-cosmic-gold text-glow-subtle mb-2">
+                SyneticAI
+              </h3>
+              <p className="text-cosmic-white/60 text-sm">
+                Automation Without Friction
+              </p>
+            </div>
             
-            <p className="text-lg text-cosmic-white/80 font-light tracking-wide">
-              Automation Without Friction
-            </p>
+            {/* Center Links */}
+            <div className="text-center">
+              <div className="flex justify-center space-x-8">
+                <button 
+                  onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+                >
+                  Vision
+                </button>
+                <button 
+                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+                >
+                  Services
+                </button>
+                <button 
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+                >
+                  Contact
+                </button>
+              </div>
+            </div>
             
-            <div className="py-2">
+            {/* Contact Section */}
+            <div className="text-right">
               <a 
                 href="mailto:team@syneticai.com" 
-                className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium galaxy-email-glow"
+                className="galaxy-email-beacon text-cosmic-gold text-sm font-medium block mb-2"
               >
                 team@syneticai.com
               </a>
+              <p className="text-cosmic-white/40 text-xs">
+                © 2025 SyneticAI. All rights reserved.
+              </p>
             </div>
-            
-            <p className="text-cosmic-white/50 text-sm tracking-wider pt-4">
-              © 2025 SyneticAI. All rights reserved.
-            </p>
           </div>
+        </div>
+        
+        {/* Ambient Particle Effect */}
+        <div className="footer-particle-drift">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div 
+              key={i} 
+              className="footer-particle"
+              style={{
+                '--delay': `${i * 0.3}s`,
+                '--x': `${Math.random() * 100}%`
+              } as React.CSSProperties}
+            />
+          ))}
         </div>
       </footer>
     </div>
