@@ -5,7 +5,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 const ProcessSection = () => {
   useScrollReveal();
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-  const [expandedStep, setExpandedStep] = useState<number | null>(null);
+  const [activatedStep, setActivatedStep] = useState<number | null>(null);
 
   const processSteps = [
     {
@@ -13,46 +13,53 @@ const ProcessSection = () => {
       title: "Discovery",
       description: "Let's dive into the bottlenecks and challenges your business currently faces and explore how AI automation can offer effective solutions.",
       hoverText: "Neural scan initialized... Bottlenecks detected.",
-      icon: "scanner"
+      icon: "discovery",
+      uniqueEffect: "sonar-wave"
     },
     {
       number: "02", 
       title: "Strategy",
       description: "We will develop a customized plan to integrate AI automation into your business, addressing the identified challenges and maximizing efficiency.",
       hoverText: "Adaptive pathways forming. Optimal route mapped.",
-      icon: "pathways"
+      icon: "strategy",
+      uniqueEffect: "blueprint-grid"
     },
     {
       number: "03",
       title: "Implementation", 
       description: "In this phase, we will execute the AI automation plan, ensuring seamless integration into your existing processes.",
       hoverText: "System core aligned. Execution in progress.",
-      icon: "core"
+      icon: "implementation",
+      uniqueEffect: "wire-connection"
     },
     {
       number: "04",
       title: "Test & Optimize",
       description: "We either approve or request revisions - we're dedicated to refining our builds until you're fully satisfied.",
       hoverText: "Diagnostic cycle initiated. Refinement underway.",
-      icon: "diagnostic"
+      icon: "optimize",
+      uniqueEffect: "data-bars"
     },
     {
       number: "05",
       title: "Become an Industry Leader",
       description: "Continue requesting as many workflow automations and AI applications as you wish, and transform your organization into a formidable industry leader.",
       hoverText: "Dominance Protocol Engaged.",
-      icon: "dominance"
+      icon: "leader",
+      uniqueEffect: "constellation-map"
     }
   ];
 
   return (
     <section id="process" className="py-32 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="absolute inset-0 galaxy-unified-background"></div>
+      
+      <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in galaxy-section-header">
             Our Process
           </h2>
-          <div className="galaxy-divider-line scroll-fade-in stagger-1"></div>
+          <div className="galaxy-divider-enhanced scroll-fade-in stagger-1"></div>
           <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-2 mt-6">
             Ready to transform your business? Here's how we make it happen.
           </p>
@@ -62,25 +69,25 @@ const ProcessSection = () => {
           {processSteps.map((step, index) => (
             <div
               key={step.number}
-              className={`galaxy-process-module scroll-fade-in stagger-${index + 1} ${
+              className={`galaxy-process-enhanced scroll-fade-in stagger-${index + 1} ${
                 hoveredStep === index ? 'module-activated' : ''
-              }`}
+              } ${activatedStep === index ? 'module-engaged' : ''}`}
               onMouseEnter={() => setHoveredStep(index)}
               onMouseLeave={() => setHoveredStep(null)}
-              onClick={() => setExpandedStep(expandedStep === index ? null : index)}
+              onClick={() => setActivatedStep(activatedStep === index ? null : index)}
             >
-              <div className="module-surface">
-                <div className="module-number-beacon">{step.number}</div>
+              <div className="module-surface-enhanced">
+                <div className="module-number-enhanced">{step.number}</div>
                 
-                <div className="module-icon-container">
-                  <div className={`process-icon icon-${step.icon}`}>
-                    <div className="icon-core"></div>
-                    <div className="icon-orbits"></div>
-                    <div className="icon-particles"></div>
+                <div className="module-icon-enhanced">
+                  <div className={`process-icon-unique icon-${step.icon}`}>
+                    <div className="icon-core-enhanced"></div>
+                    <div className="icon-orbits-enhanced"></div>
+                    <div className={`unique-effect effect-${step.uniqueEffect}`}></div>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-3 module-title-text">
+                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-3 module-title-enhanced">
                   {step.title}
                 </h3>
                 
@@ -88,26 +95,24 @@ const ProcessSection = () => {
                   {step.description}
                 </p>
 
-                {/* Hover State Text */}
-                {hoveredStep === index && (
-                  <div className="galaxy-hover-reveal">
-                    <div className="hover-text-glow">{step.hoverText}</div>
-                  </div>
-                )}
+                {/* Enhanced Hover Reveal */}
+                <div className={`galaxy-hover-enhanced ${hoveredStep === index ? 'visible' : ''}`}>
+                  <div className="hover-text-enhanced">{step.hoverText}</div>
+                </div>
 
-                {/* Expanded State */}
-                {expandedStep === index && (
-                  <div className="expanded-details">
-                    <div className="detail-pulse"></div>
-                    <p className="text-cosmic-gold/90 text-xs">
-                      Click to activate module diagnostics...
+                {/* Activation State */}
+                {activatedStep === index && (
+                  <div className="module-activation-enhanced">
+                    <div className="activation-pulse"></div>
+                    <p className="text-cosmic-gold/90 text-xs font-medium">
+                      MODULE ONLINE
                     </p>
                   </div>
                 )}
               </div>
               
-              <div className="module-energy-field"></div>
-              <div className="module-activation-ring"></div>
+              <div className="module-energy-enhanced"></div>
+              <div className="module-hologram-ring"></div>
             </div>
           ))}
         </div>

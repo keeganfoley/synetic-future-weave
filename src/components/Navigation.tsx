@@ -35,15 +35,16 @@ const Navigation = () => {
       }`}>
         <div className="max-w-8xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-20 py-4">
-            {/* Refined Logo */}
-            <div className="flex-shrink-0 relative logo-galaxy-refined">
-              <div className="logo-ambient-glow"></div>
+            {/* Enhanced Logo */}
+            <div className="flex-shrink-0 relative logo-galaxy-enhanced">
+              <div className="logo-stellar-glow"></div>
               <img 
                 src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
                 alt="Synetic AI" 
-                className="galaxy-logo-integrated h-10 w-auto"
+                className="galaxy-logo-enhanced h-12 w-auto relative z-10"
               />
-              <div className="logo-shimmer-trail"></div>
+              <div className="logo-solar-flare"></div>
+              <div className="logo-shimmer-cascade"></div>
             </div>
 
             {/* Desktop Navigation */}
@@ -52,7 +53,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link-galaxy text-base font-light tracking-wide"
+                  className="nav-link-enhanced text-base font-light tracking-wide"
                 >
                   {link.name}
                 </button>
@@ -89,7 +90,7 @@ const Navigation = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-galaxy text-lg w-full text-left"
+                  className="block nav-link-enhanced text-lg w-full text-left"
                 >
                   {link.name}
                 </button>

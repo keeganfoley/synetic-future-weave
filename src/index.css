@@ -673,7 +673,7 @@
 
   /* Thinking Modules */
   .galaxy-thinking-module {
-    @apply bg-cosmic-black/25 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative overflow-hidden;
+    @apply bg-cosmic-black/25 border border-cosmic-gold/30 rounded-3xl backdrop-blur-2xl relative;
     transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   }
@@ -1169,6 +1169,168 @@
   }
 }
 
+/* Enhanced Galaxy Unified Background */
+@keyframes galaxy-grid-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Enhanced Logo Styles */
+@keyframes stellar-pulse {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes solar-flare-sweep {
+  0%, 100% { left: -100%; }
+  50% { left: 100%; }
+}
+
+@keyframes shimmer-cascade {
+  0% { opacity: 0; transform: translateX(-100%); }
+  50% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes star-drift {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-30px) translateX(15px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes orbit-rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes text-shimmer-enhanced {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes stellar-ring-pulse {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.4); }
+}
+
+@keyframes energy-cascade-flow {
+  0%, 100% { left: -100%; }
+  50% { left: 100%; }
+}
+
+@keyframes scroll-pulse-enhanced {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+}
+
+@keyframes divider-expand-enhanced {
+  0% { width: 0; }
+  100% { width: 250px; }
+}
+
+@keyframes core-pulse-enhanced {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes orbit-spin-enhanced {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes sonar-wave-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+
+@keyframes blueprint-draw {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes wire-connect {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes data-bars-animate {
+  0%, 100% { height: 4px; }
+  50% { height: 8px; }
+}
+
+@keyframes constellation-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes hologram-pulse-enhanced {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes blocks-connect {
+  0%, 100% { background-position: 0 0; }
+  50% { background-position: 10px 10px; }
+}
+
+@keyframes prompt-blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+
+@keyframes data-orbit {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes brain-pulse {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes user-web-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes infinity-rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes footer-starfield-drift {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(10px) translateY(-5px); }
+  50% { transform: translateX(-5px) translateY(5px); }
+  75% { transform: translateX(5px) translateY(-3px); }
+}
+
+@keyframes footer-star-rise {
+  0% { 
+    opacity: 0; 
+    transform: translateY(0) scale(0.5);
+  }
+  20% { 
+    opacity: 1; 
+    transform: translateY(-30px) scale(1);
+  }
+  80% { 
+    opacity: 0.8; 
+    transform: translateY(-80px) scale(0.8);
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(-120px) scale(0.3);
+  }
+}
+
 /* Optimized Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -1179,16 +1341,4 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #d2af61, rgba(210, 175, 97, 0.5));
-  border-radius: 3px;
-  box-shadow: 0 0 8px rgba(210, 175, 97, 0.4);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #d2af61;
-}
-
-::selection {
-  background: rgba(210, 175, 97, 0.3);
-  color: #ffffff;
-}
+  background: linear-gradient(180deg, #d2af61, rgba(210, 

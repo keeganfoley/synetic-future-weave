@@ -19,11 +19,12 @@ const Index = () => {
         <MainSections />
       </main>
       
-      {/* Refined Footer */}
-      <footer className="relative z-10 py-16 px-8 border-t border-cosmic-gold/20 galaxy-footer-refined">
-        <div className="galaxy-footer-ambient"></div>
+      {/* Enhanced Footer */}
+      <footer className="relative z-10 py-16 px-8 border-t border-cosmic-gold/20 galaxy-footer-enhanced">
+        <div className="absolute inset-0 galaxy-unified-background"></div>
+        <div className="footer-starfield-enhanced"></div>
         
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             {/* Logo Section */}
             <div className="text-left">
@@ -40,19 +41,19 @@ const Index = () => {
               <div className="flex justify-center space-x-8">
                 <button 
                   onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm nav-link-enhanced"
                 >
                   Vision
                 </button>
                 <button 
                   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm nav-link-enhanced"
                 >
                   Services
                 </button>
                 <button 
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm"
+                  className="text-cosmic-white/60 hover:text-cosmic-gold transition-colors duration-300 text-sm nav-link-enhanced"
                 >
                   Contact
                 </button>
@@ -74,12 +75,12 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Ambient Particle Effect */}
-        <div className="footer-particle-drift">
-          {Array.from({ length: 15 }).map((_, i) => (
+        {/* Enhanced Particle Effect */}
+        <div className="footer-particle-enhanced">
+          {Array.from({ length: 20 }).map((_, i) => (
             <div 
               key={i} 
-              className="footer-particle"
+              className="footer-particle-star"
               style={{
                 '--delay': `${i * 0.3}s`,
                 '--x': `${Math.random() * 100}%`

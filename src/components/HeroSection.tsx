@@ -8,7 +8,6 @@ const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Smooth text animation sequence
     const timer1 = setTimeout(() => setTextAnimationStage(1), 500);
     const timer2 = setTimeout(() => setTextAnimationStage(2), 1200);
     const timer3 = setTimeout(() => setIsVisible(true), 1800);
@@ -42,42 +41,43 @@ const HeroSection = () => {
   return (
     <section 
       ref={heroRef} 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden galaxy-hero-container"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden galaxy-hero-enhanced"
     >
-      {/* Cosmic Background Grid */}
-      <div className="absolute inset-0 cosmic-grid-background"></div>
+      {/* Unified Galaxy Background */}
+      <div className="absolute inset-0 galaxy-unified-background"></div>
       
-      {/* Floating Orbit Rings */}
-      <div className="absolute inset-0 galaxy-orbit-system">
-        <div className="orbit-ring orbit-primary" style={{
-          transform: `rotate(${mousePosition.x * 10}deg)`
-        }}></div>
-        <div className="orbit-ring orbit-secondary" style={{
-          transform: `rotate(${-mousePosition.x * 15}deg)`
-        }}></div>
-        <div className="orbit-ring orbit-tertiary" style={{
-          transform: `rotate(${mousePosition.x * 8}deg)`
-        }}></div>
-      </div>
-
-      {/* Ambient Particle Field */}
-      <div className="absolute inset-0 ambient-particle-field">
-        {Array.from({ length: 20 }).map((_, i) => (
+      {/* Enhanced Starfield */}
+      <div className="absolute inset-0 hero-starfield">
+        {Array.from({ length: 50 }).map((_, i) => (
           <div 
             key={i} 
-            className="floating-particle"
+            className="floating-star"
             style={{
-              '--delay': `${i * 0.5}s`,
+              '--delay': `${i * 0.2}s`,
               '--x': `${Math.random() * 100}%`,
-              '--y': `${Math.random() * 100}%`
+              '--y': `${Math.random() * 100}%`,
+              '--size': `${Math.random() * 3 + 1}px`
             } as React.CSSProperties}
           />
         ))}
       </div>
+
+      {/* Responsive Orbit System */}
+      <div className="absolute inset-0 galaxy-orbit-enhanced">
+        <div className="orbit-ring orbit-primary" style={{
+          transform: `rotate(${mousePosition.x * 8}deg)`
+        }}></div>
+        <div className="orbit-ring orbit-secondary" style={{
+          transform: `rotate(${-mousePosition.x * 12}deg)`
+        }}></div>
+        <div className="orbit-ring orbit-tertiary" style={{
+          transform: `rotate(${mousePosition.x * 6}deg)`
+        }}></div>
+      </div>
       
       {/* Hero Content */}
       <div className="text-center z-10 px-8 max-w-5xl mx-auto">
-        <h1 className="font-heading font-light leading-[0.9] tracking-tight hero-title-container">
+        <h1 className="font-heading font-light leading-[0.9] tracking-tight hero-title-enhanced">
           <span className={`block mb-6 hero-text-reveal ${textAnimationStage >= 1 ? 'animate-in' : ''}`}>
             Intelligence in Motion.
           </span>
@@ -102,7 +102,7 @@ const HeroSection = () => {
         }`}>
           <button 
             onClick={scrollToNextSection}
-            className="galaxy-cta-premium text-xl group relative"
+            className="galaxy-cta-enhanced text-xl group relative"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
@@ -115,16 +115,16 @@ const HeroSection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
-            <div className="cta-pulse-rings"></div>
-            <div className="cta-energy-flow"></div>
+            <div className="cta-stellar-rings"></div>
+            <div className="cta-energy-cascade"></div>
           </button>
         </div>
       </div>
 
-      {/* Enhanced scroll indicator */}
+      {/* Scroll indicator */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-gentle-float">
-        <div className="galaxy-scroll-beacon">
-          <div className="scroll-beacon-core"></div>
+        <div className="galaxy-scroll-enhanced">
+          <div className="scroll-core-pulse"></div>
         </div>
       </div>
     </section>

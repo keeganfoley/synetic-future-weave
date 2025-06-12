@@ -22,8 +22,10 @@ const MainSections = () => {
     <>
       {/* Vision Section */}
       <section id="vision" className="py-32 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-8 text-center">
-          <div className="galaxy-section-divider mb-16"></div>
+        <div className="absolute inset-0 galaxy-unified-background"></div>
+        
+        <div className="max-w-6xl mx-auto px-8 text-center relative z-10">
+          <div className="galaxy-divider-enhanced mb-16"></div>
           
           <div className="absolute top-8 left-8 galaxy-status-panel scroll-fade-in">
             <div className="status-readout">Systems Processed: 3,248,291</div>
@@ -35,7 +37,7 @@ const MainSections = () => {
             Our Vision
           </h2>
           
-          <div className="galaxy-divider-line scroll-fade-in mb-12"></div>
+          <div className="galaxy-divider-enhanced scroll-fade-in mb-12"></div>
           
           <div className="space-y-8 scroll-fade-in stagger-1">
             <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
@@ -50,12 +52,14 @@ const MainSections = () => {
 
       {/* Mission Section */}
       <section className="py-32 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-8 text-center">
+        <div className="absolute inset-0 galaxy-unified-background"></div>
+        
+        <div className="max-w-6xl mx-auto px-8 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-heading font-light mb-12 text-cosmic-white scroll-fade-in galaxy-section-header">
             Our Mission
           </h2>
           
-          <div className="galaxy-divider-line scroll-fade-in mb-12"></div>
+          <div className="galaxy-divider-enhanced scroll-fade-in mb-12"></div>
           
           <div className="space-y-8 scroll-fade-in stagger-1">
             <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
@@ -76,12 +80,14 @@ const MainSections = () => {
 
       {/* Systems That Think Section */}
       <section id="solutions" className="py-32 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="absolute inset-0 galaxy-unified-background"></div>
+        
+        <div className="max-w-7xl mx-auto px-8 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-heading font-light mb-6 text-cosmic-gold text-glow-premium scroll-fade-in galaxy-section-header">
               Systems That Think
             </h2>
-            <div className="galaxy-divider-line scroll-fade-in stagger-1"></div>
+            <div className="galaxy-divider-enhanced scroll-fade-in stagger-1"></div>
             <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-2 mt-6">
               Intelligent automation that reshapes workflow with precision
             </p>
@@ -93,29 +99,33 @@ const MainSections = () => {
                 title: "Cognitive Intelligence",
                 description: "Self-evolving logic for every workflow.",
                 tooltip: "🧠 Adaptive learning online...",
-                icon: "cognitive"
+                icon: "cognitive",
+                uniqueVisual: "brain-pulses"
               },
               {
                 title: "Neural CRM",
                 description: "Predict behaviors. Build relationships. Automate at scale.",
                 tooltip: "📊 Predictive core ready...",
-                icon: "neural"
+                icon: "neural",
+                uniqueVisual: "user-web"
               },
               {
                 title: "Infinite Automation",
                 description: "Always on. Always optimizing.",
                 tooltip: "⚡ Continuous optimization enabled...",
-                icon: "infinite"
+                icon: "infinite",
+                uniqueVisual: "infinity-loop"
               }
             ].map((system, index) => (
-              <div key={system.title} className={`galaxy-thinking-module scroll-fade-in stagger-${index + 1}`}>
-                <div className="thinking-surface">
-                  <div className="neural-particle-field"></div>
+              <div key={system.title} className={`galaxy-thinking-enhanced scroll-fade-in stagger-${index + 1}`}>
+                <div className="thinking-surface-enhanced">
+                  <div className="neural-particle-field-enhanced"></div>
                   
-                  <div className="system-icon-matrix">
-                    <div className={`thinking-icon icon-${system.icon}`}>
-                      <div className="synaptic-core"></div>
-                      <div className="neural-connections"></div>
+                  <div className="system-icon-enhanced">
+                    <div className={`thinking-icon-unique icon-${system.icon}`}>
+                      <div className="synaptic-core-enhanced"></div>
+                      <div className="neural-connections-enhanced"></div>
+                      <div className={`unique-visual visual-${system.uniqueVisual}`}></div>
                     </div>
                   </div>
 
@@ -127,41 +137,39 @@ const MainSections = () => {
                     {system.description}
                   </p>
 
-                  <div className="system-status-tooltip">
+                  <div className="system-status-tooltip-enhanced">
                     {system.tooltip}
                   </div>
                 </div>
                 
-                <div className="thinking-energy-waves"></div>
-                <div className="neural-scan-grid"></div>
+                <div className="thinking-energy-waves-enhanced"></div>
+                <div className="neural-scan-grid-enhanced"></div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Enhanced Contact Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 galaxy-unified-background"></div>
         <div className="galaxy-nebula-ambient"></div>
         
-        <div className="max-w-4xl mx-auto px-8 text-center">
+        <div className="max-w-4xl mx-auto px-8 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in galaxy-section-header">
-            Automate the Impossible
+            Automate the Impossible. Reclaim Your Time.
           </h2>
           
-          <div className="galaxy-divider-line scroll-fade-in mb-12"></div>
+          <div className="galaxy-divider-enhanced scroll-fade-in mb-12"></div>
           
-          <div className="space-y-6 mb-12 scroll-fade-in stagger-1">
+          <div className="space-y-4 mb-12 scroll-fade-in stagger-1">
             <p className="text-xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
-              Ready to transform your business with intelligent automation?
-            </p>
-            <p className="text-lg text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
-              Let's explore the possibilities.
+              Explore what SyneticAI can unlock.
             </p>
           </div>
 
           <div className="scroll-fade-in stagger-2">
-            <button className="galaxy-cta-ultimate text-lg group relative">
+            <button className="galaxy-cta-enhanced text-lg group relative">
               <span className="relative z-10 inline-flex items-center">
                 Get Started
                 <svg 
@@ -173,21 +181,21 @@ const MainSections = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-              <div className="cta-gravitational-field"></div>
-              <div className="cta-particle-stream"></div>
+              <div className="cta-stellar-rings"></div>
+              <div className="cta-energy-cascade"></div>
             </button>
           </div>
 
           <div className="mt-12 space-y-2 scroll-fade-in stagger-3">
-            <p className="text-cosmic-white/60 text-sm tracking-wider">
-              Free consultation within 24 hours
-            </p>
             <a 
               href="mailto:team@syneticai.com" 
               className="galaxy-email-beacon text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider block"
             >
               team@syneticai.com
             </a>
+            <p className="text-cosmic-white/60 text-sm tracking-wider">
+              Free consult in 24 hours
+            </p>
           </div>
         </div>
       </section>
