@@ -32,14 +32,18 @@ const Navigation = () => {
       isScrolled ? 'nav-scrolled' : 'nav-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <img 
-              src="/lovable-uploads/d31c66a8-d4db-49a3-b1af-ca493ebd4e49.png" 
-              alt="SyneticAI" 
-              className="h-8 w-auto filter brightness-110"
-            />
+        <div className="flex items-center justify-between h-24">
+          {/* Enhanced Logo */}
+          <div className="flex-shrink-0 relative">
+            <div className="logo-container">
+              <div className="logo-beam"></div>
+              <img 
+                src="/lovable-uploads/d31c66a8-d4db-49a3-b1af-ca493ebd4e49.png" 
+                alt="SyneticAI" 
+                className="h-10 w-auto logo-glow relative z-10"
+              />
+              <div className="logo-pulse-ring"></div>
+            </div>
           </div>
 
           {/* Navigation Links */}
