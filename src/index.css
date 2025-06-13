@@ -334,7 +334,8 @@
   }
   
   .solution-icon {
-    @apply text-4xl block text-center leading-20;
+    @apply text-4xl block text-center;
+    line-height: 5rem;
     filter: grayscale(1) brightness(1.2);
     transition: filter 0.3s ease;
   }
