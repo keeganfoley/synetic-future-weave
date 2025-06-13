@@ -24,7 +24,7 @@
     background: radial-gradient(ellipse at top, rgba(6, 6, 6, 0.9) 0%, rgb(6, 6, 6) 100%);
     background-attachment: fixed;
     overflow-x: hidden;
-    cursor: default;
+    cursor: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -34,31 +34,17 @@
   }
 }
 
-/* Galactic Background */
+/* Custom Cursor */
 @layer utilities {
-  .galactic-bg {
-    background: 
-      radial-gradient(circle at 25% 25%, rgba(212, 175, 97, 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(250, 250, 250, 0.01) 0%, transparent 50%),
-      linear-gradient(135deg, rgba(6, 6, 6, 0.95) 0%, rgba(14, 14, 14, 1) 100%);
-  }
-  
-  .stardust-overlay {
+  .cursor-trail {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 8px;
+    height: 8px;
+    background: rgba(var(--cosmic-gold-rgb), 0.3);
+    border-radius: 50%;
     pointer-events: none;
-    background-image: 
-      radial-gradient(1px 1px at 20px 30px, rgba(212, 175, 97, 0.3), transparent),
-      radial-gradient(1px 1px at 40px 70px, rgba(250, 250, 250, 0.2), transparent),
-      radial-gradient(1px 1px at 90px 40px, rgba(212, 175, 97, 0.2), transparent),
-      radial-gradient(1px 1px at 130px 80px, rgba(250, 250, 250, 0.1), transparent);
-    background-repeat: repeat;
-    background-size: 150px 100px;
-    animation: stardust-drift 60s linear infinite;
-    z-index: 1;
+    z-index: 9999;
+    transition: all 0.1s ease;
   }
 }
 
@@ -82,39 +68,17 @@
   .text-glow-gold {
     text-shadow: 0 0 30px rgba(var(--cosmic-gold-rgb), 0.5);
   }
-  
-  .animated-underline {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .animated-underline::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(var(--cosmic-gold-rgb), 0.8), transparent);
-    animation: flowing-underline 3s ease-in-out infinite;
-  }
 }
 
-/* Enhanced Logo Effects */
+/* Logo Effects */
 @layer components {
   .logo-container {
     position: relative;
     display: inline-block;
-    transform: scale(1.2);
   }
   
   .logo-glow {
-    filter: drop-shadow(0 0 25px rgba(var(--cosmic-gold-rgb), 0.4));
-    transition: filter 0.3s ease;
-  }
-  
-  .logo-container:hover .logo-glow {
-    filter: drop-shadow(0 0 35px rgba(var(--cosmic-gold-rgb), 0.6));
+    filter: drop-shadow(0 0 20px rgba(var(--cosmic-gold-rgb), 0.3));
   }
   
   .logo-pulse-ring {
@@ -122,229 +86,180 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 130%;
-    height: 130%;
-    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.3);
+    width: 120%;
+    height: 120%;
+    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.2);
     border-radius: 50%;
-    animation: enhanced-pulse-ring 4s ease-in-out infinite;
-  }
-  
-  .logo-orbit-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150%;
-    height: 150%;
-    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.1);
-    border-radius: 50%;
-    animation: slow-rotation 20s linear infinite;
+    animation: pulse-ring 3s ease-in-out infinite;
   }
 }
 
-/* Enhanced Navigation */
+/* Navigation */
 @layer components {
-  .nav-glass {
-    background: rgba(6, 6, 6, 0.3);
+  .nav-transparent {
+    background: rgba(6, 6, 6, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .nav-scrolled {
+    background: rgba(6, 6, 6, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(var(--cosmic-gold-rgb), 0.1);
   }
   
-  .nav-scrolled {
-    background: rgba(6, 6, 6, 0.8);
-    backdrop-filter: blur(30px);
-    border-bottom: 1px solid rgba(var(--cosmic-gold-rgb), 0.2);
+  .nav-link {
+    font-weight: 300;
+    letter-spacing: 0.02em;
   }
   
-  .futuristic-nav-button {
-    @apply relative px-6 py-3 rounded-xl font-light transition-all duration-300 overflow-hidden;
-    background: rgba(250, 250, 250, 0.02);
-    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.2);
-    backdrop-filter: blur(10px);
+  .nav-link-glow {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--cosmic-gold-rgb), 0.8), transparent);
+    transition: width 0.3s ease;
   }
   
-  .futuristic-nav-button:hover {
+  .nav-link:hover .nav-link-glow {
+    width: 100%;
+  }
+  
+  .nav-cta-button {
+    @apply px-6 py-2 border border-cosmic-gold/40 rounded-full text-cosmic-gold text-sm font-light transition-all duration-300 relative overflow-hidden;
     background: rgba(var(--cosmic-gold-rgb), 0.05);
-    border-color: rgba(var(--cosmic-gold-rgb), 0.4);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(var(--cosmic-gold-rgb), 0.15);
   }
   
-  .nav-shimmer {
+  .nav-cta-button:hover {
+    background: rgba(var(--cosmic-gold-rgb), 0.1);
+    border-color: rgba(var(--cosmic-gold-rgb), 0.6);
+    box-shadow: 0 0 20px rgba(var(--cosmic-gold-rgb), 0.2);
+  }
+  
+  .button-shine {
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.6s ease;
+    transition: left 0.5s ease;
   }
   
-  .futuristic-nav-button:hover .nav-shimmer {
+  .nav-cta-button:hover .button-shine {
     left: 100%;
-  }
-  
-  .nav-cta-enhanced {
-    @apply relative px-8 py-3 rounded-xl font-light transition-all duration-300 overflow-hidden;
-    background: linear-gradient(135deg, rgba(var(--cosmic-gold-rgb), 0.1), rgba(var(--cosmic-gold-rgb), 0.05));
-    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.4);
-    color: rgb(var(--cosmic-gold));
-    backdrop-filter: blur(15px);
-  }
-  
-  .nav-cta-enhanced:hover {
-    background: linear-gradient(135deg, rgba(var(--cosmic-gold-rgb), 0.2), rgba(var(--cosmic-gold-rgb), 0.1));
-    border-color: rgba(var(--cosmic-gold-rgb), 0.6);
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(var(--cosmic-gold-rgb), 0.25);
   }
 }
 
-/* Cosmic Floating Elements */
+/* Floating Elements */
 @layer components {
-  .cosmic-orb {
+  .floating-hexagon {
     position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--cosmic-gold-rgb), 0.1) 0%, transparent 70%);
-    animation: gentle-float 8s ease-in-out infinite;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.15);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    animation: float 6s ease-in-out infinite;
   }
   
-  .cosmic-orb-1 {
-    width: 120px;
-    height: 120px;
-    top: 15%;
-    left: 8%;
-    animation-delay: 0s;
-  }
-  
-  .cosmic-orb-2 {
-    width: 80px;
-    height: 80px;
-    top: 60%;
-    right: 12%;
-    animation-delay: 3s;
-  }
-  
-  .cosmic-orb-3 {
-    width: 100px;
-    height: 100px;
-    bottom: 25%;
-    left: 20%;
-    animation-delay: 6s;
-  }
-  
-  .light-trail {
-    position: absolute;
-    width: 2px;
-    height: 150px;
-    background: linear-gradient(180deg, transparent, rgba(var(--cosmic-gold-rgb), 0.3), transparent);
-    animation: light-flow 6s ease-in-out infinite;
-  }
-  
-  .light-trail-1 {
+  .floating-hexagon-1 {
     top: 20%;
-    left: 30%;
+    left: 10%;
     animation-delay: 0s;
   }
   
-  .light-trail-2 {
-    top: 50%;
-    right: 25%;
+  .floating-hexagon-2 {
+    top: 60%;
+    right: 15%;
     animation-delay: 2s;
   }
   
-  .light-trail-3 {
+  .floating-hexagon-3 {
     bottom: 30%;
-    left: 60%;
+    left: 15%;
     animation-delay: 4s;
   }
+  
+  .data-stream {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(180deg, transparent, rgba(var(--cosmic-gold-rgb), 0.3), transparent);
+    animation: data-flow 4s linear infinite;
+  }
+  
+  .data-stream-1 {
+    top: 10%;
+    left: 25%;
+    animation-delay: 0s;
+  }
+  
+  .data-stream-2 {
+    top: 40%;
+    right: 20%;
+    animation-delay: 1.5s;
+  }
+  
+  .data-stream-3 {
+    bottom: 20%;
+    left: 70%;
+    animation-delay: 3s;
+  }
 }
 
-/* Enhanced Process Section */
+/* Buttons */
 @layer components {
-  .process-enhanced {
-    background: 
-      radial-gradient(circle at 30% 20%, rgba(var(--cosmic-gold-rgb), 0.03) 0%, transparent 50%),
-      linear-gradient(135deg, rgba(6, 6, 6, 0.8) 0%, rgba(14, 14, 14, 0.9) 100%);
-    position: relative;
-  }
-  
-  .process-stage {
-    @apply relative p-8 rounded-2xl transition-all duration-500;
-    background: rgba(6, 6, 6, 0.7);
-    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.2);
-    backdrop-filter: blur(20px);
-  }
-  
-  .process-stage:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: rgba(var(--cosmic-gold-rgb), 0.4);
-    box-shadow: 0 20px 50px rgba(var(--cosmic-gold-rgb), 0.1);
-  }
-  
-  .process-ring {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    border: 2px solid rgba(var(--cosmic-gold-rgb), 0.3);
-    border-radius: 50%;
+  .futuristic-button {
+    @apply relative px-8 py-4 border rounded-full font-light tracking-wide transition-all duration-500 overflow-hidden;
     background: rgba(6, 6, 6, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: process-pulse 3s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.05em;
   }
   
-  .process-stage:hover .process-ring {
-    border-color: rgba(var(--cosmic-gold-rgb), 0.6);
-    animation: process-active 1s ease-in-out infinite;
+  .primary-button {
+    @apply border-cosmic-gold text-cosmic-gold;
+    box-shadow: 0 0 20px rgba(var(--cosmic-gold-rgb), 0.1);
   }
   
-  .process-connector {
+  .primary-button:hover {
+    @apply text-cosmic-black;
+    background: rgba(var(--cosmic-gold-rgb), 0.9);
+    box-shadow: 0 0 40px rgba(var(--cosmic-gold-rgb), 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .secondary-button {
+    @apply border-cosmic-white/30 text-cosmic-white;
+  }
+  
+  .secondary-button:hover {
+    @apply border-cosmic-white text-cosmic-white;
+    background: rgba(250, 250, 250, 0.1);
+    box-shadow: 0 0 20px rgba(250, 250, 250, 0.1);
+  }
+  
+  .large-button {
+    @apply px-12 py-5 text-lg;
+  }
+  
+  .button-glow {
     position: absolute;
     top: 50%;
-    right: -30px;
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(var(--cosmic-gold-rgb), 0.3), transparent);
-    animation: energy-flow 2s ease-in-out infinite;
-  }
-}
-
-/* Enhanced Buttons */
-@layer components {
-  .cosmic-button {
-    @apply relative px-10 py-4 rounded-xl font-light transition-all duration-500 overflow-hidden;
-    background: linear-gradient(135deg, rgba(6, 6, 6, 0.8), rgba(14, 14, 14, 0.9));
-    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.3);
-    backdrop-filter: blur(20px);
-    color: rgb(var(--cosmic-gold));
-  }
-  
-  .cosmic-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    border-color: rgba(var(--cosmic-gold-rgb), 0.6);
-    box-shadow: 0 15px 40px rgba(var(--cosmic-gold-rgb), 0.2);
-  }
-  
-  .button-energy-beam {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(var(--cosmic-gold-rgb), 0.3), transparent);
-    transition: left 0.8s ease;
+    background: radial-gradient(ellipse, rgba(var(--cosmic-gold-rgb), 0.3) 0%, transparent 70%);
+    transition: width 0.5s ease;
+    pointer-events: none;
   }
   
-  .cosmic-button:hover .button-energy-beam {
-    left: 100%;
+  .primary-button:hover .button-glow {
+    width: 120%;
   }
   
-  .button-glow-particles {
+  .button-particles {
     position: absolute;
     top: 0;
     left: 0;
@@ -353,136 +268,305 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.5s ease;
-    background: 
-      radial-gradient(circle at 20% 20%, rgba(var(--cosmic-gold-rgb), 0.3) 1px, transparent 1px),
-      radial-gradient(circle at 80% 80%, rgba(var(--cosmic-gold-rgb), 0.2) 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: particles-float 3s ease-in-out infinite;
   }
   
-  .cosmic-button:hover .button-glow-particles {
+  .primary-button:hover .button-particles {
     opacity: 1;
+    animation: particles 2s ease-out;
   }
 }
 
-/* Widget Containers */
+/* Scroll Indicator */
 @layer components {
-  .cosmic-widget {
-    @apply relative p-6 rounded-2xl transition-all duration-300;
-    background: rgba(6, 6, 6, 0.6);
-    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.15);
-    backdrop-filter: blur(15px);
+  .scroll-indicator {
+    width: 2px;
+    height: 60px;
+    background: rgba(var(--cosmic-gold-rgb), 0.2);
+    border-radius: 2px;
+    position: relative;
+    animation: scroll-pulse 2s ease-in-out infinite;
   }
   
-  .cosmic-widget:hover {
-    transform: translateY(-5px);
-    border-color: rgba(var(--cosmic-gold-rgb), 0.3);
-    box-shadow: 0 15px 35px rgba(var(--cosmic-gold-rgb), 0.08);
-  }
-  
-  .widget-glow {
+  .scroll-dot {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 1rem;
-    background: linear-gradient(45deg, transparent, rgba(var(--cosmic-gold-rgb), 0.05), transparent);
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: rgba(var(--cosmic-gold-rgb), 0.8);
+    border-radius: 50%;
+    animation: scroll-bounce 2s ease-in-out infinite;
+  }
+}
+
+/* Solutions Section */
+@layer components {
+  .solution-bg-pattern {
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(var(--cosmic-gold-rgb), 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(250, 250, 250, 0.02) 0%, transparent 50%);
+    animation: pattern-drift 20s ease-in-out infinite;
+  }
+  
+  .solution-card {
+    @apply relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .solution-card-inner {
+    @apply p-8 rounded-3xl border border-cosmic-gold/20 relative overflow-hidden;
+    background: rgba(6, 6, 6, 0.7);
+    backdrop-filter: blur(20px);
+    transition: all 0.5s ease;
+  }
+  
+  .solution-card:hover .solution-card-inner {
+    transform: translateY(-8px);
+    border-color: rgba(var(--cosmic-gold-rgb), 0.4);
+    box-shadow: 0 20px 60px rgba(var(--cosmic-gold-rgb), 0.1);
+  }
+  
+  .solution-icon-container {
+    @apply relative w-20 h-20 mx-auto mb-6;
+  }
+  
+  .solution-icon {
+    @apply text-4xl block text-center leading-20;
+    filter: grayscale(1) brightness(1.2);
+    transition: filter 0.3s ease;
+  }
+  
+  .solution-card:hover .solution-icon {
+    filter: grayscale(0) brightness(1);
+  }
+  
+  .icon-orbit {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px solid rgba(var(--cosmic-gold-rgb), 0.2);
+    border-radius: 50%;
+    animation: orbit 10s linear infinite;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
   
-  .cosmic-widget:hover .widget-glow {
+  .solution-card:hover .icon-orbit {
+    opacity: 1;
+  }
+  
+  .solution-card-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(var(--cosmic-gold-rgb), 0.1), transparent);
+    transition: left 0.8s ease;
+  }
+  
+  .solution-card:hover .solution-card-glow {
+    left: 100%;
+  }
+}
+
+/* Process Section */
+@layer components {
+  .process-bg-pattern {
+    background: 
+      linear-gradient(45deg, transparent 49%, rgba(var(--cosmic-gold-rgb), 0.05) 50%, transparent 51%),
+      linear-gradient(-45deg, transparent 49%, rgba(var(--cosmic-gold-rgb), 0.05) 50%, transparent 51%);
+    background-size: 100px 100px;
+    animation: pattern-shift 30s linear infinite;
+  }
+  
+  .timeline-line {
+    background: linear-gradient(180deg, transparent, rgba(var(--cosmic-gold-rgb), 0.5), transparent);
+    animation: timeline-glow 3s ease-in-out infinite;
+  }
+  
+  .process-step {
+    @apply relative flex items-center mb-16;
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .process-step.left {
+    transform: translateX(-100px);
+  }
+  
+  .process-step.right {
+    transform: translateX(100px);
+    flex-direction: row-reverse;
+  }
+  
+  .process-step.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .process-card {
+    @apply relative p-8 rounded-2xl border border-cosmic-gold/20 max-w-md;
+    background: rgba(6, 6, 6, 0.8);
+    backdrop-filter: blur(20px);
+    margin: 0 2rem;
+  }
+  
+  .process-number {
+    @apply text-6xl font-light text-cosmic-gold/30 mb-4;
+    font-family: 'SF Mono', monospace;
+  }
+  
+  .timeline-dot {
+    @apply absolute w-6 h-6 rounded-full border-2 border-cosmic-gold bg-cosmic-black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  
+  .timeline-dot-inner {
+    @apply w-2 h-2 rounded-full bg-cosmic-gold absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: dot-pulse 2s ease-in-out infinite;
+  }
+  
+  .process-card-glow {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, transparent, rgba(var(--cosmic-gold-rgb), 0.3), transparent);
+    border-radius: 1rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+  }
+  
+  .process-step:hover .process-card-glow {
     opacity: 1;
   }
 }
 
-/* Animations */
-@keyframes stardust-drift {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-150px) translateY(-100px); }
+/* Contact Section */
+@layer components {
+  .contact-bg-pattern {
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(var(--cosmic-gold-rgb), 0.05) 0%, transparent 50%);
+    animation: contact-pulse 8s ease-in-out infinite;
+  }
 }
 
-@keyframes enhanced-pulse-ring {
+/* Animations */
+@keyframes pulse-ring {
   0%, 100% { 
     opacity: 0.3; 
     transform: translate(-50%, -50%) scale(1); 
   }
   50% { 
-    opacity: 0.7; 
-    transform: translate(-50%, -50%) scale(1.15); 
+    opacity: 0.6; 
+    transform: translate(-50%, -50%) scale(1.1); 
   }
 }
 
-@keyframes slow-rotation {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
 }
 
-@keyframes flowing-underline {
-  0%, 100% { left: -100%; }
-  50% { left: 100%; }
-}
-
-@keyframes gentle-float {
-  0%, 100% { transform: translateY(0px) translateX(0px); }
-  33% { transform: translateY(-15px) translateX(8px); }
-  66% { transform: translateY(8px) translateX(-12px); }
-}
-
-@keyframes light-flow {
+@keyframes data-flow {
   0% { transform: translateY(-100px); opacity: 0; }
-  50% { opacity: 0.8; }
+  50% { opacity: 1; }
   100% { transform: translateY(100px); opacity: 0; }
 }
 
-@keyframes process-pulse {
-  0%, 100% { 
-    box-shadow: 0 0 0 0 rgba(var(--cosmic-gold-rgb), 0.3); 
+@keyframes particles {
+  0% { 
+    background: radial-gradient(circle, rgba(var(--cosmic-gold-rgb), 0.8) 1px, transparent 1px);
+    background-size: 10px 10px;
+    opacity: 0;
   }
   50% { 
-    box-shadow: 0 0 0 10px rgba(var(--cosmic-gold-rgb), 0); 
-  }
-}
-
-@keyframes process-active {
-  0%, 100% { 
-    transform: translateX(-50%) scale(1); 
-  }
-  50% { 
-    transform: translateX(-50%) scale(1.1); 
-  }
-}
-
-@keyframes energy-flow {
-  0% { opacity: 0.3; transform: translateX(0); }
-  50% { opacity: 1; transform: translateX(20px); }
-  100% { opacity: 0.3; transform: translateX(0); }
-}
-
-@keyframes particles-float {
-  0%, 100% { 
-    background-position: 0 0, 20px 20px; 
-    opacity: 0.5; 
-  }
-  50% { 
-    background-position: 10px 10px, 30px 30px; 
     opacity: 1; 
+    background-position: 5px 5px;
   }
+  100% { 
+    opacity: 0;
+    background-position: 10px 10px;
+  }
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(20px); }
+}
+
+@keyframes pattern-drift {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(5px) translateY(-5px); }
+  50% { transform: translateX(-5px) translateY(5px); }
+  75% { transform: translateX(5px) translateY(5px); }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes timeline-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { 
+    opacity: 0.8; 
+    transform: translate(-50%, -50%) scale(1); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1.2); 
+  }
+}
+
+@keyframes pattern-shift {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+@keyframes contact-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .logo-container {
-    transform: scale(1);
+  .process-step.left,
+  .process-step.right {
+    flex-direction: column;
+    text-align: center;
   }
   
-  .cosmic-orb {
-    display: none;
+  .timeline-dot {
+    position: relative;
+    margin: 1rem 0;
   }
   
-  .process-connector {
-    display: none;
+  .process-card {
+    margin: 0;
   }
 }
 
