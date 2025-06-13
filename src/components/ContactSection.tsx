@@ -2,30 +2,39 @@
 const ContactSection = () => {
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 contact-bg-pattern"></div>
+      <div className="absolute inset-0">
+        <div className="cosmic-orb" style={{
+          width: '200px',
+          height: '200px',
+          top: '20%',
+          right: '10%',
+          opacity: 0.3
+        }}></div>
+      </div>
       
       <div className="max-w-4xl mx-auto px-8 text-center relative z-10">
-        <h2 className="text-4xl md:text-6xl font-light mb-8 text-glow">
+        <h2 className="text-5xl md:text-7xl font-light mb-8 text-glow animated-underline">
           Ready to Transform?
         </h2>
         
-        <p className="text-xl text-cosmic-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-cosmic-white/80 mb-16 max-w-2xl mx-auto leading-relaxed">
           Let's discuss how intelligent automation can revolutionize your business operations.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <button className="futuristic-button primary-button large-button group">
+        <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-20">
+          <button className="cosmic-button group">
             <span className="relative z-10">Start Your Journey</span>
-            <div className="button-glow"></div>
-            <div className="button-particles"></div>
+            <div className="button-energy-beam"></div>
+            <div className="button-glow-particles"></div>
           </button>
           
           <a 
             href="mailto:team@syneticai.com" 
-            className="futuristic-button secondary-button large-button group"
+            className="cosmic-button group"
           >
             <span className="relative z-10">team@syneticai.com</span>
-            <div className="button-glow"></div>
+            <div className="button-energy-beam"></div>
+            <div className="button-glow-particles"></div>
           </a>
         </div>
 

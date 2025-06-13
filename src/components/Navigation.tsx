@@ -15,8 +15,7 @@ const Navigation = () => {
 
   const navLinks = [
     { name: 'Solutions', href: '#solutions' },
-    { name: 'Process', href: '#process' },
-    { name: 'About', href: '#about' },
+    { name: 'Vision', href: '#process' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -29,38 +28,44 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'nav-scrolled' : 'nav-transparent'
+      isScrolled ? 'nav-scrolled' : 'nav-glass'
     }`}>
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Enhanced Logo */}
           <div className="flex-shrink-0">
-            <img 
-              src="/lovable-uploads/d31c66a8-d4db-49a3-b1af-ca493ebd4e49.png" 
-              alt="SyneticAI" 
-              className="h-8 w-auto filter brightness-110"
-            />
+            <div className="logo-container">
+              <img 
+                src="/lovable-uploads/d31c66a8-d4db-49a3-b1af-ca493ebd4e49.png" 
+                alt="SyneticAI" 
+                className="h-10 w-auto logo-glow"
+              />
+              <div className="logo-pulse-ring"></div>
+              <div className="logo-orbit-ring"></div>
+            </div>
           </div>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-12">
+          {/* Futuristic Navigation Links */}
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className="nav-link text-cosmic-white/80 hover:text-cosmic-gold transition-all duration-300 relative"
+                className="futuristic-nav-button relative"
               >
-                {link.name}
-                <div className="nav-link-glow"></div>
+                <span className="relative z-10 text-cosmic-white/90 hover:text-cosmic-gold transition-colors">
+                  {link.name}
+                </span>
+                <div className="nav-shimmer"></div>
               </button>
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Enhanced CTA Button */}
           <div className="hidden md:block">
-            <button className="nav-cta-button">
-              <span>Get Started</span>
-              <div className="button-shine"></div>
+            <button className="nav-cta-enhanced relative">
+              <span className="relative z-10">Get Started</span>
+              <div className="nav-shimmer"></div>
             </button>
           </div>
         </div>
