@@ -3,12 +3,10 @@ import { useState, useEffect } from 'react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [logoHovered, setLogoHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -17,7 +15,8 @@ const Navigation = () => {
 
   const navLinks = [
     { name: 'Solutions', href: '#solutions' },
-    { name: 'Vision', href: '#vision' },
+    { name: 'Process', href: '#process' },
+    { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -25,86 +24,48 @@ const Navigation = () => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
     }
   };
 
   return (
-    <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        isScrolled ? 'glass-nav-enhanced' : ''
-      }`}>
-        <div className="max-w-8xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-24 py-4">
-            {/* Enhanced Logo with Sentient Node */}
-            <div 
-              className="flex-shrink-0 relative logo-sentient-node"
-              onMouseEnter={() => setLogoHovered(true)}
-              onMouseLeave={() => setLogoHovered(false)}
-            >
-              <div className="logo-floating-glow"></div>
-              <div className={`logo-aura-ring ${logoHovered ? 'logo-aura-expanded' : ''}`}></div>
-              <img 
-                src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
-                alt="Synetic AI" 
-                className="brand-logo-sentient"
-              />
-              <div className="logo-interaction-pulse"></div>
-            </div>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled ? 'nav-scrolled' : 'nav-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <img 
+              src="/lovable-uploads/d31c66a8-d4db-49a3-b1af-ca493ebd4e49.png" 
+              alt="SyneticAI" 
+              className="h-8 w-auto filter brightness-110"
+            />
+          </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-12">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="nav-link-hud text-base font-light tracking-wide"
-                >
-                  {link.name}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center space-x-12">
+            {navLinks.map((link) => (
               <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-cosmic-white hover:text-cosmic-gold transition-colors duration-500"
+                key={link.name}
+                onClick={() => scrollToSection(link.href)}
+                className="nav-link text-cosmic-white/80 hover:text-cosmic-gold transition-all duration-300 relative"
               >
-                <div className="w-7 h-7 flex flex-col justify-center items-center">
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-2' : '-translate-y-1.5'
-                  }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 ${
-                    isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
-                  }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-2' : 'translate-y-1.5'
-                  }`} />
-                </div>
+                {link.name}
+                <div className="nav-link-glow"></div>
               </button>
-            </div>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <button className="nav-cta-button">
+              <span>Get Started</span>
+              <div className="button-shine"></div>
+            </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden glass-nav-enhanced border-t border-cosmic-gold/20">
-            <div className="px-8 py-8 space-y-8">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-hud text-lg w-full text-left"
-                >
-                  {link.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 
