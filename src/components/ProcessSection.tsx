@@ -21,27 +21,33 @@ const ProcessSection = () => {
   const processes = [
     {
       step: "01",
-      title: "Discovery",
+      title: "Discover",
       description: "We analyze your current systems and identify optimization opportunities.",
-      side: "left"
+      delay: "0ms"
     },
     {
-      step: "02",
-      title: "Architecture",
+      step: "02", 
+      title: "Architect",
       description: "Custom AI solutions designed specifically for your business logic.",
-      side: "right"
+      delay: "200ms"
     },
     {
       step: "03",
-      title: "Integration",
+      title: "Integrate", 
       description: "Seamless deployment with zero disruption to existing workflows.",
-      side: "left"
+      delay: "400ms"
     },
     {
       step: "04",
-      title: "Evolution",
+      title: "Evolve",
       description: "Continuous learning and optimization as your business grows.",
-      side: "right"
+      delay: "600ms"
+    },
+    {
+      step: "05",
+      title: "Transform",
+      description: "Complete digital transformation with intelligent automation at scale.",
+      delay: "800ms"
     }
   ];
 
@@ -49,43 +55,40 @@ const ProcessSection = () => {
     <section id="process" ref={sectionRef} className="py-32 relative overflow-hidden">
       <div className="absolute inset-0 process-bg-pattern"></div>
       
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+      <div className="max-w-4xl mx-auto px-8 relative z-10">
         <div className={`text-center mb-20 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}>
-          <h2 className="text-4xl md:text-6xl font-light mb-6 text-glow">
+          <h2 className="section-title">
             Our Process
+            <div className="section-title-glow"></div>
           </h2>
-          <p className="text-xl text-cosmic-white/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="section-subtitle">
             A systematic approach to implementing intelligence that adapts and evolves with your business.
           </p>
         </div>
 
         <div className="relative">
-          {/* Central timeline */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px timeline-line"></div>
+          {/* Vertical timeline */}
+          <div className="absolute left-8 top-0 bottom-0 w-px process-timeline-vertical"></div>
           
           {processes.map((process, index) => (
             <div
               key={process.step}
-              className={`process-step ${process.side} ${
+              className={`process-step-vertical ${
                 isVisible ? 'visible' : ''
               }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              style={{ transitionDelay: process.delay }}
             >
-              <div className="process-card">
-                <div className="process-number">{process.step}</div>
-                <h3 className="text-2xl font-light mb-4 text-cosmic-gold">
-                  {process.title}
-                </h3>
-                <p className="text-cosmic-white/80 leading-relaxed">
-                  {process.description}
-                </p>
-                <div className="process-card-glow"></div>
+              <div className="process-step-marker">
+                <div className="process-step-number">{process.step}</div>
+                <div className="process-step-glow"></div>
               </div>
               
-              <div className="timeline-dot">
-                <div className="timeline-dot-inner"></div>
+              <div className="process-content">
+                <h3 className="process-title">{process.title}</h3>
+                <p className="process-description">{process.description}</p>
+                <div className="process-hover-line"></div>
               </div>
             </div>
           ))}

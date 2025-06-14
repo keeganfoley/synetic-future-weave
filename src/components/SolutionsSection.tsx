@@ -22,19 +22,19 @@ const SolutionsSection = () => {
     {
       title: "Cognitive Intelligence",
       description: "Self-evolving systems that learn and adapt to your unique business patterns.",
-      icon: "🧠",
+      iconType: "neural-network",
       delay: "0ms"
     },
     {
       title: "Predictive CRM",
       description: "Advanced relationship mapping with behavioral prediction capabilities.",
-      icon: "🔮",
+      iconType: "data-matrix",
       delay: "200ms"
     },
     {
       title: "Process Automation",
       description: "Seamless workflow optimization that eliminates friction and maximizes efficiency.",
-      icon: "⚡",
+      iconType: "energy-flow",
       delay: "400ms"
     }
   ];
@@ -47,10 +47,11 @@ const SolutionsSection = () => {
         <div className={`text-center mb-20 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}>
-          <h2 className="text-4xl md:text-6xl font-light mb-6 text-glow">
+          <h2 className="section-title">
             Intelligent Solutions
+            <div className="section-title-glow"></div>
           </h2>
-          <p className="text-xl text-cosmic-white/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="section-subtitle">
             Our AI-powered automation platform transforms complex workflows into elegant, 
             self-managing systems that evolve with your business.
           </p>
@@ -60,26 +61,28 @@ const SolutionsSection = () => {
           {solutions.map((solution, index) => (
             <div
               key={solution.title}
-              className={`solution-card transition-all duration-1000 ${
+              className={`solution-card-enhanced transition-all duration-1000 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: solution.delay }}
             >
-              <div className="solution-card-inner">
-                <div className="solution-icon-container">
-                  <span className="solution-icon">{solution.icon}</span>
-                  <div className="icon-orbit"></div>
+              <div className="solution-card-inner-enhanced group">
+                <div className="solution-icon-container-new">
+                  <div className={`abstract-icon ${solution.iconType}`}></div>
+                  <div className="icon-energy-ring"></div>
+                  <div className="icon-pulse-effect"></div>
                 </div>
                 
-                <h3 className="text-2xl font-light mb-4 text-cosmic-gold">
+                <h3 className="solution-title">
                   {solution.title}
                 </h3>
                 
-                <p className="text-cosmic-white/80 leading-relaxed">
+                <p className="solution-description">
                   {solution.description}
                 </p>
                 
-                <div className="solution-card-glow"></div>
+                <div className="solution-hover-effect"></div>
+                <div className="solution-digital-noise"></div>
               </div>
             </div>
           ))}
