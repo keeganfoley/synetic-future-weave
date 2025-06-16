@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
@@ -13,21 +14,21 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Orbital element */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div className="orbital-element animate-orbital-line"></div>
-      </div>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-galaxy-2025">
+      {/* Ambient light effects behind headline */}
+      <div className="hero-ambient-light-1"></div>
+      <div className="hero-ambient-light-2"></div>
+      <div className="hero-backlight-beam"></div>
       
       {/* Hero Content */}
       <div className={`text-center z-10 px-8 transition-all duration-1500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}>
-        <h1 className="font-heading font-light mb-12 leading-[0.9]">
-          <span className="block hero-tagline-primary mb-6 animate-fade-in-up text-etched">
+        <h1 className="font-heading font-light mb-12 leading-[0.9] hero-title-2025">
+          <span className="block hero-main-line mb-6 animate-fade-in-up">
             Intelligence in Motion.
           </span>
-          <span className="block hero-tagline-secondary mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <span className="block hero-sub-line mb-8 animate-fade-in-up text-cosmic-gold text-glow-premium-enhanced" style={{ animationDelay: '0.4s' }}>
             Automation Without Friction.
           </span>
         </h1>
@@ -37,7 +38,7 @@ const HeroSection = () => {
         }`}>
           We design systems that eliminate the ordinary.
           <br />
-          <span className="text-cosmic-gold font-normal">Precision automation. Time reclaimed.</span>
+          <span className="text-cosmic-gold font-normal text-glow-premium">Precision automation. Time reclaimed.</span>
         </p>
 
         <div className={`transition-all duration-1500 delay-1400 ${
@@ -45,7 +46,7 @@ const HeroSection = () => {
         }`}>
           <button 
             onClick={scrollToNextSection}
-            className="luxury-button text-lg group relative"
+            className="luxury-button-2025 text-lg group relative"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
@@ -63,9 +64,9 @@ const HeroSection = () => {
       </div>
 
       {/* Enhanced scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-gentle-float">
-        <div className="w-6 h-10 border-2 border-cosmic-gold/40 rounded-full flex justify-center opacity-70">
-          <div className="w-1 h-3 bg-cosmic-gold/60 rounded-full mt-2 animate-pulse-subtle"></div>
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 scroll-indicator-galaxy">
+        <div className="scroll-container-2025">
+          <div className="scroll-energy-pulse"></div>
         </div>
       </div>
     </section>

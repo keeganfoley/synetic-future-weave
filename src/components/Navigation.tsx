@@ -31,26 +31,34 @@ const Navigation = () => {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        isScrolled ? 'glass-nav' : ''
+        isScrolled ? 'nav-galaxy-scrolled' : 'nav-galaxy-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-32 py-4">
-            {/* Logo */}
-            <div className="flex-shrink-0 mr-12">
-              <img 
-                src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
-                alt="Synetic AI" 
-                className="brand-logo-hero"
-              />
+          <div className="flex items-center justify-between h-24 py-4">
+            {/* Enhanced Logo with Hover Effects */}
+            <div className="flex-shrink-0 mr-12 logo-galaxy-container group">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
+                  alt="Synetic AI" 
+                  className="brand-logo-2025"
+                />
+                {/* Golden beam effect */}
+                <div className="logo-golden-beam"></div>
+                {/* Ambient glow */}
+                <div className="logo-ambient-glow"></div>
+                {/* Radiant pulse */}
+                <div className="logo-radiant-pulse"></div>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-20">
+            <div className="hidden md:flex items-center space-x-12">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link text-lg"
+                  className="nav-link-2025"
                 >
                   {link.name}
                 </button>
@@ -81,13 +89,13 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden glass-nav border-t border-cosmic-gold/20">
+          <div className="md:hidden nav-galaxy-scrolled border-t border-cosmic-gold/20">
             <div className="px-8 py-8 space-y-8">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link text-xl w-full text-left"
+                  className="block nav-link-2025 text-xl w-full text-left"
                 >
                   {link.name}
                 </button>
