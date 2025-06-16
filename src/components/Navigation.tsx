@@ -3,20 +3,20 @@ import { useState, useEffect } from 'react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 80);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { name: 'Solutions', href: '#solutions' },
-    { name: 'Process', href: '#process' },
-    { name: 'About', href: '#about' },
+    { name: 'Vision', href: '#vision' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -24,55 +24,79 @@ const Navigation = () => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
     }
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'nav-scrolled' : 'nav-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Enhanced Logo - Moved to top left and made larger */}
-          <div className="flex-shrink-0 relative">
-            <div className="logo-container-large">
-              <div className="logo-beam-large"></div>
-              <div className="logo-text-container">
-                <span className="logo-text">
-                  SYNETIC<span className="logo-ai">AI</span>
-                </span>
-              </div>
-              <div className="logo-pulse-ring-large"></div>
-              <div className="logo-orbit-ring"></div>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        isScrolled ? 'glass-nav' : ''
+      }`}>
+        <div className="max-w-7xl mx-auto px-8 lg:px-16">
+          <div className="flex items-center justify-between h-32 py-4">
+            {/* Logo */}
+            <div className="flex-shrink-0 mr-12">
+              <img 
+                src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
+                alt="Synetic AI" 
+                className="brand-logo-hero"
+              />
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-20">
+              {navLinks.map((link) => (
+                <button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  className="nav-link text-lg"
+                >
+                  {link.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-cosmic-white hover:text-cosmic-gold transition-colors duration-500"
+              >
+                <div className="w-7 h-7 flex flex-col justify-center items-center">
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
+                    isMobileMenuOpen ? 'rotate-45 translate-y-2' : '-translate-y-1.5'
+                  }`} />
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 ${
+                    isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
+                  }`} />
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-2' : 'translate-y-1.5'
+                  }`} />
+                </div>
+              </button>
             </div>
           </div>
-
-          {/* Enhanced Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className="nav-link-futuristic group relative"
-              >
-                <span className="relative z-10">{link.name}</span>
-                <div className="nav-glow-effect"></div>
-                <div className="nav-energy-pulse"></div>
-              </button>
-            ))}
-          </div>
-
-          {/* Enhanced CTA Button */}
-          <div className="hidden md:block">
-            <button className="futuristic-nav-cta group">
-              <span className="relative z-10">Get Started</span>
-              <div className="spinning-globe"></div>
-              <div className="button-energy-flow"></div>
-            </button>
-          </div>
         </div>
-      </div>
-    </nav>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden glass-nav border-t border-cosmic-gold/20">
+            <div className="px-8 py-8 space-y-8">
+              {navLinks.map((link) => (
+                <button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  className="block nav-link text-xl w-full text-left"
+                >
+                  {link.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+    </>
   );
 };
 

@@ -8,13 +8,29 @@ const AnimatedBackground = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Create subtle starfield dots
-    const createStarfieldDot = () => {
+    // Create constellation lines
+    const createConstellationLine = () => {
+      const line = document.createElement('div');
+      line.className = 'constellation-line';
+      line.style.left = Math.random() * 100 + '%';
+      line.style.animationDelay = Math.random() * 20 + 's';
+      container.appendChild(line);
+
+      // Remove after animation
+      setTimeout(() => {
+        if (container.contains(line)) {
+          container.removeChild(line);
+        }
+      }, 20000);
+    };
+
+    // Create matrix dots
+    const createMatrixDot = () => {
       const dot = document.createElement('div');
-      dot.className = 'starfield-dot';
+      dot.className = 'matrix-dot';
       dot.style.left = Math.random() * 100 + '%';
       dot.style.top = Math.random() * 100 + '%';
-      dot.style.animationDelay = Math.random() * 4 + 's';
+      dot.style.animationDelay = Math.random() * 3 + 's';
       container.appendChild(dot);
 
       // Remove after animation cycles
@@ -22,18 +38,21 @@ const AnimatedBackground = () => {
         if (container.contains(dot)) {
           container.removeChild(dot);
         }
-      }, 12000);
+      }, 9000);
     };
 
     // Create elements periodically
-    const dotInterval = setInterval(createStarfieldDot, 4000);
+    const lineInterval = setInterval(createConstellationLine, 3000);
+    const dotInterval = setInterval(createMatrixDot, 2000);
 
     // Initial elements
-    for (let i = 0; i < 5; i++) {
-      setTimeout(createStarfieldDot, i * 800);
+    for (let i = 0; i < 3; i++) {
+      setTimeout(createConstellationLine, i * 1000);
+      setTimeout(createMatrixDot, i * 500);
     }
 
     return () => {
+      clearInterval(lineInterval);
       clearInterval(dotInterval);
     };
   }, []);
