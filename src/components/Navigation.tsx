@@ -31,28 +31,30 @@ const Navigation = () => {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        isScrolled ? 'nav-galaxy-scrolled' : 'nav-galaxy-transparent'
+        isScrolled ? 'nav-scrolled-2025' : 'nav-transparent-2025'
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Enhanced Logo with Hover Effects */}
-            <div className="flex-shrink-0 mr-12 logo-galaxy-container group">
+            {/* Revolutionary 2025 Logo */}
+            <div className="flex-shrink-0 mr-12 logo-container-2025 group cursor-pointer">
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
+                  src="/lovable-uploads/15c32940-8d1d-4aaf-b5cc-4dfc267e8efa.png" 
                   alt="Synetic AI" 
-                  className="brand-logo-2025"
+                  className="logo-2025"
                 />
-                {/* Golden beam effect */}
-                <div className="logo-golden-beam"></div>
-                {/* Ambient glow */}
-                <div className="logo-ambient-glow"></div>
-                {/* Radiant pulse */}
-                <div className="logo-radiant-pulse"></div>
+                {/* Radiant pulse background */}
+                <div className="logo-radiant-pulse-2025"></div>
+                {/* Beaming effect */}
+                <div className="logo-beam-effect-2025"></div>
+                {/* Ambient shimmer */}
+                <div className="logo-shimmer-2025"></div>
+                {/* Orbital ring */}
+                <div className="logo-orbital-ring-2025"></div>
               </div>
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Enhanced Navigation Links */}
             <div className="hidden md:flex items-center space-x-12">
               {navLinks.map((link) => (
                 <button
@@ -60,7 +62,9 @@ const Navigation = () => {
                   onClick={() => scrollToSection(link.href)}
                   className="nav-link-2025"
                 >
-                  {link.name}
+                  <span className="nav-text-glow">{link.name}</span>
+                  <div className="nav-golden-underline"></div>
+                  <div className="nav-hover-shimmer"></div>
                 </button>
               ))}
             </div>
@@ -89,7 +93,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden nav-galaxy-scrolled border-t border-cosmic-gold/20">
+          <div className="md:hidden nav-scrolled-2025 border-t border-cosmic-gold/20">
             <div className="px-8 py-8 space-y-8">
               {navLinks.map((link) => (
                 <button
@@ -97,7 +101,7 @@ const Navigation = () => {
                   onClick={() => scrollToSection(link.href)}
                   className="block nav-link-2025 text-xl w-full text-left"
                 >
-                  {link.name}
+                  <span className="nav-text-glow">{link.name}</span>
                 </button>
               ))}
             </div>

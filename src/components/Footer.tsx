@@ -1,50 +1,47 @@
 
 const Footer = () => {
   return (
-    <footer className="relative z-10 py-20 px-8 border-t border-cosmic-gold/20 footer-galaxy">
+    <footer className="relative z-10 py-20 px-8 footer-2025">
       <div className="max-w-6xl mx-auto">
-        {/* Golden separator line */}
-        <div className="footer-separator mb-16"></div>
+        {/* Flowing horizontal line */}
+        <div className="footer-flowing-line mb-16"></div>
+        
+        {/* Nebula background */}
+        <div className="footer-nebula-texture"></div>
+        <div className="footer-drifting-stars"></div>
         
         <div className="text-center space-y-8">
-          {/* Main footer message */}
-          <p className="text-2xl md:text-3xl font-light text-cosmic-white tracking-wide footer-fade-in">
-            Let's elevate the future — 
-            <span className="text-cosmic-gold text-glow-premium ml-2">together.</span>
-          </p>
-          
-          {/* Logo */}
-          <div className="footer-fade-in-delay-1">
+          {/* Enhanced logo */}
+          <div className="footer-logo-container">
             <img 
-              src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
+              src="/lovable-uploads/15c32940-8d1d-4aaf-b5cc-4dfc267e8efa.png" 
               alt="Synetic AI" 
-              className="footer-logo mx-auto"
+              className="footer-logo-2025 mx-auto"
             />
+            <div className="footer-logo-glow"></div>
           </div>
           
+          {/* Main footer message */}
+          <p className="footer-main-text">
+            Let's elevate the future — 
+            <span className="text-cosmic-gold hero-glow-text ml-2">together.</span>
+          </p>
+          
           {/* Contact and Copyright */}
-          <div className="footer-fade-in-delay-2 space-y-4">
+          <div className="footer-contact-section space-y-4">
             <a 
               href="mailto:team@syneticai.com" 
-              className="block text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-xl font-light tracking-wide text-glow-premium"
+              className="footer-email-link"
             >
               team@syneticai.com
+              <div className="email-scan-line"></div>
             </a>
-            <p className="text-cosmic-white/60 text-sm tracking-wider">
+            <p className="footer-copyright">
               © 2025 Synetic AI. All rights reserved.
             </p>
           </div>
         </div>
       </div>
-      
-      {/* Floating star dust effect */}
-      <div className="footer-stardust-1"></div>
-      <div className="footer-stardust-2"></div>
-      <div className="footer-stardust-3"></div>
-      
-      {/* Light trails */}
-      <div className="footer-light-trail-1"></div>
-      <div className="footer-light-trail-2"></div>
     </footer>
   );
 };
