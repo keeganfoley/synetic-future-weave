@@ -48,9 +48,7 @@ const HeroSection = () => {
         <p className={`hero-subtitle-2025 transition-all duration-1500 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          We design systems that eliminate the ordinary.
-          <br />
-          <span className="text-cosmic-gold font-normal hero-glow-text">Precision automation. Time reclaimed.</span>
+          We design systems that eliminate lag, evolve on their own, and adapt in real-time.
         </p>
 
         <div className={`transition-all duration-1500 delay-1400 ${

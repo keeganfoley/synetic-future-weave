@@ -16,15 +16,18 @@ const Footer = () => {
             <img 
               src="/lovable-uploads/15c32940-8d1d-4aaf-b5cc-4dfc267e8efa.png" 
               alt="Synetic AI" 
-              className="footer-logo-2025 mx-auto"
+              className="footer-logo-2025 mx-auto h-8 w-auto"
             />
             <div className="footer-logo-glow"></div>
+            {/* Trailing light effect */}
+            <div className="absolute inset-0 -z-10">
+              <div className="w-20 h-1 bg-gradient-to-r from-transparent via-cosmic-gold/20 to-transparent absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+            </div>
           </div>
           
           {/* Main footer message */}
           <p className="footer-main-text">
-            Let's elevate the future — 
-            <span className="text-cosmic-gold hero-glow-text ml-2">together.</span>
+            <span className="text-cosmic-gold hero-glow-text">Designed to evolve. Built to last.</span>
           </p>
           
           {/* Contact and Copyright */}
@@ -36,9 +39,14 @@ const Footer = () => {
               team@syneticai.com
               <div className="email-scan-line"></div>
             </a>
-            <p className="footer-copyright">
-              © 2025 Synetic AI. All rights reserved.
-            </p>
+            <div className="space-y-2">
+              <p className="footer-copyright">
+                © 2025 Synetic AI. All rights reserved.
+              </p>
+              <p className="text-cosmic-gold/80 text-sm font-light tracking-wide hero-glow-text">
+                Intelligence in Motion. Automation Without Friction.
+              </p>
+            </div>
           </div>
         </div>
       </div>

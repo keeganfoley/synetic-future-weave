@@ -50,9 +50,7 @@ const MainSections = () => {
               Our Vision
             </h2>
             <p className="scroll-slide-left stagger-2 vision-text-2025 mb-20">
-              Synetic AI envisions automation that liberates humanity.
-              <br />
-              <span className="text-cosmic-gold font-normal hero-glow-text shimmer-text">Dream bigger. Create freely. Live fully.</span>
+              Systems that anticipate, evolve, and operate at the speed of thought.
             </p>
             
             <div className="scroll-fade-in stagger-4">
@@ -60,10 +58,10 @@ const MainSections = () => {
                 Our Mission
               </h3>
               <p className="mission-text-2025">
-                We engineer intelligent systems that erase complexity.
-                <br />
-                <span className="text-cosmic-gold hero-glow-text">Seamless automation with precision and grace.</span>
+                To eliminate operational friction through adaptive, autonomous intelligence.
               </p>
+              {/* Gold divider line */}
+              <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold to-transparent mx-auto mt-8 opacity-60"></div>
             </div>
           </div>
         </div>
@@ -76,10 +74,10 @@ const MainSections = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
             <h2 className="scroll-fade-in section-title-2025 text-cosmic-gold mb-12">
-              Systems That Think
+              Engineered Intelligence
             </h2>
             <p className="scroll-slide-right stagger-2 section-subtitle-2025">
-              Intelligent automation that reshapes workflow with precision
+              Real-time infrastructure that adapts and performs without lag.
             </p>
           </div>
 
@@ -117,6 +115,36 @@ const MainSections = () => {
         </div>
       </section>
 
+      {/* Synetic AI Advantage Section */}
+      <section className="py-32 px-8 relative">
+        <div className="section-divider-2025 absolute top-0"></div>
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="scroll-fade-in mb-16">
+            <p className="text-xl md:text-2xl font-light text-cosmic-white/80 mb-12">
+              This is automation without compromise—modular, intelligent, and self-directed.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Modular", description: "Plug-and-play architecture" },
+              { title: "Autonomous", description: "Self-directing systems" },
+              { title: "Self-Optimizing", description: "Continuous improvement" }
+            ].map((item, index) => (
+              <div key={item.title} className={`scroll-fade-in stagger-${index + 1} group`}>
+                <div className="px-8 py-6 rounded-full border border-cosmic-gold/20 relative overflow-hidden hover:border-cosmic-gold/40 transition-all duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cosmic-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <h4 className="text-cosmic-gold font-light mb-2 relative z-10">{item.title}</h4>
+                  <p className="text-cosmic-white/60 text-sm relative z-10">{item.description}</p>
+                  {/* Pulsing border effect */}
+                  <div className="absolute inset-0 rounded-full border border-cosmic-gold/30 opacity-0 group-hover:opacity-100 group-hover:animate-pulse"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section id="contact" className="min-h-screen flex items-center py-32 px-8 relative cta-section-2025">
         <div className="section-divider-2025 absolute top-0"></div>
@@ -130,7 +158,7 @@ const MainSections = () => {
           <div className="scroll-fade-in">
             <div className="cta-title-container">
               <h2 className="cta-title-2025 text-cosmic-gold mb-12">
-                Automate the Impossible
+                Work With Intelligence
               </h2>
               <div className="cta-gold-flare"></div>
             </div>
@@ -142,8 +170,18 @@ const MainSections = () => {
             </p>
             
             <div className="scroll-fade-in stagger-3 space-y-10">
-              <button className="cta-button-2025 text-xl tracking-wider">
-                Get Started
+              <button className="cta-button-2025 text-xl tracking-wider group">
+                <span className="relative z-10 inline-flex items-center">
+                  Get Started
+                  <svg 
+                    className="ml-3 w-5 h-5 transition-transform duration-500 group-hover:translate-x-1" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
                 <div className="button-portal-effect"></div>
               </button>
               <div className="cta-contact-info">
