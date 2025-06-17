@@ -51,6 +51,9 @@ const Navigation = () => {
                 <div className="logo-shimmer-2025"></div>
                 {/* Orbital ring */}
                 <div className="logo-orbital-ring-2025"></div>
+                {/* Energy beams */}
+                <div className="logo-energy-beam-1"></div>
+                <div className="logo-energy-beam-2"></div>
               </div>
             </div>
 
