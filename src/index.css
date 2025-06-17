@@ -146,7 +146,7 @@
   }
   
   .nav-link-premium {
-    @apply relative font-light text-sm tracking-wide transition-all duration-400;
+    @apply relative font-light text-sm tracking-wide transition-all duration-300;
     padding: 0.75rem 1.25rem;
     color: rgba(179, 179, 179, 0.8);
   }
