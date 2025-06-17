@@ -14,40 +14,54 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-premium-container">
-      {/* Premium Background Elements */}
-      <div className="floating-mesh-premium"></div>
-      <div className="ambient-particles"></div>
-      <div className="neural-grid-premium"></div>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-2025-container">
+      {/* Neural Motion Background */}
+      <div className="neural-grid-background"></div>
+      <div className="starfield-motion"></div>
+      <div className="light-waves-animation"></div>
+      
+      {/* Floating Data Nodes */}
+      <div className="floating-data-node-1"></div>
+      <div className="floating-data-node-2"></div>
+      <div className="floating-data-node-3"></div>
+      
+      {/* Glowing Grid Lines */}
+      <div className="neural-grid-lines"></div>
       
       {/* Hero Content */}
       <div className={`text-center z-10 px-8 transition-all duration-1500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}>
-        <div className="relative">
-          <h1 className="hero-title-premium mb-8 leading-tight">
-            Intelligence in Motion.<br />
-            <span className="block">Automation Without Friction.</span>
+        <div className="hero-title-container">
+          <h1 className="hero-title-2025 font-heading font-light mb-12 leading-[0.9]">
+            <span className="hero-main-line animate-fade-in-up">
+              Intelligence in Motion.
+            </span>
+            <span className="hero-sub-line animate-fade-in-up text-cosmic-gold hero-glow-text" style={{ animationDelay: '0.4s' }}>
+              Automation Without Friction.
+            </span>
           </h1>
+          {/* Rising beam of light */}
+          <div className="hero-rising-beam"></div>
         </div>
         
-        <p className={`hero-subtitle-premium mb-12 transition-all duration-1500 delay-700 ${
+        <p className={`hero-subtitle-2025 transition-all duration-1500 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           We design systems that eliminate lag, evolve on their own, and adapt in real-time.
         </p>
 
-        <div className={`transition-all duration-1500 delay-1000 ${
+        <div className={`transition-all duration-1500 delay-1400 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <button 
             onClick={scrollToNextSection}
-            className="hero-button-premium group relative"
+            className="hero-cta-2025 text-lg group relative"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
               <svg 
-                className="ml-3 w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" 
+                className="ml-4 w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -55,15 +69,17 @@ const HeroSection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
-            <div className="button-shimmer-premium"></div>
+            {/* Orbital effect on hover */}
+            <div className="button-orbital-effect"></div>
+            <div className="button-ripple-effect"></div>
           </button>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="w-1 h-12 bg-gradient-to-b from-cosmic-gold/30 to-transparent rounded-full">
-          <div className="w-2 h-2 bg-cosmic-gold rounded-full animate-bounce"></div>
+      {/* Enhanced scroll indicator */}
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 scroll-indicator-2025">
+        <div className="scroll-container-2025">
+          <div className="scroll-pulse-dot"></div>
         </div>
       </div>
     </section>
