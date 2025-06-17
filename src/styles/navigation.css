@@ -1,0 +1,92 @@
+
+/* Enhanced Logo System */
+@layer components {
+  .logo-container-2025 {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-2025 {
+    height: 3rem;
+    width: auto;
+    filter: drop-shadow(0 0 15px rgba(227, 199, 112, 0.3)) brightness(1.1) contrast(1.1);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .logo-glow-ring {
+    position: absolute;
+    inset: -20px;
+    border: 1px solid rgba(227, 199, 112, 0.3);
+    border-radius: 50%;
+    animation: glow-ring-rotation 8s linear infinite;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .logo-container-2025:hover .logo-glow-ring {
+    opacity: 1;
+  }
+  
+  .logo-beam {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    right: -30px;
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, transparent, rgba(227, 199, 112, 0.6), transparent);
+    animation: beam-pulse 4s ease-in-out infinite;
+    opacity: 0.7;
+  }
+}
+
+/* Enhanced Navigation */
+@layer components {
+  .nav-transparent-2025 {
+    background: rgba(5, 5, 5, 0.3);
+    backdrop-filter: blur(25px);
+    border-bottom: 1px solid rgba(227, 199, 112, 0.08);
+  }
+  
+  .nav-scrolled-2025 {
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(35px);
+    border-bottom: 1px solid rgba(227, 199, 112, 0.2);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  }
+  
+  .nav-link-2025 {
+    @apply relative font-light text-base tracking-wide transition-all duration-500;
+    padding: 0.75rem 1.5rem;
+    color: rgba(250, 250, 250, 0.8);
+  }
+  
+  .nav-text-glow {
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link-2025:hover .nav-text-glow {
+    color: rgb(var(--cosmic-gold));
+    text-shadow: 0 0 20px rgba(227, 199, 112, 0.6);
+  }
+  
+  .nav-golden-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(227, 199, 112, 0.9), transparent);
+    transition: width 0.5s ease;
+  }
+  
+  .nav-link-2025:hover .nav-golden-underline {
+    width: 100%;
+    animation: golden-shimmer 1.5s ease-in-out infinite;
+  }
+}

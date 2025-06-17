@@ -1,0 +1,70 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 5 5 5;
+    --foreground: 250 250 250;
+    --cosmic-black: 5 5 5;
+    --cosmic-white: 250 250 250;
+    --cosmic-gold: 227 199 112;
+    --cosmic-gold-rgb: 227, 199, 112;
+    --cosmic-charcoal: 24 24 27;
+    --cosmic-midnight: 8 12 20;
+    --cosmic-deep-blue: 4 8 16;
+    --cosmic-obsidian: 2 2 4;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply antialiased;
+    font-family: 'Inter', 'DM Serif Display', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    background: #050505;
+    overflow-x: hidden;
+    color: rgb(var(--cosmic-white));
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.02), transparent),
+      radial-gradient(1px 1px at 40px 70px, rgba(227, 199, 112, 0.015), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(88, 28, 135, 0.01), transparent);
+    background-repeat: repeat;
+    background-size: 300px 150px;
+    animation: cosmic-drift 180s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Serif Display', 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Enhanced Color System */
+@layer utilities {
+  .text-cosmic-black { color: rgb(var(--cosmic-black)); }
+  .text-cosmic-white { color: rgb(var(--cosmic-white)); }
+  .text-cosmic-gold { color: rgb(var(--cosmic-gold)); }
+  .text-cosmic-charcoal { color: rgb(var(--cosmic-charcoal)); }
+  .bg-cosmic-black { background-color: rgb(var(--cosmic-black)); }
+  .bg-cosmic-white { background-color: rgb(var(--cosmic-white)); }
+  .bg-cosmic-gold { background-color: rgb(var(--cosmic-gold)); }
+  .border-cosmic-gold { border-color: rgb(var(--cosmic-gold)); }
+}

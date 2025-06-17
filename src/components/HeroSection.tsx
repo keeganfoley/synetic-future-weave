@@ -3,20 +3,10 @@ import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const scrollToNextSection = () => {
@@ -25,22 +15,8 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-2025-container">
-      {/* Cursor Following Orb */}
-      <div 
-        className="cursor-orb"
-        style={{
-          left: mousePosition.x - 10,
-          top: mousePosition.y - 10,
-        }}
-      />
-      
       {/* Enhanced Parallax Background */}
-      <div 
-        className="parallax-background"
-        style={{
-          transform: `translateX(${mousePosition.x * 0.01}px) translateY(${mousePosition.y * 0.01}px)`,
-        }}
-      />
+      <div className="parallax-background" />
       <div className="hero-particles"></div>
       
       {/* Hero Content */}
@@ -83,7 +59,7 @@ const HeroSection = () => {
               </svg>
             </span>
             <div className="glassmorphism-effect"></div>
-            <div className="starry-shimmer"></div>
+            <div className="button-pulse-ring"></div>
           </button>
         </div>
       </div>

@@ -54,8 +54,8 @@ const MainSections = () => {
   return (
     <div className="relative">
       {/* Vision Section */}
-      <section id="vision" className="min-h-screen flex items-center py-20 px-8 relative vision-section-2025">
-        <div className="ambient-background-motion"></div>
+      <section id="vision" className="min-h-screen flex items-center py-16 px-8 relative vision-section-2025">
+        <div className="vision-grid-background"></div>
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <h2 className="scroll-fade-in vision-title text-cosmic-gold mb-12">
@@ -83,7 +83,7 @@ const MainSections = () => {
 
       {/* Solutions Section */}
       <section id="solutions" className="min-h-screen flex items-center py-20 px-8 relative solutions-section-2025">
-        <div className="dynamic-network-grid"></div>
+        <div className="moving-grid-background"></div>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="scroll-fade-in section-title-2025 text-cosmic-gold mb-12">
@@ -104,8 +104,9 @@ const MainSections = () => {
                 >
                   <div className="solution-card-inner-2025 h-full group transition-all duration-700">
                     {/* Enhanced Animated Icon */}
-                    <div className="mb-8 flex justify-center">
+                    <div className="mb-8 flex justify-center relative">
                       <IconComponent className="solution-icon-2025" size={40} />
+                      <div className="icon-ambient-glow"></div>
                     </div>
                     
                     <h3 className="solution-title-2025 mb-6 text-center">
@@ -127,7 +128,7 @@ const MainSections = () => {
 
       {/* CTA Section */}
       <section id="contact" className="min-h-screen flex items-center py-20 px-8 relative cta-section-2025">
-        <div className="galactic-background"></div>
+        <div className="orbiting-specks"></div>
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="scroll-fade-in">
@@ -138,11 +139,11 @@ const MainSections = () => {
             <p className="scroll-slide-left stagger-2 cta-subtitle-2025 mb-16">
               Ready to transform your business with intelligent automation?
               <br />
-              <span className="cta-evolution-text">Let's unlock your next evolution.</span>
+              <span className="text-cosmic-gold">Let's unlock your next evolution.</span>
             </p>
             
             <div className="scroll-fade-in stagger-3 space-y-8">
-              <button className="cta-button-3d group">
+              <button className="cta-button-enhanced group relative">
                 <span className="relative z-10 inline-flex items-center">
                   Explore Solutions
                   <svg 
@@ -154,9 +155,9 @@ const MainSections = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
-                <div className="floating-3d-effect"></div>
+                <div className="glowing-outline"></div>
               </button>
-              <div className="cta-info-text">
+              <div className="text-cosmic-white/70 text-base font-light">
                 <p>Full automation blueprint delivered within 24 hours</p>
               </div>
             </div>

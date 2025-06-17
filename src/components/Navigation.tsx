@@ -35,15 +35,16 @@ const Navigation = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Enhanced Logo */}
+            {/* Enhanced Logo with new effects */}
             <div className="flex-shrink-0 mr-12 logo-container-2025 group">
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/15c32940-8d1d-4aaf-b5cc-4dfc267e8efa.png" 
+                  src="/lovable-uploads/6d38dcd4-57ab-4003-b5c9-e625f91896c8.png" 
                   alt="Synetic AI" 
                   className="logo-2025"
                 />
-                <div className="logo-ambient-glow"></div>
+                <div className="logo-beam"></div>
+                <div className="logo-glow-ring"></div>
               </div>
             </div>
 
