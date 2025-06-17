@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 
 const Navigation = () => {
@@ -34,22 +35,15 @@ const Navigation = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Revolutionary 2025 Logo */}
-            <div className="flex-shrink-0 mr-12 logo-container-2025 group cursor-pointer">
+            {/* Enhanced Logo */}
+            <div className="flex-shrink-0 mr-12 logo-container-2025 group">
               <div className="relative">
                 <img 
                   src="/lovable-uploads/15c32940-8d1d-4aaf-b5cc-4dfc267e8efa.png" 
                   alt="Synetic AI" 
                   className="logo-2025"
                 />
-                {/* Radiant pulse background */}
-                <div className="logo-radiant-pulse-2025"></div>
-                {/* Beaming effect */}
-                <div className="logo-beam-effect-2025"></div>
-                {/* Ambient shimmer */}
-                <div className="logo-shimmer-2025"></div>
-                {/* Orbital ring */}
-                <div className="logo-orbital-ring-2025"></div>
+                <div className="logo-ambient-glow"></div>
               </div>
             </div>
 
@@ -63,7 +57,6 @@ const Navigation = () => {
                 >
                   <span className="nav-text-glow">{link.name}</span>
                   <div className="nav-golden-underline"></div>
-                  <div className="nav-hover-shimmer"></div>
                 </button>
               ))}
             </div>
