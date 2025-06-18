@@ -1,5 +1,5 @@
 
-/* Premium Hero Section - Optimized */
+/* Premium Hero Section - Static with Subtle Background */
 @layer components {
   .hero-2025-container {
     position: relative;
@@ -10,27 +10,27 @@
     min-height: 100vh;
   }
   
-  .parallax-background {
+  .subtle-background-drift {
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(0deg, transparent 49.8%, rgba(180, 139, 60, 0.008) 50%, transparent 50.2%),
-      linear-gradient(90deg, transparent 49.8%, rgba(180, 139, 60, 0.006) 50%, transparent 50.2%);
-    background-size: 300px 300px;
-    animation: gridFloat 40s ease-in-out infinite;
+      radial-gradient(1px 1px at 15% 25%, rgba(244, 198, 99, 0.04) 1px, transparent 1px),
+      radial-gradient(1px 1px at 85% 75%, rgba(244, 198, 99, 0.03) 1px, transparent 1px),
+      radial-gradient(1px 1px at 45% 60%, rgba(244, 198, 99, 0.02) 1px, transparent 1px);
+    background-size: 400px 300px, 600px 400px, 800px 500px;
+    animation: galaxyDrift 120s linear infinite;
     pointer-events: none;
     will-change: transform;
   }
   
-  .hero-particles {
+  .galaxy-grid-lines {
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(1px 1px at 10% 20%, rgba(180, 139, 60, 0.06) 1px, transparent 1px),
-      radial-gradient(1px 1px at 90% 80%, rgba(180, 139, 60, 0.04) 1px, transparent 1px),
-      radial-gradient(1px 1px at 30% 70%, rgba(180, 139, 60, 0.03) 1px, transparent 1px);
-    background-size: 800px 600px;
-    animation: particleFlow 120s linear infinite;
+      linear-gradient(0deg, transparent 49.9%, rgba(244, 198, 99, 0.006) 50%, transparent 50.1%),
+      linear-gradient(90deg, transparent 49.9%, rgba(244, 198, 99, 0.004) 50%, transparent 50.1%);
+    background-size: 500px 500px;
+    animation: gridFloat 80s ease-in-out infinite;
     pointer-events: none;
     will-change: transform;
   }
@@ -41,12 +41,12 @@
     font-weight: 400;
     line-height: 0.9;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, rgb(var(--cosmic-gold)) 0%, rgba(180, 139, 60, 0.9) 100%);
+    background: linear-gradient(135deg, #F4C663 0%, rgba(244, 198, 99, 0.9) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    transition: none;
+    /* No animations - completely static */
   }
   
   .hero-subtitle-2025 {
@@ -59,23 +59,32 @@
     letter-spacing: 0.02em;
   }
   
-  .hero-cta-2025-optimized {
-    @apply px-12 py-6 border border-cosmic-gold/70 rounded-xl font-light tracking-wider transition-all duration-300 overflow-hidden relative;
-    background: 
-      linear-gradient(135deg, rgba(180, 139, 60, 0.08) 0%, rgba(180, 139, 60, 0.02) 100%);
+  .hero-cta-2025-static {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 3rem;
+    border: 1px solid rgba(244, 198, 99, 0.7);
+    border-radius: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, rgba(244, 198, 99, 0.08) 0%, rgba(244, 198, 99, 0.02) 100%);
     backdrop-filter: blur(20px);
-    color: rgb(var(--cosmic-gold));
+    color: #F4C663;
     font-size: 1.1rem;
-    will-change: transform;
+    transition: all 0.15s ease;
   }
   
-  .hero-cta-2025-optimized:hover {
-    background: 
-      linear-gradient(135deg, rgba(180, 139, 60, 0.15) 0%, rgba(180, 139, 60, 0.08) 100%);
-    border-color: rgba(180, 139, 60, 0.9);
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px rgba(180, 139, 60, 0.2);
+  .hero-cta-2025-static:hover {
+    background: linear-gradient(135deg, rgba(244, 198, 99, 0.15) 0%, rgba(244, 198, 99, 0.08) 100%);
+    border-color: rgba(244, 198, 99, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(244, 198, 99, 0.2);
   }
+}
+
+@keyframes galaxyDrift {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-400px) translateY(-300px); }
 }
 
 @keyframes gridFloat {
@@ -85,11 +94,6 @@
   }
   50% { 
     opacity: 1;
-    transform: translateX(10px) translateY(-10px);
+    transform: translateX(5px) translateY(-5px);
   }
-}
-
-@keyframes particleFlow {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-800px) translateY(-600px); }
 }

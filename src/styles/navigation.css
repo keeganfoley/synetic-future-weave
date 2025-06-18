@@ -1,5 +1,5 @@
 
-/* Navigation Styles - Optimized */
+/* Navigation Styles - No Logo Animation */
 @layer components {
   .nav-2025 {
     position: fixed;
@@ -8,31 +8,27 @@
     right: 0;
     z-index: 50;
     padding: 1.5rem 2rem;
-    background: rgba(5, 5, 8, 0.85);
+    background: rgba(13, 13, 13, 0.85);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(180, 139, 60, 0.1);
-    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(244, 198, 99, 0.1);
+    transition: all 0.15s ease;
   }
   
   .nav-scrolled-2025 {
-    background: rgba(5, 5, 8, 0.95);
+    background: rgba(13, 13, 13, 0.95);
     backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(180, 139, 60, 0.2);
+    border-bottom: 1px solid rgba(244, 198, 99, 0.2);
   }
   
   .nav-transparent-2025 {
-    background: rgba(5, 5, 8, 0.7);
+    background: rgba(13, 13, 13, 0.7);
     backdrop-filter: blur(15px);
   }
   
-  .logo-2025-clean {
+  .logo-2025-static {
     height: 120px;
     width: auto;
-    transition: transform 0.3s ease;
-  }
-  
-  .logo-2025-clean:hover {
-    transform: scale(1.02);
+    /* No animations - completely static */
   }
   
   .nav-link-2025-clean {
@@ -41,14 +37,14 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    transition: all 0.3s ease;
+    transition: all 0.15s ease;
     position: relative;
     overflow: hidden;
   }
   
   .nav-link-2025-clean:hover {
-    color: rgb(var(--cosmic-gold));
-    background: rgba(180, 139, 60, 0.1);
+    color: #F4C663;
+    background: rgba(244, 198, 99, 0.1);
     transform: translateY(-1px);
   }
   
@@ -59,8 +55,8 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: rgb(var(--cosmic-gold));
-    transition: width 0.3s ease;
+    background: #F4C663;
+    transition: width 0.15s ease;
   }
   
   .nav-link-2025-clean:hover::after {

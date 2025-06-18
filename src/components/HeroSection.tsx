@@ -9,35 +9,17 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const particles = document.querySelector('.hero-particles');
-      const parallax = document.querySelector('.parallax-background');
-      
-      if (particles) {
-        (particles as HTMLElement).style.transform = `translateY(${scrollY * 0.15}px)`;
-      }
-      if (parallax) {
-        (parallax as HTMLElement).style.transform = `translateY(${scrollY * 0.1}px)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const scrollToNextSection = () => {
     document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-2025-container">
-      {/* Enhanced Moving Background */}
-      <div className="parallax-background" />
-      <div className="hero-particles"></div>
+      {/* Subtle Animated Background - Galaxy Grid */}
+      <div className="subtle-background-drift" />
+      <div className="galaxy-grid-lines" />
       
-      {/* Hero Content - Static Text */}
+      {/* Hero Content - Completely Static */}
       <div className={`text-center z-10 px-8 transition-opacity duration-1000 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}>
@@ -46,7 +28,7 @@ const HeroSection = () => {
             <span className="block">
               Intelligence in Motion.
             </span>
-            <span className="block text-cosmic-gold">
+            <span className="block">
               Automation Without Friction.
             </span>
           </h1>
@@ -59,12 +41,12 @@ const HeroSection = () => {
         <div>
           <button 
             onClick={scrollToNextSection}
-            className="hero-cta-2025-optimized group relative"
+            className="hero-cta-2025-static group relative"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
               <svg 
-                className="ml-4 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" 
+                className="ml-4 w-5 h-5 transition-transform duration-150 group-hover:translate-x-1" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
