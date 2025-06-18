@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 
 interface LineConfig {
   type: 'horizontal' | 'vertical' | 'diagonal';
-  depth: 'close' | 'medium' | 'far';
+  depth: 'cosmic' | 'distant' | 'nebula';
   length: 'full' | 'partial';
 }
 
@@ -18,7 +18,7 @@ export const useGoldenLines = () => {
 
     const getLineConfig = (): LineConfig => {
       const types: LineConfig['type'][] = ['horizontal', 'vertical', 'diagonal'];
-      const depths: LineConfig['depth'][] = ['close', 'medium', 'far'];
+      const depths: LineConfig['depth'][] = ['cosmic', 'distant', 'nebula'];
       const lengths: LineConfig['length'][] = ['full', 'partial', 'full']; // Bias toward full
 
       return {
@@ -30,26 +30,23 @@ export const useGoldenLines = () => {
 
     const getDepthStyles = (depth: LineConfig['depth']) => {
       switch (depth) {
-        case 'close':
+        case 'cosmic':
           return {
-            opacity: Math.random() * 0.4 + 0.6, // 0.6-1.0
-            blur: '0px',
-            thickness: '1.5px',
-            brightness: 1.2
-          };
-        case 'medium':
-          return {
-            opacity: Math.random() * 0.3 + 0.3, // 0.3-0.6
-            blur: '0.5px',
-            thickness: '1px',
-            brightness: 1.0
-          };
-        case 'far':
-          return {
-            opacity: Math.random() * 0.2 + 0.15, // 0.15-0.35
+            opacity: Math.random() * 0.010 + 0.015, // 0.015-0.025 (barely visible)
             blur: '1px',
-            thickness: '0.8px',
-            brightness: 0.8
+            thickness: '0.2px',
+          };
+        case 'distant':
+          return {
+            opacity: Math.random() * 0.008 + 0.010, // 0.010-0.018 (very faint)
+            blur: '2px',
+            thickness: '0.3px',
+          };
+        case 'nebula':
+          return {
+            opacity: Math.random() * 0.005 + 0.008, // 0.008-0.013 (extremely faint)
+            blur: '3px',
+            thickness: '0.4px',
           };
       }
     };
@@ -60,40 +57,40 @@ export const useGoldenLines = () => {
       const line = document.createElement('div');
       line.className = 'elegant-golden-line';
       
-      const duration = Math.random() * 32 + 8; // 8-40 seconds
-      const delay = Math.random() * 2;
+      const duration = Math.random() * 90 + 30; // 30-120 seconds (much slower)
+      const delay = Math.random() * 5;
       
       let animationName = '';
       let positioning = '';
       
       if (config.type === 'horizontal') {
-        const width = config.length === 'full' ? '100vw' : `${Math.random() * 60 + 40}vw`;
+        const width = config.length === 'full' ? '150vw' : `${Math.random() * 80 + 70}vw`;
         animationName = 'elegantHorizontalFlow';
         positioning = `
           width: ${width};
           height: ${depthStyles.thickness};
           left: -${width};
-          top: ${Math.random() * 100}%;
+          top: ${Math.random() * 150}vh;
         `;
       } else if (config.type === 'vertical') {
-        const height = config.length === 'full' ? '100vh' : `${Math.random() * 60 + 40}vh`;
+        const height = config.length === 'full' ? '150vh' : `${Math.random() * 80 + 70}vh`;
         animationName = 'elegantVerticalFlow';
         positioning = `
           width: ${depthStyles.thickness};
           height: ${height};
-          left: ${Math.random() * 100}%;
+          left: ${Math.random() * 120}vw;
           top: -${height};
         `;
       } else { // diagonal
-        const size = config.length === 'full' ? 140 : Math.random() * 60 + 80;
+        const size = config.length === 'full' ? 180 : Math.random() * 80 + 100;
         animationName = 'elegantDiagonalFlow';
         positioning = `
           width: ${size}vw;
           height: ${depthStyles.thickness};
           left: -${size}vw;
-          top: ${Math.random() * 100}%;
+          top: ${Math.random() * 120}vh;
           transform-origin: left center;
-          transform: rotate(${Math.random() * 30 - 15}deg);
+          transform: rotate(${Math.random() * 45 - 22.5}deg);
         `;
       }
       
@@ -101,12 +98,11 @@ export const useGoldenLines = () => {
         position: absolute;
         ${positioning}
         background: rgba(212, 175, 55, ${depthStyles.opacity});
-        animation: ${animationName} ${duration}s linear infinite;
+        animation: ${animationName} ${duration}s ease-in-out infinite;
         animation-delay: ${delay}s;
         pointer-events: none;
-        z-index: 1;
-        filter: blur(${depthStyles.blur}) brightness(${depthStyles.brightness});
-        box-shadow: 0 0 ${depthStyles.thickness === '1.5px' ? '8px' : '4px'} rgba(212, 175, 55, ${depthStyles.opacity * 0.3});
+        z-index: -10;
+        filter: blur(${depthStyles.blur});
       `;
       
       container.appendChild(line);
@@ -120,27 +116,26 @@ export const useGoldenLines = () => {
       }, (duration + delay) * 1000);
     };
 
-    // Create initial burst of lines
-    for (let i = 0; i < 18; i++) {
-      setTimeout(() => createLine(), i * 200);
+    // Create initial cosmic atmosphere
+    for (let i = 0; i < 25; i++) {
+      setTimeout(() => createLine(), i * 300);
     }
 
-    // Continuous line creation
+    // Continuous cosmic line creation
     const lineInterval = setInterval(() => {
-      // Ensure we always have 10-15 lines active
-      if (activeLines.size < 10) {
+      if (activeLines.size < 15) {
         createLine();
-      } else if (Math.random() > 0.7) { // 30% chance to add even when we have enough
+      } else if (Math.random() > 0.6) {
         createLine();
       }
-    }, 1500);
+    }, 2000);
 
-    // Additional interval for more frequent spawning
-    const frequentInterval = setInterval(createLine, 2500);
+    // Additional interval for space-like density
+    const cosmicInterval = setInterval(createLine, 4000);
 
     return () => {
       clearInterval(lineInterval);
-      clearInterval(frequentInterval);
+      clearInterval(cosmicInterval);
       activeLines.forEach(line => {
         if (container.contains(line)) {
           container.removeChild(line);
