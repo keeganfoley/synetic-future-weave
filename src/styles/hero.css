@@ -46,7 +46,7 @@
     background-clip: text;
     position: relative;
     transition: all 0.4s ease;
-    animation: hero-focus-emergence 2.5s ease-out, premium-gold-shimmer 10s ease-in-out infinite;
+    animation: premium-gold-shimmer 10s ease-in-out infinite;
     filter: blur(0px);
   }
   
