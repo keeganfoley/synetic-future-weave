@@ -46,7 +46,8 @@
     background-clip: text;
     position: relative;
     transition: all 0.4s ease;
-    animation: premium-gold-shimmer 10s ease-in-out infinite;
+    animation: hero-focus-emergence 2.5s ease-out, premium-gold-shimmer 10s ease-in-out infinite;
+    filter: blur(0px);
   }
   
   .hero-title-2025:hover {
@@ -57,6 +58,18 @@
   .hero-title-shimmer {
     position: relative;
     overflow: hidden;
+  }
+  
+  .hero-title-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), rgba(180, 139, 60, 0.4), rgba(255, 255, 255, 0.3), transparent);
+    animation: cinematic-beam-sweep 8s ease-in-out infinite;
+    filter: blur(1px);
   }
   
   .hero-subtitle-2025 {
