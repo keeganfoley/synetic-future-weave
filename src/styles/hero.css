@@ -64,7 +64,7 @@
   }
   
   .hero-cta-2025 {
-    @apply px-12 py-6 border border-cosmic-gold/70 rounded-xl font-light tracking-wider transition-all duration-800 overflow-hidden relative;
+    @apply px-12 py-6 border border-cosmic-gold/70 rounded-xl font-light tracking-wider transition-all duration-700 overflow-hidden relative;
     background: 
       linear-gradient(135deg, rgba(180, 139, 60, 0.08) 0%, rgba(180, 139, 60, 0.02) 100%);
     backdrop-filter: blur(20px);
