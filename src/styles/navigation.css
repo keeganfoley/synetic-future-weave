@@ -1,5 +1,5 @@
 
-/* Navigation Styles - Luxury Edition */
+/* Navigation Styles - No Logo Animation */
 @layer components {
   .nav-2025 {
     position: fixed;
@@ -8,55 +8,44 @@
     right: 0;
     z-index: 50;
     padding: 1.5rem 2rem;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(218, 165, 32, 0.15);
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(244, 198, 99, 0.1);
+    transition: all 0.15s ease;
   }
   
   .nav-scrolled-2025 {
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(30px);
-    border-bottom: 1px solid rgba(218, 165, 32, 0.25);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(25px);
+    border-bottom: 1px solid rgba(244, 198, 99, 0.2);
   }
   
   .nav-transparent-2025 {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(20px);
+    background: rgba(13, 13, 13, 0.7);
+    backdrop-filter: blur(15px);
   }
   
   .logo-2025-clean {
     height: 120px;
     width: auto;
-    filter: drop-shadow(0 0 15px rgba(218, 165, 32, 0.4)) brightness(1.2);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  .logo-2025-clean:hover {
-    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6)) brightness(1.4);
-    transform: scale(1.05);
+    /* Increased to 120px for better visibility */
   }
   
   .nav-link-2025-clean {
-    color: rgb(220, 220, 220);
-    font-family: 'Playfair Display', serif;
+    color: rgb(180, 180, 180);
     font-weight: 400;
-    font-size: 1.1rem;
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.75rem;
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.15s ease;
     position: relative;
     overflow: hidden;
-    letter-spacing: 0.02em;
   }
   
   .nav-link-2025-clean:hover {
-    color: #DAA520;
-    background: rgba(218, 165, 32, 0.12);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.25);
+    color: #F4C663;
+    background: rgba(244, 198, 99, 0.1);
+    transform: translateY(-1px);
   }
   
   .nav-link-2025-clean::after {
@@ -66,8 +55,8 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #DAA520, #FFD700);
-    transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: #F4C663;
+    transition: width 0.15s ease;
   }
   
   .nav-link-2025-clean:hover::after {

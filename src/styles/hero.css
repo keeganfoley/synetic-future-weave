@@ -1,26 +1,25 @@
 
-/* Mythic Hero Section - Luxury Edition */
+/* Premium Hero Section - Static with Subtle Background */
 @layer components {
   .hero-2025-container {
     position: relative;
     background: 
-      radial-gradient(ellipse at 30% 20%, rgba(218, 165, 32, 0.03) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 50%),
-      linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(6, 6, 8, 0.95) 50%, rgba(0, 0, 0, 1) 100%);
+      radial-gradient(ellipse at 25% 25%, rgba(180, 139, 60, 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 75%, rgba(180, 139, 60, 0.015) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(5, 5, 8, 0.8) 0%, rgba(8, 8, 12, 0.9) 100%);
     min-height: 100vh;
-    overflow: hidden;
   }
   
   .hero-stars {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: 
-      radial-gradient(2px 1px at 15% 25%, rgba(218, 165, 32, 0.08), transparent),
-      radial-gradient(1px 2px at 85% 75%, rgba(255, 215, 0, 0.06), transparent),
-      radial-gradient(1px 1px at 45% 60%, rgba(218, 165, 32, 0.04), transparent);
-    opacity: 0.3;
-    animation: celestial-starfield 60s linear infinite;
+    background: repeating-radial-gradient(
+      rgba(244, 198, 99, 0.06) 0 1px, 
+      transparent 2px 100%
+    );
+    opacity: 0.15;
+    animation: heroDrift 40s linear infinite alternate;
     pointer-events: none;
     will-change: transform;
   }
@@ -34,11 +33,11 @@
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(1px 1px at 25% 35%, rgba(218, 165, 32, 0.06) 1px, transparent 1px),
-      radial-gradient(1px 1px at 75% 65%, rgba(255, 215, 0, 0.04) 1px, transparent 1px),
-      radial-gradient(1px 1px at 60% 20%, rgba(218, 165, 32, 0.03) 1px, transparent 1px);
-    background-size: 500px 400px, 700px 500px, 900px 600px;
-    animation: ethereal-constellation-drift 150s linear infinite;
+      radial-gradient(1px 1px at 15% 25%, rgba(244, 198, 99, 0.04) 1px, transparent 1px),
+      radial-gradient(1px 1px at 85% 75%, rgba(244, 198, 99, 0.03) 1px, transparent 1px),
+      radial-gradient(1px 1px at 45% 60%, rgba(244, 198, 99, 0.02) 1px, transparent 1px);
+    background-size: 400px 300px, 600px 400px, 800px 500px;
+    animation: galaxyDrift 120s linear infinite;
     pointer-events: none;
     will-change: transform;
   }
@@ -47,118 +46,77 @@
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(0deg, transparent 49.95%, rgba(218, 165, 32, 0.008) 50%, transparent 50.05%),
-      linear-gradient(90deg, transparent 49.95%, rgba(255, 215, 0, 0.006) 50%, transparent 50.05%);
-    background-size: 600px 600px;
-    animation: mythic-grid-pulse 120s ease-in-out infinite;
+      linear-gradient(0deg, transparent 49.9%, rgba(244, 198, 99, 0.006) 50%, transparent 50.1%),
+      linear-gradient(90deg, transparent 49.9%, rgba(244, 198, 99, 0.004) 50%, transparent 50.1%);
+    background-size: 500px 500px;
+    animation: gridFloat 80s ease-in-out infinite;
     pointer-events: none;
     will-change: transform;
   }
   
   .hero-title-2025-static {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    font-weight: 600;
-    line-height: 0.85;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #FFD700 0%, #DAA520 25%, #FFA500 50%, #DAA520 75%, #B8860B 100%);
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #F4C663 0%, rgba(244, 198, 99, 0.9) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    background-size: 200% 200%;
-    animation: mythic-title-shimmer 10s ease-in-out infinite;
     position: relative;
-    text-shadow: 0 0 30px rgba(218, 165, 32, 0.5);
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
   }
   
   .hero-subtitle-2025 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
     font-weight: 400;
-    color: rgb(220, 220, 220);
-    line-height: 1.5;
-    max-width: 800px;
+    color: rgb(180, 180, 180);
+    line-height: 1.6;
+    max-width: 700px;
     margin: 0 auto 3rem auto;
-    letter-spacing: 0.03em;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    letter-spacing: 0.02em;
   }
   
   .hero-cta-2025-static {
     display: inline-flex;
     align-items: center;
-    padding: 1rem 3.5rem;
-    border: 2px solid rgba(218, 165, 32, 0.8);
-    border-radius: 1rem;
-    font-family: 'Playfair Display', serif;
-    font-weight: 500;
+    padding: 0.75rem 3rem;
+    border: 1px solid rgba(244, 198, 99, 0.7);
+    border-radius: 0.75rem;
+    font-weight: 300;
     letter-spacing: 0.05em;
-    background: linear-gradient(135deg, rgba(218, 165, 32, 0.12) 0%, rgba(255, 215, 0, 0.08) 50%, rgba(218, 165, 32, 0.06) 100%);
-    backdrop-filter: blur(25px);
-    color: #DAA520;
-    font-size: 1.2rem;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(218, 165, 32, 0.2);
-  }
-  
-  .hero-cta-2025-static::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-    transition: left 0.6s ease;
-  }
-  
-  .hero-cta-2025-static:hover::before {
-    left: 100%;
+    background: linear-gradient(135deg, rgba(244, 198, 99, 0.08) 0%, rgba(244, 198, 99, 0.02) 100%);
+    backdrop-filter: blur(20px);
+    color: #F4C663;
+    font-size: 1.1rem;
+    transition: all 0.15s ease;
   }
   
   .hero-cta-2025-static:hover {
-    background: linear-gradient(135deg, rgba(218, 165, 32, 0.2) 0%, rgba(255, 215, 0, 0.15) 50%, rgba(218, 165, 32, 0.12) 100%);
-    border-color: #FFD700;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 45px rgba(218, 165, 32, 0.4);
-    color: #FFD700;
+    background: linear-gradient(135deg, rgba(244, 198, 99, 0.15) 0%, rgba(244, 198, 99, 0.08) 100%);
+    border-color: rgba(244, 198, 99, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(244, 198, 99, 0.2);
   }
 }
 
-@keyframes celestial-starfield {
-  0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-30px) translateX(-20px); }
+@keyframes heroDrift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(20px); }
 }
 
-@keyframes ethereal-constellation-drift {
+@keyframes galaxyDrift {
   0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-500px) translateY(-400px); }
+  100% { transform: translateX(-400px) translateY(-300px); }
 }
 
-@keyframes mythic-grid-pulse {
+@keyframes gridFloat {
   0%, 100% { 
-    opacity: 0.6;
+    opacity: 0.8;
     transform: translateX(0) translateY(0);
   }
   50% { 
     opacity: 1;
-    transform: translateX(10px) translateY(-10px);
-  }
-}
-
-@keyframes mythic-title-shimmer {
-  0%, 100% { 
-    background-position: 0% 50%;
-  }
-  25% { 
-    background-position: 50% 25%;
-  }
-  50% { 
-    background-position: 100% 50%;
-  }
-  75% { 
-    background-position: 50% 75%;
+    transform: translateX(5px) translateY(-5px);
   }
 }

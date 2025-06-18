@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,20 +63,16 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				cosmic: {
-					black: '#020202',
-					gold: '#DAA520',
-					'gold-bright': '#FFD700',
-					'gold-dark': '#B8860B',
-					'deep-black': '#010101',
-					charcoal: '#060608',
-					white: '#DCDCDC',
-					steel: '#DCDCDC'
+					black: '#1a1a1a',
+					gold: '#d2af61',
+					'deep-black': '#0e0e0e',
+					charcoal: '#222222',
+					white: '#eeeeee'
 				}
 			},
 			fontFamily: {
-				'heading': ['Playfair Display', 'DM Serif Display', 'serif'],
-				'body': ['Playfair Display', 'Inter', 'system-ui', 'serif'],
-				'luxury': ['Playfair Display', 'serif'],
+				'heading': ['DM Serif Display', 'serif'],
+				'body': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
 				'mono': ['Space Grotesk', 'monospace']
 			},
 			borderRadius: {
@@ -102,62 +97,91 @@ export default {
 						height: '0'
 					}
 				},
-				'celestial-emergence': {
-					'0%': {
-						opacity: '0',
-						transform: 'scale(0.95) translateY(20px)',
-						filter: 'blur(10px)'
+				'gentle-float': {
+					'0%, 100%': {
+						transform: 'translateY(0px) translateX(0px)'
 					},
-					'40%': {
-						opacity: '0.6',
-						filter: 'blur(5px)'
+					'33%': {
+						transform: 'translateY(-8px) translateX(4px)'
 					},
-					'70%': {
-						opacity: '0.9',
-						transform: 'scale(1.02) translateY(-5px)',
-						filter: 'blur(2px)'
-					},
-					'100%': {
-						opacity: '1',
-						transform: 'scale(1) translateY(0)',
-						filter: 'blur(0px)'
+					'66%': {
+						transform: 'translateY(4px) translateX(-6px)'
 					}
 				},
-				'golden-shimmer': {
+				'pulse-subtle': {
 					'0%, 100%': {
-						backgroundPosition: '0% 50%',
-						filter: 'brightness(1.1)'
-					},
-					'25%': {
-						backgroundPosition: '50% 25%',
-						filter: 'brightness(1.3)'
+						opacity: '0.8'
 					},
 					'50%': {
-						backgroundPosition: '100% 50%',
-						filter: 'brightness(1.5)'
-					},
-					'75%': {
-						backgroundPosition: '50% 75%',
-						filter: 'brightness(1.2)'
+						opacity: '1'
 					}
 				},
-				'luxury-hover-glow': {
+				'fade-in-up': {
 					'0%': {
-						boxShadow: '0 0 0 rgba(218, 165, 32, 0)',
-						transform: 'translateY(0)'
+						transform: 'translateY(40px)',
+						opacity: '0'
 					},
 					'100%': {
-						boxShadow: '0 8px 32px rgba(218, 165, 32, 0.4)',
-						transform: 'translateY(-3px)'
+						transform: 'translateY(0)',
+						opacity: '1'
+					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0'
+					},
+					'100%': {
+						opacity: '1'
+					}
+				},
+				'fade-in-left': {
+					'0%': {
+						transform: 'translateX(-30px)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateX(0)',
+						opacity: '1'
+					}
+				},
+				'fade-in-right': {
+					'0%': {
+						transform: 'translateX(30px)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateX(0)',
+						opacity: '1'
+					}
+				},
+				'underline-reveal': {
+					'0%': {
+						width: '0%'
+					},
+					'100%': {
+						width: '100%'
+					}
+				},
+				'orbital-line': {
+					'0%': {
+						transform: 'rotate(0deg) translateX(200px) rotate(0deg)'
+					},
+					'100%': {
+						transform: 'rotate(360deg) translateX(200px) rotate(-360deg)'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'celestial-load': 'celestial-emergence 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-				'golden-shimmer': 'golden-shimmer 8s ease-in-out infinite',
-				'luxury-hover': 'luxury-hover-glow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards'
+				'gentle-float': 'gentle-float 12s ease-in-out infinite',
+				'pulse-subtle': 'pulse-subtle 4s ease-in-out infinite',
+				'fade-in-up': 'fade-in-up 0.8s ease-out',
+				'fade-in': 'fade-in 0.8s ease-out',
+				'fade-in-left': 'fade-in-left 0.8s ease-out',
+				'fade-in-right': 'fade-in-right 0.8s ease-out',
+				'underline-reveal': 'underline-reveal 1.2s ease-out',
+				'orbital-line': 'orbital-line 30s linear infinite'
 			}
 		}
 	},
