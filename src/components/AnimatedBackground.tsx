@@ -11,60 +11,82 @@ const AnimatedBackground = () => {
     // Smooth scroll-responsive parallax motion
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const silkLines = container.querySelectorAll('.neural-silk-line');
-      const auroraCurrents = container.querySelectorAll('.aurora-current');
-      const liquidOrbs = container.querySelectorAll('.liquid-light-orb');
+      const lines = container.querySelectorAll('.futuristic-line');
+      const glows = container.querySelectorAll('.ambient-glow');
       
-      silkLines.forEach((line, index) => {
+      lines.forEach((line, index) => {
         const element = line as HTMLElement;
-        const speed = 0.02 + (index * 0.01);
+        const speed = 0.015 + (index * 0.008);
         const drift = scrollY * speed;
-        element.style.transform = `translateX(${drift}px) translateY(${drift * 0.5}px) rotate(${scrollY * 0.005}deg)`;
+        element.style.transform = `translateY(${drift}px)`;
       });
 
-      auroraCurrents.forEach((current, index) => {
-        const element = current as HTMLElement;
-        const speed = 0.03 + (index * 0.015);
-        element.style.transform = `translateY(${scrollY * speed}px) translateX(${scrollY * 0.01}px) scale(${1 + scrollY * 0.00002})`;
-      });
-
-      liquidOrbs.forEach((orb, index) => {
-        const element = orb as HTMLElement;
-        const speed = 0.025 + (index * 0.01);
-        element.style.transform = `translateY(${scrollY * speed}px) rotate(${scrollY * 0.02}deg)`;
+      glows.forEach((glow, index) => {
+        const element = glow as HTMLElement;
+        const speed = 0.02 + (index * 0.01);
+        element.style.transform = `translateY(${scrollY * speed}px) scale(${1 + scrollY * 0.00001})`;
       });
     };
 
-    // Smooth mouse-responsive motion
+    // Subtle mouse-responsive motion
     const handleMouseMove = (e: MouseEvent) => {
       const mouseX = e.clientX / window.innerWidth;
       const mouseY = e.clientY / window.innerHeight;
       
-      const wisps = container.querySelectorAll('.weightless-wisp');
-      const beams = container.querySelectorAll('.ethereal-beam');
+      const lines = container.querySelectorAll('.futuristic-line');
       
-      wisps.forEach((wisp, index) => {
-        const element = wisp as HTMLElement;
-        const strength = 0.1 + (index * 0.05);
-        const offsetX = (mouseX - 0.5) * strength * 20;
-        const offsetY = (mouseY - 0.5) * strength * 15;
-        element.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-      });
-
-      beams.forEach((beam, index) => {
-        const element = beam as HTMLElement;
-        const strength = 0.05 + (index * 0.02);
-        const rotation = (mouseX - 0.5) * strength * 5;
-        element.style.transform = `rotate(${rotation}deg)`;
+      lines.forEach((line, index) => {
+        const element = line as HTMLElement;
+        const strength = 0.02 + (index * 0.01);
+        const offsetX = (mouseX - 0.5) * strength * 10;
+        const offsetY = (mouseY - 0.5) * strength * 5;
+        element.style.transform += ` translate(${offsetX}px, ${offsetY}px)`;
       });
     };
 
-    // Create flowing neural silk lines
-    const createSilkLine = (type: 'horizontal' | 'diagonal') => {
+    // Create smooth horizontal lines
+    const createHorizontalLine = (direction: 'left' | 'right') => {
       const line = document.createElement('div');
-      line.className = `neural-silk-line ${type}`;
+      line.className = `futuristic-line line-horizontal`;
       line.style.top = Math.random() * 100 + '%';
-      line.style.left = Math.random() * 20 - 10 + '%';
+      line.style.left = direction === 'left' ? '-80vw' : '0';
+      line.style.animation = direction === 'left' 
+        ? `glide-horizontal-left ${20 + Math.random() * 10}s ease-in-out infinite`
+        : `glide-horizontal-right ${20 + Math.random() * 10}s ease-in-out infinite`;
+      line.style.animationDelay = Math.random() * 8 + 's';
+      container.appendChild(line);
+
+      setTimeout(() => {
+        if (container.contains(line)) {
+          container.removeChild(line);
+        }
+      }, 30000);
+    };
+
+    // Create smooth vertical lines
+    const createVerticalLine = () => {
+      const line = document.createElement('div');
+      line.className = `futuristic-line line-vertical`;
+      line.style.left = Math.random() * 100 + '%';
+      line.style.top = '-60vh';
+      line.style.animation = `glide-vertical-down ${25 + Math.random() * 10}s ease-in-out infinite`;
+      line.style.animationDelay = Math.random() * 12 + 's';
+      container.appendChild(line);
+
+      setTimeout(() => {
+        if (container.contains(line)) {
+          container.removeChild(line);
+        }
+      }, 35000);
+    };
+
+    // Create smooth diagonal lines
+    const createDiagonalLine = () => {
+      const line = document.createElement('div');
+      line.className = `futuristic-line line-diagonal`;
+      line.style.left = '-120vw';
+      line.style.top = Math.random() * 80 + 10 + '%';
+      line.style.animation = `glide-diagonal-sweep ${30 + Math.random() * 15}s ease-in-out infinite`;
       line.style.animationDelay = Math.random() * 10 + 's';
       container.appendChild(line);
 
@@ -72,104 +94,49 @@ const AnimatedBackground = () => {
         if (container.contains(line)) {
           container.removeChild(line);
         }
-      }, type === 'horizontal' ? 25000 : 35000);
+      }, 45000);
     };
 
-    // Create aurora currents
-    const createAuroraCurrent = () => {
-      const current = document.createElement('div');
-      current.className = 'aurora-current';
-      current.style.left = Math.random() * 100 + '%';
-      current.style.top = Math.random() * 100 + '%';
-      current.style.animationDelay = Math.random() * 8 + 's';
-      container.appendChild(current);
+    // Create ambient glow orbs
+    const createAmbientGlow = () => {
+      const glow = document.createElement('div');
+      glow.className = 'ambient-glow';
+      glow.style.left = Math.random() * 100 + '%';
+      glow.style.top = Math.random() * 100 + '%';
+      glow.style.animationDelay = Math.random() * 8 + 's';
+      container.appendChild(glow);
 
       setTimeout(() => {
-        if (container.contains(current)) {
-          container.removeChild(current);
+        if (container.contains(glow)) {
+          container.removeChild(glow);
         }
       }, 20000);
-    };
-
-    // Create liquid light orbs
-    const createLiquidOrb = () => {
-      const orb = document.createElement('div');
-      orb.className = 'liquid-light-orb';
-      orb.style.left = Math.random() * 100 + '%';
-      orb.style.top = Math.random() * 100 + '%';
-      orb.style.animationDelay = Math.random() * 6 + 's';
-      container.appendChild(orb);
-
-      setTimeout(() => {
-        if (container.contains(orb)) {
-          container.removeChild(orb);
-        }
-      }, 18000);
-    };
-
-    // Create weightless wisps
-    const createWeightlessWisp = () => {
-      const wisp = document.createElement('div');
-      wisp.className = 'weightless-wisp';
-      wisp.style.left = Math.random() * 100 + '%';
-      wisp.style.top = Math.random() * 100 + '%';
-      wisp.style.animationDelay = Math.random() * 5 + 's';
-      container.appendChild(wisp);
-
-      setTimeout(() => {
-        if (container.contains(wisp)) {
-          container.removeChild(wisp);
-        }
-      }, 15000);
-    };
-
-    // Create ethereal beams
-    const createEtherealBeam = () => {
-      const beam = document.createElement('div');
-      beam.className = 'ethereal-beam';
-      beam.style.left = Math.random() * 100 + '%';
-      beam.style.top = Math.random() * 100 + '%';
-      beam.style.transform = `rotate(${Math.random() * 180}deg)`;
-      beam.style.animationDelay = Math.random() * 4 + 's';
-      container.appendChild(beam);
-
-      setTimeout(() => {
-        if (container.contains(beam)) {
-          container.removeChild(beam);
-        }
-      }, 12000);
     };
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Staggered, organic element creation
-    const silkHorizontalInterval = setInterval(() => createSilkLine('horizontal'), 12000);
-    const silkDiagonalInterval = setInterval(() => createSilkLine('diagonal'), 15000);
-    const auroraInterval = setInterval(createAuroraCurrent, 8000);
-    const orbInterval = setInterval(createLiquidOrb, 10000);
-    const wispInterval = setInterval(createWeightlessWisp, 6000);
-    const beamInterval = setInterval(createEtherealBeam, 7000);
+    // Staggered, organic element creation with longer intervals for smoother experience
+    const horizontalLeftInterval = setInterval(() => createHorizontalLine('left'), 15000);
+    const horizontalRightInterval = setInterval(() => createHorizontalLine('right'), 18000);
+    const verticalInterval = setInterval(createVerticalLine, 20000);
+    const diagonalInterval = setInterval(createDiagonalLine, 25000);
+    const glowInterval = setInterval(createAmbientGlow, 12000);
 
-    // Initial ambient elements
-    for (let i = 0; i < 3; i++) {
-      setTimeout(() => createSilkLine('horizontal'), i * 4000);
-      setTimeout(() => createSilkLine('diagonal'), i * 5000);
-      setTimeout(createAuroraCurrent, i * 3000);
-      setTimeout(createLiquidOrb, i * 3500);
-    }
-    for (let i = 0; i < 5; i++) {
-      setTimeout(createWeightlessWisp, i * 2000);
-      setTimeout(createEtherealBeam, i * 2500);
-    }
+    // Initial ambient elements - fewer for cleaner look
+    setTimeout(() => createHorizontalLine('left'), 2000);
+    setTimeout(() => createHorizontalLine('right'), 5000);
+    setTimeout(createVerticalLine, 8000);
+    setTimeout(createDiagonalLine, 12000);
+    setTimeout(createAmbientGlow, 3000);
+    setTimeout(createAmbientGlow, 15000);
 
     return () => {
-      clearInterval(silkHorizontalInterval);
-      clearInterval(silkDiagonalInterval);
-      clearInterval(auroraInterval);
-      clearInterval(orbInterval);
-      clearInterval(wispInterval);
-      clearInterval(beamInterval);
+      clearInterval(horizontalLeftInterval);
+      clearInterval(horizontalRightInterval);
+      clearInterval(verticalInterval);
+      clearInterval(diagonalInterval);
+      clearInterval(glowInterval);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
@@ -181,18 +148,28 @@ const AnimatedBackground = () => {
       className="fixed inset-0 pointer-events-none"
       style={{ zIndex: 1 }}
     >
-      {/* Static silk lines for base layer */}
-      <div className="neural-silk-line horizontal" style={{ top: '20%', animationDelay: '0s' }}></div>
-      <div className="neural-silk-line diagonal" style={{ top: '60%', animationDelay: '-8s' }}></div>
-      <div className="neural-silk-line horizontal" style={{ top: '80%', animationDelay: '-4s' }}></div>
+      {/* Static base layer elements for consistent ambience */}
+      <div className="futuristic-line line-horizontal" 
+           style={{ 
+             top: '25%', 
+             left: '-80vw',
+             animation: 'glide-horizontal-left 22s ease-in-out infinite',
+             animationDelay: '0s' 
+           }}>
+      </div>
+      
+      <div className="futuristic-line line-vertical" 
+           style={{ 
+             left: '80%', 
+             top: '-60vh',
+             animation: 'glide-vertical-down 28s ease-in-out infinite',
+             animationDelay: '-10s' 
+           }}>
+      </div>
 
-      {/* Static aurora currents */}
-      <div className="aurora-current" style={{ left: '15%', top: '25%' }}></div>
-      <div className="aurora-current" style={{ left: '75%', top: '70%', animationDelay: '-10s' }}></div>
-
-      {/* Static liquid orbs */}
-      <div className="liquid-light-orb" style={{ left: '10%', top: '50%' }}></div>
-      <div className="liquid-light-orb" style={{ left: '85%', top: '30%', animationDelay: '-6s' }}></div>
+      {/* Static ambient glows */}
+      <div className="ambient-glow" style={{ left: '10%', top: '20%' }}></div>
+      <div className="ambient-glow" style={{ left: '85%', top: '70%', animationDelay: '-15s' }}></div>
     </div>
   );
 };

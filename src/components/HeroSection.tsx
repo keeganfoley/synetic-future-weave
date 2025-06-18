@@ -16,10 +16,10 @@ const HeroSection = () => {
       const parallax = document.querySelector('.parallax-background');
       
       if (particles) {
-        (particles as HTMLElement).style.transform = `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.02}deg)`;
+        (particles as HTMLElement).style.transform = `translateY(${scrollY * 0.15}px)`;
       }
       if (parallax) {
-        (parallax as HTMLElement).style.transform = `translateY(${scrollY * 0.2}px) translateX(${scrollY * 0.1}px)`;
+        (parallax as HTMLElement).style.transform = `translateY(${scrollY * 0.1}px)`;
       }
     };
 
@@ -46,8 +46,9 @@ const HeroSection = () => {
             <span className="block animate-fade-in-up">
               Intelligence in Motion.
             </span>
-            <span className="block animate-fade-in-up text-cosmic-gold" style={{ animationDelay: '0.4s' }}>
+            <span className="block animate-fade-in-up text-cosmic-gold relative" style={{ animationDelay: '0.4s' }}>
               Automation Without Friction.
+              <div className="scanning-beam"></div>
             </span>
           </h1>
         </div>
