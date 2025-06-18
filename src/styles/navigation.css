@@ -8,7 +8,7 @@
   }
   
   .logo-2025 {
-    height: 3rem;
+    height: 6rem;
     width: auto;
     filter: drop-shadow(0 0 15px rgba(227, 199, 112, 0.3)) brightness(1.1) contrast(1.1);
     transition: all 0.4s ease;
@@ -18,7 +18,7 @@
   
   .logo-glow-ring {
     position: absolute;
-    inset: -20px;
+    inset: -30px;
     border: 1px solid rgba(227, 199, 112, 0.3);
     border-radius: 50%;
     animation: glow-ring-rotation 8s linear infinite;
@@ -33,8 +33,8 @@
   .logo-beam {
     position: absolute;
     top: 50%;
-    left: -30px;
-    right: -30px;
+    left: -50px;
+    right: -50px;
     height: 2px;
     transform: translateY(-50%);
     background: linear-gradient(90deg, transparent, rgba(227, 199, 112, 0.6), transparent);
