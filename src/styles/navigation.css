@@ -1,3 +1,4 @@
+
 /* Navigation Styles */
 @layer components {
   .nav-2025 {
@@ -31,7 +32,7 @@
   }
   
   .logo-2025 {
-    height: 96px;
+    height: 112px;
     width: auto;
     transition: all 0.4s ease;
     position: relative;
