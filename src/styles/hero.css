@@ -47,7 +47,6 @@
     position: relative;
     transition: all 0.4s ease;
     animation: premium-gold-shimmer 10s ease-in-out infinite;
-    filter: blur(0px);
   }
   
   .hero-title-2025:hover {
