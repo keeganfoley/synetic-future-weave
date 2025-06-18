@@ -34,8 +34,8 @@ const Navigation = () => {
         isScrolled ? 'nav-scrolled-2025' : 'nav-transparent-2025'
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-16 py-2">
-            {/* Smaller Logo positioned to the left */}
+          <div className="flex items-center justify-between h-24 py-4">
+            {/* Logo positioned to the left */}
             <div className="flex-shrink-0">
               <div className="relative">
                 <img 
