@@ -38,28 +38,28 @@ const HeroSection = () => {
       <div className="hero-particles"></div>
       
       {/* Hero Content */}
-      <div className={`text-center z-10 px-8 transition-all duration-1500 ${
+      <div className={`text-center z-20 px-8 transition-all duration-1500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}>
-        <div className="hero-title-container">
-          <h1 className="hero-title-2025 hero-title-shimmer mb-8 leading-[0.9]">
-            <span className="block animate-fade-in-up">
+        <div className="hero-title-container relative z-20">
+          <h1 className="hero-title-2025 hero-title-shimmer mb-8 leading-[0.9] relative z-20">
+            <span className="block animate-fade-in-up relative z-20">
               Intelligence in Motion.
             </span>
-            <span className="block animate-fade-in-up text-cosmic-gold relative" style={{ animationDelay: '0.4s' }}>
+            <span className="block animate-fade-in-up text-cosmic-gold relative z-20" style={{ animationDelay: '0.4s' }}>
               Automation Without Friction.
               <div className="automation-beam"></div>
             </span>
           </h1>
         </div>
         
-        <p className={`hero-subtitle-2025 transition-all duration-1500 delay-1000 ${
+        <p className={`hero-subtitle-2025 transition-all duration-1500 delay-1000 relative z-20 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           We design systems that eliminate lag, evolve on their own, and adapt in real-time.
         </p>
 
-        <div className={`transition-all duration-1500 delay-1400 ${
+        <div className={`transition-all duration-1500 delay-1400 relative z-20 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <button 
