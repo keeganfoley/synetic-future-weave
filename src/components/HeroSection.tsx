@@ -46,8 +46,9 @@ const HeroSection = () => {
             <span className="block animate-fade-in-up">
               Intelligence in Motion.
             </span>
-            <span className="block animate-fade-in-up text-cosmic-gold" style={{ animationDelay: '0.4s' }}>
+            <span className="block animate-fade-in-up text-cosmic-gold relative" style={{ animationDelay: '0.4s' }}>
               Automation Without Friction.
+              <div className="automation-beam"></div>
             </span>
           </h1>
         </div>

@@ -1,5 +1,218 @@
 
-/* Neural Background Animations */
+/* Smooth Floating Line Animations with Depth */
+@keyframes floating-line-horizontal {
+  0% { 
+    transform: translateX(-120vw) translateY(0) translateZ(0);
+    opacity: 0;
+    filter: blur(2px);
+  }
+  10% { 
+    opacity: 0.4;
+    filter: blur(1px);
+  }
+  90% { 
+    opacity: 0.3;
+    filter: blur(1px);
+  }
+  100% { 
+    transform: translateX(120vw) translateY(-20px) translateZ(0);
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes floating-line-vertical {
+  0% { 
+    transform: translateY(-120vh) translateX(0) translateZ(0);
+    opacity: 0;
+    filter: blur(2px);
+  }
+  15% { 
+    opacity: 0.35;
+    filter: blur(0.5px);
+  }
+  85% { 
+    opacity: 0.25;
+    filter: blur(0.5px);
+  }
+  100% { 
+    transform: translateY(120vh) translateX(30px) translateZ(0);
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes floating-line-diagonal {
+  0% { 
+    transform: translateX(-100vw) translateY(100vh) rotate(-15deg) translateZ(0);
+    opacity: 0;
+    filter: blur(3px);
+  }
+  20% { 
+    opacity: 0.3;
+    filter: blur(1px);
+  }
+  80% { 
+    opacity: 0.2;
+    filter: blur(1px);
+  }
+  100% { 
+    transform: translateX(100vw) translateY(-100vh) rotate(-12deg) translateZ(0);
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+@keyframes floating-approach {
+  0% { 
+    transform: scale(0.1) translateY(50px) translateZ(-100px);
+    opacity: 0;
+    filter: blur(5px);
+  }
+  50% { 
+    transform: scale(1) translateY(0) translateZ(0);
+    opacity: 0.4;
+    filter: blur(0px);
+  }
+  100% { 
+    transform: scale(2) translateY(-50px) translateZ(100px);
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
+
+@keyframes floating-recede {
+  0% { 
+    transform: scale(1.5) translateY(-30px) translateZ(50px);
+    opacity: 0.3;
+    filter: blur(1px);
+  }
+  50% { 
+    transform: scale(1) translateY(0) translateZ(0);
+    opacity: 0.5;
+    filter: blur(0px);
+  }
+  100% { 
+    transform: scale(0.2) translateY(30px) translateZ(-150px);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+/* Scanning Beam Animation */
+@keyframes automation-beam-sweep {
+  0% { 
+    left: -150%;
+    opacity: 0;
+    filter: blur(2px);
+  }
+  5% { 
+    opacity: 0.8;
+    filter: blur(0px);
+  }
+  95% { 
+    opacity: 0.6;
+    filter: blur(0px);
+  }
+  100% { 
+    left: 150%;
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes beam-sparkle {
+  0%, 100% { 
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Floating Line Elements */
+.floating-line {
+  position: absolute;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.15) 20%, 
+    rgba(212, 175, 55, 0.4) 50%, 
+    rgba(212, 175, 55, 0.15) 80%, 
+    transparent 100%
+  );
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.floating-line.horizontal {
+  width: 80vw;
+  height: 1px;
+  animation: floating-line-horizontal 25s ease-in-out infinite;
+}
+
+.floating-line.vertical {
+  width: 1px;
+  height: 60vh;
+  animation: floating-line-vertical 30s ease-in-out infinite;
+}
+
+.floating-line.diagonal {
+  width: 100vw;
+  height: 1px;
+  animation: floating-line-diagonal 35s ease-in-out infinite;
+}
+
+.floating-line.approach {
+  width: 40vw;
+  height: 1px;
+  animation: floating-approach 20s ease-in-out infinite;
+}
+
+.floating-line.recede {
+  width: 60vw;
+  height: 1px;
+  animation: floating-recede 28s ease-in-out infinite;
+}
+
+/* Automation Beam */
+.automation-beam {
+  position: absolute;
+  bottom: -8px;
+  left: -150%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 223, 140, 0.3) 20%, 
+    rgba(255, 223, 140, 0.9) 50%, 
+    rgba(255, 223, 140, 0.3) 80%, 
+    transparent 100%
+  );
+  box-shadow: 
+    0 0 10px rgba(255, 223, 140, 0.6),
+    0 0 20px rgba(255, 223, 140, 0.3);
+  animation: automation-beam-sweep 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.automation-beam::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  animation: beam-sparkle 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Legacy animations for existing elements */
 @keyframes neural-background-drift {
   0% { 
     transform: translateX(0) translateY(0) rotate(0deg);
@@ -46,7 +259,6 @@
   100% { transform: translateX(-600px) translateY(-500px); }
 }
 
-/* Hero Title Animations */
 @keyframes hero-focus-emergence {
   0% { 
     filter: blur(8px);
@@ -87,7 +299,6 @@
   }
 }
 
-/* Navigation Logo Animation - Updated for better visibility */
 @keyframes logo-beam-travel {
   0% { 
     left: -100%;
@@ -105,99 +316,6 @@
   }
 }
 
-/* Smooth Neural Filament Animations */
-@keyframes silk-flow-horizontal {
-  0% { 
-    transform: translateX(-100vw) translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  10% { 
-    opacity: 0.6;
-  }
-  90% { 
-    opacity: 0.4;
-  }
-  100% { 
-    transform: translateX(100vw) translateY(-50px) rotate(5deg);
-    opacity: 0;
-  }
-}
-
-@keyframes silk-flow-diagonal {
-  0% { 
-    transform: translateX(-100vw) translateY(100vh) rotate(-15deg);
-    opacity: 0;
-  }
-  15% { 
-    opacity: 0.5;
-  }
-  85% { 
-    opacity: 0.3;
-  }
-  100% { 
-    transform: translateX(100vw) translateY(-100vh) rotate(-10deg);
-    opacity: 0;
-  }
-}
-
-@keyframes aurora-drift {
-  0% { 
-    transform: translateX(-50%) translateY(0) scaleX(0.8);
-    opacity: 0.1;
-  }
-  50% { 
-    transform: translateX(0) translateY(-30px) scaleX(1.2);
-    opacity: 0.4;
-  }
-  100% { 
-    transform: translateX(50%) translateY(-60px) scaleX(0.9);
-    opacity: 0.1;
-  }
-}
-
-@keyframes liquid-light-pulse {
-  0%, 100% { 
-    transform: scale(1) rotate(0deg);
-    opacity: 0.1;
-    filter: blur(40px);
-  }
-  50% { 
-    transform: scale(1.3) rotate(180deg);
-    opacity: 0.3;
-    filter: blur(60px);
-  }
-}
-
-@keyframes weightless-float {
-  0%, 100% { 
-    transform: translateY(0) translateX(0) rotate(0deg);
-    opacity: 0.2;
-  }
-  33% { 
-    transform: translateY(-40px) translateX(20px) rotate(120deg);
-    opacity: 0.4;
-  }
-  66% { 
-    transform: translateY(-20px) translateX(-15px) rotate(240deg);
-    opacity: 0.3;
-  }
-}
-
-@keyframes ethereal-shimmer {
-  0% { 
-    background-position: -200% 0;
-    opacity: 0;
-  }
-  50% { 
-    opacity: 0.6;
-  }
-  100% { 
-    background-position: 200% 0;
-    opacity: 0;
-  }
-}
-
-/* Premium Button Animation */
 @keyframes premium-pulse-ring {
   0% { 
     transform: scale(1);
@@ -207,85 +325,4 @@
     transform: scale(1.5);
     opacity: 0;
   }
-}
-
-/* Smooth Motion Elements */
-.neural-silk-line {
-  position: absolute;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(212, 175, 55, 0.2) 20%, 
-    rgba(212, 175, 55, 0.6) 50%, 
-    rgba(212, 175, 55, 0.2) 80%, 
-    transparent 100%
-  );
-  filter: blur(0.5px);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-}
-
-.neural-silk-line.horizontal {
-  width: 80vw;
-  animation: silk-flow-horizontal 25s ease-in-out infinite;
-}
-
-.neural-silk-line.diagonal {
-  width: 120vw;
-  animation: silk-flow-diagonal 35s ease-in-out infinite;
-}
-
-.aurora-current {
-  position: absolute;
-  width: 200px;
-  height: 100px;
-  background: radial-gradient(ellipse, 
-    rgba(212, 175, 55, 0.15) 0%, 
-    rgba(212, 175, 55, 0.08) 40%, 
-    transparent 70%
-  );
-  border-radius: 50%;
-  animation: aurora-drift 20s ease-in-out infinite;
-  filter: blur(20px);
-}
-
-.liquid-light-orb {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, 
-    rgba(212, 175, 55, 0.1) 0%, 
-    rgba(212, 175, 55, 0.05) 50%, 
-    transparent 70%
-  );
-  border-radius: 50%;
-  animation: liquid-light-pulse 18s ease-in-out infinite;
-}
-
-.weightless-wisp {
-  position: absolute;
-  width: 60px;
-  height: 30px;
-  background: linear-gradient(45deg, 
-    transparent, 
-    rgba(212, 175, 55, 0.3), 
-    transparent
-  );
-  border-radius: 50%;
-  animation: weightless-float 15s ease-in-out infinite;
-  filter: blur(15px);
-}
-
-.ethereal-beam {
-  position: absolute;
-  width: 300px;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(212, 175, 55, 0.4), 
-    rgba(212, 175, 55, 0.8), 
-    rgba(212, 175, 55, 0.4), 
-    transparent
-  );
-  animation: ethereal-shimmer 12s ease-in-out infinite;
-  filter: blur(1px);
 }
