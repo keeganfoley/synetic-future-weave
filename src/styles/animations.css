@@ -320,3 +320,183 @@
 .stagger-2 { transition-delay: 0.4s; }
 .stagger-3 { transition-delay: 0.65s; }
 .stagger-4 { transition-delay: 0.9s; }
+
+/* Enhanced Atmospheric Background Animations */
+@keyframes cosmic-atmosphere-drift {
+  0% { 
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% { 
+    transform: translateX(-200px) translateY(-100px) rotate(1deg);
+    opacity: 0.4;
+  }
+  50% { 
+    transform: translateX(-400px) translateY(-200px) rotate(0deg);
+    opacity: 0.7;
+  }
+  75% { 
+    transform: translateX(-600px) translateY(-100px) rotate(-1deg);
+    opacity: 0.5;
+  }
+  100% { 
+    transform: translateX(-800px) translateY(-300px) rotate(0deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes neural-breathing {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+  33% { 
+    opacity: 0.25;
+    transform: scale(1.02) rotate(0.5deg);
+  }
+  66% { 
+    opacity: 0.6;
+    transform: scale(0.98) rotate(-0.5deg);
+  }
+}
+
+/* Intelligent Dust Trails */
+@keyframes atmospheric-dust-drift {
+  0% { 
+    opacity: 0;
+    transform: translateY(0) translateX(0) scale(0.8);
+  }
+  10% { 
+    opacity: 0.3;
+    transform: translateY(-50px) translateX(20px) scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: translateY(-300px) translateX(100px) scale(1.2);
+  }
+  90% { 
+    opacity: 0.2;
+    transform: translateY(-600px) translateX(150px) scale(0.9);
+  }
+  100% { 
+    opacity: 0;
+    transform: translateY(-800px) translateX(200px) scale(0.6);
+  }
+}
+
+/* Neural Wisps */
+@keyframes neural-wisp-float {
+  0%, 100% { 
+    opacity: 0.2;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  25% { 
+    opacity: 0.4;
+    transform: translateY(-100px) scale(1.1) rotate(90deg);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: translateY(-200px) scale(0.9) rotate(180deg);
+  }
+  75% { 
+    opacity: 0.3;
+    transform: translateY(-300px) scale(1.05) rotate(270deg);
+  }
+}
+
+/* Shimmer Veins (Marble-like) */
+@keyframes shimmer-vein-pulse {
+  0%, 100% { 
+    opacity: 0;
+    transform: scaleX(0) scaleY(1);
+  }
+  20% { 
+    opacity: 0.4;
+    transform: scaleX(0.3) scaleY(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scaleX(1) scaleY(1);
+  }
+  80% { 
+    opacity: 0.3;
+    transform: scaleX(0.7) scaleY(1);
+  }
+}
+
+/* Enhanced Ambient Glow */
+@keyframes premium-ambient-breathing {
+  0%, 100% { 
+    opacity: 0.12;
+    transform: scale(1) rotate(0deg);
+    filter: blur(60px);
+  }
+  33% { 
+    opacity: 0.25;
+    transform: scale(1.15) rotate(120deg);
+    filter: blur(80px);
+  }
+  66% { 
+    opacity: 0.08;
+    transform: scale(0.9) rotate(240deg);
+    filter: blur(70px);
+  }
+}
+
+/* Vapor Wisp Motion */
+@keyframes vapor-wisp-drift {
+  0%, 100% { 
+    opacity: 0.06;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% { 
+    opacity: 0.15;
+    transform: translateY(-150px) rotate(180deg) scale(1.2);
+  }
+}
+
+/* Background Element Styles */
+.ambient-glow {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(180, 139, 60, 0.15) 0%, rgba(180, 139, 60, 0.05) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: premium-ambient-breathing 20s ease-in-out infinite;
+  filter: blur(60px);
+}
+
+.vapor-wisp {
+  width: 200px;
+  height: 80px;
+  background: linear-gradient(45deg, transparent, rgba(180, 139, 60, 0.08), transparent);
+  border-radius: 50%;
+  animation: vapor-wisp-drift 15s ease-in-out infinite;
+  filter: blur(40px);
+}
+
+.dust-trail {
+  width: 3px;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(180, 139, 60, 0.4), transparent);
+  border-radius: 50%;
+  animation: atmospheric-dust-drift 25s ease-out forwards;
+  filter: blur(1px);
+}
+
+.neural-wisp {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(180, 139, 60, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: neural-wisp-float 18s ease-in-out infinite;
+  filter: blur(20px);
+}
+
+.shimmer-vein {
+  width: 300px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(180, 139, 60, 0.6), transparent);
+  animation: shimmer-vein-pulse 12s ease-in-out infinite;
+  transform-origin: left center;
+  filter: blur(1px);
+}
