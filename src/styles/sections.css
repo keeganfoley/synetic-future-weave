@@ -183,7 +183,7 @@
   }
   
   .cta-button-enhanced-optimized {
-    @apply px-16 py-7 border-2 border-cosmic-gold/70 rounded-xl font-medium transition-all duration-400 overflow-hidden relative;
+    @apply px-16 py-7 border-2 border-cosmic-gold/70 rounded-xl font-medium transition-all duration-300 overflow-hidden relative;
     background: 
       linear-gradient(135deg, rgba(180, 139, 60, 0.12) 0%, rgba(180, 139, 60, 0.04) 100%);
     backdrop-filter: blur(25px);
