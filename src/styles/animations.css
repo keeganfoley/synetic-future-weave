@@ -6,11 +6,11 @@
 
 @keyframes golden-wiring {
   0%, 100% { 
-    opacity: 0.3;
+    opacity: 0.4;
     transform: translateX(0) translateY(0);
   }
   50% { 
-    opacity: 0.15;
+    opacity: 0.2;
     transform: translateX(15px) translateY(-15px);
   }
 }
@@ -54,6 +54,38 @@
     left: 100%;
     opacity: 0;
   }
+}
+
+@keyframes hero-blur-focus {
+  0% { 
+    filter: blur(4px);
+    opacity: 0.7;
+  }
+  100% { 
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-shimmer-beam {
+  0%, 90%, 100% { 
+    left: -100%;
+    opacity: 0;
+  }
+  10%, 80% { 
+    left: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes scroll-drift {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes scroll-particle-drift {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(1deg) scale(1.02); }
 }
 
 @keyframes premium-shimmer {

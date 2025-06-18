@@ -9,6 +9,24 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const particles = document.querySelector('.hero-particles');
+      const parallax = document.querySelector('.parallax-background');
+      
+      if (particles) {
+        (particles as HTMLElement).style.transform = `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.02}deg)`;
+      }
+      if (parallax) {
+        (parallax as HTMLElement).style.transform = `translateY(${scrollY * 0.2}px) translateX(${scrollY * 0.1}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToNextSection = () => {
     document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -24,7 +42,7 @@ const HeroSection = () => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}>
         <div className="hero-title-container">
-          <h1 className="hero-title-2025 mb-8 leading-[0.9]">
+          <h1 className="hero-title-2025 hero-title-shimmer mb-8 leading-[0.9]">
             <span className="block animate-fade-in-up">
               Intelligence in Motion.
             </span>

@@ -15,8 +15,22 @@ const MainSections = () => {
       }
     });
 
-    // Kinetic text reveal on scroll
+    // Enhanced scroll effects for background elements
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+      
+      // Animate background grids and particles
+      const movingGrid = document.querySelector('.moving-grid-background');
+      const orbitingSpecks = document.querySelector('.orbiting-specks');
+      
+      if (movingGrid) {
+        (movingGrid as HTMLElement).style.transform = `translateY(${scrollY * 0.1}px) rotate(${scrollY * 0.02}deg)`;
+      }
+      if (orbitingSpecks) {
+        (orbitingSpecks as HTMLElement).style.transform = `translateY(${scrollY * 0.15}px) translateX(${scrollY * 0.05}px)`;
+      }
+
+      // Kinetic text reveal on scroll
       const visionSection = document.getElementById('vision');
       if (visionSection) {
         const rect = visionSection.getBoundingClientRect();

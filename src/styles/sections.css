@@ -14,9 +14,10 @@
       linear-gradient(45deg, transparent 49%, rgba(180, 139, 60, 0.015) 50%, transparent 51%),
       linear-gradient(-45deg, transparent 49%, rgba(180, 139, 60, 0.015) 50%, transparent 51%);
     background-size: 200px 200px;
-    animation: premium-grid-pulse 25s linear infinite;
+    animation: premium-grid-pulse 25s linear infinite, scroll-drift 1s ease-out infinite;
     pointer-events: none;
     opacity: 0.7;
+    transition: transform 0.1s ease-out;
   }
   
   .section-title-2025 {
@@ -64,7 +65,7 @@
   .solution-card-inner-2025 {
     @apply p-12 rounded-2xl border border-cosmic-gold/20 relative overflow-hidden;
     background: 
-      linear-gradient(135deg, rgba(15, 15, 17, 0.9) 0%, rgba(8, 8, 8, 0.95) 100%);
+      linear-gradient(135deg, rgba(10, 10, 14, 0.9) 0%, rgba(2, 2, 4, 0.95) 100%);
     backdrop-filter: blur(30px);
     transition: all 0.6s ease;
     position: relative;
@@ -127,7 +128,8 @@
   }
   
   .solution-description-2025 {
-    @apply text-cosmic-steel leading-relaxed;
+    @apply leading-relaxed;
+    color: rgb(var(--cosmic-steel));
     line-height: 1.7;
     position: relative;
     z-index: 10;
@@ -207,11 +209,25 @@
     max-width: 700px;
     margin: 0 auto;
     letter-spacing: 0.02em;
-    padding: 2rem;
-    background: rgba(15, 15, 17, 0.6);
-    border-radius: 16px;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(180, 139, 60, 0.1);
+    padding: 2.5rem;
+    background: rgba(10, 10, 14, 0.8);
+    border-radius: 20px;
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(180, 139, 60, 0.15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+  }
+  
+  .mission-text::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(180, 139, 60, 0.6), transparent);
+    border-radius: 1px;
   }
 }
 
@@ -220,7 +236,7 @@
   .cta-section-2025 {
     position: relative;
     background: 
-      radial-gradient(ellipse at 50% 50%, rgba(8, 8, 8, 0.95) 0%, rgba(4, 4, 6, 1) 100%);
+      radial-gradient(ellipse at 50% 50%, rgba(2, 2, 4, 0.95) 0%, rgba(1, 1, 2, 1) 100%);
     padding: 8rem 0;
   }
   
@@ -232,8 +248,9 @@
       radial-gradient(1px 1px at 75% 65%, rgba(180, 139, 60, 0.3) 1px, transparent 1px),
       radial-gradient(1px 1px at 45% 25%, rgba(180, 139, 60, 0.2) 1px, transparent 1px);
     background-size: 800px 500px;
-    animation: premium-specks-orbit 180s linear infinite;
+    animation: premium-specks-orbit 180s linear infinite, scroll-particle-drift 1s ease-out infinite;
     pointer-events: none;
+    transition: transform 0.1s ease-out;
   }
   
   .cta-title-2025 {

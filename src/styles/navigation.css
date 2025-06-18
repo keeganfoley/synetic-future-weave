@@ -60,13 +60,13 @@
 /* Premium Navigation */
 @layer components {
   .nav-transparent-2025 {
-    background: rgba(8, 8, 8, 0.4);
+    background: rgba(2, 2, 4, 0.4);
     backdrop-filter: blur(30px);
     border-bottom: 1px solid rgba(180, 139, 60, 0.1);
   }
   
   .nav-scrolled-2025 {
-    background: rgba(8, 8, 8, 0.95);
+    background: rgba(2, 2, 4, 0.95);
     backdrop-filter: blur(40px);
     border-bottom: 1px solid rgba(180, 139, 60, 0.25);
     box-shadow: 0 8px 50px rgba(0, 0, 0, 0.7);

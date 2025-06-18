@@ -7,17 +7,17 @@
 
 @layer base {
   :root {
-    --background: 8 8 8;
-    --foreground: 209 209 209;
-    --cosmic-black: 8 8 8;
-    --cosmic-steel: 209 209 209;
+    --background: 2 2 4;
+    --foreground: 193 193 193;
+    --cosmic-black: 2 2 4;
+    --cosmic-steel: 193 193 193;
     --cosmic-gold: 180 139 60;
     --cosmic-gold-dark: 153 115 42;
     --cosmic-gold-rgb: 180, 139, 60;
-    --cosmic-charcoal: 18 18 20;
-    --cosmic-midnight: 12 12 16;
-    --cosmic-deep-black: 4 4 6;
-    --cosmic-matte: 15 15 17;
+    --cosmic-charcoal: 12 12 16;
+    --cosmic-midnight: 8 8 12;
+    --cosmic-deep-black: 2 2 4;
+    --cosmic-matte: 10 10 14;
   }
 
   * {
@@ -31,7 +31,7 @@
     background: 
       radial-gradient(ellipse at 20% 80%, rgba(180, 139, 60, 0.03) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 20%, rgba(180, 139, 60, 0.02) 0%, transparent 50%),
-      linear-gradient(180deg, #0a0a0c 0%, #080808 100%);
+      linear-gradient(180deg, #020204 0%, #010102 100%);
     overflow-x: hidden;
     color: rgb(var(--cosmic-steel));
     position: relative;
@@ -45,15 +45,15 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(1px 1px at 20px 30px, rgba(180, 139, 60, 0.08), transparent),
-      radial-gradient(1px 1px at 40px 70px, rgba(180, 139, 60, 0.05), transparent),
-      radial-gradient(1px 1px at 90px 40px, rgba(180, 139, 60, 0.03), transparent);
+      radial-gradient(1px 1px at 20px 30px, rgba(180, 139, 60, 0.12), transparent),
+      radial-gradient(1px 1px at 40px 70px, rgba(180, 139, 60, 0.08), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(180, 139, 60, 0.05), transparent);
     background-repeat: repeat;
     background-size: 400px 200px;
     animation: cosmic-drift 200s linear infinite;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.6;
+    opacity: 0.8;
   }
 
   body::after {
@@ -64,13 +64,13 @@
     width: 100%;
     height: 100%;
     background: 
-      linear-gradient(45deg, transparent 48%, rgba(180, 139, 60, 0.02) 49%, rgba(180, 139, 60, 0.02) 51%, transparent 52%),
-      linear-gradient(-45deg, transparent 48%, rgba(180, 139, 60, 0.015) 49%, rgba(180, 139, 60, 0.015) 51%, transparent 52%);
+      linear-gradient(45deg, transparent 48%, rgba(180, 139, 60, 0.025) 49%, rgba(180, 139, 60, 0.025) 51%, transparent 52%),
+      linear-gradient(-45deg, transparent 48%, rgba(180, 139, 60, 0.02) 49%, rgba(180, 139, 60, 0.02) 51%, transparent 52%);
     background-size: 600px 600px;
     animation: golden-wiring 30s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.3;
+    opacity: 0.4;
   }
 
   h1, h2, h3, h4, h5, h6 {
