@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
@@ -15,12 +14,15 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-2025-container">
+      {/* New Hero Stars Background Layer */}
+      <div className="hero-stars" />
+      
       {/* Subtle Animated Background - Galaxy Grid */}
       <div className="subtle-background-drift" />
       <div className="galaxy-grid-lines" />
       
       {/* Hero Content - Completely Static */}
-      <div className={`text-center z-10 px-8 transition-opacity duration-1000 ${
+      <div className={`hero-content text-center z-10 px-8 transition-opacity duration-1000 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}>
         <div className="hero-title-container">
