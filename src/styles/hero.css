@@ -1,11 +1,11 @@
 
-/* Premium Hero Section */
+/* Premium Hero Section - Optimized */
 @layer components {
   .hero-2025-container {
     position: relative;
     background: 
-      radial-gradient(ellipse at 25% 25%, rgba(180, 139, 60, 0.03) 0%, transparent 50%),
-      radial-gradient(ellipse at 75% 75%, rgba(180, 139, 60, 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 25% 25%, rgba(180, 139, 60, 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 75%, rgba(180, 139, 60, 0.015) 0%, transparent 50%),
       linear-gradient(135deg, rgba(5, 5, 8, 0.8) 0%, rgba(8, 8, 12, 0.9) 100%);
     min-height: 100vh;
   }
@@ -14,27 +14,28 @@
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(0deg, transparent 49.8%, rgba(180, 139, 60, 0.012) 50%, transparent 50.2%),
-      linear-gradient(90deg, transparent 49.8%, rgba(180, 139, 60, 0.008) 50%, transparent 50.2%);
-    background-size: 200px 200px;
-    animation: neural-grid-flow 25s ease-in-out infinite;
+      linear-gradient(0deg, transparent 49.8%, rgba(180, 139, 60, 0.008) 50%, transparent 50.2%),
+      linear-gradient(90deg, transparent 49.8%, rgba(180, 139, 60, 0.006) 50%, transparent 50.2%);
+    background-size: 300px 300px;
+    animation: gridFloat 40s ease-in-out infinite;
     pointer-events: none;
-    transform: translateZ(0);
+    will-change: transform;
   }
   
   .hero-particles {
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(1px 1px at 10% 20%, rgba(180, 139, 60, 0.08) 1px, transparent 1px),
-      radial-gradient(1px 1px at 90% 80%, rgba(180, 139, 60, 0.06) 1px, transparent 1px),
-      radial-gradient(1px 1px at 30% 70%, rgba(180, 139, 60, 0.04) 1px, transparent 1px);
-    background-size: 600px 500px;
-    animation: neural-particle-drift 180s linear infinite;
+      radial-gradient(1px 1px at 10% 20%, rgba(180, 139, 60, 0.06) 1px, transparent 1px),
+      radial-gradient(1px 1px at 90% 80%, rgba(180, 139, 60, 0.04) 1px, transparent 1px),
+      radial-gradient(1px 1px at 30% 70%, rgba(180, 139, 60, 0.03) 1px, transparent 1px);
+    background-size: 800px 600px;
+    animation: particleFlow 120s linear infinite;
     pointer-events: none;
+    will-change: transform;
   }
   
-  .hero-title-2025 {
+  .hero-title-2025-static {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 400;
@@ -45,31 +46,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    transition: all 0.4s ease;
-    animation: hero-focus-emergence 2.5s ease-out, premium-gold-shimmer 10s ease-in-out infinite;
-    filter: blur(0px);
-  }
-  
-  .hero-title-2025:hover {
-    text-shadow: 0 0 60px rgba(180, 139, 60, 0.6);
-    transform: translateY(-3px);
-  }
-  
-  .hero-title-shimmer {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .hero-title-shimmer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), rgba(180, 139, 60, 0.4), rgba(255, 255, 255, 0.3), transparent);
-    animation: cinematic-beam-sweep 8s ease-in-out infinite;
-    filter: blur(1px);
+    transition: none;
   }
   
   .hero-subtitle-2025 {
@@ -82,47 +59,37 @@
     letter-spacing: 0.02em;
   }
   
-  .hero-cta-2025 {
-    @apply px-12 py-6 border border-cosmic-gold/70 rounded-xl font-light tracking-wider transition-all duration-700 overflow-hidden relative;
+  .hero-cta-2025-optimized {
+    @apply px-12 py-6 border border-cosmic-gold/70 rounded-xl font-light tracking-wider transition-all duration-400 overflow-hidden relative;
     background: 
       linear-gradient(135deg, rgba(180, 139, 60, 0.08) 0%, rgba(180, 139, 60, 0.02) 100%);
     backdrop-filter: blur(20px);
     color: rgb(var(--cosmic-gold));
     font-size: 1.1rem;
-    box-shadow: 0 0 0 0 rgba(180, 139, 60, 0);
+    will-change: transform;
   }
   
-  .hero-cta-2025:hover {
+  .hero-cta-2025-optimized:hover {
     background: 
-      linear-gradient(135deg, rgba(180, 139, 60, 0.2) 0%, rgba(180, 139, 60, 0.1) 100%);
-    border-color: rgba(180, 139, 60, 1);
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 30px 60px rgba(180, 139, 60, 0.4);
+      linear-gradient(135deg, rgba(180, 139, 60, 0.15) 0%, rgba(180, 139, 60, 0.08) 100%);
+    border-color: rgba(180, 139, 60, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(180, 139, 60, 0.2);
   }
-  
-  .button-pulse-ring {
-    position: absolute;
-    inset: -3px;
-    border: 2px solid rgba(180, 139, 60, 0.5);
-    border-radius: inherit;
-    opacity: 0;
-    animation: premium-pulse-ring 3s ease-out infinite;
+}
+
+@keyframes gridFloat {
+  0%, 100% { 
+    opacity: 0.8;
+    transform: translateX(0) translateY(0);
   }
-  
-  .hero-cta-2025:hover .button-pulse-ring {
+  50% { 
     opacity: 1;
+    transform: translateX(10px) translateY(-10px);
   }
-  
-  .glassmorphism-effect {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(180, 139, 60, 0.15) 0%, transparent 50%, rgba(180, 139, 60, 0.08) 100%);
-    border-radius: inherit;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  
-  .hero-cta-2025:hover .glassmorphism-effect {
-    opacity: 1;
-  }
+}
+
+@keyframes particleFlow {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-800px) translateY(-600px); }
 }

@@ -1,5 +1,5 @@
 
-/* Navigation Styles */
+/* Navigation Styles - Optimized */
 @layer components {
   .nav-2025 {
     position: fixed;
@@ -25,83 +25,17 @@
     backdrop-filter: blur(15px);
   }
   
-  .logo-container-2025 {
-    position: relative;
-    overflow: hidden;
-    padding: 8px;
-  }
-  
-  .logo-2025 {
-    height: 80px;
-    width: auto;
-    transition: all 0.4s ease;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .logo-2025-enhanced {
+  .logo-2025-clean {
     height: 120px;
     width: auto;
-    transition: all 0.4s ease;
-    position: relative;
-    z-index: 2;
+    transition: transform 0.3s ease;
   }
   
-  .logo-2025:hover, .logo-2025-enhanced:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 20px rgba(180, 139, 60, 0.5));
+  .logo-2025-clean:hover {
+    transform: scale(1.02);
   }
   
-  .logo-beam {
-    position: absolute;
-    top: 50%;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, rgba(180, 139, 60, 0.8) 50%, transparent 100%);
-    animation: logo-beam-travel 3s ease-in-out infinite;
-    z-index: 1;
-    pointer-events: none;
-    transform: translateY(-50%);
-    box-shadow: 0 0 10px rgba(180, 139, 60, 0.6);
-  }
-  
-  .logo-beam-enhanced {
-    position: absolute;
-    top: 50%;
-    left: -150%;
-    width: 300%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent 0%, rgba(180, 139, 60, 0.3) 20%, rgba(180, 139, 60, 0.9) 50%, rgba(180, 139, 60, 0.3) 80%, transparent 100%);
-    animation: logo-beam-travel-enhanced 4s ease-in-out infinite;
-    z-index: 1;
-    pointer-events: none;
-    transform: translateY(-50%);
-    box-shadow: 0 0 20px rgba(180, 139, 60, 0.8), 0 0 40px rgba(180, 139, 60, 0.4);
-    filter: blur(0.5px);
-  }
-  
-  .logo-glow-ring {
-    position: absolute;
-    inset: -2px;
-    border: 1px solid rgba(180, 139, 60, 0.3);
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    animation: premium-pulse-ring 4s ease-out infinite;
-  }
-  
-  .logo-container-2025:hover .logo-glow-ring {
-    opacity: 1;
-  }
-  
-  .nav-links-2025 {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-  
-  .nav-link-2025 {
+  .nav-link-2025-clean {
     color: rgb(180, 180, 180);
     font-weight: 400;
     text-decoration: none;
@@ -112,18 +46,14 @@
     overflow: hidden;
   }
   
-  .nav-link-2025:hover {
+  .nav-link-2025-clean:hover {
     color: rgb(var(--cosmic-gold));
     background: rgba(180, 139, 60, 0.1);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
   
-  .nav-text-glow {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .nav-golden-underline {
+  .nav-link-2025-clean::after {
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -133,27 +63,7 @@
     transition: width 0.3s ease;
   }
   
-  .nav-link-2025:hover .nav-golden-underline {
+  .nav-link-2025-clean:hover::after {
     width: 100%;
-  }
-}
-
-@keyframes logo-beam-travel-enhanced {
-  0% { 
-    left: -150%;
-    opacity: 0;
-  }
-  10% { 
-    opacity: 0.6;
-  }
-  50% { 
-    opacity: 1;
-  }
-  90% { 
-    opacity: 0.6;
-  }
-  100% { 
-    left: 100%;
-    opacity: 0;
   }
 }

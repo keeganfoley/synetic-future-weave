@@ -30,35 +30,31 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled ? 'nav-scrolled-2025' : 'nav-transparent-2025'
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Enhanced Logo with improved beam animation */}
-            <div className="flex-shrink-0 mr-12 logo-container-2025 group space-pulse">
+            {/* Clean Logo - No Animations */}
+            <div className="flex-shrink-0 mr-12">
               <div className="relative">
                 <img 
                   src="/lovable-uploads/6d38dcd4-57ab-4003-b5c9-e625f91896c8.png" 
                   alt="Synetic AI" 
-                  className="logo-2025-enhanced"
+                  className="logo-2025-clean"
                 />
-                <div className="logo-beam-enhanced"></div>
-                <div className="logo-glow-ring"></div>
               </div>
             </div>
 
-            {/* Premium Navigation Links with floating effect */}
-            <div className="hidden md:flex items-center space-x-12">
-              {navLinks.map((link, index) => (
+            {/* Clean Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link-2025 magnetic-hover"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="nav-link-2025-clean"
                 >
-                  <span className="nav-text-glow luxury-float">{link.name}</span>
-                  <div className="nav-golden-underline"></div>
+                  <span>{link.name}</span>
                 </button>
               ))}
             </div>
@@ -67,7 +63,7 @@ const Navigation = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-cosmic-steel hover:text-cosmic-gold transition-colors duration-600 magnetic-hover"
+                className="text-cosmic-steel hover:text-cosmic-gold transition-colors duration-300"
               >
                 <div className="w-7 h-7 flex flex-col justify-center items-center">
                   <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
@@ -87,15 +83,15 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden nav-scrolled-2025 border-t border-cosmic-gold/25 luxury-float">
-            <div className="px-8 py-8 space-y-8">
+          <div className="md:hidden nav-scrolled-2025 border-t border-cosmic-gold/25">
+            <div className="px-8 py-8 space-y-6">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-2025 text-xl w-full text-left magnetic-hover"
+                  className="block nav-link-2025-clean text-xl w-full text-left"
                 >
-                  <span className="nav-text-glow">{link.name}</span>
+                  <span>{link.name}</span>
                 </button>
               ))}
             </div>
