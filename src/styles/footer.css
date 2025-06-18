@@ -51,12 +51,14 @@
   }
   
   .footer-copyright {
-    @apply text-cosmic-steel/70 text-sm tracking-wider;
+    @apply text-sm tracking-wider;
+    color: rgba(209, 209, 209, 0.7);
     margin-top: 1.5rem;
   }
   
   .footer-tagline {
-    @apply text-cosmic-steel/60 text-sm font-light tracking-wide;
+    @apply text-sm font-light tracking-wide;
+    color: rgba(209, 209, 209, 0.6);
     margin-top: 0.5rem;
   }
 }
