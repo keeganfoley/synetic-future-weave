@@ -16,10 +16,10 @@ const HeroSection = () => {
       const parallax = document.querySelector('.parallax-background');
       
       if (particles) {
-        (particles as HTMLElement).style.transform = `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.02}deg)`;
+        (particles as HTMLElement).style.transform = `translateY(${scrollY * 0.25}px) rotate(${scrollY * 0.015}deg) scale(${1 + scrollY * 0.0002})`;
       }
       if (parallax) {
-        (parallax as HTMLElement).style.transform = `translateY(${scrollY * 0.2}px) translateX(${scrollY * 0.1}px)`;
+        (parallax as HTMLElement).style.transform = `translateY(${scrollY * 0.15}px) translateX(${scrollY * 0.08}px) rotate(${scrollY * 0.01}deg)`;
       }
     };
 
@@ -33,16 +33,16 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-2025-container">
-      {/* Enhanced Parallax Background */}
-      <div className="parallax-background" />
-      <div className="hero-particles"></div>
+      {/* Enhanced Floating Parallax Background */}
+      <div className="parallax-background luxury-float" />
+      <div className="hero-particles space-pulse"></div>
       
       {/* Hero Content */}
-      <div className={`text-center z-10 px-8 transition-all duration-1500 ${
+      <div className={`text-center z-10 px-8 transition-all duration-1500 luxury-float ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}>
         <div className="hero-title-container">
-          <h1 className="hero-title-2025 hero-title-shimmer mb-8 leading-[0.9]">
+          <h1 className="hero-title-2025 hero-title-shimmer mb-8 leading-[0.9] space-pulse">
             <span className="block animate-fade-in-up">
               Intelligence in Motion.
             </span>
@@ -52,7 +52,7 @@ const HeroSection = () => {
           </h1>
         </div>
         
-        <p className={`hero-subtitle-2025 transition-all duration-1500 delay-1000 ${
+        <p className={`hero-subtitle-2025 luxury-float transition-all duration-1500 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           We design systems that eliminate lag, evolve on their own, and adapt in real-time.
@@ -63,7 +63,7 @@ const HeroSection = () => {
         }`}>
           <button 
             onClick={scrollToNextSection}
-            className="hero-cta-2025 group relative"
+            className="hero-cta-2025 group relative magnetic-hover space-pulse"
           >
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions

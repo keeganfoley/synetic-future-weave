@@ -1,6 +1,7 @@
 
 import { useGoldenLines } from '../hooks/useGoldenLines';
 import ElegantAnimationStyles from './ElegantAnimationStyles';
+import SpaceFloatingElements from './SpaceFloatingElements';
 
 const ElegantBackground = () => {
   const containerRef = useGoldenLines();
@@ -9,13 +10,13 @@ const ElegantBackground = () => {
     <>
       <div 
         ref={containerRef}
-        className="absolute inset-0 w-full min-h-screen overflow-hidden"
+        className="absolute inset-0 w-full min-h-screen overflow-hidden floating-space-background"
         style={{ 
           zIndex: -10,
           background: `
-            radial-gradient(ellipse at 20% 30%, rgba(180, 139, 60, 0.008) 0%, transparent 40%),
-            radial-gradient(ellipse at 80% 70%, rgba(180, 139, 60, 0.006) 0%, transparent 35%),
-            radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.004) 0%, transparent 60%),
+            radial-gradient(ellipse at 20% 30%, rgba(180, 139, 60, 0.012) 0%, transparent 40%),
+            radial-gradient(ellipse at 80% 70%, rgba(180, 139, 60, 0.008) 0%, transparent 35%),
+            radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.006) 0%, transparent 60%),
             linear-gradient(135deg, #030305 0%, #050508 20%, #020204 40%, #040407 60%, #020203 80%, #030305 100%)
           `,
           height: '100%',
@@ -23,6 +24,7 @@ const ElegantBackground = () => {
         }}
       />
       
+      <SpaceFloatingElements />
       <ElegantAnimationStyles />
     </>
   );

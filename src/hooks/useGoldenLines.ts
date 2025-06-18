@@ -32,19 +32,19 @@ export const useGoldenLines = () => {
       switch (depth) {
         case 'cosmic':
           return {
-            opacity: Math.random() * 0.010 + 0.015, // 0.015-0.025 (barely visible)
+            opacity: Math.random() * 0.04 + 0.08, // 0.08-0.12 (visible but subtle)
             blur: '1px',
             thickness: '0.2px',
           };
         case 'distant':
           return {
-            opacity: Math.random() * 0.008 + 0.010, // 0.010-0.018 (very faint)
+            opacity: Math.random() * 0.03 + 0.05, // 0.05-0.08 (very faint)
             blur: '2px',
             thickness: '0.3px',
           };
         case 'nebula':
           return {
-            opacity: Math.random() * 0.005 + 0.008, // 0.008-0.013 (extremely faint)
+            opacity: Math.random() * 0.03 + 0.03, // 0.03-0.06 (extremely subtle)
             blur: '3px',
             thickness: '0.4px',
           };
@@ -57,7 +57,7 @@ export const useGoldenLines = () => {
       const line = document.createElement('div');
       line.className = 'elegant-golden-line';
       
-      const duration = Math.random() * 90 + 30; // 30-120 seconds (much slower)
+      const duration = Math.random() * 90 + 30; // 30-120 seconds
       const delay = Math.random() * 5;
       
       let animationName = '';
@@ -103,6 +103,7 @@ export const useGoldenLines = () => {
         pointer-events: none;
         z-index: -10;
         filter: blur(${depthStyles.blur});
+        box-shadow: 0 0 ${depthStyles.blur === '1px' ? '8px' : depthStyles.blur === '2px' ? '12px' : '16px'} rgba(212, 175, 55, ${depthStyles.opacity * 0.5});
       `;
       
       container.appendChild(line);
@@ -117,21 +118,21 @@ export const useGoldenLines = () => {
     };
 
     // Create initial cosmic atmosphere
-    for (let i = 0; i < 25; i++) {
-      setTimeout(() => createLine(), i * 300);
+    for (let i = 0; i < 35; i++) {
+      setTimeout(() => createLine(), i * 200);
     }
 
     // Continuous cosmic line creation
     const lineInterval = setInterval(() => {
-      if (activeLines.size < 15) {
+      if (activeLines.size < 20) {
         createLine();
-      } else if (Math.random() > 0.6) {
+      } else if (Math.random() > 0.5) {
         createLine();
       }
-    }, 2000);
+    }, 1500);
 
     // Additional interval for space-like density
-    const cosmicInterval = setInterval(createLine, 4000);
+    const cosmicInterval = setInterval(createLine, 3000);
 
     return () => {
       clearInterval(lineInterval);
