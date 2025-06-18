@@ -8,96 +8,170 @@ const AnimatedBackground = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Enhanced scroll-responsive motion with neural filament behavior
+    // Smooth scroll-responsive parallax motion
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const neuralFilaments = container.querySelectorAll('.neural-filament');
-      const ambientPulses = container.querySelectorAll('.ambient-pulse');
+      const silkLines = container.querySelectorAll('.neural-silk-line');
+      const auroraCurrents = container.querySelectorAll('.aurora-current');
+      const liquidOrbs = container.querySelectorAll('.liquid-light-orb');
       
-      neuralFilaments.forEach((filament, index) => {
-        const element = filament as HTMLElement;
-        const speed = 0.05 + (index * 0.02);
+      silkLines.forEach((line, index) => {
+        const element = line as HTMLElement;
+        const speed = 0.02 + (index * 0.01);
         const drift = scrollY * speed;
-        element.style.transform = `translateX(${drift}px) translateY(${drift * 0.3}px) rotate(${scrollY * 0.01}deg)`;
+        element.style.transform = `translateX(${drift}px) translateY(${drift * 0.5}px) rotate(${scrollY * 0.005}deg)`;
       });
 
-      ambientPulses.forEach((pulse, index) => {
-        const element = pulse as HTMLElement;
-        const speed = 0.08 + (index * 0.03);
-        element.style.transform = `translateY(${scrollY * speed}px) scale(${1 + scrollY * 0.00005})`;
+      auroraCurrents.forEach((current, index) => {
+        const element = current as HTMLElement;
+        const speed = 0.03 + (index * 0.015);
+        element.style.transform = `translateY(${scrollY * speed}px) translateX(${scrollY * 0.01}px) scale(${1 + scrollY * 0.00002})`;
+      });
+
+      liquidOrbs.forEach((orb, index) => {
+        const element = orb as HTMLElement;
+        const speed = 0.025 + (index * 0.01);
+        element.style.transform = `translateY(${scrollY * speed}px) rotate(${scrollY * 0.02}deg)`;
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Smooth mouse-responsive motion
+    const handleMouseMove = (e: MouseEvent) => {
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+      
+      const wisps = container.querySelectorAll('.weightless-wisp');
+      const beams = container.querySelectorAll('.ethereal-beam');
+      
+      wisps.forEach((wisp, index) => {
+        const element = wisp as HTMLElement;
+        const strength = 0.1 + (index * 0.05);
+        const offsetX = (mouseX - 0.5) * strength * 20;
+        const offsetY = (mouseY - 0.5) * strength * 15;
+        element.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      });
 
-    // Create flowing neural filaments
-    const createNeuralFilament = () => {
-      const filament = document.createElement('div');
-      filament.className = 'neural-filament';
-      filament.style.left = Math.random() * 100 + '%';
-      filament.style.top = Math.random() * 100 + '%';
-      filament.style.transform = `rotate(${Math.random() * 180}deg)`;
-      filament.style.animationDelay = Math.random() * 20 + 's';
-      container.appendChild(filament);
-
-      setTimeout(() => {
-        if (container.contains(filament)) {
-          container.removeChild(filament);
-        }
-      }, 45000);
+      beams.forEach((beam, index) => {
+        const element = beam as HTMLElement;
+        const strength = 0.05 + (index * 0.02);
+        const rotation = (mouseX - 0.5) * strength * 5;
+        element.style.transform = `rotate(${rotation}deg)`;
+      });
     };
 
-    // Create ambient depth pulses
-    const createAmbientPulse = () => {
-      const pulse = document.createElement('div');
-      pulse.className = 'ambient-pulse';
-      pulse.style.left = Math.random() * 100 + '%';
-      pulse.style.top = Math.random() * 100 + '%';
-      pulse.style.animationDelay = Math.random() * 15 + 's';
-      container.appendChild(pulse);
+    // Create flowing neural silk lines
+    const createSilkLine = (type: 'horizontal' | 'diagonal') => {
+      const line = document.createElement('div');
+      line.className = `neural-silk-line ${type}`;
+      line.style.top = Math.random() * 100 + '%';
+      line.style.left = Math.random() * 20 - 10 + '%';
+      line.style.animationDelay = Math.random() * 10 + 's';
+      container.appendChild(line);
 
       setTimeout(() => {
-        if (container.contains(pulse)) {
-          container.removeChild(pulse);
+        if (container.contains(line)) {
+          container.removeChild(line);
         }
-      }, 40000);
+      }, type === 'horizontal' ? 25000 : 35000);
     };
 
-    // Create digital thread wisps
-    const createDigitalWisp = () => {
+    // Create aurora currents
+    const createAuroraCurrent = () => {
+      const current = document.createElement('div');
+      current.className = 'aurora-current';
+      current.style.left = Math.random() * 100 + '%';
+      current.style.top = Math.random() * 100 + '%';
+      current.style.animationDelay = Math.random() * 8 + 's';
+      container.appendChild(current);
+
+      setTimeout(() => {
+        if (container.contains(current)) {
+          container.removeChild(current);
+        }
+      }, 20000);
+    };
+
+    // Create liquid light orbs
+    const createLiquidOrb = () => {
+      const orb = document.createElement('div');
+      orb.className = 'liquid-light-orb';
+      orb.style.left = Math.random() * 100 + '%';
+      orb.style.top = Math.random() * 100 + '%';
+      orb.style.animationDelay = Math.random() * 6 + 's';
+      container.appendChild(orb);
+
+      setTimeout(() => {
+        if (container.contains(orb)) {
+          container.removeChild(orb);
+        }
+      }, 18000);
+    };
+
+    // Create weightless wisps
+    const createWeightlessWisp = () => {
       const wisp = document.createElement('div');
-      wisp.className = 'digital-wisp';
+      wisp.className = 'weightless-wisp';
       wisp.style.left = Math.random() * 100 + '%';
       wisp.style.top = Math.random() * 100 + '%';
-      wisp.style.animationDelay = Math.random() * 12 + 's';
+      wisp.style.animationDelay = Math.random() * 5 + 's';
       container.appendChild(wisp);
 
       setTimeout(() => {
         if (container.contains(wisp)) {
           container.removeChild(wisp);
         }
-      }, 35000);
+      }, 15000);
     };
 
-    // Staggered creation for organic neural network feel
-    const filamentInterval = setInterval(createNeuralFilament, 8000);
-    const pulseInterval = setInterval(createAmbientPulse, 6000);
-    const wispInterval = setInterval(createDigitalWisp, 10000);
+    // Create ethereal beams
+    const createEtherealBeam = () => {
+      const beam = document.createElement('div');
+      beam.className = 'ethereal-beam';
+      beam.style.left = Math.random() * 100 + '%';
+      beam.style.top = Math.random() * 100 + '%';
+      beam.style.transform = `rotate(${Math.random() * 180}deg)`;
+      beam.style.animationDelay = Math.random() * 4 + 's';
+      container.appendChild(beam);
 
-    // Initial neural elements
-    for (let i = 0; i < 4; i++) {
-      setTimeout(createNeuralFilament, i * 2500);
-      setTimeout(createAmbientPulse, i * 3000);
+      setTimeout(() => {
+        if (container.contains(beam)) {
+          container.removeChild(beam);
+        }
+      }, 12000);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+
+    // Staggered, organic element creation
+    const silkHorizontalInterval = setInterval(() => createSilkLine('horizontal'), 12000);
+    const silkDiagonalInterval = setInterval(() => createSilkLine('diagonal'), 15000);
+    const auroraInterval = setInterval(createAuroraCurrent, 8000);
+    const orbInterval = setInterval(createLiquidOrb, 10000);
+    const wispInterval = setInterval(createWeightlessWisp, 6000);
+    const beamInterval = setInterval(createEtherealBeam, 7000);
+
+    // Initial ambient elements
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => createSilkLine('horizontal'), i * 4000);
+      setTimeout(() => createSilkLine('diagonal'), i * 5000);
+      setTimeout(createAuroraCurrent, i * 3000);
+      setTimeout(createLiquidOrb, i * 3500);
     }
-    for (let i = 0; i < 2; i++) {
-      setTimeout(createDigitalWisp, i * 5000);
+    for (let i = 0; i < 5; i++) {
+      setTimeout(createWeightlessWisp, i * 2000);
+      setTimeout(createEtherealBeam, i * 2500);
     }
 
     return () => {
-      clearInterval(filamentInterval);
-      clearInterval(pulseInterval);
+      clearInterval(silkHorizontalInterval);
+      clearInterval(silkDiagonalInterval);
+      clearInterval(auroraInterval);
+      clearInterval(orbInterval);
       clearInterval(wispInterval);
+      clearInterval(beamInterval);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
@@ -107,16 +181,18 @@ const AnimatedBackground = () => {
       className="fixed inset-0 pointer-events-none"
       style={{ zIndex: 1 }}
     >
-      {/* Static neural filaments for base structure */}
-      <div className="absolute top-1/6 left-1/8 neural-filament" style={{ transform: 'rotate(25deg)' }}></div>
-      <div className="absolute bottom-1/4 right-1/6 neural-filament" style={{ animationDelay: '-8s', transform: 'rotate(-15deg)' }}></div>
-      <div className="absolute top-3/5 left-2/3 neural-filament" style={{ animationDelay: '-4s', transform: 'rotate(45deg)' }}></div>
-      <div className="absolute top-1/3 right-1/5 neural-filament" style={{ animationDelay: '-12s', transform: 'rotate(-30deg)' }}></div>
+      {/* Static silk lines for base layer */}
+      <div className="neural-silk-line horizontal" style={{ top: '20%', animationDelay: '0s' }}></div>
+      <div className="neural-silk-line diagonal" style={{ top: '60%', animationDelay: '-8s' }}></div>
+      <div className="neural-silk-line horizontal" style={{ top: '80%', animationDelay: '-4s' }}></div>
 
-      {/* Ambient depth pulses */}
-      <div className="absolute top-1/5 right-1/4 ambient-pulse"></div>
-      <div className="absolute bottom-1/3 left-1/5 ambient-pulse" style={{ animationDelay: '-10s' }}></div>
-      <div className="absolute top-2/3 right-1/3 ambient-pulse" style={{ animationDelay: '-6s' }}></div>
+      {/* Static aurora currents */}
+      <div className="aurora-current" style={{ left: '15%', top: '25%' }}></div>
+      <div className="aurora-current" style={{ left: '75%', top: '70%', animationDelay: '-10s' }}></div>
+
+      {/* Static liquid orbs */}
+      <div className="liquid-light-orb" style={{ left: '10%', top: '50%' }}></div>
+      <div className="liquid-light-orb" style={{ left: '85%', top: '30%', animationDelay: '-6s' }}></div>
     </div>
   );
 };
