@@ -29,10 +29,11 @@
   .logo-container-2025 {
     position: relative;
     overflow: hidden;
+    padding: 8px;
   }
   
   .logo-2025 {
-    height: 40px;
+    height: 80px;
     width: auto;
     transition: all 0.4s ease;
     position: relative;
@@ -46,14 +47,16 @@
   
   .logo-beam {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: -100%;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    animation: logo-beam-travel 6s ease-in-out infinite;
-    z-index: 3;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(180, 139, 60, 0.8) 50%, transparent 100%);
+    animation: logo-beam-travel 3s ease-in-out infinite;
+    z-index: 1;
     pointer-events: none;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px rgba(180, 139, 60, 0.6);
   }
   
   .logo-glow-ring {

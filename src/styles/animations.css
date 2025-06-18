@@ -1,4 +1,3 @@
-
 /* Neural Background Animations */
 @keyframes neural-background-drift {
   0% { 
@@ -87,15 +86,21 @@
   }
 }
 
-/* Navigation Logo Animation */
+/* Navigation Logo Animation - Updated for better visibility */
 @keyframes logo-beam-travel {
-  0%, 90%, 100% { 
+  0% { 
     left: -100%;
     opacity: 0;
   }
-  10%, 80% { 
-    left: 100%;
+  10% { 
     opacity: 1;
+  }
+  90% { 
+    opacity: 1;
+  }
+  100% { 
+    left: 100%;
+    opacity: 0;
   }
 }
 
