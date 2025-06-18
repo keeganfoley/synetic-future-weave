@@ -35,7 +35,7 @@ const Navigation = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Enhanced Logo with new effects */}
+            {/* Premium Logo with enhanced effects */}
             <div className="flex-shrink-0 mr-12 logo-container-2025 group">
               <div className="relative">
                 <img 
@@ -48,7 +48,7 @@ const Navigation = () => {
               </div>
             </div>
 
-            {/* Enhanced Navigation Links */}
+            {/* Premium Navigation Links */}
             <div className="hidden md:flex items-center space-x-12">
               {navLinks.map((link) => (
                 <button
@@ -66,7 +66,7 @@ const Navigation = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-cosmic-white hover:text-cosmic-gold transition-colors duration-500"
+                className="text-cosmic-steel hover:text-cosmic-gold transition-colors duration-600"
               >
                 <div className="w-7 h-7 flex flex-col justify-center items-center">
                   <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
@@ -86,7 +86,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden nav-scrolled-2025 border-t border-cosmic-gold/20">
+          <div className="md:hidden nav-scrolled-2025 border-t border-cosmic-gold/25">
             <div className="px-8 py-8 space-y-8">
               {navLinks.map((link) => (
                 <button

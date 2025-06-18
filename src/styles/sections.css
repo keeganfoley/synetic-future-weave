@@ -1,50 +1,50 @@
 
-/* Enhanced Solutions Section */
+/* Premium Solutions Section */
 @layer components {
   .solutions-section-2025 {
     position: relative;
     background: 
-      radial-gradient(ellipse at 70% 30%, rgba(29, 78, 216, 0.025) 0%, transparent 50%);
+      radial-gradient(ellipse at 80% 20%, rgba(180, 139, 60, 0.04) 0%, transparent 50%);
   }
   
   .moving-grid-background {
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(45deg, transparent 49%, rgba(227, 199, 112, 0.01) 50%, transparent 51%),
-      linear-gradient(-45deg, transparent 49%, rgba(227, 199, 112, 0.01) 50%, transparent 51%);
-    background-size: 180px 180px;
-    animation: grid-pulse 20s linear infinite;
+      linear-gradient(45deg, transparent 49%, rgba(180, 139, 60, 0.015) 50%, transparent 51%),
+      linear-gradient(-45deg, transparent 49%, rgba(180, 139, 60, 0.015) 50%, transparent 51%);
+    background-size: 200px 200px;
+    animation: premium-grid-pulse 25s linear infinite;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.7;
   }
   
   .section-title-2025 {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 400;
-    background: linear-gradient(135deg, rgb(var(--cosmic-gold)) 0%, rgba(255, 255, 255, 0.9) 100%);
+    background: linear-gradient(135deg, rgb(var(--cosmic-gold)) 0%, rgba(180, 139, 60, 0.8) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    text-shadow: 0 0 30px rgba(227, 199, 112, 0.2);
+    text-shadow: 0 0 40px rgba(180, 139, 60, 0.3);
   }
   
   .section-title-2025::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(227, 199, 112, 0.1) 0%, transparent 50%);
-    filter: blur(20px);
+    background: linear-gradient(135deg, rgba(180, 139, 60, 0.15) 0%, transparent 50%);
+    filter: blur(25px);
     z-index: -1;
-    animation: metallic-glow 4s ease-in-out infinite;
+    animation: premium-metallic-glow 6s ease-in-out infinite;
   }
   
   .section-subtitle-2025 {
     font-size: 1.4rem;
     font-weight: 400;
-    color: rgba(250, 250, 250, 0.8);
+    color: rgb(var(--cosmic-steel));
     line-height: 1.6;
     max-width: 600px;
     margin: 0 auto;
@@ -52,8 +52,8 @@
   
   .solution-card-2025 {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(60px);
+    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   }
   
   .solution-card-2025.visible {
@@ -62,59 +62,60 @@
   }
   
   .solution-card-inner-2025 {
-    @apply p-10 rounded-2xl border border-cosmic-gold/15 relative overflow-hidden;
-    background: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(25px);
-    transition: all 0.5s ease;
+    @apply p-12 rounded-2xl border border-cosmic-gold/20 relative overflow-hidden;
+    background: 
+      linear-gradient(135deg, rgba(15, 15, 17, 0.9) 0%, rgba(8, 8, 8, 0.95) 100%);
+    backdrop-filter: blur(30px);
+    transition: all 0.6s ease;
     position: relative;
   }
   
   .solution-card-inner-2025:hover {
-    transform: translateY(-15px) scale(1.02);
-    border-color: rgba(227, 199, 112, 0.4);
-    box-shadow: 0 30px 80px rgba(227, 199, 112, 0.2);
+    transform: translateY(-20px) scale(1.03);
+    border-color: rgba(180, 139, 60, 0.5);
+    box-shadow: 0 40px 100px rgba(180, 139, 60, 0.25);
   }
   
   .magnetic-hover-effect {
     position: absolute;
-    inset: -2px;
-    background: linear-gradient(45deg, rgba(227, 199, 112, 0.2) 0%, transparent 50%, rgba(227, 199, 112, 0.1) 100%);
+    inset: -3px;
+    background: linear-gradient(45deg, rgba(180, 139, 60, 0.25) 0%, transparent 50%, rgba(180, 139, 60, 0.15) 100%);
     border-radius: inherit;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
   }
   
   .solution-card-inner-2025:hover .magnetic-hover-effect {
     opacity: 1;
-    animation: magnetic-pulse 2s ease-in-out infinite;
+    animation: premium-magnetic-pulse 3s ease-in-out infinite;
   }
   
   .solution-icon-2025 {
     color: rgb(var(--cosmic-gold));
-    filter: drop-shadow(0 0 15px rgba(227, 199, 112, 0.3));
-    transition: all 0.4s ease;
+    filter: drop-shadow(0 0 20px rgba(180, 139, 60, 0.4));
+    transition: all 0.5s ease;
     z-index: 10;
     position: relative;
   }
   
   .solution-card-inner-2025:hover .solution-icon-2025 {
-    transform: scale(1.2) rotate(10deg);
-    filter: drop-shadow(0 0 25px rgba(227, 199, 112, 0.6));
-    animation: icon-flicker 1s ease-in-out infinite;
+    transform: scale(1.3) rotate(15deg);
+    filter: drop-shadow(0 0 35px rgba(180, 139, 60, 0.8));
+    animation: premium-icon-flicker 1.5s ease-in-out infinite;
   }
   
   .icon-ambient-glow {
     position: absolute;
-    inset: -15px;
-    background: radial-gradient(circle, rgba(227, 199, 112, 0.1) 0%, transparent 70%);
+    inset: -20px;
+    background: radial-gradient(circle, rgba(180, 139, 60, 0.15) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s ease;
   }
   
   .solution-card-inner-2025:hover .icon-ambient-glow {
     opacity: 1;
-    animation: ambient-glow-pulse 2s ease-in-out infinite;
+    animation: premium-ambient-glow-pulse 3s ease-in-out infinite;
   }
   
   .solution-title-2025 {
@@ -126,7 +127,7 @@
   }
   
   .solution-description-2025 {
-    @apply text-cosmic-white/85 leading-relaxed;
+    @apply text-cosmic-steel leading-relaxed;
     line-height: 1.7;
     position: relative;
     z-index: 10;
@@ -134,12 +135,12 @@
   }
 }
 
-/* Vision Section */
+/* Premium Vision Section */
 @layer components {
   .vision-section-2025 {
     position: relative;
     background: 
-      radial-gradient(ellipse at 30% 20%, rgba(227, 199, 112, 0.03) 0%, transparent 50%);
+      radial-gradient(ellipse at 40% 30%, rgba(180, 139, 60, 0.05) 0%, transparent 50%);
     padding: 5rem 0;
   }
   
@@ -147,16 +148,16 @@
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(ellipse at 20% 80%, rgba(88, 28, 135, 0.015) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(29, 78, 216, 0.01) 0%, transparent 50%);
-    animation: vision-pulse-wave 25s ease-in-out infinite;
+      radial-gradient(ellipse at 25% 75%, rgba(180, 139, 60, 0.025) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 25%, rgba(180, 139, 60, 0.02) 0%, transparent 50%);
+    animation: premium-vision-pulse-wave 30s ease-in-out infinite;
     pointer-events: none;
   }
   
   .kinetic-text {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 1.2s ease-out;
+    transform: translateY(40px);
+    transition: all 1.5s ease-out;
   }
   
   .kinetic-text.revealed {
@@ -168,17 +169,30 @@
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 400;
-    background: linear-gradient(135deg, rgb(var(--cosmic-gold)) 0%, rgba(255, 255, 255, 0.9) 100%);
+    background: linear-gradient(135deg, rgb(var(--cosmic-gold)) 0%, rgba(180, 139, 60, 0.8) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .vision-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(180, 139, 60, 0.8), transparent);
+    animation: premium-brush-underline 4s ease-in-out infinite;
   }
   
   .vision-text {
     font-size: clamp(1.3rem, 3vw, 1.7rem);
     font-weight: 400;
-    color: rgba(250, 250, 250, 0.9);
+    color: rgb(var(--cosmic-steel));
     line-height: 1.6;
     max-width: 800px;
     margin: 0 auto 3rem auto;
@@ -188,20 +202,25 @@
   .mission-text {
     font-size: clamp(1.3rem, 3vw, 1.7rem);
     font-weight: 400;
-    color: rgba(250, 250, 250, 0.9);
+    color: rgb(var(--cosmic-steel));
     line-height: 1.6;
     max-width: 700px;
     margin: 0 auto;
     letter-spacing: 0.02em;
+    padding: 2rem;
+    background: rgba(15, 15, 17, 0.6);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(180, 139, 60, 0.1);
   }
 }
 
-/* Enhanced CTA Section */
+/* Premium CTA Section */
 @layer components {
   .cta-section-2025 {
     position: relative;
     background: 
-      radial-gradient(ellipse at 50% 50%, rgba(5, 5, 5, 0.9) 0%, rgba(0, 0, 0, 1) 100%);
+      radial-gradient(ellipse at 50% 50%, rgba(8, 8, 8, 0.95) 0%, rgba(4, 4, 6, 1) 100%);
     padding: 8rem 0;
   }
   
@@ -209,11 +228,11 @@
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(2px 2px at 20% 30%, rgba(227, 199, 112, 0.3) 1px, transparent 1px),
-      radial-gradient(1px 1px at 80% 70%, rgba(227, 199, 112, 0.2) 1px, transparent 1px),
-      radial-gradient(1px 1px at 50% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 600px 400px;
-    animation: specks-orbit 120s linear infinite;
+      radial-gradient(2px 2px at 25% 35%, rgba(180, 139, 60, 0.4) 1px, transparent 1px),
+      radial-gradient(1px 1px at 75% 65%, rgba(180, 139, 60, 0.3) 1px, transparent 1px),
+      radial-gradient(1px 1px at 45% 25%, rgba(180, 139, 60, 0.2) 1px, transparent 1px);
+    background-size: 800px 500px;
+    animation: premium-specks-orbit 180s linear infinite;
     pointer-events: none;
   }
   
@@ -221,19 +240,19 @@
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 400;
-    background: linear-gradient(135deg, rgb(var(--cosmic-gold)) 0%, rgba(255, 255, 255, 0.9) 100%);
+    background: linear-gradient(135deg, rgb(var(--cosmic-gold)) 0%, rgba(180, 139, 60, 0.8) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    text-shadow: 0 0 40px rgba(227, 199, 112, 0.3);
+    text-shadow: 0 0 50px rgba(180, 139, 60, 0.4);
     margin-bottom: 2rem;
   }
   
   .cta-subtitle-2025 {
     font-size: clamp(1.2rem, 3vw, 1.5rem);
     font-weight: 400;
-    color: rgba(250, 250, 250, 0.85);
+    color: rgb(var(--cosmic-steel));
     line-height: 1.6;
     max-width: 700px;
     margin: 0 auto 3rem auto;
@@ -241,33 +260,33 @@
   }
   
   .cta-button-enhanced {
-    @apply px-14 py-6 border-2 border-cosmic-gold/60 rounded-xl font-medium transition-all duration-700 overflow-hidden relative;
+    @apply px-16 py-7 border-2 border-cosmic-gold/70 rounded-xl font-medium transition-all duration-800 overflow-hidden relative;
     background: 
-      linear-gradient(135deg, rgba(227, 199, 112, 0.08) 0%, rgba(227, 199, 112, 0.02) 100%);
-    backdrop-filter: blur(20px);
+      linear-gradient(135deg, rgba(180, 139, 60, 0.12) 0%, rgba(180, 139, 60, 0.04) 100%);
+    backdrop-filter: blur(25px);
     color: rgb(var(--cosmic-gold));
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     transform-style: preserve-3d;
   }
   
   .cta-button-enhanced:hover {
     background: 
-      linear-gradient(135deg, rgba(227, 199, 112, 0.2) 0%, rgba(227, 199, 112, 0.1) 100%);
-    border-color: rgba(227, 199, 112, 1);
-    transform: translateY(-5px) scale(1.05);
+      linear-gradient(135deg, rgba(180, 139, 60, 0.25) 0%, rgba(180, 139, 60, 0.15) 100%);
+    border-color: rgba(180, 139, 60, 1);
+    transform: translateY(-6px) scale(1.06);
     box-shadow: 
-      0 30px 70px rgba(227, 199, 112, 0.4),
-      0 0 0 0 rgba(227, 199, 112, 0.6);
-    animation: magnet-pull 0.3s ease-out;
+      0 40px 80px rgba(180, 139, 60, 0.5),
+      0 0 0 0 rgba(180, 139, 60, 0.8);
+    animation: premium-magnet-pull 0.4s ease-out;
   }
   
   .glowing-outline {
     position: absolute;
-    inset: -3px;
-    border: 2px solid rgba(227, 199, 112, 0.8);
+    inset: -4px;
+    border: 2px solid rgba(180, 139, 60, 0.9);
     border-radius: inherit;
     opacity: 0;
-    animation: glow-outline-pulse 2s ease-in-out infinite;
+    animation: premium-glow-outline-pulse 3s ease-in-out infinite;
   }
   
   .cta-button-enhanced:hover .glowing-outline {

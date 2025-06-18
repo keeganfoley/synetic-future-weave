@@ -102,8 +102,8 @@ const MainSections = () => {
                   key={solution.title}
                   className={`scroll-fade-in ${solution.delay} group solution-card-2025`}
                 >
-                  <div className="solution-card-inner-2025 h-full group transition-all duration-700">
-                    {/* Enhanced Animated Icon */}
+                  <div className="solution-card-inner-2025 h-full group transition-all duration-800">
+                    {/* Premium Animated Icon */}
                     <div className="mb-8 flex justify-center relative">
                       <IconComponent className="solution-icon-2025" size={40} />
                       <div className="icon-ambient-glow"></div>
@@ -157,7 +157,7 @@ const MainSections = () => {
                 </span>
                 <div className="glowing-outline"></div>
               </button>
-              <div className="text-cosmic-white/70 text-base font-light">
+              <div className="text-cosmic-steel/80 text-base font-light">
                 <p>Full automation blueprint delivered within 24 hours</p>
               </div>
             </div>

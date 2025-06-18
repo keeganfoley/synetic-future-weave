@@ -7,16 +7,17 @@
 
 @layer base {
   :root {
-    --background: 5 5 5;
-    --foreground: 250 250 250;
-    --cosmic-black: 5 5 5;
-    --cosmic-white: 250 250 250;
-    --cosmic-gold: 227 199 112;
-    --cosmic-gold-rgb: 227, 199, 112;
-    --cosmic-charcoal: 24 24 27;
-    --cosmic-midnight: 8 12 20;
-    --cosmic-deep-blue: 4 8 16;
-    --cosmic-obsidian: 2 2 4;
+    --background: 8 8 8;
+    --foreground: 209 209 209;
+    --cosmic-black: 8 8 8;
+    --cosmic-steel: 209 209 209;
+    --cosmic-gold: 180 139 60;
+    --cosmic-gold-dark: 153 115 42;
+    --cosmic-gold-rgb: 180, 139, 60;
+    --cosmic-charcoal: 18 18 20;
+    --cosmic-midnight: 12 12 16;
+    --cosmic-deep-black: 4 4 6;
+    --cosmic-matte: 15 15 17;
   }
 
   * {
@@ -27,9 +28,13 @@
     @apply antialiased;
     font-family: 'Inter', 'DM Serif Display', system-ui, -apple-system, sans-serif;
     font-weight: 300;
-    background: #050505;
+    background: 
+      radial-gradient(ellipse at 20% 80%, rgba(180, 139, 60, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(180, 139, 60, 0.02) 0%, transparent 50%),
+      linear-gradient(180deg, #0a0a0c 0%, #080808 100%);
     overflow-x: hidden;
-    color: rgb(var(--cosmic-white));
+    color: rgb(var(--cosmic-steel));
+    position: relative;
   }
 
   body::before {
@@ -40,14 +45,32 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.02), transparent),
-      radial-gradient(1px 1px at 40px 70px, rgba(227, 199, 112, 0.015), transparent),
-      radial-gradient(1px 1px at 90px 40px, rgba(88, 28, 135, 0.01), transparent);
+      radial-gradient(1px 1px at 20px 30px, rgba(180, 139, 60, 0.08), transparent),
+      radial-gradient(1px 1px at 40px 70px, rgba(180, 139, 60, 0.05), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(180, 139, 60, 0.03), transparent);
     background-repeat: repeat;
-    background-size: 300px 150px;
-    animation: cosmic-drift 180s linear infinite;
+    background-size: 400px 200px;
+    animation: cosmic-drift 200s linear infinite;
     pointer-events: none;
     z-index: 1;
+    opacity: 0.6;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(45deg, transparent 48%, rgba(180, 139, 60, 0.02) 49%, rgba(180, 139, 60, 0.02) 51%, transparent 52%),
+      linear-gradient(-45deg, transparent 48%, rgba(180, 139, 60, 0.015) 49%, rgba(180, 139, 60, 0.015) 51%, transparent 52%);
+    background-size: 600px 600px;
+    animation: golden-wiring 30s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -60,11 +83,13 @@
 /* Enhanced Color System */
 @layer utilities {
   .text-cosmic-black { color: rgb(var(--cosmic-black)); }
-  .text-cosmic-white { color: rgb(var(--cosmic-white)); }
+  .text-cosmic-steel { color: rgb(var(--cosmic-steel)); }
   .text-cosmic-gold { color: rgb(var(--cosmic-gold)); }
+  .text-cosmic-gold-dark { color: rgb(var(--cosmic-gold-dark)); }
   .text-cosmic-charcoal { color: rgb(var(--cosmic-charcoal)); }
   .bg-cosmic-black { background-color: rgb(var(--cosmic-black)); }
-  .bg-cosmic-white { background-color: rgb(var(--cosmic-white)); }
+  .bg-cosmic-steel { background-color: rgb(var(--cosmic-steel)); }
   .bg-cosmic-gold { background-color: rgb(var(--cosmic-gold)); }
+  .bg-cosmic-matte { background-color: rgb(var(--cosmic-matte)); }
   .border-cosmic-gold { border-color: rgb(var(--cosmic-gold)); }
 }
