@@ -25,10 +25,10 @@
     backdrop-filter: blur(15px);
   }
   
-  .logo-2025-static {
-    height: 120px;
+  .logo-2025-clean {
+    height: 40px;
     width: auto;
-    /* No animations - completely static */
+    /* Significantly reduced from 120px to 40px */
   }
   
   .nav-link-2025-clean {

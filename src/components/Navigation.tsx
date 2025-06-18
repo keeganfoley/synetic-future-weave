@@ -34,9 +34,9 @@ const Navigation = () => {
         isScrolled ? 'nav-scrolled-2025' : 'nav-transparent-2025'
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-24 py-4">
-            {/* Clean Logo - No Animations */}
-            <div className="flex-shrink-0 mr-12">
+          <div className="flex items-center justify-between h-16 py-2">
+            {/* Smaller Logo positioned to the left */}
+            <div className="flex-shrink-0">
               <div className="relative">
                 <img 
                   src="/lovable-uploads/6d38dcd4-57ab-4003-b5c9-e625f91896c8.png" 
@@ -46,7 +46,7 @@ const Navigation = () => {
               </div>
             </div>
 
-            {/* Clean Navigation Links */}
+            {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <button
