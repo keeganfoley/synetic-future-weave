@@ -8,96 +8,95 @@ const AnimatedBackground = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Enhanced scroll-responsive motion with atmospheric breathing
+    // Enhanced scroll-responsive motion with neural filament behavior
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const ambientGlows = container.querySelectorAll('.ambient-glow');
-      const vaporWisps = container.querySelectorAll('.vapor-wisp');
+      const neuralFilaments = container.querySelectorAll('.neural-filament');
+      const ambientPulses = container.querySelectorAll('.ambient-pulse');
       
-      ambientGlows.forEach((glow, index) => {
-        const element = glow as HTMLElement;
-        const speed = 0.08 + (index * 0.03);
-        const rotation = scrollY * 0.015;
-        element.style.transform = `translateY(${scrollY * speed}px) rotate(${rotation}deg) scale(${1 + scrollY * 0.0001})`;
+      neuralFilaments.forEach((filament, index) => {
+        const element = filament as HTMLElement;
+        const speed = 0.05 + (index * 0.02);
+        const drift = scrollY * speed;
+        element.style.transform = `translateX(${drift}px) translateY(${drift * 0.3}px) rotate(${scrollY * 0.01}deg)`;
       });
 
-      vaporWisps.forEach((wisp, index) => {
-        const element = wisp as HTMLElement;
-        const speed = 0.12 + (index * 0.04);
-        element.style.transform = `translateY(${scrollY * speed}px) translateX(${scrollY * 0.02}px)`;
+      ambientPulses.forEach((pulse, index) => {
+        const element = pulse as HTMLElement;
+        const speed = 0.08 + (index * 0.03);
+        element.style.transform = `translateY(${scrollY * speed}px) scale(${1 + scrollY * 0.00005})`;
       });
     };
 
     window.addEventListener('scroll', handleScroll);
 
-    // Create intelligent dust trails with neural-like behavior
-    const createDustTrail = () => {
-      const trail = document.createElement('div');
-      trail.className = 'dust-trail';
-      trail.style.left = Math.random() * 100 + '%';
-      trail.style.top = Math.random() * 100 + '%';
-      trail.style.animationDelay = Math.random() * 15 + 's';
-      trail.style.animationDuration = (Math.random() * 20 + 25) + 's';
-      container.appendChild(trail);
+    // Create flowing neural filaments
+    const createNeuralFilament = () => {
+      const filament = document.createElement('div');
+      filament.className = 'neural-filament';
+      filament.style.left = Math.random() * 100 + '%';
+      filament.style.top = Math.random() * 100 + '%';
+      filament.style.transform = `rotate(${Math.random() * 180}deg)`;
+      filament.style.animationDelay = Math.random() * 20 + 's';
+      container.appendChild(filament);
 
       setTimeout(() => {
-        if (container.contains(trail)) {
-          container.removeChild(trail);
+        if (container.contains(filament)) {
+          container.removeChild(filament);
         }
       }, 45000);
     };
 
-    // Create floating neural wisps
-    const createNeuralWisp = () => {
+    // Create ambient depth pulses
+    const createAmbientPulse = () => {
+      const pulse = document.createElement('div');
+      pulse.className = 'ambient-pulse';
+      pulse.style.left = Math.random() * 100 + '%';
+      pulse.style.top = Math.random() * 100 + '%';
+      pulse.style.animationDelay = Math.random() * 15 + 's';
+      container.appendChild(pulse);
+
+      setTimeout(() => {
+        if (container.contains(pulse)) {
+          container.removeChild(pulse);
+        }
+      }, 40000);
+    };
+
+    // Create digital thread wisps
+    const createDigitalWisp = () => {
       const wisp = document.createElement('div');
-      wisp.className = 'neural-wisp';
+      wisp.className = 'digital-wisp';
       wisp.style.left = Math.random() * 100 + '%';
       wisp.style.top = Math.random() * 100 + '%';
-      wisp.style.animationDelay = Math.random() * 8 + 's';
+      wisp.style.animationDelay = Math.random() * 12 + 's';
       container.appendChild(wisp);
 
       setTimeout(() => {
         if (container.contains(wisp)) {
           container.removeChild(wisp);
         }
-      }, 30000);
-    };
-
-    // Create shimmer veins (like marble cracks)
-    const createShimmerVein = () => {
-      const vein = document.createElement('div');
-      vein.className = 'shimmer-vein';
-      vein.style.left = Math.random() * 100 + '%';
-      vein.style.top = Math.random() * 100 + '%';
-      vein.style.transform = `rotate(${Math.random() * 360}deg)`;
-      vein.style.animationDelay = Math.random() * 12 + 's';
-      container.appendChild(vein);
-
-      setTimeout(() => {
-        if (container.contains(vein)) {
-          container.removeChild(vein);
-        }
       }, 35000);
     };
 
-    // Staggered creation intervals for organic feel
-    const dustInterval = setInterval(createDustTrail, 6000);
-    const wispInterval = setInterval(createNeuralWisp, 4500);
-    const veinInterval = setInterval(createShimmerVein, 8000);
+    // Staggered creation for organic neural network feel
+    const filamentInterval = setInterval(createNeuralFilament, 8000);
+    const pulseInterval = setInterval(createAmbientPulse, 6000);
+    const wispInterval = setInterval(createDigitalWisp, 10000);
 
-    // Initial atmospheric elements
-    for (let i = 0; i < 3; i++) {
-      setTimeout(createDustTrail, i * 2000);
-      setTimeout(createNeuralWisp, i * 1500);
+    // Initial neural elements
+    for (let i = 0; i < 4; i++) {
+      setTimeout(createNeuralFilament, i * 2500);
+      setTimeout(createAmbientPulse, i * 3000);
     }
     for (let i = 0; i < 2; i++) {
-      setTimeout(createShimmerVein, i * 4000);
+      setTimeout(createDigitalWisp, i * 5000);
     }
 
     return () => {
-      clearInterval(dustInterval);
+      clearInterval(filamentInterval);
+      clearInterval(pulseInterval);
       clearInterval(wispInterval);
-      clearInterval(veinInterval);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -108,17 +107,16 @@ const AnimatedBackground = () => {
       className="fixed inset-0 pointer-events-none"
       style={{ zIndex: 1 }}
     >
-      {/* Atmospheric breathing glows - deeper, more refined */}
-      <div className="absolute top-1/5 left-1/8 ambient-glow"></div>
-      <div className="absolute bottom-1/4 right-1/6 ambient-glow" style={{ animationDelay: '-6s' }}></div>
-      <div className="absolute top-3/5 left-2/3 ambient-glow" style={{ animationDelay: '-3s' }}></div>
-      <div className="absolute top-1/3 right-1/5 ambient-glow" style={{ animationDelay: '-9s' }}></div>
-      <div className="absolute bottom-1/6 left-1/3 ambient-glow" style={{ animationDelay: '-12s' }}></div>
+      {/* Static neural filaments for base structure */}
+      <div className="absolute top-1/6 left-1/8 neural-filament" style={{ transform: 'rotate(25deg)' }}></div>
+      <div className="absolute bottom-1/4 right-1/6 neural-filament" style={{ animationDelay: '-8s', transform: 'rotate(-15deg)' }}></div>
+      <div className="absolute top-3/5 left-2/3 neural-filament" style={{ animationDelay: '-4s', transform: 'rotate(45deg)' }}></div>
+      <div className="absolute top-1/3 right-1/5 neural-filament" style={{ animationDelay: '-12s', transform: 'rotate(-30deg)' }}></div>
 
-      {/* Vapor wisps for atmospheric depth */}
-      <div className="absolute top-1/6 right-1/4 vapor-wisp"></div>
-      <div className="absolute bottom-1/3 left-1/5 vapor-wisp" style={{ animationDelay: '-8s' }}></div>
-      <div className="absolute top-2/3 right-1/3 vapor-wisp" style={{ animationDelay: '-4s' }}></div>
+      {/* Ambient depth pulses */}
+      <div className="absolute top-1/5 right-1/4 ambient-pulse"></div>
+      <div className="absolute bottom-1/3 left-1/5 ambient-pulse" style={{ animationDelay: '-10s' }}></div>
+      <div className="absolute top-2/3 right-1/3 ambient-pulse" style={{ animationDelay: '-6s' }}></div>
     </div>
   );
 };
