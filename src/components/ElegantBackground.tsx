@@ -1,11 +1,9 @@
 
 import { useGoldenLines } from '../hooks/useGoldenLines';
-import { useAmbientOrbs } from '../hooks/useAmbientOrbs';
 import ElegantAnimationStyles from './ElegantAnimationStyles';
 
 const ElegantBackground = () => {
   const containerRef = useGoldenLines();
-  useAmbientOrbs(containerRef);
 
   return (
     <>
