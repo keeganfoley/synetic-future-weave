@@ -4,22 +4,24 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 5 5 5;
-    --foreground: 180 180 180;
-    --cosmic-black: 5 5 5;
-    --cosmic-steel: 180 180 180;
-    --cosmic-gold: 180 139 60;
-    --cosmic-gold-dark: 153 115 42;
-    --cosmic-gold-rgb: 180, 139, 60;
-    --cosmic-charcoal: 8 8 10;
-    --cosmic-midnight: 6 6 8;
-    --cosmic-deep-black: 4 4 6;
-    --cosmic-onyx: 5 5 8;
-    --cosmic-matte: 10 10 15;
-    --cosmic-void: 3 3 5;
+    --background: 2 2 2;
+    --foreground: 220 220 220;
+    --cosmic-black: 2 2 2;
+    --cosmic-steel: 220 220 220;
+    --cosmic-gold: 218 165 32;
+    --cosmic-gold-bright: 255 215 0;
+    --cosmic-gold-dark: 184 134 11;
+    --cosmic-gold-rgb: 218, 165, 32;
+    --cosmic-charcoal: 6 6 8;
+    --cosmic-midnight: 4 4 6;
+    --cosmic-deep-black: 1 1 1;
+    --cosmic-onyx: 3 3 5;
+    --cosmic-matte: 8 8 12;
+    --cosmic-void: 0 0 0;
   }
 
   * {
@@ -28,16 +30,17 @@
 
   body {
     @apply antialiased;
-    font-family: 'Inter', 'DM Serif Display', system-ui, -apple-system, sans-serif;
-    font-weight: 300;
+    font-family: 'Playfair Display', 'DM Serif Display', 'Inter', system-ui, serif;
+    font-weight: 400;
     background: 
-      radial-gradient(ellipse at 20% 30%, rgba(180, 139, 60, 0.02) 0%, transparent 40%),
-      radial-gradient(ellipse at 80% 70%, rgba(180, 139, 60, 0.015) 0%, transparent 35%),
-      radial-gradient(ellipse at 50% 50%, rgba(180, 139, 60, 0.008) 0%, transparent 60%),
-      linear-gradient(135deg, #050505 0%, #0A0A11 40%, #060608 70%, #050507 100%);
+      radial-gradient(ellipse at 15% 25%, rgba(218, 165, 32, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 85% 75%, rgba(218, 165, 32, 0.025) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 10%, rgba(218, 165, 32, 0.015) 0%, transparent 70%),
+      linear-gradient(135deg, #000000 0%, #0A0A0F 25%, #040408 50%, #020204 75%, #000000 100%);
     overflow-x: hidden;
     color: rgb(var(--cosmic-steel));
     position: relative;
+    min-height: 100vh;
   }
 
   body::before {
@@ -45,19 +48,20 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 120%;
-    height: 120%;
+    width: 150%;
+    height: 150%;
     background: 
-      linear-gradient(45deg, transparent 49%, rgba(180, 139, 60, 0.008) 50%, transparent 51%),
-      linear-gradient(-45deg, transparent 49%, rgba(180, 139, 60, 0.006) 50%, transparent 51%),
-      radial-gradient(2px 1px at 20px 30px, rgba(180, 139, 60, 0.04), transparent),
-      radial-gradient(1px 2px at 40px 60px, rgba(180, 139, 60, 0.03), transparent);
+      radial-gradient(2px 1px at 25px 35px, rgba(218, 165, 32, 0.06), transparent),
+      radial-gradient(1px 2px at 55px 75px, rgba(255, 215, 0, 0.04), transparent),
+      radial-gradient(1px 1px at 85px 25px, rgba(218, 165, 32, 0.08), transparent),
+      linear-gradient(45deg, transparent 49.8%, rgba(218, 165, 32, 0.012) 50%, transparent 50.2%),
+      linear-gradient(-45deg, transparent 49.9%, rgba(255, 215, 0, 0.008) 50%, transparent 50.1%);
     background-repeat: repeat;
-    background-size: 800px 600px, 600px 800px, 400px 300px, 300px 400px;
-    animation: neural-background-drift 200s linear infinite;
+    background-size: 600px 450px, 800px 600px, 400px 300px, 1000px 800px, 900px 700px;
+    animation: celestial-drift 300s linear infinite;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.4;
+    opacity: 0.6;
   }
 
   body::after {
@@ -68,27 +72,28 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 15% 85%, rgba(180, 139, 60, 0.015) 0%, transparent 30%),
-      radial-gradient(circle at 85% 15%, rgba(180, 139, 60, 0.012) 0%, transparent 25%),
-      radial-gradient(circle at 60% 40%, rgba(180, 139, 60, 0.01) 0%, transparent 20%);
-    animation: intelligent-breathing 30s ease-in-out infinite;
+      radial-gradient(ellipse 800px 400px at 20% 80%, rgba(218, 165, 32, 0.02) 0%, transparent 40%),
+      radial-gradient(ellipse 600px 300px at 80% 20%, rgba(255, 215, 0, 0.015) 0%, transparent 35%),
+      radial-gradient(ellipse 1000px 500px at 60% 60%, rgba(218, 165, 32, 0.01) 0%, transparent 30%);
+    animation: mythic-breathing 45s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.3;
+    opacity: 0.4;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'DM Serif Display', 'Inter', system-ui, sans-serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-family: 'Playfair Display', 'DM Serif Display', serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
   }
 }
 
-/* Enhanced Color System */
+/* Enhanced Luxury Color System */
 @layer utilities {
   .text-cosmic-black { color: rgb(var(--cosmic-black)); }
   .text-cosmic-steel { color: rgb(var(--cosmic-steel)); }
   .text-cosmic-gold { color: rgb(var(--cosmic-gold)); }
+  .text-cosmic-gold-bright { color: rgb(var(--cosmic-gold-bright)); }
   .text-cosmic-gold-dark { color: rgb(var(--cosmic-gold-dark)); }
   .text-cosmic-charcoal { color: rgb(var(--cosmic-charcoal)); }
   .text-cosmic-onyx { color: rgb(var(--cosmic-onyx)); }
@@ -99,4 +104,30 @@
   .bg-cosmic-onyx { background-color: rgb(var(--cosmic-onyx)); }
   .bg-cosmic-void { background-color: rgb(var(--cosmic-void)); }
   .border-cosmic-gold { border-color: rgb(var(--cosmic-gold)); }
+  .border-cosmic-gold-bright { border-color: rgb(var(--cosmic-gold-bright)); }
+}
+
+/* Luxury Metallic Gold Gradients */
+@layer utilities {
+  .text-luxury-gold {
+    background: linear-gradient(135deg, #DAA520 0%, #FFD700 30%, #B8860B 70%, #DAA520 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.3));
+  }
+  
+  .text-mythic-gold {
+    background: linear-gradient(135deg, #FFD700 0%, #DAA520 25%, #FFA500 50%, #DAA520 75%, #B8860B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: golden-shimmer 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.4));
+  }
+  
+  .bg-luxury-gold {
+    background: linear-gradient(135deg, rgba(218, 165, 32, 0.15) 0%, rgba(255, 215, 0, 0.08) 50%, rgba(184, 134, 11, 0.12) 100%);
+  }
 }
