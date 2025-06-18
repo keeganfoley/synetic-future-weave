@@ -7,17 +7,17 @@ const ElegantAnimationStyles = () => {
           transform: translateX(0);
           opacity: 0;
         }
-        8% {
-          opacity: 0.3;
+        5% {
+          opacity: 0.2;
         }
-        15% {
+        10% {
           opacity: 1;
         }
-        85% {
+        90% {
           opacity: 1;
         }
-        92% {
-          opacity: 0.3;
+        95% {
+          opacity: 0.2;
         }
         100% {
           transform: translateX(100vw);
@@ -30,17 +30,17 @@ const ElegantAnimationStyles = () => {
           transform: translateY(0);
           opacity: 0;
         }
-        8% {
-          opacity: 0.3;
+        5% {
+          opacity: 0.2;
         }
-        15% {
+        10% {
           opacity: 1;
         }
-        85% {
+        90% {
           opacity: 1;
         }
-        92% {
-          opacity: 0.3;
+        95% {
+          opacity: 0.2;
         }
         100% {
           transform: translateY(100vh);
@@ -50,12 +50,12 @@ const ElegantAnimationStyles = () => {
       
       @keyframes ambientPulse {
         0%, 100% {
-          transform: scale(0.9);
-          opacity: 0.1;
+          transform: scale(0.8);
+          opacity: 0.05;
         }
         50% {
-          transform: scale(1.1);
-          opacity: 0.3;
+          transform: scale(1.2);
+          opacity: 0.15;
         }
       }
       
