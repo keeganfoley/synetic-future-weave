@@ -32,12 +32,12 @@
 
 @keyframes neural-grid-flow {
   0%, 100% { 
-    opacity: 0.008;
+    opacity: 0.012;
     transform: translateX(0) translateY(0);
   }
   50% { 
-    opacity: 0.015;
-    transform: translateX(15px) translateY(-15px);
+    opacity: 0.025;
+    transform: translateX(20px) translateY(-20px);
   }
 }
 
@@ -87,7 +87,7 @@
   }
 }
 
-/* Navigation Logo Animation */
+/* Navigation Logo Animation - Updated for better visibility */
 @keyframes logo-beam-travel {
   0% { 
     left: -100%;
@@ -105,44 +105,27 @@
   }
 }
 
-/* Clean Futuristic Line Animations */
-@keyframes glide-horizontal-left {
+/* Smooth Neural Filament Animations */
+@keyframes silk-flow-horizontal {
   0% { 
-    transform: translateX(-100vw);
+    transform: translateX(-100vw) translateY(0) rotate(0deg);
     opacity: 0;
   }
-  15% { 
+  10% { 
     opacity: 0.6;
   }
-  85% { 
+  90% { 
     opacity: 0.4;
   }
   100% { 
-    transform: translateX(100vw);
+    transform: translateX(100vw) translateY(-50px) rotate(5deg);
     opacity: 0;
   }
 }
 
-@keyframes glide-horizontal-right {
+@keyframes silk-flow-diagonal {
   0% { 
-    transform: translateX(100vw);
-    opacity: 0;
-  }
-  15% { 
-    opacity: 0.6;
-  }
-  85% { 
-    opacity: 0.4;
-  }
-  100% { 
-    transform: translateX(-100vw);
-    opacity: 0;
-  }
-}
-
-@keyframes glide-vertical-down {
-  0% { 
-    transform: translateY(-100vh);
+    transform: translateX(-100vw) translateY(100vh) rotate(-15deg);
     opacity: 0;
   }
   15% { 
@@ -152,57 +135,65 @@
     opacity: 0.3;
   }
   100% { 
-    transform: translateY(100vh);
+    transform: translateX(100vw) translateY(-100vh) rotate(-10deg);
     opacity: 0;
   }
 }
 
-@keyframes glide-diagonal-sweep {
+@keyframes aurora-drift {
   0% { 
-    transform: translateX(-100vw) translateY(100vh) rotate(-25deg);
-    opacity: 0;
-  }
-  20% { 
-    opacity: 0.5;
-  }
-  80% { 
-    opacity: 0.3;
-  }
-  100% { 
-    transform: translateX(100vw) translateY(-100vh) rotate(-25deg);
-    opacity: 0;
-  }
-}
-
-@keyframes scanning-beam-sweep {
-  0% { 
-    left: -20%;
-    opacity: 0;
-    filter: blur(2px);
-  }
-  5% { 
-    opacity: 1;
-    filter: blur(0px);
-  }
-  95% { 
-    opacity: 0.8;
-    filter: blur(1px);
-  }
-  100% { 
-    left: 120%;
-    opacity: 0;
-    filter: blur(3px);
-  }
-}
-
-@keyframes ambient-pulse {
-  0%, 100% { 
+    transform: translateX(-50%) translateY(0) scaleX(0.8);
     opacity: 0.1;
-    transform: scale(1);
   }
   50% { 
+    transform: translateX(0) translateY(-30px) scaleX(1.2);
+    opacity: 0.4;
+  }
+  100% { 
+    transform: translateX(50%) translateY(-60px) scaleX(0.9);
+    opacity: 0.1;
+  }
+}
+
+@keyframes liquid-light-pulse {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 0.1;
+    filter: blur(40px);
+  }
+  50% { 
+    transform: scale(1.3) rotate(180deg);
     opacity: 0.3;
-    transform: scale(1.05);
+    filter: blur(60px);
+  }
+}
+
+@keyframes weightless-float {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.2;
+  }
+  33% { 
+    transform: translateY(-40px) translateX(20px) rotate(120deg);
+    opacity: 0.4;
+  }
+  66% { 
+    transform: translateY(-20px) translateX(-15px) rotate(240deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes ethereal-shimmer {
+  0% { 
+    background-position: -200% 0;
+    opacity: 0;
+  }
+  50% { 
+    opacity: 0.6;
+  }
+  100% { 
+    background-position: 200% 0;
+    opacity: 0;
   }
 }
 
@@ -218,64 +209,83 @@
   }
 }
 
-/* Clean Motion Elements */
-.futuristic-line {
+/* Smooth Motion Elements */
+.neural-silk-line {
   position: absolute;
+  height: 1px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(212, 175, 55, 0.3) 20%, 
-    rgba(212, 175, 55, 0.8) 50%, 
-    rgba(212, 175, 55, 0.3) 80%, 
+    rgba(212, 175, 55, 0.2) 20%, 
+    rgba(212, 175, 55, 0.6) 50%, 
+    rgba(212, 175, 55, 0.2) 80%, 
     transparent 100%
   );
   filter: blur(0.5px);
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
-.line-horizontal {
+.neural-silk-line.horizontal {
   width: 80vw;
-  height: 1px;
+  animation: silk-flow-horizontal 25s ease-in-out infinite;
 }
 
-.line-vertical {
-  width: 1px;
-  height: 60vh;
-}
-
-.line-diagonal {
+.neural-silk-line.diagonal {
   width: 120vw;
-  height: 1px;
+  animation: silk-flow-diagonal 35s ease-in-out infinite;
 }
 
-.scanning-beam {
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(212, 175, 55, 0.4) 10%, 
-    rgba(212, 175, 55, 1) 50%, 
-    rgba(212, 175, 55, 0.4) 90%, 
-    transparent 100%
-  );
-  box-shadow: 
-    0 0 10px rgba(212, 175, 55, 0.8),
-    0 0 20px rgba(212, 175, 55, 0.4),
-    0 0 30px rgba(212, 175, 55, 0.2);
-  animation: scanning-beam-sweep 4s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-.ambient-glow {
+.aurora-current {
   position: absolute;
   width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, 
-    rgba(212, 175, 55, 0.08) 0%, 
-    rgba(212, 175, 55, 0.03) 50%, 
+  height: 100px;
+  background: radial-gradient(ellipse, 
+    rgba(212, 175, 55, 0.15) 0%, 
+    rgba(212, 175, 55, 0.08) 40%, 
     transparent 70%
   );
   border-radius: 50%;
-  animation: ambient-pulse 20s ease-in-out infinite;
-  filter: blur(40px);
+  animation: aurora-drift 20s ease-in-out infinite;
+  filter: blur(20px);
+}
+
+.liquid-light-orb {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, 
+    rgba(212, 175, 55, 0.1) 0%, 
+    rgba(212, 175, 55, 0.05) 50%, 
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: liquid-light-pulse 18s ease-in-out infinite;
+}
+
+.weightless-wisp {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background: linear-gradient(45deg, 
+    transparent, 
+    rgba(212, 175, 55, 0.3), 
+    transparent
+  );
+  border-radius: 50%;
+  animation: weightless-float 15s ease-in-out infinite;
+  filter: blur(15px);
+}
+
+.ethereal-beam {
+  position: absolute;
+  width: 300px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(212, 175, 55, 0.4), 
+    rgba(212, 175, 55, 0.8), 
+    rgba(212, 175, 55, 0.4), 
+    transparent
+  );
+  animation: ethereal-shimmer 12s ease-in-out infinite;
+  filter: blur(1px);
 }
