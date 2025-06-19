@@ -1,135 +1,122 @@
 
+/* Premium Hero Section - Static with Subtle Background */
 @layer components {
-  .hero-luxury-container {
+  .hero-2025-container {
     position: relative;
     background: 
-      radial-gradient(ellipse at 30% 20%, rgba(218, 165, 32, 0.015) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 80%, rgba(218, 165, 32, 0.01) 0%, transparent 50%),
-      linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%);
+      radial-gradient(ellipse at 25% 25%, rgba(180, 139, 60, 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 75%, rgba(180, 139, 60, 0.015) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(5, 5, 8, 0.8) 0%, rgba(8, 8, 12, 0.9) 100%);
     min-height: 100vh;
-    overflow: hidden;
   }
   
-  .hero-depth-layer {
+  .hero-stars {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: 
-      repeating-radial-gradient(
-        rgba(218, 165, 32, 0.06) 0 1px, 
-        transparent 2px 100%
-      );
-    opacity: 0.12;
-    animation: hero-float 50s linear infinite alternate;
+    background: repeating-radial-gradient(
+      rgba(244, 198, 99, 0.06) 0 1px, 
+      transparent 2px 100%
+    );
+    opacity: 0.15;
+    animation: heroDrift 40s linear infinite alternate;
     pointer-events: none;
     will-change: transform;
   }
   
-  .hero-content-luxury {
+  .hero-content {
     position: relative;
     z-index: 10;
   }
   
-  .luxury-grid-pattern {
+  .subtle-background-drift {
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(0deg, transparent 49.8%, rgba(218, 165, 32, 0.008) 50%, transparent 50.2%),
-      linear-gradient(90deg, transparent 49.8%, rgba(218, 165, 32, 0.006) 50%, transparent 50.2%);
-    background-size: 600px 600px;
-    animation: grid-luxury-float 100s ease-in-out infinite;
+      radial-gradient(1px 1px at 15% 25%, rgba(244, 198, 99, 0.04) 1px, transparent 1px),
+      radial-gradient(1px 1px at 85% 75%, rgba(244, 198, 99, 0.03) 1px, transparent 1px),
+      radial-gradient(1px 1px at 45% 60%, rgba(244, 198, 99, 0.02) 1px, transparent 1px);
+    background-size: 400px 300px, 600px 400px, 800px 500px;
+    animation: galaxyDrift 120s linear infinite;
     pointer-events: none;
     will-change: transform;
   }
   
-  .hero-title-luxury {
-    font-family: 'Orbitron', serif;
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    font-weight: 700;
-    line-height: 0.85;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #B8860B 100%);
-    background-size: 200% 200%;
+  .galaxy-grid-lines {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(0deg, transparent 49.9%, rgba(244, 198, 99, 0.006) 50%, transparent 50.1%),
+      linear-gradient(90deg, transparent 49.9%, rgba(244, 198, 99, 0.004) 50%, transparent 50.1%);
+    background-size: 500px 500px;
+    animation: gridFloat 80s ease-in-out infinite;
+    pointer-events: none;
+    will-change: transform;
+  }
+  
+  .hero-title-2025-static {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #F4C663 0%, rgba(244, 198, 99, 0.9) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    animation: luxury-gold-flow 8s ease-in-out infinite;
-    text-shadow: 0 0 30px rgba(218, 165, 32, 0.3);
   }
   
-  .hero-subtitle-luxury {
-    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  .hero-subtitle-2025 {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
     font-weight: 400;
     color: rgb(180, 180, 180);
-    line-height: 1.5;
-    max-width: 750px;
-    margin: 0 auto 3.5rem auto;
-    letter-spacing: 0.01em;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    letter-spacing: 0.02em;
   }
   
-  .hero-cta-luxury {
+  .hero-cta-2025-static {
     display: inline-flex;
     align-items: center;
-    padding: 1rem 3.5rem;
-    border: 2px solid rgba(218, 165, 32, 0.6);
-    border-radius: 8px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    background: linear-gradient(135deg, rgba(218, 165, 32, 0.08) 0%, rgba(218, 165, 32, 0.02) 100%);
+    padding: 0.75rem 3rem;
+    border: 1px solid rgba(244, 198, 99, 0.7);
+    border-radius: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, rgba(244, 198, 99, 0.08) 0%, rgba(244, 198, 99, 0.02) 100%);
     backdrop-filter: blur(20px);
-    color: #DAA520;
+    color: #F4C663;
     font-size: 1.1rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(218, 165, 32, 0.1);
+    transition: all 0.15s ease;
   }
   
-  .hero-cta-luxury::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
-    transition: left 0.5s ease;
-  }
-  
-  .hero-cta-luxury:hover::before {
-    left: 100%;
-  }
-  
-  .hero-cta-luxury:hover {
-    background: linear-gradient(135deg, rgba(218, 165, 32, 0.15) 0%, rgba(218, 165, 32, 0.08) 100%);
-    border-color: #FFD700;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(218, 165, 32, 0.25);
+  .hero-cta-2025-static:hover {
+    background: linear-gradient(135deg, rgba(244, 198, 99, 0.15) 0%, rgba(244, 198, 99, 0.08) 100%);
+    border-color: rgba(244, 198, 99, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(244, 198, 99, 0.2);
   }
 }
 
-@keyframes hero-float {
-  0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(30px) translateX(20px); }
+@keyframes heroDrift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(20px); }
 }
 
-@keyframes grid-luxury-float {
+@keyframes galaxyDrift {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-400px) translateY(-300px); }
+}
+
+@keyframes gridFloat {
   0%, 100% { 
-    opacity: 0.6;
+    opacity: 0.8;
     transform: translateX(0) translateY(0);
   }
   50% { 
     opacity: 1;
-    transform: translateX(8px) translateY(-8px);
-  }
-}
-
-@keyframes luxury-gold-flow {
-  0%, 100% { 
-    background-position: 0% 50%;
-  }
-  50% { 
-    background-position: 100% 50%;
+    transform: translateX(5px) translateY(-5px);
   }
 }
