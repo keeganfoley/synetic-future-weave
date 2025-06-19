@@ -43,8 +43,8 @@ const MainSections = () => {
       case 'cog':
         return (
           <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/>
-            <path d="m9 12 2 2 4-4"/>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5L19 4.5M4.5 19.5L7 17M19 19.5l-2.5-2.5M4.5 4.5L7 7"/>
           </svg>
         );
       case 'refresh-ccw':
@@ -98,13 +98,13 @@ const MainSections = () => {
   return (
     <div className="relative">
       {/* Vision Section */}
-      <section id="vision" className="min-h-screen flex items-center py-16 px-8 relative vision-command-center">
+      <section id="vision" className="min-h-screen flex items-center py-20 px-8 relative vision-command-center">
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
-            <h2 className="vision-title-command mb-12">
+            <h2 className="vision-title-command mb-16">
               Our Vision
             </h2>
-            <div className="mb-16">
+            <div className="mb-20">
               <p className="vision-statement-elite">
                 We build intelligent systems that think for you—designed to scale, adapt, and impress.
               </p>
@@ -114,10 +114,10 @@ const MainSections = () => {
       </section>
 
       {/* Engineered Intelligence Section */}
-      <section id="solutions" className="min-h-screen flex items-center py-20 px-8 relative solutions-command-center">
+      <section id="solutions" className="min-h-screen flex items-center py-24 px-8 relative solutions-command-center">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="section-title-command mb-12">
+          <div className="text-center mb-24">
+            <h2 className="section-title-command mb-16">
               Engineered Intelligence
             </h2>
             <p className="section-subtitle-command">
@@ -149,25 +149,25 @@ const MainSections = () => {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="min-h-screen flex items-center py-20 px-8 relative cta-command-center">
+      <section id="contact" className="min-h-screen flex items-center py-24 px-8 relative cta-command-center">
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div>
-            <h2 className="cta-title-command mb-8">
+            <h2 className="cta-title-command mb-10">
               Let's Build the Future
             </h2>
             
-            <p className="cta-subtitle-command mb-16">
+            <p className="cta-subtitle-command mb-20">
               Ready to transform your business with intelligent automation?
               <br />
               <span style={{ color: 'rgb(var(--elegant-gold))' }}>Contact us to automate your business.</span>
             </p>
             
-            <div className="space-y-8">
+            <div className="space-y-10">
               <button className="cta-button-command group relative">
                 <span className="relative z-10 inline-flex items-center">
                   Let's Build Together
                   <svg 
-                    className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
+                    className="ml-4 w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"

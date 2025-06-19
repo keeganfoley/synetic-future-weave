@@ -7,7 +7,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      setIsScrolled(window.scrollY > 100);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -34,7 +34,7 @@ const Navigation = () => {
         isScrolled ? 'nav-scrolled-command' : 'nav-transparent-command'
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-24 py-4">
+          <div className="flex items-center justify-between h-28 py-6">
             {/* Logo */}
             <div className="flex-shrink-0">
               <div className="relative">
@@ -47,7 +47,7 @@ const Navigation = () => {
             </div>
 
             {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-10">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
@@ -65,14 +65,14 @@ const Navigation = () => {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="text-gray-300 hover:text-elegant-gold transition-colors duration-300"
               >
-                <div className="w-7 h-7 flex flex-col justify-center items-center">
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
+                <div className="w-8 h-8 flex flex-col justify-center items-center">
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-8 transform ${
                     isMobileMenuOpen ? 'rotate-45 translate-y-2' : '-translate-y-1.5'
                   }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 ${
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-8 ${
                     isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
                   }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-8 transform ${
                     isMobileMenuOpen ? '-rotate-45 -translate-y-2' : 'translate-y-1.5'
                   }`} />
                 </div>
@@ -83,8 +83,8 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden nav-scrolled-command border-t border-elegant-gold/25">
-            <div className="px-8 py-8 space-y-6">
+          <div className="md:hidden nav-scrolled-command border-t border-elegant-gold/20">
+            <div className="px-8 py-10 space-y-8">
               {navLinks.map((link) => (
                 <button
                   key={link.name}

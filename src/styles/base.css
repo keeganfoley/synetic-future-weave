@@ -7,12 +7,12 @@
 
 @layer base {
   :root {
-    --background: 12 12 12;
-    --foreground: 200 200 200;
-    --matte-black: 12 12 12;
-    --deep-black: 18 18 18;
-    --charcoal: 42 42 42;
-    --warm-gray: 58 58 58;
+    --background: 8 8 8;
+    --foreground: 220 220 220;
+    --matte-black: 8 8 8;
+    --deep-black: 12 12 12;
+    --charcoal: 28 28 28;
+    --warm-gray: 45 45 45;
     --elegant-gold: 180 154 106;
     --rich-gold: 200 169 103;
     --deep-gold: 168 131 56;
@@ -29,16 +29,16 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-weight: 400;
     background: 
-      radial-gradient(ellipse 800px 600px at 20% 40%, rgba(180, 154, 106, 0.03) 0%, transparent 50%),
-      radial-gradient(ellipse 600px 800px at 80% 60%, rgba(168, 131, 56, 0.02) 0%, transparent 50%),
-      radial-gradient(circle 400px at 50% 20%, rgba(200, 169, 103, 0.015) 0%, transparent 70%),
-      linear-gradient(135deg, #0C0C0C 0%, #121212 40%, #0F0F0F 70%, #0A0A0A 100%);
+      radial-gradient(ellipse 1200px 800px at 25% 20%, rgba(180, 154, 106, 0.015) 0%, transparent 50%),
+      radial-gradient(ellipse 800px 1000px at 75% 80%, rgba(168, 131, 56, 0.01) 0%, transparent 50%),
+      radial-gradient(circle 600px at 50% 50%, rgba(200, 169, 103, 0.008) 0%, transparent 70%),
+      linear-gradient(135deg, #080808 0%, #0C0C0C 40%, #0A0A0A 70%, #060606 100%);
     overflow-x: hidden;
-    color: rgb(200, 200, 200);
+    color: rgb(220, 220, 220);
     position: relative;
   }
 
-  /* Floating Space Particles */
+  /* Ambient Space Particles */
   body::before {
     content: '';
     position: fixed;
@@ -47,18 +47,18 @@
     width: 120%;
     height: 120%;
     background: 
-      radial-gradient(1.5px 1.5px at 15% 25%, rgba(231, 214, 165, 0.4) 1px, transparent 1px),
-      radial-gradient(1px 1px at 45% 65%, rgba(180, 154, 106, 0.3) 1px, transparent 1px),
-      radial-gradient(2px 1px at 75% 35%, rgba(200, 169, 103, 0.2) 1px, transparent 1px),
-      radial-gradient(1px 2px at 25% 85%, rgba(168, 131, 56, 0.15) 1px, transparent 1px);
-    background-size: 600px 400px, 800px 600px, 400px 500px, 700px 300px;
-    animation: spaceParticles 200s linear infinite;
+      radial-gradient(1px 1px at 20% 30%, rgba(231, 214, 165, 0.3) 1px, transparent 1px),
+      radial-gradient(1px 1px at 40% 70%, rgba(180, 154, 106, 0.2) 1px, transparent 1px),
+      radial-gradient(1px 1px at 80% 20%, rgba(200, 169, 103, 0.15) 1px, transparent 1px),
+      radial-gradient(1px 1px at 60% 80%, rgba(168, 131, 56, 0.1) 1px, transparent 1px);
+    background-size: 800px 600px, 1000px 800px, 600px 400px, 900px 700px;
+    animation: spaceParticles 300s linear infinite;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.6;
+    opacity: 0.4;
   }
 
-  /* Ambient Space Glow */
+  /* Deep Space Nebula */
   body::after {
     content: '';
     position: fixed;
@@ -67,13 +67,13 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(ellipse at 25% 20%, rgba(180, 154, 106, 0.08) 0%, transparent 40%),
-      radial-gradient(ellipse at 75% 80%, rgba(200, 169, 103, 0.06) 0%, transparent 35%),
-      radial-gradient(circle at 50% 50%, rgba(168, 131, 56, 0.04) 0%, transparent 60%);
-    animation: ambientGlow 45s ease-in-out infinite;
+      radial-gradient(ellipse at 30% 40%, rgba(180, 154, 106, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, rgba(200, 169, 103, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 20% 80%, rgba(168, 131, 56, 0.015) 0%, transparent 60%);
+    animation: nebulaFlow 60s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.8;
+    opacity: 0.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -83,7 +83,7 @@
   }
 }
 
-/* Enhanced Color System */
+/* Enhanced Luxurious Color System */
 @layer utilities {
   .text-matte-black { color: rgb(var(--matte-black)); }
   .text-elegant-gold { color: rgb(var(--elegant-gold)); }
@@ -103,29 +103,29 @@
 @keyframes spaceParticles {
   0% { 
     transform: translateX(0) translateY(0) rotate(0deg);
-    opacity: 0.6;
+    opacity: 0.4;
   }
   50% { 
-    transform: translateX(-300px) translateY(-200px) rotate(180deg);
-    opacity: 0.8;
+    transform: translateX(-400px) translateY(-300px) rotate(180deg);
+    opacity: 0.6;
   }
   100% { 
-    transform: translateX(-600px) translateY(-400px) rotate(360deg);
-    opacity: 0.6;
+    transform: translateX(-800px) translateY(-600px) rotate(360deg);
+    opacity: 0.4;
   }
 }
 
-@keyframes ambientGlow {
+@keyframes nebulaFlow {
   0%, 100% { 
-    opacity: 0.8;
+    opacity: 0.6;
     transform: scale(1) rotate(0deg);
   }
   33% { 
-    opacity: 0.4;
-    transform: scale(1.05) rotate(120deg);
+    opacity: 0.3;
+    transform: scale(1.1) rotate(120deg);
   }
   66% { 
-    opacity: 1;
-    transform: scale(0.95) rotate(240deg);
+    opacity: 0.8;
+    transform: scale(0.9) rotate(240deg);
   }
 }
