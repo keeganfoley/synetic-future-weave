@@ -1,10 +1,11 @@
+
 import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 500);
+    const timer = setTimeout(() => setIsVisible(true), 800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -13,50 +14,49 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-2025-container">
-      {/* New Hero Stars Background Layer */}
-      <div className="hero-stars" />
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden hero-space-command">
+      {/* Floating Space Depth Layers */}
+      <div className="floating-depth-layers" />
       
-      {/* Subtle Animated Background - Galaxy Grid */}
-      <div className="subtle-background-drift" />
-      <div className="galaxy-grid-lines" />
+      {/* Subtle Space Grid */}
+      <div className="space-grid-subtle" />
       
-      {/* Hero Content - Completely Static */}
-      <div className={`hero-content text-center z-10 px-8 transition-opacity duration-1000 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
+      {/* Hero Content */}
+      <div className={`hero-content-space text-center z-10 px-8 transition-all duration-1500 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}>
-        <div className="hero-title-container">
-          <h1 className="hero-title-2025-static mb-8 leading-[0.9]">
+        <div className="space-y-8">
+          <h1 className="hero-title-command mb-8 leading-tight">
             <span className="block">
-              Intelligence in Motion.
+              Automation with Intelligence.
             </span>
             <span className="block">
-              Automation Without Friction.
+              Execution with Elegance.
             </span>
           </h1>
-        </div>
-        
-        <p className="hero-subtitle-2025 mb-12">
-          We design systems that eliminate lag, evolve on their own, and adapt in real-time.
-        </p>
+          
+          <p className="hero-subtitle-space mb-12">
+            SyneticAI builds powerful, time-saving systems that think and work for you.
+          </p>
 
-        <div>
-          <button 
-            onClick={scrollToNextSection}
-            className="hero-cta-2025-static group relative"
-          >
-            <span className="relative z-10 inline-flex items-center">
-              Explore Solutions
-              <svg 
-                className="ml-4 w-5 h-5 transition-transform duration-150 group-hover:translate-x-1" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-          </button>
+          <div>
+            <button 
+              onClick={scrollToNextSection}
+              className="hero-cta-command group relative"
+            >
+              <span className="relative z-10 inline-flex items-center">
+                Explore Solutions
+                <svg 
+                  className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
