@@ -1,65 +1,83 @@
 
-/* Navigation Styles - No Logo Animation */
 @layer components {
-  .nav-2025 {
+  .nav-luxury {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 50;
     padding: 1.5rem 2rem;
-    background: rgba(13, 13, 13, 0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(244, 198, 99, 0.1);
-    transition: all 0.15s ease;
-  }
-  
-  .nav-scrolled-2025 {
-    background: rgba(13, 13, 13, 0.95);
+    background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(244, 198, 99, 0.2);
+    border-bottom: 1px solid rgba(218, 165, 32, 0.1);
+    transition: all 0.3s ease;
   }
   
-  .nav-transparent-2025 {
-    background: rgba(13, 13, 13, 0.7);
-    backdrop-filter: blur(15px);
+  .nav-scrolled-luxury {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(218, 165, 32, 0.2);
   }
   
-  .logo-2025-clean {
+  .logo-luxury {
     height: 120px;
     width: auto;
-    /* Increased to 120px for better visibility */
+    filter: brightness(0) saturate(100%) invert(74%) sepia(68%) saturate(534%) hue-rotate(12deg) brightness(95%) contrast(89%);
+    transition: all 0.3s ease;
   }
   
-  .nav-link-2025-clean {
+  .logo-luxury:hover {
+    filter: brightness(0) saturate(100%) invert(85%) sepia(91%) saturate(1677%) hue-rotate(359deg) brightness(106%) contrast(101%);
+    transform: scale(1.05);
+  }
+  
+  .nav-link-luxury {
     color: rgb(180, 180, 180);
-    font-weight: 400;
+    font-weight: 500;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: all 0.15s ease;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
   }
   
-  .nav-link-2025-clean:hover {
-    color: #F4C663;
-    background: rgba(244, 198, 99, 0.1);
-    transform: translateY(-1px);
+  .nav-link-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
+    transition: left 0.5s ease;
   }
   
-  .nav-link-2025-clean::after {
+  .nav-link-luxury:hover::before {
+    left: 100%;
+  }
+  
+  .nav-link-luxury:hover {
+    color: #DAA520;
+    background: rgba(218, 165, 32, 0.08);
+    transform: translateY(-2px);
+  }
+  
+  .nav-link-luxury::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
-    background: #F4C663;
-    transition: width 0.15s ease;
+    background: linear-gradient(90deg, #DAA520, #FFD700);
+    transition: width 0.3s ease;
   }
   
-  .nav-link-2025-clean:hover::after {
+  .nav-link-luxury:hover::after {
     width: 100%;
   }
 }

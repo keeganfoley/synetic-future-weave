@@ -3,23 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
 
 @layer base {
   :root {
-    --background: 5 5 5;
-    --foreground: 180 180 180;
-    --cosmic-black: 5 5 5;
-    --cosmic-steel: 180 180 180;
-    --cosmic-gold: 180 139 60;
-    --cosmic-gold-dark: 153 115 42;
-    --cosmic-gold-rgb: 180, 139, 60;
-    --cosmic-charcoal: 8 8 10;
-    --cosmic-midnight: 6 6 8;
-    --cosmic-deep-black: 4 4 6;
-    --cosmic-onyx: 5 5 8;
-    --cosmic-matte: 10 10 15;
-    --cosmic-void: 3 3 5;
+    --background: 0 0 0;
+    --foreground: 220 220 220;
+    --luxury-black: 0 0 0;
+    --luxury-gold: 218 165 32;
+    --luxury-gold-bright: 255 215 0;
+    --luxury-gold-dark: 184 134 11;
+    --luxury-charcoal: 15 15 15;
+    --luxury-dark-gray: 25 25 25;
+    --luxury-medium-gray: 45 45 45;
+    --luxury-light-gray: 180 180 180;
   }
 
   * {
@@ -28,16 +25,16 @@
 
   body {
     @apply antialiased;
-    font-family: 'Inter', 'DM Serif Display', system-ui, -apple-system, sans-serif;
-    font-weight: 300;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
     background: 
-      radial-gradient(ellipse at 20% 30%, rgba(180, 139, 60, 0.02) 0%, transparent 40%),
-      radial-gradient(ellipse at 80% 70%, rgba(180, 139, 60, 0.015) 0%, transparent 35%),
-      radial-gradient(ellipse at 50% 50%, rgba(180, 139, 60, 0.008) 0%, transparent 60%),
-      linear-gradient(135deg, #050505 0%, #0A0A11 40%, #060608 70%, #050507 100%);
-    overflow-x: hidden;
-    color: rgb(var(--cosmic-steel));
+      radial-gradient(ellipse at 20% 30%, rgba(218, 165, 32, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(218, 165, 32, 0.02) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 10%, rgba(218, 165, 32, 0.015) 0%, transparent 60%),
+      linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #000000 50%, #0f0f0f 75%, #000000 100%);
+    color: rgb(var(--luxury-light-gray));
     position: relative;
+    overflow-x: hidden;
   }
 
   body::before {
@@ -48,16 +45,16 @@
     width: 120%;
     height: 120%;
     background: 
-      linear-gradient(45deg, transparent 49%, rgba(180, 139, 60, 0.008) 50%, transparent 51%),
-      linear-gradient(-45deg, transparent 49%, rgba(180, 139, 60, 0.006) 50%, transparent 51%),
-      radial-gradient(2px 1px at 20px 30px, rgba(180, 139, 60, 0.04), transparent),
-      radial-gradient(1px 2px at 40px 60px, rgba(180, 139, 60, 0.03), transparent);
+      linear-gradient(45deg, transparent 49%, rgba(218, 165, 32, 0.008) 50%, transparent 51%),
+      linear-gradient(-45deg, transparent 49%, rgba(218, 165, 32, 0.006) 50%, transparent 51%),
+      radial-gradient(1px 1px at 25px 35px, rgba(218, 165, 32, 0.04), transparent),
+      radial-gradient(1px 1px at 55px 75px, rgba(218, 165, 32, 0.03), transparent);
     background-repeat: repeat;
-    background-size: 800px 600px, 600px 800px, 400px 300px, 300px 400px;
-    animation: neural-background-drift 200s linear infinite;
+    background-size: 900px 700px, 700px 900px, 500px 400px, 400px 500px;
+    animation: luxury-drift 180s linear infinite;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.4;
+    opacity: 0.3;
   }
 
   body::after {
@@ -68,35 +65,64 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 15% 85%, rgba(180, 139, 60, 0.015) 0%, transparent 30%),
-      radial-gradient(circle at 85% 15%, rgba(180, 139, 60, 0.012) 0%, transparent 25%),
-      radial-gradient(circle at 60% 40%, rgba(180, 139, 60, 0.01) 0%, transparent 20%);
-    animation: intelligent-breathing 30s ease-in-out infinite;
+      radial-gradient(circle at 25% 75%, rgba(218, 165, 32, 0.012) 0%, transparent 35%),
+      radial-gradient(circle at 75% 25%, rgba(218, 165, 32, 0.01) 0%, transparent 30%),
+      radial-gradient(circle at 50% 50%, rgba(218, 165, 32, 0.008) 0%, transparent 25%);
+    animation: luxury-pulse 40s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.3;
+    opacity: 0.4;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'DM Serif Display', 'Inter', system-ui, sans-serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-family: 'Orbitron', 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 }
 
-/* Enhanced Color System */
 @layer utilities {
-  .text-cosmic-black { color: rgb(var(--cosmic-black)); }
-  .text-cosmic-steel { color: rgb(var(--cosmic-steel)); }
-  .text-cosmic-gold { color: rgb(var(--cosmic-gold)); }
-  .text-cosmic-gold-dark { color: rgb(var(--cosmic-gold-dark)); }
-  .text-cosmic-charcoal { color: rgb(var(--cosmic-charcoal)); }
-  .text-cosmic-onyx { color: rgb(var(--cosmic-onyx)); }
-  .bg-cosmic-black { background-color: rgb(var(--cosmic-black)); }
-  .bg-cosmic-steel { background-color: rgb(var(--cosmic-steel)); }
-  .bg-cosmic-gold { background-color: rgb(var(--cosmic-gold)); }
-  .bg-cosmic-matte { background-color: rgb(var(--cosmic-matte)); }
-  .bg-cosmic-onyx { background-color: rgb(var(--cosmic-onyx)); }
-  .bg-cosmic-void { background-color: rgb(var(--cosmic-void)); }
-  .border-cosmic-gold { border-color: rgb(var(--cosmic-gold)); }
+  .text-luxury-black { color: rgb(var(--luxury-black)); }
+  .text-luxury-gold { color: rgb(var(--luxury-gold)); }
+  .text-luxury-gold-bright { color: rgb(var(--luxury-gold-bright)); }
+  .text-luxury-gold-dark { color: rgb(var(--luxury-gold-dark)); }
+  .text-luxury-charcoal { color: rgb(var(--luxury-charcoal)); }
+  .text-luxury-light-gray { color: rgb(var(--luxury-light-gray)); }
+  .bg-luxury-black { background-color: rgb(var(--luxury-black)); }
+  .bg-luxury-gold { background-color: rgb(var(--luxury-gold)); }
+  .bg-luxury-charcoal { background-color: rgb(var(--luxury-charcoal)); }
+  .bg-luxury-dark-gray { background-color: rgb(var(--luxury-dark-gray)); }
+  .bg-luxury-medium-gray { background-color: rgb(var(--luxury-medium-gray)); }
+  .border-luxury-gold { border-color: rgb(var(--luxury-gold)); }
+  .border-luxury-gold-dark { border-color: rgb(var(--luxury-gold-dark)); }
+}
+
+@keyframes luxury-drift {
+  0% { 
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateX(-500px) translateY(-300px) rotate(0.5deg);
+    opacity: 0.5;
+  }
+  100% { 
+    transform: translateX(-1000px) translateY(-600px) rotate(0deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes luxury-pulse {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+  33% { 
+    opacity: 0.2;
+    transform: scale(1.03) rotate(0.5deg);
+  }
+  66% { 
+    opacity: 0.6;
+    transform: scale(0.97) rotate(-0.5deg);
+  }
 }
