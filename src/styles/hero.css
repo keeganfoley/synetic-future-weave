@@ -1,120 +1,118 @@
 
-/* Luxurious Space Command Hero Section */
+/* Futuristic Control System Hero */
 @layer components {
-  .hero-space-command {
+  .hero-command-center {
     position: relative;
     background: 
-      radial-gradient(ellipse at 40% 20%, rgba(180, 154, 106, 0.02) 0%, transparent 70%),
-      radial-gradient(ellipse at 60% 80%, rgba(200, 169, 103, 0.015) 0%, transparent 60%),
-      linear-gradient(135deg, rgba(8, 8, 8, 0.98) 0%, rgba(12, 12, 12, 1) 100%);
+      radial-gradient(ellipse at 30% 20%, rgba(184, 158, 98, 0.015) 0%, transparent 70%),
+      radial-gradient(ellipse at 70% 80%, rgba(200, 165, 95, 0.012) 0%, transparent 60%),
+      linear-gradient(135deg, rgba(6, 6, 8, 0.98) 0%, rgba(10, 10, 12, 1) 100%);
     min-height: 100vh;
     overflow: hidden;
   }
   
-  .floating-depth-layers {
+  .circuit-depth-layers {
     position: absolute;
     inset: 0;
     z-index: 0;
     background: 
-      radial-gradient(2px 1px at 25% 25%, rgba(231, 214, 165, 0.08) 1px, transparent 1px),
-      radial-gradient(1px 2px at 75% 75%, rgba(180, 154, 106, 0.06) 1px, transparent 1px);
-    background-size: 600px 500px, 800px 600px;
-    animation: floatingLayers 180s ease-in-out infinite;
+      linear-gradient(45deg, transparent 49%, rgba(184, 158, 98, 0.03) 50%, transparent 51%),
+      linear-gradient(-45deg, transparent 49%, rgba(200, 165, 95, 0.025) 50%, transparent 51%);
+    background-size: 200px 200px, 300px 300px;
+    animation: circuitPulse 25s ease-in-out infinite;
     pointer-events: none;
-    will-change: transform;
   }
   
-  .space-grid-subtle {
+  .control-grid-system {
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(0deg, transparent 49.5%, rgba(180, 154, 106, 0.008) 50%, transparent 50.5%),
-      linear-gradient(90deg, transparent 49.5%, rgba(200, 169, 103, 0.006) 50%, transparent 50.5%);
-    background-size: 500px 500px;
-    animation: gridFloat 150s ease-in-out infinite;
+      linear-gradient(0deg, transparent 99%, rgba(220, 185, 115, 0.05) 100%),
+      linear-gradient(90deg, transparent 99%, rgba(184, 158, 98, 0.04) 100%);
+    background-size: 150px 150px;
+    animation: systemGrid 30s linear infinite;
     pointer-events: none;
-    will-change: transform;
-    opacity: 0.3;
+    opacity: 0.6;
   }
   
-  .hero-content-space {
+  .hero-content-command {
     position: relative;
     z-index: 10;
   }
   
-  .hero-title-command {
+  .hero-title-system {
     font-family: 'Orbitron', serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 700;
-    line-height: 0.85;
-    letter-spacing: -0.04em;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
     background: linear-gradient(135deg, 
-      rgb(var(--elegant-gold)) 0%, 
-      rgb(var(--rich-gold)) 30%, 
-      rgb(var(--shimmer)) 60%, 
-      rgb(var(--deep-gold)) 80%,
-      rgb(var(--elegant-gold)) 100%);
-    background-size: 300% 300%;
+      rgb(var(--engineered-gold)) 0%, 
+      rgb(var(--circuit-gold)) 25%, 
+      rgb(var(--glow-gold)) 50%, 
+      rgb(var(--neon-gold)) 75%,
+      rgb(var(--engineered-gold)) 100%);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    animation: luxuryShimmer 12s ease-in-out infinite;
-    text-shadow: 0 0 30px rgba(var(--elegant-gold-rgb), 0.2);
+    animation: goldShimmer 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(184, 158, 98, 0.15));
   }
   
-  .hero-title-command::before {
+  .hero-title-system::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-      transparent 40%, 
-      rgba(var(--shimmer), 0.03) 50%, 
-      transparent 60%);
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(220, 185, 115, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(184, 158, 98, 0.06) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
-    animation: titleGlow 8s ease-in-out infinite;
+    animation: titleAura 12s ease-in-out infinite;
+    border-radius: 8px;
   }
   
-  .hero-subtitle-space {
-    font-size: clamp(1.3rem, 3vw, 1.8rem);
+  .hero-subtitle-system {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
     font-weight: 400;
-    color: rgba(220, 220, 220, 0.85);
-    line-height: 1.5;
-    max-width: 650px;
+    color: rgba(220, 220, 220, 0.8);
+    line-height: 1.4;
+    max-width: 550px;
     margin: 0 auto;
-    letter-spacing: 0.02em;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.005em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   }
   
-  .hero-cta-command {
+  .hero-cta-system {
     display: inline-flex;
     align-items: center;
-    padding: 1.2rem 3rem;
-    border: 1px solid rgba(var(--elegant-gold-rgb), 0.3);
-    border-radius: 8px;
+    padding: 0.9rem 2.5rem;
+    border: 1px solid rgba(184, 158, 98, 0.4);
+    border-radius: 6px;
     font-weight: 500;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     background: 
       linear-gradient(135deg, 
-        rgba(var(--elegant-gold-rgb), 0.06) 0%, 
-        rgba(var(--deep-gold), 0.03) 50%,
-        rgba(var(--rich-gold), 0.02) 100%);
-    backdrop-filter: blur(30px);
-    color: rgb(var(--elegant-gold));
-    font-size: 1.1rem;
+        rgba(16, 16, 18, 0.95) 0%, 
+        rgba(32, 32, 35, 0.8) 50%,
+        rgba(16, 16, 18, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    color: rgb(var(--engineered-gold));
+    font-size: 1rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     box-shadow: 
-      0 8px 25px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(var(--shimmer), 0.1);
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(220, 185, 115, 0.08);
   }
   
-  .hero-cta-command::before {
+  .hero-cta-system::before {
     content: '';
     position: absolute;
     top: 0;
@@ -123,53 +121,51 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(var(--shimmer), 0.08), 
+      rgba(220, 185, 115, 0.1), 
       transparent);
-    transition: left 0.8s ease;
+    transition: left 0.6s ease;
   }
   
-  .hero-cta-command:hover {
+  .hero-cta-system:hover {
     background: 
       linear-gradient(135deg, 
-        rgba(var(--elegant-gold-rgb), 0.12) 0%, 
-        rgba(var(--deep-gold), 0.06) 50%,
-        rgba(var(--rich-gold), 0.04) 100%);
-    border-color: rgba(var(--elegant-gold-rgb), 0.6);
-    transform: translateY(-3px);
+        rgba(32, 32, 35, 0.95) 0%, 
+        rgba(48, 48, 52, 0.8) 50%,
+        rgba(32, 32, 35, 0.9) 100%);
+    border-color: rgba(200, 165, 95, 0.7);
+    transform: translateY(-2px);
     box-shadow: 
-      0 15px 40px rgba(var(--elegant-gold-rgb), 0.15),
-      0 0 50px rgba(var(--elegant-gold-rgb), 0.08),
-      inset 0 1px 0 rgba(var(--shimmer), 0.2);
+      0 8px 30px rgba(184, 158, 98, 0.2),
+      0 0 40px rgba(220, 185, 115, 0.1),
+      inset 0 1px 0 rgba(240, 205, 135, 0.15);
   }
   
-  .hero-cta-command:hover::before {
+  .hero-cta-system:hover::before {
     left: 100%;
   }
 }
 
-@keyframes floatingLayers {
+@keyframes circuitPulse {
   0%, 100% { 
-    transform: translateX(0) translateY(0) scale(1);
-    opacity: 0.6;
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
   }
   50% { 
-    transform: translateX(30px) translateY(-20px) scale(1.02);
-    opacity: 1;
+    opacity: 0.7;
+    transform: scale(1.02) rotate(0.5deg);
   }
 }
 
-@keyframes gridFloat {
-  0%, 100% { 
-    opacity: 0.3;
+@keyframes systemGrid {
+  0% { 
     transform: translateX(0) translateY(0);
   }
-  50% { 
-    opacity: 0.6;
-    transform: translateX(15px) translateY(-15px);
+  100% { 
+    transform: translateX(-150px) translateY(-150px);
   }
 }
 
-@keyframes luxuryShimmer {
+@keyframes goldShimmer {
   0%, 100% { 
     background-position: 0% 50%;
   }
@@ -178,7 +174,7 @@
   }
 }
 
-@keyframes titleGlow {
+@keyframes titleAura {
   0%, 100% { 
     opacity: 0;
   }

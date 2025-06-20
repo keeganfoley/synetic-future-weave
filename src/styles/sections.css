@@ -1,78 +1,79 @@
 
-/* Luxurious Space Command Interface Sections */
+/* Futuristic Control Interface Sections */
 @layer components {
-  .solutions-command-center {
+  .solutions-control-center {
     position: relative;
     background: 
-      radial-gradient(ellipse at 50% 30%, rgba(180, 154, 106, 0.015) 0%, transparent 70%);
+      radial-gradient(ellipse at 50% 30%, rgba(184, 158, 98, 0.008) 0%, transparent 70%);
+    padding: 6rem 0;
   }
   
-  .section-title-command {
+  .section-title-system {
     font-family: 'Orbitron', serif;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 600;
     background: linear-gradient(135deg, 
-      rgb(var(--elegant-gold)) 0%, 
-      rgb(var(--rich-gold)) 40%, 
-      rgb(var(--shimmer)) 70%,
-      rgb(var(--deep-gold)) 100%);
+      rgb(var(--engineered-gold)) 0%, 
+      rgb(var(--circuit-gold)) 30%, 
+      rgb(var(--glow-gold)) 60%,
+      rgb(var(--engineered-gold)) 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    animation: sectionTitleShimmer 10s ease-in-out infinite;
-    text-shadow: 0 0 20px rgba(var(--elegant-gold-rgb), 0.1);
+    animation: sectionShimmer 10s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(184, 158, 98, 0.1));
   }
   
-  .section-subtitle-command {
-    font-size: 1.4rem;
+  .section-subtitle-system {
+    font-size: 1.1rem;
     font-weight: 400;
     color: rgba(220, 220, 220, 0.75);
-    line-height: 1.5;
-    max-width: 600px;
+    line-height: 1.4;
+    max-width: 500px;
     margin: 0 auto;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.005em;
   }
   
-  .command-modules-grid {
+  .control-modules-grid {
     display: grid;
-    grid-template-columns: repeat(3, 360px);
-    grid-template-rows: repeat(2, 300px);
-    gap: 40px;
+    grid-template-columns: repeat(3, 300px);
+    grid-template-rows: repeat(2, 240px);
+    gap: 30px;
     justify-content: center;
     align-items: start;
   }
   
-  @media (max-width: 1200px) {
-    .command-modules-grid {
-      grid-template-columns: repeat(2, 360px);
-      grid-template-rows: repeat(3, 300px);
+  @media (max-width: 1024px) {
+    .control-modules-grid {
+      grid-template-columns: repeat(2, 300px);
+      grid-template-rows: repeat(3, 240px);
     }
   }
   
   @media (max-width: 768px) {
-    .command-modules-grid {
+    .control-modules-grid {
       grid-template-columns: 1fr;
       grid-template-rows: auto;
-      max-width: 360px;
+      max-width: 300px;
       margin: 0 auto;
     }
   }
   
-  .command-module {
-    width: 360px;
-    height: 300px;
-    padding: 3rem;
-    border: 1px solid rgba(var(--elegant-gold-rgb), 0.12);
-    border-radius: 16px;
+  .control-module {
+    width: 300px;
+    height: 240px;
+    padding: 2rem;
+    border: 1px solid rgba(184, 158, 98, 0.15);
+    border-radius: 8px;
     background: 
       linear-gradient(135deg, 
-        rgba(28, 28, 28, 0.9) 0%, 
-        rgba(45, 45, 45, 0.6) 50%,
-        rgba(28, 28, 28, 0.8) 100%);
-    backdrop-filter: blur(30px);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        rgba(16, 16, 18, 0.95) 0%, 
+        rgba(32, 32, 35, 0.7) 50%,
+        rgba(16, 16, 18, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,11 +81,11 @@
     position: relative;
     overflow: hidden;
     box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(var(--shimmer), 0.05);
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(220, 185, 115, 0.05);
   }
   
-  .command-module::before {
+  .control-module::before {
     content: '';
     position: absolute;
     top: 0;
@@ -93,14 +94,14 @@
     bottom: 0;
     background: 
       radial-gradient(circle at 50% 50%, 
-        rgba(var(--elegant-gold-rgb), 0.02) 0%, 
+        rgba(184, 158, 98, 0.015) 0%, 
         transparent 60%);
     opacity: 0;
-    transition: opacity 0.5s ease;
-    border-radius: 16px;
+    transition: opacity 0.4s ease;
+    border-radius: 8px;
   }
   
-  .command-module::after {
+  .control-module::after {
     content: '';
     position: absolute;
     top: 0;
@@ -109,195 +110,195 @@
     height: 1px;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(var(--elegant-gold-rgb), 0.3), 
+      rgba(200, 165, 95, 0.4), 
       transparent);
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s ease;
   }
   
-  .command-module:hover {
-    transform: translateY(-12px) scale(1.02);
-    border-color: rgba(var(--elegant-gold-rgb), 0.3);
+  .control-module:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(200, 165, 95, 0.4);
     box-shadow: 
-      0 25px 60px rgba(0, 0, 0, 0.5),
-      0 0 80px rgba(var(--elegant-gold-rgb), 0.1),
-      inset 0 1px 0 rgba(var(--shimmer), 0.15);
+      0 12px 40px rgba(0, 0, 0, 0.5),
+      0 0 50px rgba(184, 158, 98, 0.15),
+      inset 0 1px 0 rgba(220, 185, 115, 0.12);
   }
   
-  .command-module:hover::before {
+  .control-module:hover::before {
     opacity: 1;
   }
   
-  .command-module:hover::after {
+  .control-module:hover::after {
     opacity: 1;
   }
   
   .module-icon {
-    width: 52px;
-    height: 52px;
-    margin-bottom: 2rem;
-    color: rgb(var(--elegant-gold));
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 2px 8px rgba(var(--elegant-gold-rgb), 0.2));
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.5rem;
+    color: rgb(var(--engineered-gold));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 6px rgba(184, 158, 98, 0.2));
   }
   
-  .command-module:hover .module-icon {
-    transform: scale(1.15);
-    filter: drop-shadow(0 4px 20px rgba(var(--elegant-gold-rgb), 0.4));
-    color: rgb(var(--shimmer));
+  .control-module:hover .module-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 15px rgba(220, 185, 115, 0.4));
+    color: rgb(var(--glow-gold));
   }
   
   .module-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
     background: linear-gradient(135deg, 
-      rgb(var(--elegant-gold)) 0%, 
-      rgb(var(--rich-gold)) 60%,
-      rgb(var(--shimmer)) 100%);
+      rgb(var(--engineered-gold)) 0%, 
+      rgb(var(--circuit-gold)) 50%,
+      rgb(var(--glow-gold)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: 0.01em;
-    margin-bottom: 1.2rem;
-    line-height: 1.3;
+    letter-spacing: 0.005em;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
   }
   
   .module-tagline {
     color: rgba(220, 220, 220, 0.7);
-    font-size: 1rem;
-    line-height: 1.4;
+    font-size: 0.85rem;
+    line-height: 1.3;
     font-weight: 400;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.005em;
   }
 }
 
-/* Elite Vision Section */
+/* Vision Control Center */
 @layer components {
-  .vision-command-center {
+  .vision-control-center {
     position: relative;
     background: 
-      radial-gradient(ellipse at 60% 40%, rgba(200, 169, 103, 0.02) 0%, transparent 70%);
-    padding: 8rem 0;
+      radial-gradient(ellipse at 40% 60%, rgba(200, 165, 95, 0.01) 0%, transparent 70%);
+    padding: 5rem 0;
   }
   
-  .vision-title-command {
+  .vision-title-system {
     font-family: 'Orbitron', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 600;
     background: linear-gradient(135deg, 
-      rgb(var(--elegant-gold)) 0%, 
-      rgb(var(--rich-gold)) 50%, 
-      rgb(var(--shimmer)) 100%);
+      rgb(var(--engineered-gold)) 0%, 
+      rgb(var(--circuit-gold)) 40%, 
+      rgb(var(--glow-gold)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     position: relative;
-    text-shadow: 0 0 15px rgba(var(--elegant-gold-rgb), 0.1);
+    filter: drop-shadow(0 0 12px rgba(184, 158, 98, 0.1));
   }
   
-  .vision-statement-elite {
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  .vision-statement-system {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
     font-weight: 500;
     color: rgba(220, 220, 220, 0.9);
-    line-height: 1.4;
-    max-width: 900px;
+    line-height: 1.3;
+    max-width: 700px;
     margin: 0 auto;
-    letter-spacing: 0.01em;
-    padding: 4rem 3rem;
+    letter-spacing: 0.005em;
+    padding: 2.5rem 2rem;
     background: 
       linear-gradient(135deg, 
-        rgba(28, 28, 28, 0.95) 0%, 
-        rgba(45, 45, 45, 0.7) 50%,
-        rgba(28, 28, 28, 0.9) 100%);
-    border-radius: 20px;
-    backdrop-filter: blur(40px);
-    border: 1px solid rgba(var(--elegant-gold-rgb), 0.08);
+        rgba(16, 16, 18, 0.95) 0%, 
+        rgba(32, 32, 35, 0.8) 50%,
+        rgba(16, 16, 18, 0.9) 100%);
+    border-radius: 12px;
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(184, 158, 98, 0.1);
     box-shadow: 
-      0 30px 70px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(var(--shimmer), 0.05);
+      0 8px 30px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(220, 185, 115, 0.05);
     position: relative;
     overflow: hidden;
   }
   
-  .vision-statement-elite::before {
+  .vision-statement-system::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(var(--elegant-gold-rgb), 0.2), 
+      rgba(200, 165, 95, 0.3), 
       transparent);
-    animation: topGlow 6s ease-in-out infinite;
+    animation: visionGlow 8s ease-in-out infinite;
   }
 }
 
-/* Premium CTA Command Center */
+/* Command CTA Center */
 @layer components {
-  .cta-command-center {
+  .cta-control-center {
     position: relative;
     background: 
-      radial-gradient(ellipse at 50% 50%, rgba(8, 8, 8, 1) 0%, rgba(4, 4, 4, 1) 100%);
-    padding: 10rem 0;
+      radial-gradient(ellipse at 50% 50%, rgba(6, 6, 8, 1) 0%, rgba(4, 4, 6, 1) 100%);
+    padding: 6rem 0;
   }
   
-  .cta-title-command {
+  .cta-title-system {
     font-family: 'Orbitron', serif;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 600;
     background: linear-gradient(135deg, 
-      rgb(var(--elegant-gold)) 0%, 
-      rgb(var(--rich-gold)) 40%, 
-      rgb(var(--shimmer)) 70%,
-      rgb(var(--deep-gold)) 100%);
+      rgb(var(--engineered-gold)) 0%, 
+      rgb(var(--circuit-gold)) 30%, 
+      rgb(var(--glow-gold)) 60%,
+      rgb(var(--engineered-gold)) 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    margin-bottom: 2.5rem;
-    animation: ctaTitleShimmer 8s ease-in-out infinite;
+    margin-bottom: 1.5rem;
+    animation: ctaShimmer 6s ease-in-out infinite;
   }
   
-  .cta-subtitle-command {
-    font-size: clamp(1.3rem, 3vw, 1.6rem);
+  .cta-subtitle-system {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: 400;
     color: rgba(220, 220, 220, 0.8);
-    line-height: 1.5;
-    max-width: 700px;
-    margin: 0 auto 4rem auto;
-    letter-spacing: 0.01em;
+    line-height: 1.4;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    letter-spacing: 0.005em;
   }
   
-  .cta-button-command {
+  .cta-button-system {
     display: inline-flex;
     align-items: center;
-    padding: 1.8rem 4rem;
-    border: 2px solid rgba(var(--elegant-gold-rgb), 0.4);
-    border-radius: 12px;
+    padding: 1.2rem 3rem;
+    border: 1px solid rgba(184, 158, 98, 0.5);
+    border-radius: 8px;
     font-weight: 600;
     background: 
       linear-gradient(135deg, 
-        rgba(var(--elegant-gold-rgb), 0.08) 0%, 
-        rgba(var(--deep-gold), 0.04) 50%,
-        rgba(var(--rich-gold), 0.02) 100%);
-    backdrop-filter: blur(40px);
-    color: rgb(var(--elegant-gold));
-    font-size: 1.3rem;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        rgba(32, 32, 35, 0.9) 0%, 
+        rgba(48, 48, 52, 0.7) 50%,
+        rgba(32, 32, 35, 0.85) 100%);
+    backdrop-filter: blur(30px);
+    color: rgb(var(--engineered-gold));
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
     box-shadow: 
-      0 15px 40px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(var(--shimmer), 0.1);
+      0 6px 25px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(220, 185, 115, 0.1);
   }
   
-  .cta-button-command::before {
+  .cta-button-system::before {
     content: '';
     position: absolute;
     top: 0;
@@ -306,31 +307,31 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(var(--shimmer), 0.1), 
+      rgba(220, 185, 115, 0.15), 
       transparent);
-    transition: left 1s ease;
+    transition: left 0.8s ease;
   }
   
-  .cta-button-command:hover {
+  .cta-button-system:hover {
     background: 
       linear-gradient(135deg, 
-        rgba(var(--elegant-gold-rgb), 0.15) 0%, 
-        rgba(var(--deep-gold), 0.08) 50%,
-        rgba(var(--rich-gold), 0.05) 100%);
-    border-color: rgb(var(--elegant-gold));
-    transform: translateY(-6px);
+        rgba(48, 48, 52, 0.95) 0%, 
+        rgba(64, 64, 68, 0.8) 50%,
+        rgba(48, 48, 52, 0.9) 100%);
+    border-color: rgb(var(--circuit-gold));
+    transform: translateY(-3px);
     box-shadow: 
-      0 25px 70px rgba(var(--elegant-gold-rgb), 0.2),
-      0 0 80px rgba(var(--elegant-gold-rgb), 0.1),
-      inset 0 1px 0 rgba(var(--shimmer), 0.2);
+      0 12px 40px rgba(184, 158, 98, 0.25),
+      0 0 60px rgba(220, 185, 115, 0.15),
+      inset 0 1px 0 rgba(240, 205, 135, 0.2);
   }
   
-  .cta-button-command:hover::before {
+  .cta-button-system:hover::before {
     left: 100%;
   }
 }
 
-@keyframes sectionTitleShimmer {
+@keyframes sectionShimmer {
   0%, 100% { 
     background-position: 0% 50%;
   }
@@ -339,7 +340,7 @@
   }
 }
 
-@keyframes ctaTitleShimmer {
+@keyframes ctaShimmer {
   0%, 100% { 
     background-position: 0% 50%;
   }
@@ -348,22 +349,11 @@
   }
 }
 
-@keyframes topGlow {
+@keyframes visionGlow {
   0%, 100% { 
-    opacity: 0.2;
+    opacity: 0.3;
   }
   50% { 
-    opacity: 0.6;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .command-module,
-  .module-icon,
-  .floating-depth-layers,
-  .space-grid-subtle {
-    animation: none;
-    transition: none;
+    opacity: 0.7;
   }
 }

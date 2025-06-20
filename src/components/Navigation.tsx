@@ -7,7 +7,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      setIsScrolled(window.scrollY > 80);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -30,29 +30,29 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`nav-command-2025 ${
-        isScrolled ? 'nav-scrolled-command' : 'nav-transparent-command'
+      <nav className={`nav-system-2025 ${
+        isScrolled ? 'nav-scrolled-system' : 'nav-transparent-system'
       }`}>
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-28 py-6">
+          <div className="flex items-center justify-between h-24 py-4">
             {/* Logo */}
             <div className="flex-shrink-0">
               <div className="relative">
                 <img 
                   src="/lovable-uploads/6d38dcd4-57ab-4003-b5c9-e625f91896c8.png" 
                   alt="Synetic AI" 
-                  className="logo-command-elite"
+                  className="logo-system-command"
                 />
               </div>
             </div>
 
             {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-10">
+            <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link-command relative"
+                  className="nav-link-system relative"
                 >
                   <span className="relative z-10">{link.name}</span>
                 </button>
@@ -63,17 +63,17 @@ const Navigation = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-300 hover:text-elegant-gold transition-colors duration-300"
+                className="text-gray-300 hover:text-engineered-gold transition-colors duration-300"
               >
-                <div className="w-8 h-8 flex flex-col justify-center items-center">
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-8 transform ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-2' : '-translate-y-1.5'
+                <div className="w-7 h-7 flex flex-col justify-center items-center">
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
+                    isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1'
                   }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-8 ${
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 ${
                     isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
                   }`} />
-                  <span className={`bg-current block transition-all duration-300 h-0.5 w-8 transform ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-2' : 'translate-y-1.5'
+                  <span className={`bg-current block transition-all duration-300 h-0.5 w-7 transform ${
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1'
                   }`} />
                 </div>
               </button>
@@ -83,13 +83,13 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden nav-scrolled-command border-t border-elegant-gold/20">
-            <div className="px-8 py-10 space-y-8">
+          <div className="md:hidden nav-scrolled-system border-t border-engineered-gold/20">
+            <div className="px-8 py-8 space-y-6">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-command text-xl w-full text-left"
+                  className="block nav-link-system text-lg w-full text-left"
                 >
                   <span className="relative z-10">{link.name}</span>
                 </button>

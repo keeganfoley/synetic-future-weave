@@ -1,6 +1,6 @@
 
 const MainSections = () => {
-  const commandModules = [
+  const controlModules = [
     {
       title: "Adaptive Engine",
       tagline: "Smart automations that evolve with you.",
@@ -24,7 +24,7 @@ const MainSections = () => {
     {
       title: "Intelligence Hub",
       tagline: "Real-time insights, instant alerts.",
-      icon: "bar-chart-horizontal"
+      icon: "bar-chart"
     },
     {
       title: "Client Lifecycle",
@@ -72,7 +72,7 @@ const MainSections = () => {
             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
           </svg>
         );
-      case 'bar-chart-horizontal':
+      case 'bar-chart':
         return (
           <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M3 3v18h18"/>
@@ -98,14 +98,14 @@ const MainSections = () => {
   return (
     <div className="relative">
       {/* Vision Section */}
-      <section id="vision" className="min-h-screen flex items-center py-20 px-8 relative vision-command-center">
-        <div className="max-w-6xl mx-auto">
+      <section id="vision" className="min-h-screen flex items-center py-16 px-8 relative vision-control-center">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center">
-            <h2 className="vision-title-command mb-16">
+            <h2 className="vision-title-system mb-12">
               Our Vision
             </h2>
-            <div className="mb-20">
-              <p className="vision-statement-elite">
+            <div className="mb-16">
+              <p className="vision-statement-system">
                 We build intelligent systems that think for you—designed to scale, adapt, and impress.
               </p>
             </div>
@@ -114,22 +114,22 @@ const MainSections = () => {
       </section>
 
       {/* Engineered Intelligence Section */}
-      <section id="solutions" className="min-h-screen flex items-center py-24 px-8 relative solutions-command-center">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="section-title-command mb-16">
+      <section id="solutions" className="min-h-screen flex items-center py-20 px-8 relative solutions-control-center">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="section-title-system mb-12">
               Engineered Intelligence
             </h2>
-            <p className="section-subtitle-command">
+            <p className="section-subtitle-system">
               Real-time infrastructure that adapts and performs without lag.
             </p>
           </div>
 
-          <div className="command-modules-grid">
-            {commandModules.map((module, index) => (
+          <div className="control-modules-grid">
+            {controlModules.map((module, index) => (
               <div
                 key={module.title}
-                className="command-module group"
+                className="control-module group"
               >
                 {/* Icon */}
                 <div className="flex justify-center">
@@ -149,25 +149,25 @@ const MainSections = () => {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="min-h-screen flex items-center py-24 px-8 relative cta-command-center">
-        <div className="max-w-5xl mx-auto text-center relative z-10">
+      <section id="contact" className="min-h-screen flex items-center py-20 px-8 relative cta-control-center">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <div>
-            <h2 className="cta-title-command mb-10">
+            <h2 className="cta-title-system mb-8">
               Let's Build the Future
             </h2>
             
-            <p className="cta-subtitle-command mb-20">
+            <p className="cta-subtitle-system mb-16">
               Ready to transform your business with intelligent automation?
               <br />
-              <span style={{ color: 'rgb(var(--elegant-gold))' }}>Contact us to automate your business.</span>
+              <span style={{ color: 'rgb(var(--engineered-gold))' }}>Contact us to automate your business.</span>
             </p>
             
-            <div className="space-y-10">
-              <button className="cta-button-command group relative">
+            <div className="space-y-8">
+              <button className="cta-button-system group relative">
                 <span className="relative z-10 inline-flex items-center">
                   Let's Build Together
                   <svg 
-                    className="ml-4 w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" 
+                    className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
