@@ -1,55 +1,53 @@
 
-/* Premium AI Control Interface Sections */
+/* Premium AI Control Interface Sections with 3D Depth */
 @layer components {
   .solutions-control-center {
     position: relative;
     background: 
-      radial-gradient(ellipse at 50% 40%, rgba(212, 175, 55, 0.004) 0%, transparent 60%);
-    padding: 4rem 0;
+      radial-gradient(ellipse at 50% 40%, rgba(205, 161, 35, 0.008) 0%, transparent 50%);
+    padding: 3rem 0;
+    perspective: 1200px;
+    transform-style: preserve-3d;
   }
   
   .section-title-system {
     font-family: 'Orbitron', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-size: clamp(1.3rem, 3vw, 2rem);
     font-weight: 600;
-    background: linear-gradient(135deg, 
-      rgb(var(--engineered-gold)) 0%, 
-      rgb(var(--circuit-gold)) 25%, 
-      rgb(var(--glow-gold)) 50%,
-      rgb(var(--neon-gold)) 75%,
-      rgb(var(--circuit-gold)) 100%);
-    background-size: 250% 250%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     position: relative;
-    animation: sectionPremiumShimmer 15s ease-in-out infinite;
-    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.2));
+    animation: sectionShimmer3D 15s ease-in-out infinite;
+    transform-style: preserve-3d;
+    text-shadow: 
+      0 0 25px rgba(205, 161, 35, 0.3),
+      0 3px 6px rgba(0, 0, 0, 0.8);
   }
   
   .section-subtitle-system {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 400;
-    color: rgba(220, 220, 220, 0.8);
-    line-height: 1.35;
-    max-width: 420px;
+    color: rgba(215, 215, 215, 0.75);
+    line-height: 1.3;
+    max-width: 380px;
     margin: 0 auto;
-    letter-spacing: 0.003em;
+    letter-spacing: 0.005em;
+    transform: translateZ(10px);
   }
   
   .control-modules-grid {
     display: grid;
-    grid-template-columns: repeat(3, 280px);
-    grid-template-rows: repeat(2, 220px);
-    gap: 24px;
+    grid-template-columns: repeat(3, 260px);
+    grid-template-rows: repeat(2, 200px);
+    gap: 20px;
     justify-content: center;
     align-items: start;
+    perspective: 1000px;
+    transform-style: preserve-3d;
   }
   
   @media (max-width: 1024px) {
     .control-modules-grid {
-      grid-template-columns: repeat(2, 280px);
-      grid-template-rows: repeat(3, 220px);
+      grid-template-columns: repeat(2, 260px);
+      grid-template-rows: repeat(3, 200px);
     }
   }
   
@@ -57,55 +55,24 @@
     .control-modules-grid {
       grid-template-columns: 1fr;
       grid-template-rows: auto;
-      max-width: 280px;
+      max-width: 260px;
       margin: 0 auto;
     }
   }
   
   .control-module {
-    width: 280px;
-    height: 220px;
-    padding: 1.75rem;
-    border: 1px solid rgba(212, 175, 55, 0.25);
-    border-radius: 6px;
-    background: 
-      linear-gradient(135deg, 
-        rgba(12, 12, 14, 0.95) 0%, 
-        rgba(28, 28, 30, 0.8) 40%,
-        rgba(44, 44, 46, 0.6) 80%,
-        rgba(12, 12, 14, 0.9) 100%);
-    backdrop-filter: blur(25px);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 260px;
+    height: 200px;
+    padding: 1.5rem;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 
-      0 6px 25px rgba(0, 0, 0, 0.5),
-      0 0 20px rgba(212, 175, 55, 0.08),
-      inset 0 1px 0 rgba(252, 215, 95, 0.08),
-      inset 0 -1px 0 rgba(180, 140, 25, 0.15);
-  }
-  
-  .control-module::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(circle at 30% 30%, 
-        rgba(212, 175, 55, 0.06) 0%, 
-        transparent 50%),
-      radial-gradient(circle at 70% 70%, 
-        rgba(232, 195, 75, 0.04) 0%, 
-        transparent 40%);
-    opacity: 0;
-    transition: all 0.6s ease;
-    border-radius: 6px;
+    transform-style: preserve-3d;
+    cursor: pointer;
   }
   
   .control-module::after {
@@ -117,41 +84,43 @@
     height: 1px;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(252, 215, 95, 0.6), 
-      rgba(232, 195, 75, 0.4),
+      rgba(245, 201, 75, 0.6), 
+      rgba(225, 181, 55, 0.4),
       transparent);
     opacity: 0;
     transition: all 0.6s ease;
-    animation: moduleBeamSweep 3s ease-in-out infinite;
+    animation: moduleBeam3D 4s ease-in-out infinite;
   }
   
   .control-module:hover {
-    transform: translateY(-12px) scale(1.03);
-    border-color: rgba(232, 195, 75, 0.6);
+    transform: translateY(-15px) translateZ(40px) rotateX(5deg);
+    border-color: rgba(225, 181, 55, 0.7);
     box-shadow: 
-      0 20px 60px rgba(0, 0, 0, 0.6),
-      0 0 80px rgba(212, 175, 55, 0.3),
-      0 0 40px rgba(252, 215, 95, 0.2),
-      inset 0 1px 0 rgba(255, 235, 115, 0.2),
-      inset 0 -1px 0 rgba(180, 140, 25, 0.3);
-  }
-  
-  .control-module:hover::before {
-    opacity: 1;
+      0 25px 80px rgba(0, 0, 0, 0.6),
+      0 0 100px rgba(205, 161, 35, 0.4),
+      0 0 50px rgba(245, 201, 75, 0.3),
+      inset 0 1px 0 rgba(255, 221, 95, 0.2),
+      inset 0 -1px 0 rgba(165, 121, 15, 0.3);
   }
   
   .control-module:hover::after {
     opacity: 1;
   }
   
-  .module-icon {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 1.25rem;
-    color: rgb(var(--engineered-gold));
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 3px 8px rgba(212, 175, 55, 0.3));
+  .icon-3d-container {
     position: relative;
+    transform-style: preserve-3d;
+    margin-bottom: 1rem;
+  }
+  
+  .module-icon {
+    width: 32px;
+    height: 32px;
+    color: rgb(var(--engineered-gold));
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 3px 8px rgba(205, 161, 35, 0.4));
+    position: relative;
+    transform-style: preserve-3d;
   }
   
   .module-icon::before {
@@ -159,186 +128,146 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(205, 161, 35, 0.15) 0%, transparent 70%);
     border-radius: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%) translateZ(-10px);
     opacity: 0;
-    transition: all 0.6s ease;
+    transition: all 0.8s ease;
   }
   
   .control-module:hover .module-icon {
-    transform: scale(1.15) rotate(8deg);
-    filter: drop-shadow(0 6px 20px rgba(252, 215, 95, 0.5));
+    transform: scale(1.2) rotateY(15deg) translateZ(20px);
+    filter: drop-shadow(0 8px 25px rgba(245, 201, 75, 0.6));
     color: rgb(var(--glow-gold));
   }
   
   .control-module:hover .module-icon::before {
     opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1.2);
+    transform: translateX(-50%) translateY(-50%) translateZ(-10px) scale(1.4);
   }
   
   .module-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    background: linear-gradient(135deg, 
-      rgb(var(--engineered-gold)) 0%, 
-      rgb(var(--circuit-gold)) 40%,
-      rgb(var(--glow-gold)) 80%,
-      rgb(var(--engineered-gold)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.003em;
-    margin-bottom: 0.7rem;
-    line-height: 1.15;
+    letter-spacing: 0.005em;
+    margin-bottom: 0.6rem;
+    line-height: 1.1;
     transition: all 0.4s ease;
+    transform-style: preserve-3d;
   }
   
   .module-tagline {
-    color: rgba(220, 220, 220, 0.75);
-    font-size: 0.8rem;
-    line-height: 1.25;
+    color: rgba(215, 215, 215, 0.7);
+    font-size: 0.75rem;
+    line-height: 1.2;
     font-weight: 400;
-    letter-spacing: 0.003em;
+    letter-spacing: 0.005em;
+    transform: translateZ(5px);
+  }
+
+  .module-connector-lines {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    width: 20px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(205, 161, 35, 0.6), transparent);
+    opacity: 0;
+    transition: all 0.6s ease;
+    transform: translateZ(5px);
+  }
+
+  .control-module:hover .module-connector-lines {
+    opacity: 1;
+    width: 30px;
   }
 }
 
-/* Premium Vision Control Center */
+/* Premium Vision Control Center with 3D Panels */
 @layer components {
   .vision-control-center {
     position: relative;
     background: 
-      radial-gradient(ellipse at 40% 60%, rgba(232, 195, 75, 0.006) 0%, transparent 60%);
-    padding: 4rem 0;
+      radial-gradient(ellipse at 40% 60%, rgba(225, 181, 55, 0.01) 0%, transparent 50%);
+    padding: 3rem 0;
+    perspective: 1000px;
   }
   
   .vision-title-system {
     font-family: 'Orbitron', serif;
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     font-weight: 600;
-    background: linear-gradient(135deg, 
-      rgb(var(--engineered-gold)) 0%, 
-      rgb(var(--circuit-gold)) 35%, 
-      rgb(var(--glow-gold)) 70%,
-      rgb(var(--engineered-gold)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     position: relative;
-    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.15));
+    text-shadow: 
+      0 0 20px rgba(205, 161, 35, 0.2),
+      0 2px 4px rgba(0, 0, 0, 0.8);
+    transform-style: preserve-3d;
   }
   
   .vision-statement-system {
-    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
     font-weight: 500;
-    color: rgba(220, 220, 220, 0.9);
-    line-height: 1.25;
-    max-width: 600px;
-    margin: 0 auto;
-    letter-spacing: 0.003em;
-    padding: 2rem 1.75rem;
-    background: 
-      linear-gradient(135deg, 
-        rgba(12, 12, 14, 0.95) 0%, 
-        rgba(28, 28, 30, 0.85) 40%,
-        rgba(44, 44, 46, 0.7) 80%,
-        rgba(12, 12, 14, 0.9) 100%);
-    border-radius: 8px;
-    backdrop-filter: blur(35px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    box-shadow: 
-      0 12px 40px rgba(0, 0, 0, 0.5),
-      0 0 30px rgba(212, 175, 55, 0.1),
-      inset 0 1px 0 rgba(252, 215, 95, 0.08),
-      inset 0 -1px 0 rgba(180, 140, 25, 0.12);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .vision-statement-system::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(252, 215, 95, 0.4), 
-      rgba(232, 195, 75, 0.6),
-      rgba(252, 215, 95, 0.4),
-      transparent);
-    animation: visionGoldGlow 12s ease-in-out infinite;
+    color: rgba(215, 215, 215, 0.85);
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transform: translateZ(10px);
   }
 }
 
-/* Premium Command CTA Center */
+/* Premium Command CTA Center with Cinematic Depth */
 @layer components {
   .cta-control-center {
     position: relative;
     background: 
-      radial-gradient(ellipse at 50% 50%, rgba(4, 4, 6, 1) 0%, rgba(2, 2, 4, 1) 100%);
-    padding: 4.5rem 0;
+      radial-gradient(ellipse at 50% 50%, rgba(2, 2, 4, 1) 0%, rgba(1, 1, 3, 1) 100%);
+    padding: 4rem 0;
+    perspective: 1500px;
+    transform-style: preserve-3d;
   }
   
   .cta-title-system {
     font-family: 'Orbitron', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-size: clamp(1.3rem, 3vw, 2rem);
     font-weight: 600;
-    background: linear-gradient(135deg, 
-      rgb(var(--engineered-gold)) 0%, 
-      rgb(var(--circuit-gold)) 25%, 
-      rgb(var(--glow-gold)) 50%,
-      rgb(var(--neon-gold)) 75%,
-      rgb(var(--circuit-gold)) 100%);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     position: relative;
-    margin-bottom: 1.25rem;
-    animation: ctaPremiumShimmer 8s ease-in-out infinite;
+    margin-bottom: 1rem;
+    animation: ctaShimmer3D 10s ease-in-out infinite;
+    transform-style: preserve-3d;
+    text-shadow: 
+      0 0 30px rgba(205, 161, 35, 0.4),
+      0 4px 8px rgba(0, 0, 0, 0.8);
   }
   
   .cta-subtitle-system {
-    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
     font-weight: 400;
-    color: rgba(220, 220, 220, 0.85);
-    line-height: 1.35;
-    max-width: 520px;
-    margin: 0 auto 2.5rem auto;
-    letter-spacing: 0.003em;
+    color: rgba(215, 215, 215, 0.8);
+    line-height: 1.3;
+    max-width: 460px;
+    margin: 0 auto 2rem auto;
+    letter-spacing: 0.005em;
+    transform: translateZ(10px);
   }
   
   .cta-button-system {
     display: inline-flex;
     align-items: center;
-    padding: 1rem 2.5rem;
-    border: 1px solid rgba(212, 175, 55, 0.7);
-    border-radius: 6px;
+    padding: 0.8rem 2rem;
+    border: 1px solid rgba(205, 161, 35, 0.7);
+    border-radius: 8px;
     font-weight: 600;
-    background: 
-      linear-gradient(135deg, 
-        rgba(28, 28, 30, 0.9) 0%, 
-        rgba(44, 44, 46, 0.8) 30%,
-        rgba(60, 60, 62, 0.7) 70%,
-        rgba(28, 28, 30, 0.85) 100%);
-    backdrop-filter: blur(35px);
     color: rgb(var(--engineered-gold));
-    font-size: 0.95rem;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.85rem;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    letter-spacing: 0.015em;
-    box-shadow: 
-      0 8px 35px rgba(0, 0, 0, 0.6),
-      0 0 40px rgba(212, 175, 55, 0.15),
-      inset 0 1px 0 rgba(252, 215, 95, 0.12),
-      inset 0 -1px 0 rgba(180, 140, 25, 0.2);
+    letter-spacing: 0.02em;
+    transform-style: preserve-3d;
   }
   
   .cta-button-system::before {
@@ -350,10 +279,11 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(252, 215, 95, 0.2), 
-      rgba(232, 195, 75, 0.15),
+      rgba(245, 201, 75, 0.3), 
+      rgba(225, 181, 55, 0.2),
       transparent);
-    transition: left 1s ease;
+    transition: left 1.2s ease;
+    transform: translateZ(-1px);
   }
   
   .cta-button-system::after {
@@ -363,28 +293,22 @@
     left: 50%;
     width: 0;
     height: 0;
-    background: radial-gradient(circle, rgba(252, 215, 95, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(245, 201, 75, 0.5) 0%, transparent 70%);
     border-radius: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    transition: all 0.8s ease;
+    transform: translateX(-50%) translateY(-50%) translateZ(-2px);
+    transition: all 1s ease;
     pointer-events: none;
   }
   
   .cta-button-system:hover {
-    background: 
-      linear-gradient(135deg, 
-        rgba(44, 44, 46, 0.95) 0%, 
-        rgba(60, 60, 62, 0.9) 30%,
-        rgba(76, 76, 78, 0.8) 70%,
-        rgba(44, 44, 46, 0.9) 100%);
     border-color: rgb(var(--circuit-gold));
-    transform: translateY(-4px);
+    transform: translateY(-6px) translateZ(30px) rotateX(5deg);
     box-shadow: 
-      0 16px 50px rgba(212, 175, 55, 0.35),
-      0 0 80px rgba(252, 215, 95, 0.25),
-      0 0 40px rgba(232, 195, 75, 0.3),
-      inset 0 1px 0 rgba(255, 235, 115, 0.25),
-      inset 0 -1px 0 rgba(180, 140, 25, 0.35);
+      0 20px 60px rgba(205, 161, 35, 0.4),
+      0 0 100px rgba(245, 201, 75, 0.3),
+      0 0 50px rgba(225, 181, 55, 0.4),
+      inset 0 1px 0 rgba(255, 221, 95, 0.25),
+      inset 0 -1px 0 rgba(165, 121, 15, 0.35);
   }
   
   .cta-button-system:hover::before {
@@ -392,45 +316,40 @@
   }
   
   .cta-button-system:hover::after {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
   }
 }
 
-@keyframes sectionPremiumShimmer {
+@keyframes sectionShimmer3D {
   0%, 100% { 
     background-position: 0% 50%;
+    transform: translateZ(0);
   }
   50% { 
     background-position: 100% 50%;
+    transform: translateZ(5px);
   }
 }
 
-@keyframes ctaPremiumShimmer {
+@keyframes ctaShimmer3D {
   0%, 100% { 
     background-position: 0% 50%;
+    transform: translateZ(0);
   }
   50% { 
     background-position: 100% 50%;
+    transform: translateZ(8px);
   }
 }
 
-@keyframes visionGoldGlow {
-  0%, 100% { 
-    opacity: 0.4;
-  }
-  50% { 
-    opacity: 0.8;
-  }
-}
-
-@keyframes moduleBeamSweep {
-  0%, 70%, 100% { 
+@keyframes moduleBeam3D {
+  0%, 60%, 100% { 
     opacity: 0;
-    transform: scaleX(0);
+    transform: scaleX(0) translateZ(1px);
   }
-  10%, 60% { 
+  20%, 40% { 
     opacity: 1;
-    transform: scaleX(1);
+    transform: scaleX(1) translateZ(1px);
   }
 }

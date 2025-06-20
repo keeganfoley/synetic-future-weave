@@ -1,5 +1,5 @@
 
-/* Premium Control Navigation */
+/* Premium Control Navigation with 3D Depth */
 @layer components {
   .nav-system-2025 {
     position: fixed;
@@ -7,52 +7,55 @@
     left: 0;
     right: 0;
     z-index: 50;
-    padding: 1.2rem 1.5rem;
-    background: rgba(4, 4, 6, 0.9);
-    backdrop-filter: blur(35px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    transition: all 0.5s ease;
+    padding: 1rem 1.5rem;
+    background: rgba(2, 2, 4, 0.9);
+    backdrop-filter: blur(50px);
+    border-bottom: 1px solid rgba(205, 161, 35, 0.2);
+    transition: all 0.6s ease;
+    transform-style: preserve-3d;
   }
   
   .nav-scrolled-system {
-    background: rgba(8, 8, 10, 0.95);
-    backdrop-filter: blur(40px);
-    border-bottom: 1px solid rgba(232, 195, 75, 0.25);
+    background: rgba(6, 6, 8, 0.95);
+    backdrop-filter: blur(60px);
+    border-bottom: 1px solid rgba(225, 181, 55, 0.3);
     box-shadow: 
-      0 6px 25px rgba(0, 0, 0, 0.6),
-      0 0 30px rgba(212, 175, 55, 0.1);
-    padding: 1rem 1.5rem;
+      0 8px 32px rgba(0, 0, 0, 0.7),
+      0 0 40px rgba(205, 161, 35, 0.15);
+    padding: 0.8rem 1.5rem;
   }
   
   .nav-transparent-system {
-    background: rgba(4, 4, 6, 0.8);
-    backdrop-filter: blur(25px);
+    background: rgba(2, 2, 4, 0.8);
+    backdrop-filter: blur(35px);
   }
   
   .logo-system-command {
-    height: 100px;
+    height: 80px;
     width: auto;
-    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
-    transition: all 0.5s ease;
+    filter: drop-shadow(0 0 20px rgba(205, 161, 35, 0.3));
+    transition: all 0.6s ease;
+    transform-style: preserve-3d;
   }
   
   .logo-system-command:hover {
-    filter: drop-shadow(0 0 25px rgba(252, 215, 95, 0.4));
-    transform: scale(1.02);
+    filter: drop-shadow(0 0 30px rgba(245, 201, 75, 0.5));
+    transform: scale(1.03) translateZ(10px);
   }
   
   .nav-link-system {
-    color: rgba(220, 220, 220, 0.9);
+    color: rgba(215, 215, 215, 0.85);
     font-weight: 500;
     text-decoration: none;
-    padding: 0.7rem 1rem;
-    border-radius: 4px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
-    letter-spacing: 0.015em;
-    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    font-size: 0.8rem;
+    transform-style: preserve-3d;
   }
   
   .nav-link-system::before {
@@ -63,17 +66,19 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, 
-      rgba(212, 175, 55, 0.12) 0%, 
-      rgba(232, 195, 75, 0.08) 50%,
-      rgba(212, 175, 55, 0.06) 100%);
+      rgba(205, 161, 35, 0.15) 0%, 
+      rgba(225, 181, 55, 0.1) 50%,
+      rgba(205, 161, 35, 0.08) 100%);
     opacity: 0;
-    transition: opacity 0.4s ease;
-    border-radius: 4px;
+    transition: opacity 0.5s ease;
+    border-radius: 6px;
+    transform: translateZ(-1px);
   }
   
   .nav-link-system:hover {
     color: rgb(var(--engineered-gold));
-    transform: translateY(-1px);
+    transform: translateY(-2px) translateZ(10px);
+    text-shadow: 0 0 15px rgba(205, 161, 35, 0.4);
   }
   
   .nav-link-system:hover::before {
@@ -91,11 +96,12 @@
       rgb(var(--engineered-gold)), 
       rgb(var(--circuit-gold)),
       rgb(var(--glow-gold)));
-    transition: all 0.4s ease;
-    transform: translateX(-50%);
+    transition: all 0.5s ease;
+    transform: translateX(-50%) translateZ(1px);
+    box-shadow: 0 0 8px rgba(205, 161, 35, 0.6);
   }
   
   .nav-link-system:hover::after {
-    width: 75%;
+    width: 80%;
   }
 }

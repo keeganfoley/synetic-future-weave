@@ -1,5 +1,8 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const MainSections = () => {
+  useScrollAnimation();
+
   const controlModules = [
     {
       title: "Adaptive Engine",
@@ -109,27 +112,29 @@ const MainSections = () => {
 
   return (
     <div className="relative">
-      {/* Vision Section */}
+      {/* Vision Section with 3D Panel */}
       <section id="vision" className="min-h-screen flex items-center py-12 px-6 relative vision-control-center">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center">
-            <h2 className="vision-title-system mb-8">
+          <div className="text-center scroll-reveal">
+            <h2 className="vision-title-system mb-8 gold-3d" data-text="Our Vision">
               Our Vision
             </h2>
             <div className="mb-12">
-              <p className="vision-statement-system">
-                We build intelligent systems that think for you—designed to scale, adapt, and impress.
-              </p>
+              <div className="panel-3d p-8 max-w-2xl mx-auto">
+                <p className="vision-statement-system">
+                  We build intelligent systems that think for you—designed to scale, adapt, and impress.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Engineered Intelligence Section */}
+      {/* Engineered Intelligence Section with 3D Grid */}
       <section id="solutions" className="min-h-screen flex items-center py-16 px-6 relative solutions-control-center">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="section-title-system mb-8">
+          <div className="text-center mb-16 scroll-reveal">
+            <h2 className="section-title-system mb-8 gold-3d" data-text="Engineered Intelligence">
               Engineered Intelligence
             </h2>
             <p className="section-subtitle-system">
@@ -141,46 +146,54 @@ const MainSections = () => {
             {controlModules.map((module, index) => (
               <div
                 key={module.title}
-                className="control-module group"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="control-module group scroll-reveal panel-3d"
+                style={{ 
+                  animationDelay: `${index * 150}ms`,
+                  transform: `translateZ(${index * 5}px)`
+                }}
               >
-                {/* Icon */}
-                <div className="flex justify-center">
-                  {renderModuleIcon(module.icon)}
+                {/* Icon with 3D Depth */}
+                <div className="flex justify-center mb-4">
+                  <div className="icon-3d-container">
+                    {renderModuleIcon(module.icon)}
+                  </div>
                 </div>
                 
-                <h3 className="module-title">
+                <h3 className="module-title gold-3d" data-text={module.title}>
                   {module.title}
                 </h3>
                 <p className="module-tagline">
                   {module.tagline}
                 </p>
+
+                {/* 3D Connection Lines */}
+                <div className="module-connector-lines"></div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section with Cinematic Depth */}
       <section id="contact" className="min-h-screen flex items-center py-16 px-6 relative cta-control-center">
         <div className="max-w-3xl mx-auto text-center relative z-10">
-          <div>
-            <h2 className="cta-title-system mb-6">
+          <div className="scroll-reveal">
+            <h2 className="cta-title-system mb-6 gold-3d" data-text="Let's Build the Future">
               Let's Build the Future
             </h2>
             
             <p className="cta-subtitle-system mb-12">
               Ready to transform your business with intelligent automation?
               <br />
-              <span style={{ color: 'rgb(var(--engineered-gold))' }}>Contact us to automate your business.</span>
+              <span className="text-engineered-gold font-medium">Contact us to automate your business.</span>
             </p>
             
             <div className="space-y-6">
-              <button className="cta-button-system group relative">
+              <button className="cta-button-system group relative panel-3d">
                 <span className="relative z-10 inline-flex items-center">
                   Let's Build Together
                   <svg 
-                    className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+                    className="ml-2 w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -191,6 +204,19 @@ const MainSections = () => {
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Ambient 3D Lighting */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div 
+            className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full opacity-20"
+            style={{
+              background: 'radial-gradient(circle, rgba(205, 161, 35, 0.3) 0%, transparent 70%)',
+              transform: 'translate(-50%, -50%) translateZ(100px)',
+              filter: 'blur(40px)',
+              animation: 'floating3D 12s ease-in-out infinite'
+            }}
+          />
         </div>
       </section>
     </div>

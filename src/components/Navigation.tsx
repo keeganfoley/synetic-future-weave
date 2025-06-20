@@ -1,13 +1,15 @@
 
 import { useState, useEffect } from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  useScrollAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -34,8 +36,8 @@ const Navigation = () => {
         isScrolled ? 'nav-scrolled-system' : 'nav-transparent-system'
       }`}>
         <div className="max-w-6xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20 py-3">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-16 py-2">
+            {/* Logo with 3D Transform */}
             <div className="flex-shrink-0">
               <div className="relative">
                 <img 
@@ -46,8 +48,8 @@ const Navigation = () => {
               </div>
             </div>
 
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-6">
+            {/* Navigation Links with 3D Hover */}
+            <div className="hidden md:flex items-center space-x-4">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
@@ -63,7 +65,7 @@ const Navigation = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-300 hover:text-engineered-gold transition-colors duration-300"
+                className="text-gray-300 hover:text-engineered-gold transition-all duration-400 transform hover:scale-110"
               >
                 <div className="w-6 h-6 flex flex-col justify-center items-center">
                   <span className={`bg-current block transition-all duration-300 h-0.5 w-6 transform ${
@@ -81,9 +83,9 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu with 3D Panel */}
         {isMobileMenuOpen && (
-          <div className="md:hidden nav-scrolled-system border-t border-engineered-gold/20">
+          <div className="md:hidden nav-scrolled-system border-t border-engineered-gold/30 panel-3d">
             <div className="px-6 py-6 space-y-4">
               {navLinks.map((link) => (
                 <button
