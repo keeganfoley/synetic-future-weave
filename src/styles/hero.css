@@ -1,98 +1,139 @@
 
-/* Precision AI Command Interface Hero */
+/* Premium AI Command Interface Hero */
 @layer components {
   .hero-command-center {
     position: relative;
     background: 
-      radial-gradient(ellipse at 40% 30%, rgba(205, 161, 35, 0.01) 0%, transparent 60%),
-      radial-gradient(ellipse at 60% 70%, rgba(225, 181, 55, 0.008) 0%, transparent 50%),
-      linear-gradient(135deg, rgba(2, 2, 4, 0.98) 0%, rgba(6, 6, 8, 1) 50%, rgba(4, 4, 6, 0.99) 100%);
+      radial-gradient(ellipse at 30% 25%, rgba(212, 175, 55, 0.006) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 75%, rgba(232, 195, 75, 0.004) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(4, 4, 6, 0.98) 0%, rgba(8, 8, 10, 1) 50%, rgba(6, 6, 8, 0.99) 100%);
     min-height: 100vh;
     overflow: hidden;
-    perspective: 1500px;
-    transform-style: preserve-3d;
   }
   
-  .precision-depth-layers {
+  .circuit-depth-layers {
     position: absolute;
     inset: 0;
     z-index: 0;
     background: 
-      linear-gradient(45deg, transparent 99.6%, rgba(205, 161, 35, 0.15) 99.8%, transparent 100%),
-      linear-gradient(-45deg, transparent 99.7%, rgba(225, 181, 55, 0.12) 99.9%, transparent 100%);
-    background-size: 180px 180px, 250px 250px;
-    animation: precisionDepthShift 60s ease-in-out infinite;
+      linear-gradient(45deg, transparent 49.8%, rgba(212, 175, 55, 0.012) 50%, transparent 50.2%),
+      linear-gradient(-45deg, transparent 49.7%, rgba(232, 195, 75, 0.008) 50%, transparent 50.3%),
+      linear-gradient(135deg, transparent 49.9%, rgba(252, 215, 95, 0.006) 50%, transparent 50.1%);
+    background-size: 300px 300px, 450px 450px, 600px 600px;
+    animation: circuitDepthPulse 40s ease-in-out infinite;
     pointer-events: none;
-    transform: translateZ(15px) rotateX(3deg);
   }
   
   .control-grid-system {
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(0deg, transparent 99.8%, rgba(205, 161, 35, 0.08) 100%),
-      linear-gradient(90deg, transparent 99.6%, rgba(225, 181, 55, 0.06) 100%);
-    background-size: 100px 100px, 150px 150px;
-    animation: controlGridFlow 40s linear infinite;
+      linear-gradient(0deg, transparent 99.5%, rgba(212, 175, 55, 0.025) 100%),
+      linear-gradient(90deg, transparent 99.3%, rgba(232, 195, 75, 0.018) 100%);
+    background-size: 200px 200px, 280px 280px;
+    animation: systemGridFlow 50s linear infinite;
     pointer-events: none;
     opacity: 0.7;
-    transform: translateZ(10px);
   }
   
   .hero-content-command {
     position: relative;
     z-index: 10;
-    transform-style: preserve-3d;
   }
   
   .hero-title-system {
     font-family: 'Orbitron', serif;
-    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
     font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    background: linear-gradient(135deg, 
+      rgb(var(--engineered-gold)) 0%, 
+      rgb(var(--circuit-gold)) 20%, 
+      rgb(var(--glow-gold)) 40%, 
+      rgb(var(--neon-gold)) 60%,
+      rgb(var(--circuit-gold)) 80%,
+      rgb(var(--engineered-gold)) 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     position: relative;
-    transform-style: preserve-3d;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    animation: premiumGoldShimmer 12s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.25));
+  }
+  
+  .hero-title-system::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 75% 75%, rgba(232, 195, 75, 0.06) 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(252, 215, 95, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: titleCommandAura 18s ease-in-out infinite;
+    border-radius: 12px;
+  }
+  
+  .hero-title-system::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(212, 175, 55, 0.3), 
+      rgba(252, 215, 95, 0.6), 
+      rgba(212, 175, 55, 0.3), 
+      transparent);
+    transform: translateX(-50%) translateY(-50%);
+    animation: titleBeamSweep 8s ease-in-out infinite;
+    opacity: 0;
   }
   
   .hero-subtitle-system {
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     font-weight: 400;
-    color: rgba(215, 215, 215, 0.85);
-    line-height: 1.4;
+    color: rgba(220, 220, 220, 0.85);
+    line-height: 1.35;
     max-width: 480px;
     margin: 0 auto;
-    letter-spacing: 0.01em;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-    transform: translateZ(8px);
+    letter-spacing: 0.003em;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
   }
   
   .hero-cta-system {
     display: inline-flex;
     align-items: center;
     padding: 0.75rem 2rem;
-    border: 1.5px solid rgba(205, 161, 35, 0.4);
-    border-radius: 6px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.015em;
     background: 
       linear-gradient(135deg, 
-        rgba(10, 10, 12, 0.9) 0%, 
-        rgba(20, 20, 22, 0.85) 50%,
-        rgba(10, 10, 12, 0.9) 100%);
-    backdrop-filter: blur(20px);
+        rgba(12, 12, 14, 0.95) 0%, 
+        rgba(28, 28, 30, 0.8) 30%,
+        rgba(44, 44, 46, 0.6) 70%,
+        rgba(12, 12, 14, 0.9) 100%);
+    backdrop-filter: blur(30px);
     color: rgb(var(--engineered-gold));
     font-size: 0.9rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     box-shadow: 
-      0 4px 20px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(205, 161, 35, 0.1),
-      inset 0 1px 0 rgba(245, 201, 75, 0.08);
-    transform: translateZ(15px);
-    transform-style: preserve-3d;
+      0 6px 25px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(212, 175, 55, 0.1),
+      inset 0 1px 0 rgba(252, 215, 95, 0.12),
+      inset 0 -1px 0 rgba(180, 140, 25, 0.2);
   }
   
   .hero-cta-system::before {
@@ -104,48 +145,110 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(245, 201, 75, 0.15), 
+      rgba(252, 215, 95, 0.15), 
+      rgba(212, 175, 55, 0.08),
       transparent);
-    transition: left 0.6s ease;
-    transform: translateZ(-1px);
+    transition: left 0.8s ease;
+  }
+  
+  .hero-cta-system::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(252, 215, 95, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transition: all 0.6s ease;
+    pointer-events: none;
   }
   
   .hero-cta-system:hover {
     background: 
       linear-gradient(135deg, 
-        rgba(20, 20, 22, 0.9) 0%, 
-        rgba(30, 30, 32, 0.85) 50%,
-        rgba(20, 20, 22, 0.9) 100%);
-    border-color: rgba(225, 181, 55, 0.6);
-    transform: translateY(-2px) translateZ(20px);
+        rgba(28, 28, 30, 0.95) 0%, 
+        rgba(44, 44, 46, 0.85) 30%,
+        rgba(60, 60, 62, 0.7) 70%,
+        rgba(28, 28, 30, 0.9) 100%);
+    border-color: rgba(232, 195, 75, 0.8);
+    transform: translateY(-3px);
     box-shadow: 
-      0 8px 30px rgba(205, 161, 35, 0.2),
-      0 0 0 1px rgba(225, 181, 55, 0.2),
-      inset 0 1px 0 rgba(255, 221, 95, 0.12);
+      0 12px 40px rgba(212, 175, 55, 0.25),
+      0 0 60px rgba(252, 215, 95, 0.2),
+      inset 0 1px 0 rgba(255, 235, 115, 0.2),
+      inset 0 -1px 0 rgba(180, 140, 25, 0.3);
     color: rgb(var(--glow-gold));
   }
   
   .hero-cta-system:hover::before {
     left: 100%;
   }
+  
+  .hero-cta-system:hover::after {
+    width: 200px;
+    height: 200px;
+  }
 }
 
-@keyframes precisionDepthShift {
+@keyframes circuitDepthPulse {
   0%, 100% { 
     opacity: 0.5;
-    transform: translateZ(15px) rotateX(3deg) scale(1);
+    transform: scale(1) rotate(0deg);
   }
-  50% { 
+  33% { 
     opacity: 0.8;
-    transform: translateZ(25px) rotateX(5deg) scale(1.01);
+    transform: scale(1.02) rotate(0.2deg);
+  }
+  66% { 
+    opacity: 0.3;
+    transform: scale(0.98) rotate(-0.2deg);
   }
 }
 
-@keyframes controlGridFlow {
+@keyframes systemGridFlow {
   0% { 
-    transform: translateX(0) translateY(0) translateZ(10px);
+    transform: translateX(0) translateY(0);
   }
   100% { 
-    transform: translateX(-100px) translateY(-100px) translateZ(10px);
+    transform: translateX(-200px) translateY(-200px);
+  }
+}
+
+@keyframes premiumGoldShimmer {
+  0%, 100% { 
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.25));
+  }
+  33% { 
+    background-position: 50% 25%;
+    filter: drop-shadow(0 0 45px rgba(232, 195, 75, 0.35));
+  }
+  66% { 
+    background-position: 100% 75%;
+    filter: drop-shadow(0 0 60px rgba(252, 215, 95, 0.4));
+  }
+}
+
+@keyframes titleCommandAura {
+  0%, 100% { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes titleBeamSweep {
+  0%, 90%, 100% { 
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) scaleX(0);
+  }
+  10%, 80% { 
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scaleX(1);
   }
 }

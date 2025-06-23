@@ -9,16 +9,16 @@
   :root {
     --background: 8 8 8;
     --foreground: 220 220 220;
-    --deep-space-black: 2 2 4;
-    --control-black: 6 6 8;
-    --panel-black: 10 10 12;
-    --engineered-gold: 205 161 35;
-    --circuit-gold: 225 181 55;
-    --glow-gold: 245 201 75;
-    --neon-gold: 255 221 95;
-    --metallic-gray: 24 24 26;
-    --control-gray: 40 40 42;
-    --shadow-gold: 165 121 15;
+    --deep-space-black: 4 4 6;
+    --control-black: 8 8 10;
+    --panel-black: 12 12 14;
+    --engineered-gold: 212 175 55;
+    --circuit-gold: 232 195 75;
+    --glow-gold: 252 215 95;
+    --neon-gold: 255 235 115;
+    --metallic-gray: 28 28 30;
+    --control-gray: 44 44 46;
+    --shadow-gold: 180 140 25;
   }
 
   * {
@@ -34,37 +34,36 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-weight: 400;
     background: 
-      radial-gradient(ellipse 1200px 800px at 25% 20%, rgba(205, 161, 35, 0.015) 0%, transparent 50%),
-      radial-gradient(ellipse 800px 1200px at 75% 80%, rgba(225, 181, 55, 0.012) 0%, transparent 40%),
-      linear-gradient(135deg, rgb(2, 2, 4) 0%, rgb(6, 6, 8) 30%, rgb(4, 4, 6) 70%, rgb(2, 2, 4) 100%);
+      radial-gradient(ellipse 2000px 1200px at 25% 20%, rgba(212, 175, 55, 0.008) 0%, transparent 50%),
+      radial-gradient(ellipse 1500px 2000px at 75% 80%, rgba(232, 195, 75, 0.006) 0%, transparent 45%),
+      radial-gradient(circle 1200px at 50% 50%, rgba(252, 215, 95, 0.003) 0%, transparent 60%),
+      linear-gradient(135deg, rgb(4, 4, 6) 0%, rgb(8, 8, 10) 25%, rgb(6, 6, 8) 50%, rgb(8, 8, 10) 75%, rgb(4, 4, 6) 100%);
     overflow-x: hidden;
-    color: rgb(215, 215, 215);
+    color: rgb(220, 220, 220);
     position: relative;
     letter-spacing: -0.01em;
-    perspective: 2000px;
-    transform-style: preserve-3d;
   }
 
-  /* Precision Grid System - Clean and Engineered */
+  /* Advanced Neural Circuit Grid */
   body::before {
     content: '';
     position: fixed;
-    top: -20%;
-    left: -20%;
-    width: 140%;
-    height: 140%;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
     background: 
-      linear-gradient(0deg, transparent 99.5%, rgba(205, 161, 35, 0.08) 99.6%, transparent 99.7%),
-      linear-gradient(90deg, transparent 99.4%, rgba(225, 181, 55, 0.06) 99.6%, transparent 99.8%);
-    background-size: 120px 120px, 180px 180px;
-    animation: precisionGridFlow 80s linear infinite;
+      linear-gradient(0deg, transparent 99.2%, rgba(212, 175, 55, 0.015) 99.5%, transparent 100%),
+      linear-gradient(90deg, transparent 99.4%, rgba(232, 195, 75, 0.012) 99.7%, transparent 100%),
+      linear-gradient(45deg, transparent 99.6%, rgba(252, 215, 95, 0.008) 99.8%, transparent 100%);
+    background-size: 120px 120px, 180px 180px, 240px 240px;
+    animation: neuralGridPulse 60s linear infinite;
     pointer-events: none;
     z-index: 1;
     opacity: 0.6;
-    transform: rotateX(2deg) rotateY(-1deg);
   }
 
-  /* Engineered Command Nodes */
+  /* Floating Command Nodes */
   body::after {
     content: '';
     position: fixed;
@@ -73,22 +72,21 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(1.5px 1.5px at 20% 30%, rgba(205, 161, 35, 0.4) 1px, transparent 2px),
-      radial-gradient(1px 1px at 60% 70%, rgba(225, 181, 55, 0.3) 1px, transparent 2px),
-      radial-gradient(2px 2px at 80% 20%, rgba(245, 201, 75, 0.5) 1px, transparent 2px);
-    background-size: 400px 300px, 600px 500px, 800px 600px;
-    animation: commandNodesPulse 120s ease-in-out infinite;
+      radial-gradient(1.5px 1.5px at 18% 25%, rgba(212, 175, 55, 0.6) 1px, transparent 2px),
+      radial-gradient(1px 1px at 42% 65%, rgba(232, 195, 75, 0.4) 1px, transparent 2px),
+      radial-gradient(2px 2px at 68% 35%, rgba(252, 215, 95, 0.3) 1px, transparent 2px),
+      radial-gradient(1px 1px at 85% 75%, rgba(255, 235, 115, 0.5) 1px, transparent 2px),
+      radial-gradient(1.5px 1.5px at 15% 85%, rgba(212, 175, 55, 0.35) 1px, transparent 2px);
+    background-size: 800px 600px, 1200px 900px, 600px 800px, 900px 700px, 1000px 1100px;
+    animation: commandNodeDrift 80s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
-    transform: translateZ(20px);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Orbitron', 'Inter', system-ui, sans-serif;
     font-weight: 600;
     letter-spacing: -0.02em;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-    transform-style: preserve-3d;
   }
 }
 
@@ -108,128 +106,50 @@
   
   .border-engineered-gold { border-color: rgb(var(--engineered-gold)); }
   .border-circuit-gold { border-color: rgb(var(--circuit-gold)); }
-
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(40px) translateZ(-20px) rotateX(8deg);
-    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .scroll-reveal.visible {
-    opacity: 1;
-    transform: translateY(0) translateZ(0) rotateX(0deg);
-  }
-
-  .engineered-panel {
-    transform-style: preserve-3d;
-    background: 
-      linear-gradient(135deg, 
-        rgba(10, 10, 12, 0.95) 0%, 
-        rgba(20, 20, 22, 0.9) 30%,
-        rgba(30, 30, 32, 0.85) 70%,
-        rgba(10, 10, 12, 0.92) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(205, 161, 35, 0.25);
-    box-shadow: 
-      0 4px 20px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(205, 161, 35, 0.1),
-      inset 0 1px 0 rgba(245, 201, 75, 0.08),
-      inset 0 -1px 0 rgba(165, 121, 15, 0.15);
-    border-radius: 6px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .engineered-panel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(circle at 30% 30%, rgba(205, 161, 35, 0.04) 0%, transparent 50%),
-      radial-gradient(circle at 70% 70%, rgba(225, 181, 55, 0.03) 0%, transparent 40%);
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .precision-gold {
-    background: linear-gradient(135deg, 
-      rgb(var(--engineered-gold)) 0%, 
-      rgb(var(--circuit-gold)) 30%, 
-      rgb(var(--glow-gold)) 60%,
-      rgb(var(--circuit-gold)) 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    position: relative;
-    animation: precisionShine 8s ease-in-out infinite;
-    filter: drop-shadow(0 1px 2px rgba(205, 161, 35, 0.3));
-    transform-style: preserve-3d;
-  }
-
-  .precision-gold::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    background: linear-gradient(135deg, 
-      rgba(165, 121, 15, 0.6) 0%, 
-      rgba(185, 141, 25, 0.4) 50%,
-      rgba(165, 121, 15, 0.6) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    z-index: -1;
-    transform: translateZ(-5px);
-  }
-
-  .depth-float {
-    transform-style: preserve-3d;
-    animation: depthFloat 6s ease-in-out infinite;
-  }
 }
 
-@keyframes precisionGridFlow {
+@keyframes neuralGridPulse {
   0% { 
-    transform: translateX(0) translateY(0) rotateX(2deg) rotateY(-1deg);
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% { 
+    transform: translateX(-30px) translateY(-20px) rotate(0.3deg);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateX(-60px) translateY(-40px) rotate(0deg);
+    opacity: 0.4;
+  }
+  75% { 
+    transform: translateX(-90px) translateY(-60px) rotate(-0.3deg);
+    opacity: 0.7;
   }
   100% { 
-    transform: translateX(-120px) translateY(-120px) rotateX(2deg) rotateY(-1deg);
-  }
-}
-
-@keyframes commandNodesPulse {
-  0%, 100% { 
+    transform: translateX(-120px) translateY(-80px) rotate(0deg);
     opacity: 0.6;
-    transform: translateZ(20px) scale(1);
   }
-  33% { 
-    opacity: 0.3;
-    transform: translateZ(30px) scale(1.02);
-  }
-  66% { 
+}
+
+@keyframes commandNodeDrift {
+  0%, 100% { 
     opacity: 0.8;
-    transform: translateZ(10px) scale(0.98);
+    transform: scale(1) rotate(0deg);
   }
-}
-
-@keyframes depthFloat {
-  0%, 100% { 
-    transform: translateY(0) rotateX(0deg);
+  20% { 
+    opacity: 0.4;
+    transform: scale(1.08) rotate(72deg);
   }
-  50% { 
-    transform: translateY(-6px) rotateX(1deg);
+  40% { 
+    opacity: 0.9;
+    transform: scale(0.92) rotate(144deg);
   }
-}
-
-@keyframes precisionShine {
-  0%, 100% { 
-    background-position: 0% 50%;
+  60% { 
+    opacity: 0.3;
+    transform: scale(1.12) rotate(216deg);
   }
-  50% { 
-    background-position: 100% 50%;
+  80% { 
+    opacity: 0.7;
+    transform: scale(0.88) rotate(288deg);
   }
 }
