@@ -1,15 +1,14 @@
 
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import ProcessSection from './ProcessSection';
-import ServicesSection from './ServicesSection';
 
 const MainSections = () => {
   useScrollReveal();
 
   return (
     <>
-      {/* Vision Section */}
-      <section id="vision" className="py-32 relative overflow-hidden">
+      {/* Our Purpose Section (Combined Vision + Mission) */}
+      <section id="purpose" className="py-32 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-8 text-center">
           <div className="section-divider mb-16"></div>
           
@@ -20,33 +19,15 @@ const MainSections = () => {
           </div>
 
           <h2 className="text-4xl md:text-6xl font-heading font-light mb-12 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
-            Our Vision
+            Our Purpose
           </h2>
           
           <div className="space-y-8 scroll-fade-in stagger-1">
             <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
-              We build automation for liberation.
+              We build intelligent automation that liberates time and erases complexity.
             </p>
             <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
-              Systems that think. Time that returns.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-6xl font-heading font-light mb-12 text-cosmic-white scroll-fade-in typing-animation-enhanced">
-            Our Mission
-          </h2>
-          
-          <div className="space-y-8 scroll-fade-in stagger-1">
-            <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
-              We engineer intelligent systems that erase complexity.
-            </p>
-            <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
-              Seamless automation with precision and grace.
+              Systems that think. Automation with grace. Time returned.
             </p>
           </div>
         </div>
@@ -54,55 +35,6 @@ const MainSections = () => {
 
       {/* Process Section */}
       <ProcessSection />
-
-      {/* Services Section */}
-      <ServicesSection />
-
-      {/* Enhanced Systems That Think Section */}
-      <section id="solutions" className="py-32 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-heading font-light mb-6 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
-              Systems That Think
-            </h2>
-            <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-1">
-              Intelligent automation that reshapes workflow with precision
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
-            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-1 solution-card-enhanced">
-              <div className="card-particle-orbit"></div>
-              <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
-                Cognitive Intelligence
-              </h3>
-              <p className="text-cosmic-white/90 leading-relaxed">
-                Self-evolving logic for every workflow.
-              </p>
-            </div>
-
-            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-2 solution-card-enhanced">
-              <div className="card-particle-orbit"></div>
-              <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
-                Neural CRM
-              </h3>
-              <p className="text-cosmic-white/90 leading-relaxed">
-                Predict behaviors. Build relationships. Automate at scale.
-              </p>
-            </div>
-
-            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-3 solution-card-enhanced">
-              <div className="card-particle-orbit"></div>
-              <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
-                Infinite Automation
-              </h3>
-              <p className="text-cosmic-white/90 leading-relaxed">
-                Always on. Always optimizing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Enhanced Contact Section */}
       <section id="contact" className="py-32 relative overflow-hidden">

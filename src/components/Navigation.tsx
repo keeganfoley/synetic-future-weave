@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 const Navigation = () => {
@@ -15,8 +14,8 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'Vision', href: '#vision' },
+    { name: 'Purpose', href: '#purpose' },
+    { name: 'Process', href: '#process' },
     { name: 'Contact', href: '#contact' }
   ];
 

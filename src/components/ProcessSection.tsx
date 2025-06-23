@@ -1,42 +1,36 @@
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const ProcessSection = () => {
   useScrollReveal();
-  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
   const [clickedGlobe, setClickedGlobe] = useState(false);
 
   const processSteps = [
     {
       number: "01",
       title: "Discovery",
-      description: "Let's dive into the bottlenecks and challenges your business currently faces and explore how AI automation can offer effective solutions.",
-      taglines: ["Deep Analysis", "Pain Point Mapping", "Solution Architecture"]
+      description: "Let's dive into the bottlenecks and challenges your business currently faces and explore how AI automation can offer effective solutions."
     },
     {
       number: "02", 
       title: "Strategy",
-      description: "We will develop a customized plan to integrate AI automation into your business, addressing the identified challenges and maximizing efficiency.",
-      taglines: ["Custom Roadmap", "Timeline Planning", "ROI Projections"]
+      description: "We will develop a customized plan to integrate AI automation into your business, addressing the identified challenges and maximizing efficiency."
     },
     {
       number: "03",
       title: "Implementation", 
-      description: "In this phase, we will execute the AI automation plan, ensuring seamless integration into your existing processes.",
-      taglines: ["System Integration", "Quality Assurance", "Performance Testing"]
+      description: "In this phase, we will execute the AI automation plan, ensuring seamless integration into your existing processes."
     },
     {
       number: "04",
       title: "Test & Optimize",
-      description: "We either approve or request revisions - we're dedicated to refining our builds until you're fully satisfied.",
-      taglines: ["A/B Testing", "Performance Metrics", "Continuous Improvement"]
+      description: "We either approve or request revisions - we're dedicated to refining our builds until you're fully satisfied."
     },
     {
       number: "05",
       title: "Become an Industry Leader",
-      description: "Continue requesting as many workflow automations and AI applications as you wish, and transform your organization into a formidable industry leader.",
-      taglines: ["Global Impact", "Scale Now", "Predict the Future"]
+      description: "Continue requesting as many workflow automations and AI applications as you wish, and transform your organization into a formidable industry leader."
     }
   ];
 
@@ -57,13 +51,11 @@ const ProcessSection = () => {
             <div
               key={step.number}
               className={`process-card-enhanced scroll-fade-in stagger-${index + 1}`}
-              onMouseEnter={() => setHoveredStep(index)}
-              onMouseLeave={() => setHoveredStep(null)}
             >
               <div className="process-card-inner-enhanced">
                 <div className="process-number-enhanced">{step.number}</div>
                 
-                <div className={`process-icon-enhanced ${hoveredStep === index ? 'process-icon-hover-enhanced' : ''}`}>
+                <div className="process-icon-enhanced">
                   {index === 0 && <div className="discovery-ripple-enhanced"></div>}
                   {index === 1 && (
                     <div className="strategy-lines-enhanced">
@@ -100,21 +92,6 @@ const ProcessSection = () => {
                 <p className="text-cosmic-white/80 text-sm leading-relaxed mb-4">
                   {step.description}
                 </p>
-
-                {/* Animated Taglines */}
-                {hoveredStep === index && (
-                  <div className="taglines-container">
-                    {step.taglines.map((tagline, i) => (
-                      <div 
-                        key={tagline}
-                        className="tagline"
-                        style={{ animationDelay: `${i * 0.1}s` }}
-                      >
-                        {tagline}
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
           ))}

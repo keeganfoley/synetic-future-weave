@@ -38,7 +38,7 @@ const HeroSection = () => {
   };
 
   const scrollToNextSection = () => {
-    document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('purpose')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -76,11 +76,11 @@ const HeroSection = () => {
       <div className={`text-center z-10 px-8 transition-all duration-2000 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}>
-        <h1 className="font-heading font-light mb-12 leading-[0.8] tracking-tight hero-title-massive">
-          <span className="block hero-headline-primary mb-8 shimmer-reveal-animation">
+        <h1 className="font-heading font-light mb-12 leading-[0.8] tracking-tight">
+          <span className="block text-5xl md:text-7xl lg:text-8xl text-cosmic-gold mb-8 shimmer-reveal-animation">
             Intelligence in Motion.
           </span>
-          <span className="block hero-headline-secondary mb-12 shimmer-reveal-animation delay-500">
+          <span className="block text-4xl md:text-6xl lg:text-7xl text-cosmic-white mb-12 shimmer-reveal-animation delay-500">
             Automation Without Friction.
           </span>
           <div className="hero-beam-underline-enhanced"></div>
