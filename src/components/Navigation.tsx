@@ -30,31 +30,31 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`nav-system-2025 ${
-        isScrolled ? 'nav-scrolled-system' : 'nav-transparent-system'
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-black/80 backdrop-blur-xl border-b border-yellow-400/20' 
+          : 'bg-transparent'
       }`}>
-        <div className="max-w-6xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20 py-3">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <div className="relative">
-                <img 
-                  src="/lovable-uploads/6d38dcd4-57ab-4003-b5c9-e625f91896c8.png" 
-                  alt="Synetic AI" 
-                  className="logo-system-command"
-                />
-              </div>
+              <img 
+                src="/lovable-uploads/6d38dcd4-57ab-4003-b5c9-e625f91896c8.png" 
+                alt="Synetic AI" 
+                className="h-12 w-auto filter brightness-110 hover:brightness-125 transition-all duration-300"
+              />
             </div>
 
             {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="nav-link-system relative"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 font-medium text-sm uppercase tracking-wider"
                 >
-                  <span className="relative z-10">{link.name}</span>
+                  {link.name}
                 </button>
               ))}
             </div>
@@ -63,17 +63,17 @@ const Navigation = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-300 hover:text-engineered-gold transition-colors duration-300"
+                className="text-gray-300 hover:text-yellow-400 transition-colors duration-300"
               >
-                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
                   <span className={`bg-current block transition-all duration-300 h-0.5 w-6 transform ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1'
+                    isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
                   }`} />
                   <span className={`bg-current block transition-all duration-300 h-0.5 w-6 ${
                     isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
                   }`} />
                   <span className={`bg-current block transition-all duration-300 h-0.5 w-6 transform ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1'
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
                   }`} />
                 </div>
               </button>
@@ -83,15 +83,15 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden nav-scrolled-system border-t border-engineered-gold/20">
+          <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-yellow-400/20">
             <div className="px-6 py-6 space-y-4">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block nav-link-system text-base w-full text-left"
+                  className="block text-gray-300 hover:text-yellow-400 transition-colors duration-300 font-medium text-base"
                 >
-                  <span className="relative z-10">{link.name}</span>
+                  {link.name}
                 </button>
               ))}
             </div>

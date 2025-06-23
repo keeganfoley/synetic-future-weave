@@ -1,160 +1,119 @@
 
+import { useScrollReveal } from '../hooks/useScrollReveal';
+
 const MainSections = () => {
-  const controlModules = [
+  const visibleElements = useScrollReveal();
+
+  const solutions = [
     {
       title: "Adaptive Engine",
-      tagline: "Smart automations that evolve with you.",
-      icon: "cog"
+      tagline: "Smart automations that evolve with you",
+      icon: "⚡",
+      gradient: "from-yellow-400/20 to-orange-500/20"
     },
     {
-      title: "Follow-Up Matrix", 
-      tagline: "Perfect timing, every interaction.",
-      icon: "refresh-ccw"
+      title: "Smart Follow Engine", 
+      tagline: "Perfect timing, every interaction",
+      icon: "🔄",
+      gradient: "from-yellow-400/20 to-amber-500/20"
     },
     {
       title: "Schedule Command",
-      tagline: "Effortless meeting coordination.",
-      icon: "calendar"
+      tagline: "Effortless meeting coordination",
+      icon: "📅",
+      gradient: "from-yellow-400/20 to-yellow-600/20"
     },
     {
       title: "Workflow Nexus",
-      tagline: "Connected systems, seamless flow.",
-      icon: "link"
+      tagline: "Connected systems, seamless flow",
+      icon: "🔗",
+      gradient: "from-amber-400/20 to-yellow-500/20"
     },
     {
       title: "Intelligence Hub",
-      tagline: "Real-time insights, instant alerts.",
-      icon: "bar-chart"
+      tagline: "Real-time insights, instant alerts",
+      icon: "📊",
+      gradient: "from-yellow-500/20 to-orange-400/20"
     },
     {
       title: "Client Lifecycle",
-      tagline: "Long-term relationships, automated.",
-      icon: "users"
+      tagline: "Long-term relationships, automated",
+      icon: "👥",
+      gradient: "from-yellow-400/20 to-amber-600/20"
     }
   ];
 
-  const renderModuleIcon = (iconType: string) => {
-    const iconProps = {
-      className: "module-icon",
-      style: { willChange: 'transform' }
-    };
-
-    switch (iconType) {
-      case 'cog':
-        return (
-          <div className="relative">
-            <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5L19 4.5M4.5 19.5L7 17M19 19.5l-2.5-2.5M4.5 4.5L7 7"/>
-            </svg>
-          </div>
-        );
-      case 'refresh-ccw':
-        return (
-          <div className="relative">
-            <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="m3 2 3 6 6-3"/>
-              <path d="M21 12A9 9 0 0 0 6 5.3L4 8"/>
-              <path d="m21 22-3-6-6 3"/>
-              <path d="M3 12a9 9 0 0 0 15 6.7l2-2.7"/>
-            </svg>
-          </div>
-        );
-      case 'calendar':
-        return (
-          <div className="relative">
-            <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M8 2v4"/>
-              <path d="M16 2v4"/>
-              <rect width="18" height="18" x="3" y="4" rx="2"/>
-              <path d="M3 10h18"/>
-            </svg>
-          </div>
-        );
-      case 'link':
-        return (
-          <div className="relative">
-            <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-            </svg>
-          </div>
-        );
-      case 'bar-chart':
-        return (
-          <div className="relative">
-            <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M3 3v18h18"/>
-              <path d="M7 16V9"/>
-              <path d="M12 16V6"/>
-              <path d="M17 16v-3"/>
-            </svg>
-          </div>
-        );
-      case 'users':
-        return (
-          <div className="relative">
-            <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div className="relative">
+    <div className="relative space-y-16">
       {/* Vision Section */}
-      <section id="vision" className="min-h-screen flex items-center py-12 px-6 relative vision-control-center">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center">
-            <h2 className="vision-title-system mb-8">
+      <section 
+        id="vision" 
+        data-reveal
+        className="py-20 px-6 relative"
+      >
+        <div className="max-w-6xl mx-auto text-center">
+          <div className={`transition-all duration-1000 ${
+            visibleElements.has('vision') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`}>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
               Our Vision
             </h2>
-            <div className="mb-12">
-              <p className="vision-statement-system">
+            
+            <div className="max-w-4xl mx-auto glass-gold rounded-2xl p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+              <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light">
                 We build intelligent systems that think for you—designed to scale, adapt, and impress.
               </p>
+              <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Engineered Intelligence Section */}
-      <section id="solutions" className="min-h-screen flex items-center py-16 px-6 relative solutions-control-center">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="section-title-system mb-8">
+      {/* Solutions Section */}
+      <section 
+        id="solutions" 
+        data-reveal
+        className="py-20 px-6 relative"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className={`text-center mb-16 transition-all duration-1000 delay-200 ${
+            visibleElements.has('solutions') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`}>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
               Engineered Intelligence
             </h2>
-            <p className="section-subtitle-system">
-              Real-time infrastructure that adapts and performs without lag.
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Real-time infrastructure that adapts and performs without lag
             </p>
           </div>
 
-          <div className="control-modules-grid">
-            {controlModules.map((module, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {solutions.map((solution, index) => (
               <div
-                key={module.title}
-                className="control-module group"
-                style={{ animationDelay: `${index * 100}ms` }}
+                key={solution.title}
+                className={`group glass rounded-2xl p-6 md:p-8 relative overflow-hidden transition-all duration-1000 hover:scale-105 hover:bg-gradient-to-br hover:${solution.gradient} ${
+                  visibleElements.has('solutions') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                }`}
+                style={{ transitionDelay: `${400 + index * 100}ms` }}
               >
-                {/* Icon */}
-                <div className="flex justify-center">
-                  {renderModuleIcon(module.icon)}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative z-10">
+                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {solution.icon}
+                  </div>
+                  
+                  <h3 className="text-xl md:text-2xl font-semibold mb-3 text-yellow-400 group-hover:text-yellow-300 transition-colors duration-300">
+                    {solution.title}
+                  </h3>
+                  
+                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                    {solution.tagline}
+                  </p>
                 </div>
                 
-                <h3 className="module-title">
-                  {module.title}
-                </h3>
-                <p className="module-tagline">
-                  {module.tagline}
-                </p>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             ))}
           </div>
@@ -162,34 +121,37 @@ const MainSections = () => {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="min-h-screen flex items-center py-16 px-6 relative cta-control-center">
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <div>
-            <h2 className="cta-title-system mb-6">
-              Let's Build the Future
+      <section 
+        id="contact" 
+        data-reveal
+        className="py-20 px-6 relative"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <div className={`transition-all duration-1000 ${
+            visibleElements.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`}>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+              Start Automating Smarter
             </h2>
             
-            <p className="cta-subtitle-system mb-12">
+            <p className="text-xl md:text-2xl text-gray-400 mb-12 leading-relaxed">
               Ready to transform your business with intelligent automation?
-              <br />
-              <span style={{ color: 'rgb(var(--engineered-gold))' }}>Contact us to automate your business.</span>
             </p>
             
-            <div className="space-y-6">
-              <button className="cta-button-system group relative">
-                <span className="relative z-10 inline-flex items-center">
-                  Let's Build Together
-                  <svg 
-                    className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </span>
-              </button>
-            </div>
+            <button className="group relative px-10 py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-400/25">
+              <span className="relative z-10 flex items-center justify-center">
+                Let's Build the Future
+                <svg 
+                  className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </button>
           </div>
         </div>
       </section>
