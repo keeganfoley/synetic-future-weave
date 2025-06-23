@@ -1,41 +1,13 @@
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [globeRotation, setGlobeRotation] = useState({ x: 0, y: 0 });
-  const globeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 2,
-        y: (e.clientY / window.innerHeight - 0.5) * 2
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const handleGlobeInteraction = (e: React.MouseEvent) => {
-    if (globeRef.current) {
-      const rect = globeRef.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      
-      setGlobeRotation({
-        x: (e.clientY - centerY) * 0.1,
-        y: (e.clientX - centerX) * 0.1
-      });
-    }
-  };
 
   const scrollToNextSection = () => {
     document.getElementById('purpose')?.scrollIntoView({ behavior: 'smooth' });
@@ -43,31 +15,23 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Enhanced Background Elements */}
+      {/* Simplified Background Elements */}
       <div className="absolute inset-0 moving-grid-bg"></div>
       <div className="absolute inset-0 digital-nebula"></div>
       
       {/* Orbital Trail */}
       <div className="orbital-trail"></div>
       
-      {/* Interactive 3D Globe */}
-      <div 
-        ref={globeRef}
-        className="floating-globe"
-        style={{
-          transform: `rotateX(${globeRotation.x}deg) rotateY(${globeRotation.y}deg)`
-        }}
-        onMouseMove={handleGlobeInteraction}
-        onClick={handleGlobeInteraction}
-      >
+      {/* Simplified Interactive Globe */}
+      <div className="floating-globe">
         <div className="globe-surface"></div>
         <div className="globe-grid"></div>
         <div className="globe-glow"></div>
       </div>
 
-      {/* Golden Ray Particles */}
+      {/* Reduced Ray Particles */}
       <div className="ray-particles">
-        {Array.from({ length: 12 }).map((_, i) => (
+        {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className={`ray-particle ray-${i + 1}`}></div>
         ))}
       </div>
@@ -77,10 +41,10 @@ const HeroSection = () => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}>
         <h1 className="font-heading font-light mb-12 leading-[0.8] tracking-tight">
-          <span className="block text-5xl md:text-7xl lg:text-8xl text-cosmic-gold mb-8 shimmer-reveal-animation">
+          <span className="block text-4xl md:text-6xl lg:text-7xl text-cosmic-gold mb-8 shimmer-reveal-animation">
             Intelligence in Motion.
           </span>
-          <span className="block text-4xl md:text-6xl lg:text-7xl text-cosmic-white mb-12 shimmer-reveal-animation delay-500">
+          <span className="block text-3xl md:text-5xl lg:text-6xl text-cosmic-white mb-12 shimmer-reveal-animation delay-500">
             Automation Without Friction.
           </span>
           <div className="hero-beam-underline-enhanced"></div>
@@ -126,15 +90,6 @@ const HeroSection = () => {
           <div className="w-1 h-3 bg-cosmic-gold/60 rounded-full mt-2 animate-pulse-subtle"></div>
         </div>
       </div>
-
-      {/* Cursor Trail Effect */}
-      <div 
-        className="cursor-halo"
-        style={{
-          left: `${(mousePosition.x + 1) * 50}%`,
-          top: `${(mousePosition.y + 1) * 50}%`
-        }}
-      ></div>
     </section>
   );
 };
