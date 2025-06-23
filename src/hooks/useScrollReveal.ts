@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 
-export const useScrollReveal = (threshold = 0.1) => {
+export const useScrollReveal = (threshold = 0.15) => {
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -10,13 +10,19 @@ export const useScrollReveal = (threshold = 0.1) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisibleElements(prev => new Set(prev).add(entry.target.id));
+            // Add visible class to trigger CSS animations
+            entry.target.classList.add('visible');
           }
         });
       },
-      { threshold }
+      { 
+        threshold,
+        rootMargin: '0px 0px -50px 0px'
+      }
     );
 
-    const elements = document.querySelectorAll('[data-reveal]');
+    // Observe all elements with scroll animation classes
+    const elements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right');
     elements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();

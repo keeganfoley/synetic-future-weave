@@ -1,161 +1,159 @@
 
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import ProcessSection from './ProcessSection';
+import ServicesSection from './ServicesSection';
 
 const MainSections = () => {
-  const visibleElements = useScrollReveal();
-
-  const solutions = [
-    {
-      title: "Adaptive Engine",
-      tagline: "Smart automations that evolve with you",
-      icon: "⚡",
-      gradient: "from-yellow-400/20 to-orange-500/20"
-    },
-    {
-      title: "Smart Follow Engine", 
-      tagline: "Perfect timing, every interaction",
-      icon: "🔄",
-      gradient: "from-yellow-400/20 to-amber-500/20"
-    },
-    {
-      title: "Schedule Command",
-      tagline: "Effortless meeting coordination",
-      icon: "📅",
-      gradient: "from-yellow-400/20 to-yellow-600/20"
-    },
-    {
-      title: "Workflow Nexus",
-      tagline: "Connected systems, seamless flow",
-      icon: "🔗",
-      gradient: "from-amber-400/20 to-yellow-500/20"
-    },
-    {
-      title: "Intelligence Hub",
-      tagline: "Real-time insights, instant alerts",
-      icon: "📊",
-      gradient: "from-yellow-500/20 to-orange-400/20"
-    },
-    {
-      title: "Client Lifecycle",
-      tagline: "Long-term relationships, automated",
-      icon: "👥",
-      gradient: "from-yellow-400/20 to-amber-600/20"
-    }
-  ];
+  useScrollReveal();
 
   return (
-    <div className="relative space-y-16">
+    <>
       {/* Vision Section */}
-      <section 
-        id="vision" 
-        data-reveal
-        className="py-20 px-6 relative"
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <div className={`transition-all duration-1000 ${
-            visibleElements.has('vision') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-              Our Vision
+      <section id="vision" className="py-32 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-8 text-center">
+          <div className="section-divider mb-16"></div>
+          
+          {/* Stats Overlay */}
+          <div className="absolute top-8 left-8 text-cosmic-white/60 text-sm scroll-fade-in">
+            <div>Systems Processed: 3,248,291</div>
+            <div>Friction Reduced: 97%</div>
+          </div>
+
+          <h2 className="text-4xl md:text-6xl font-heading font-light mb-12 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
+            Our Vision
+          </h2>
+          
+          <div className="space-y-8 scroll-fade-in stagger-1">
+            <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
+              We build automation for liberation.
+            </p>
+            <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
+              Systems that think. Time that returns.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section */}
+      <section className="py-32 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-8 text-center">
+          <h2 className="text-4xl md:text-6xl font-heading font-light mb-12 text-cosmic-white scroll-fade-in typing-animation-enhanced">
+            Our Mission
+          </h2>
+          
+          <div className="space-y-8 scroll-fade-in stagger-1">
+            <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
+              We engineer intelligent systems that erase complexity.
+            </p>
+            <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
+              Seamless automation with precision and grace.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <ProcessSection />
+
+      {/* Services Section */}
+      <ServicesSection />
+
+      {/* Enhanced Systems That Think Section */}
+      <section id="solutions" className="py-32 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-heading font-light mb-6 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
+              Systems That Think
             </h2>
-            
-            <div className="max-w-4xl mx-auto glass-gold rounded-2xl p-8 md:p-12 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
-              <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light">
-                We build intelligent systems that think for you—designed to scale, adapt, and impress.
+            <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-1">
+              Intelligent automation that reshapes workflow with precision
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-1 solution-card-enhanced">
+              <div className="card-particle-orbit"></div>
+              <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
+                Cognitive Intelligence
+              </h3>
+              <p className="text-cosmic-white/90 leading-relaxed">
+                Self-evolving logic for every workflow.
               </p>
-              <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"></div>
+            </div>
+
+            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-2 solution-card-enhanced">
+              <div className="card-particle-orbit"></div>
+              <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
+                Neural CRM
+              </h3>
+              <p className="text-cosmic-white/90 leading-relaxed">
+                Predict behaviors. Build relationships. Automate at scale.
+              </p>
+            </div>
+
+            <div className="elite-glass-card-3d p-8 scroll-fade-in stagger-3 solution-card-enhanced">
+              <div className="card-particle-orbit"></div>
+              <h3 className="text-2xl font-heading font-light text-cosmic-gold mb-4 text-glow-subtle">
+                Infinite Automation
+              </h3>
+              <p className="text-cosmic-white/90 leading-relaxed">
+                Always on. Always optimizing.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section 
-        id="solutions" 
-        data-reveal
-        className="py-20 px-6 relative"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className={`text-center mb-16 transition-all duration-1000 delay-200 ${
-            visibleElements.has('solutions') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-              Engineered Intelligence
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Real-time infrastructure that adapts and performs without lag
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {solutions.map((solution, index) => (
-              <div
-                key={solution.title}
-                className={`group glass rounded-2xl p-6 md:p-8 relative overflow-hidden transition-all duration-1000 hover:scale-105 hover:bg-gradient-to-br hover:${solution.gradient} ${
-                  visibleElements.has('solutions') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
-                style={{ transitionDelay: `${400 + index * 100}ms` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                <div className="relative z-10">
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {solution.icon}
-                  </div>
-                  
-                  <h3 className="text-xl md:text-2xl font-semibold mb-3 text-yellow-400 group-hover:text-yellow-300 transition-colors duration-300">
-                    {solution.title}
-                  </h3>
-                  
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
-                    {solution.tagline}
-                  </p>
-                </div>
-                
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section 
-        id="contact" 
-        data-reveal
-        className="py-20 px-6 relative"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <div className={`transition-all duration-1000 ${
-            visibleElements.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-              Start Automating Smarter
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 leading-relaxed">
+      {/* Enhanced Contact Section */}
+      <section id="contact" className="py-32 relative overflow-hidden">
+        {/* Light Trails Background */}
+        <div className="light-trails-bg"></div>
+        
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <h2 className="text-4xl md:text-6xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-blink-animation">
+            Automate the Impossible
+          </h2>
+          
+          <div className="space-y-6 mb-12 scroll-fade-in stagger-1">
+            <p className="text-xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
               Ready to transform your business with intelligent automation?
             </p>
-            
-            <button className="group relative px-10 py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-400/25">
-              <span className="relative z-10 flex items-center justify-center">
-                Let's Build the Future
+            <p className="text-lg text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
+              Let's explore the possibilities.
+            </p>
+          </div>
+
+          <div className="scroll-fade-in stagger-2">
+            <button className="elite-cta-button-glass text-lg group relative">
+              <span className="relative z-10 inline-flex items-center">
+                Get Started
                 <svg 
-                  className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
+                  className="ml-4 w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="cta-sonar-pulse"></div>
             </button>
+          </div>
+
+          <div className="mt-12 space-y-2 scroll-fade-in stagger-3">
+            <p className="text-cosmic-white/60 text-sm tracking-wider">
+              Free consultation within 24 hours
+            </p>
+            <a 
+              href="mailto:team@syneticai.com" 
+              className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium block email-glow-hover"
+            >
+              team@syneticai.com
+            </a>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

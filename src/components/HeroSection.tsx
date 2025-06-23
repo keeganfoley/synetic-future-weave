@@ -1,83 +1,140 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [globeRotation, setGlobeRotation] = useState({ x: 0, y: 0 });
+  const globeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 300);
+    const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 2,
+        y: (e.clientY / window.innerHeight - 0.5) * 2
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const handleGlobeInteraction = (e: React.MouseEvent) => {
+    if (globeRef.current) {
+      const rect = globeRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      setGlobeRotation({
+        x: (e.clientY - centerY) * 0.1,
+        y: (e.clientX - centerX) * 0.1
+      });
+    }
+  };
 
   const scrollToNextSection = () => {
     document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative px-6 py-20">
-      {/* Ambient background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-yellow-400/5 to-transparent rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-gradient-to-l from-yellow-400/5 to-transparent rounded-full blur-2xl animate-pulse delay-1000"></div>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 moving-grid-bg"></div>
+      <div className="absolute inset-0 digital-nebula"></div>
+      
+      {/* Orbital Trail */}
+      <div className="orbital-trail"></div>
+      
+      {/* Interactive 3D Globe */}
+      <div 
+        ref={globeRef}
+        className="floating-globe"
+        style={{
+          transform: `rotateX(${globeRotation.x}deg) rotateY(${globeRotation.y}deg)`
+        }}
+        onMouseMove={handleGlobeInteraction}
+        onClick={handleGlobeInteraction}
+      >
+        <div className="globe-surface"></div>
+        <div className="globe-grid"></div>
+        <div className="globe-glow"></div>
+      </div>
+
+      {/* Golden Ray Particles */}
+      <div className="ray-particles">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div key={i} className={`ray-particle ray-${i + 1}`}></div>
+        ))}
       </div>
       
-      <div className="relative z-10 text-center max-w-5xl mx-auto">
-        <div className="space-y-8">
-          {/* Main headline with staggered animation */}
-          <div className="space-y-4">
-            <h1 className={`text-5xl md:text-7xl font-bold leading-tight transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-                Automation
-              </span>
-              <span className="text-white"> with </span>
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-                Intelligence
-              </span>
-            </h1>
-            
-            <h2 className={`text-3xl md:text-5xl font-light text-gray-300 transition-all duration-1000 delay-500 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              <span className="text-white">Execution with </span>
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-                Elegance
-              </span>
-            </h2>
-          </div>
-          
-          {/* Subtitle */}
-          <p className={`text-xl md:text-2xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            SyneticAI builds powerful, time-saving systems that think and work for you.
+      {/* Hero Content */}
+      <div className={`text-center z-10 px-8 transition-all duration-2000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}>
+        <h1 className="font-heading font-light mb-12 leading-[0.8] tracking-tight hero-title-massive">
+          <span className="block hero-headline-primary mb-8 shimmer-reveal-animation">
+            Intelligence in Motion.
+          </span>
+          <span className="block hero-headline-secondary mb-12 shimmer-reveal-animation delay-500">
+            Automation Without Friction.
+          </span>
+          <div className="hero-beam-underline-enhanced"></div>
+        </h1>
+        
+        <div className={`space-y-6 transition-all duration-1500 delay-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide hero-subtext-line">
+            We design systems that eliminate the ordinary.
           </p>
+          <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide hero-subtext-line text-glow-subtle">
+            Precision automation. Time reclaimed.
+          </p>
+        </div>
 
-          {/* CTA Button */}
-          <div className={`transition-all duration-1000 delay-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <button 
-              onClick={scrollToNextSection}
-              className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400/10 to-yellow-500/10 border border-yellow-400/30 rounded-lg text-yellow-400 font-medium text-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-400/20 hover:to-yellow-500/20 hover:border-yellow-400/60 hover:scale-105"
-            >
-              <span className="relative z-10 flex items-center">
-                Explore Solutions
-                <svg 
-                  className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-yellow-400/0 via-yellow-400/5 to-yellow-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-          </div>
+        <div className={`mt-20 transition-all duration-1500 delay-1400 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <button 
+            onClick={scrollToNextSection}
+            className="elite-cta-button-hero text-xl group relative"
+          >
+            <span className="relative z-10 inline-flex items-center">
+              Explore Solutions
+              <svg 
+                className="ml-4 w-6 h-6 transition-transform duration-500 group-hover:translate-x-2" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+            <div className="cta-sonar-rings"></div>
+          </button>
         </div>
       </div>
+
+      {/* Enhanced scroll indicator */}
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-gentle-float">
+        <div className="w-6 h-10 border-2 border-cosmic-gold/40 rounded-full flex justify-center opacity-70">
+          <div className="w-1 h-3 bg-cosmic-gold/60 rounded-full mt-2 animate-pulse-subtle"></div>
+        </div>
+      </div>
+
+      {/* Cursor Trail Effect */}
+      <div 
+        className="cursor-halo"
+        style={{
+          left: `${(mousePosition.x + 1) * 50}%`,
+          top: `${(mousePosition.y + 1) * 50}%`
+        }}
+      ></div>
     </section>
   );
 };

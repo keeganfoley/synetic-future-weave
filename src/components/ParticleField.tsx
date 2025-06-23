@@ -9,7 +9,6 @@ interface Particle {
   size: number;
   opacity: number;
   life: number;
-  pulsePhase: number;
 }
 
 const ParticleField = () => {
@@ -32,21 +31,20 @@ const ParticleField = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Initialize atmospheric particles with neural-like behavior
+    // Initialize subtle ambient particles
     const initParticles = () => {
       particles.current = [];
-      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 50000);
+      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 40000);
       
       for (let i = 0; i < particleCount; i++) {
         particles.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.03,
-          vy: (Math.random() - 0.5) * 0.03,
-          size: Math.random() * 0.6 + 0.2,
-          opacity: Math.random() * 0.08 + 0.02,
-          life: Math.random() * 800 + 400,
-          pulsePhase: Math.random() * Math.PI * 2
+          vx: (Math.random() - 0.5) * 0.05,
+          vy: (Math.random() - 0.5) * 0.05,
+          size: Math.random() * 0.8 + 0.2,
+          opacity: Math.random() * 0.1 + 0.02,
+          life: Math.random() * 600 + 300
         });
       }
     };
@@ -56,21 +54,18 @@ const ParticleField = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw intelligent connection networks
+      // Draw subtle connection lines
       particles.current.forEach((particle, i) => {
         particles.current.slice(i + 1).forEach(otherParticle => {
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 140) {
+          if (distance < 120) {
             ctx.save();
-            const connectionOpacity = (140 - distance) / 140 * 0.012;
-            ctx.globalAlpha = connectionOpacity;
-            ctx.strokeStyle = '#b48b3c';
-            ctx.lineWidth = 0.4;
-            ctx.shadowBlur = 2;
-            ctx.shadowColor = '#b48b3c';
+            ctx.globalAlpha = (120 - distance) / 120 * 0.015;
+            ctx.strokeStyle = '#d2af61';
+            ctx.lineWidth = 0.3;
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
@@ -80,36 +75,32 @@ const ParticleField = () => {
         });
       });
 
-      // Update and draw atmospheric particles
+      // Update and draw particles
       particles.current.forEach((particle, index) => {
-        // Autonomous neural motion
-        particle.x += particle.vx + Math.sin(particle.pulsePhase) * 0.01;
-        particle.y += particle.vy + Math.cos(particle.pulsePhase) * 0.01;
-        particle.pulsePhase += 0.02;
+        particle.x += particle.vx;
+        particle.y += particle.vy;
         particle.life--;
 
-        // Intelligent edge wrapping
-        if (particle.x < -10) particle.x = canvas.width + 10;
-        if (particle.x > canvas.width + 10) particle.x = -10;
-        if (particle.y < -10) particle.y = canvas.height + 10;
-        if (particle.y > canvas.height + 10) particle.y = -10;
+        // Smooth edge wrapping
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
 
-        // Regenerate particle with new neural characteristics
+        // Regenerate particle
         if (particle.life <= 0) {
           particle.x = Math.random() * canvas.width;
           particle.y = Math.random() * canvas.height;
-          particle.life = Math.random() * 800 + 400;
-          particle.opacity = Math.random() * 0.08 + 0.02;
-          particle.pulsePhase = Math.random() * Math.PI * 2;
+          particle.life = Math.random() * 600 + 300;
+          particle.opacity = Math.random() * 0.1 + 0.02;
         }
 
-        // Draw refined atmospheric particle
-        const pulseOpacity = particle.opacity * (0.8 + 0.4 * Math.sin(particle.pulsePhase));
+        // Draw refined particle
         ctx.save();
-        ctx.globalAlpha = pulseOpacity;
-        ctx.fillStyle = '#b48b3c';
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = '#b48b3c';
+        ctx.globalAlpha = particle.opacity;
+        ctx.fillStyle = '#d2af61';
+        ctx.shadowBlur = 4;
+        ctx.shadowColor = '#d2af61';
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
