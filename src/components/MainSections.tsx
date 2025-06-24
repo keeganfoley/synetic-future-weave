@@ -11,12 +11,6 @@ const MainSections = () => {
       <section id="purpose" className="py-32 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-8 text-center">
           <div className="section-divider mb-16"></div>
-          
-          {/* Stats Overlay */}
-          <div className="absolute top-8 left-8 text-cosmic-white/60 text-sm scroll-fade-in">
-            <div>Systems Processed: 3,248,291</div>
-            <div>Friction Reduced: 97%</div>
-          </div>
 
           <h2 className="text-4xl md:text-6xl font-heading font-light mb-12 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
             Our Purpose
