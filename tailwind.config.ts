@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -169,6 +170,20 @@ export default {
 					'100%': {
 						transform: 'rotate(360deg) translateX(200px) rotate(-360deg)'
 					}
+				},
+				'slide-beam': {
+					'0%': {
+						transform: 'translateX(-100px)',
+						opacity: '0'
+					},
+					'50%': {
+						transform: 'translateX(0px)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateX(100px)',
+						opacity: '0'
+					}
 				}
 			},
 			animation: {
@@ -181,7 +196,8 @@ export default {
 				'fade-in-left': 'fade-in-left 0.8s ease-out',
 				'fade-in-right': 'fade-in-right 0.8s ease-out',
 				'underline-reveal': 'underline-reveal 1.2s ease-out',
-				'orbital-line': 'orbital-line 30s linear infinite'
+				'orbital-line': 'orbital-line 30s linear infinite',
+				'slide-beam': 'slide-beam 3s ease-in-out infinite'
 			}
 		}
 	},

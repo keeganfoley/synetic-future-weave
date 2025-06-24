@@ -35,12 +35,18 @@ const Navigation = () => {
       }`}>
         <div className="max-w-8xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Clean Logo */}
-            <div className="flex-shrink-0">
+            {/* Logo with Beam Effect */}
+            <div className="flex-shrink-0 relative">
+              {/* Horizontal Beam Effect */}
+              <div className="absolute inset-0 -inset-x-8 flex items-center overflow-hidden">
+                <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold/30 to-transparent opacity-60 animate-pulse"></div>
+                <div className="absolute w-20 h-1 bg-gradient-to-r from-transparent via-cosmic-gold/60 to-transparent animate-[slide-beam_3s_ease-in-out_infinite]"></div>
+              </div>
+              
               <img 
                 src="/lovable-uploads/1ad24021-3fea-4a5c-ba63-aee9a8d065fb.png" 
                 alt="Synetic AI" 
-                className="h-12 w-auto"
+                className="h-36 w-auto relative z-10"
               />
             </div>
 
