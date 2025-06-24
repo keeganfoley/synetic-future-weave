@@ -38,9 +38,9 @@ const Navigation = () => {
             {/* Logo with Subtle Beam Effect */}
             <div className="flex-shrink-0 relative">
               {/* Subtle Horizontal Beam Effect */}
-              <div className="absolute inset-0 -inset-x-20 flex items-center overflow-hidden">
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-cosmic-gold/25 to-transparent opacity-70"></div>
-                <div className="absolute w-40 h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold/40 to-transparent blur-[1px] animate-[slide-beam_4s_ease-in-out_infinite]"></div>
+              <div className="absolute inset-0 -inset-x-16 flex items-center overflow-hidden">
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-cosmic-gold/15 to-transparent opacity-40"></div>
+                <div className="absolute w-32 h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold/25 to-transparent blur-sm animate-[slide-beam_4s_ease-in-out_infinite]"></div>
               </div>
               
               <img 
