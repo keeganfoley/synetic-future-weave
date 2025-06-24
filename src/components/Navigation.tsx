@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 
 const Navigation = () => {
@@ -34,16 +35,13 @@ const Navigation = () => {
       }`}>
         <div className="max-w-8xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Enhanced Logo with Orbital System */}
-            <div className="flex-shrink-0 relative logo-container-orbital">
-              <div className="logo-nebula-glow"></div>
-              <div className="logo-orbital-ring"></div>
+            {/* Clean Logo */}
+            <div className="flex-shrink-0">
               <img 
-                src="/lovable-uploads/6d4b70cd-d1fe-4cd9-a23a-e3984e48df2e.png" 
+                src="/lovable-uploads/1ad24021-3fea-4a5c-ba63-aee9a8d065fb.png" 
                 alt="Synetic AI" 
-                className="brand-logo-enhanced"
+                className="h-12 w-auto"
               />
-              <div className="logo-ripple-hover"></div>
             </div>
 
             {/* Desktop Navigation */}

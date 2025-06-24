@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -51,7 +50,7 @@
     font-feature-settings: "kern" 1, "liga" 1;
     letter-spacing: -0.005em;
     line-height: 1.6;
-    cursor: none;
+    cursor: auto !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -59,6 +58,14 @@
     letter-spacing: -0.02em;
     font-weight: 300;
     line-height: 1.1;
+  }
+
+  * {
+    cursor: auto !important;
+  }
+
+  button:hover, a:hover, [role="button"]:hover {
+    cursor: pointer !important;
   }
 }
 
@@ -237,69 +244,6 @@
     animation: orbital-movement 15s linear infinite;
   }
 
-  /* Interactive 3D Globe */
-  .floating-globe {
-    position: absolute;
-    bottom: 20%;
-    right: 15%;
-    width: 200px;
-    height: 200px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    z-index: 5;
-  }
-
-  .globe-surface {
-    width: 100%;
-    height: 100%;
-    border: 2px solid rgba(210, 175, 97, 0.3);
-    border-radius: 50%;
-    position: relative;
-  }
-
-  .globe-grid {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    border: 1px solid rgba(210, 175, 97, 0.2);
-    border-radius: 50%;
-  }
-
-  .globe-grid::before,
-  .globe-grid::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(210, 175, 97, 0.2);
-  }
-
-  .globe-grid::before {
-    width: 100%;
-    height: 1px;
-  }
-
-  .globe-grid::after {
-    width: 1px;
-    height: 100%;
-  }
-
-  .globe-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle, rgba(210, 175, 97, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: globe-pulse 4s ease-in-out infinite;
-  }
-
   /* Ray Particles */
   .ray-particles {
     position: absolute;
@@ -327,30 +271,24 @@
   .ray-5 { top: 30%; left: 15%; transform: rotate(60deg); animation-delay: 1.2s; }
   .ray-6 { top: 25%; right: 15%; transform: rotate(-45deg); animation-delay: 1.5s; }
 
-  /* Cursor Effects */
-  .cursor-halo {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, rgba(210, 175, 97, 0.4) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: all 0.1s ease;
-    mix-blend-mode: screen;
-  }
-
-  /* Enhanced CTA Button */
-  .elite-cta-button-hero {
-    @apply relative bg-transparent border-2 border-cosmic-gold/60 text-cosmic-gold px-16 py-8 rounded-xl font-medium tracking-wider transition-all duration-700 overflow-hidden;
+  /* Enhanced CTA Button for Mobile */
+  .elite-cta-button-hero-mobile {
+    @apply relative bg-transparent border-2 border-cosmic-gold/60 text-cosmic-gold rounded-xl font-medium tracking-wider transition-all duration-700 overflow-hidden;
     font-family: 'Inter', 'Satoshi', sans-serif;
     backdrop-filter: blur(20px);
     font-weight: 300;
     letter-spacing: 0.1em;
     position: relative;
+    padding: 12px 24px;
   }
 
-  .elite-cta-button-hero:hover {
+  @media (min-width: 768px) {
+    .elite-cta-button-hero-mobile {
+      padding: 32px 64px;
+    }
+  }
+
+  .elite-cta-button-hero-mobile:hover {
     border-color: rgba(210, 175, 97, 1);
     background: rgba(210, 175, 97, 0.15);
     color: #ffffff;
@@ -876,12 +814,19 @@
 
   /* CTA Button Glass */
   .elite-cta-button-glass {
-    @apply relative bg-transparent border-2 border-cosmic-gold/60 text-cosmic-gold px-14 py-6 rounded-xl font-medium tracking-wider transition-all duration-700 overflow-hidden;
+    @apply relative bg-transparent border-2 border-cosmic-gold/60 text-cosmic-gold rounded-xl font-medium tracking-wider transition-all duration-700 overflow-hidden;
     font-family: 'Inter', 'Satoshi', sans-serif;
     backdrop-filter: blur(30px);
     font-weight: 300;
     letter-spacing: 0.1em;
     background: linear-gradient(135deg, rgba(210, 175, 97, 0.1), rgba(255, 255, 255, 0.05));
+    padding: 16px 32px;
+  }
+
+  @media (min-width: 768px) {
+    .elite-cta-button-glass {
+      padding: 24px 56px;
+    }
   }
 
   .elite-cta-button-glass:hover {
