@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
@@ -10,27 +9,27 @@ const ProcessSection = () => {
     {
       number: "01",
       title: "Discovery",
-      description: "Let's dive into the bottlenecks and challenges your business currently faces and explore how AI automation can offer effective solutions."
+      description: "We analyze your current workflows to identify bottlenecks and automation opportunities that will maximize your operational efficiency."
     },
     {
       number: "02", 
       title: "Strategy",
-      description: "We will develop a customized plan to integrate AI automation into your business, addressing the identified challenges and maximizing efficiency."
+      description: "Our team designs a tailored AI automation roadmap aligned with your business objectives and existing infrastructure."
     },
     {
       number: "03",
       title: "Implementation", 
-      description: "In this phase, we will execute the AI automation plan, ensuring seamless integration into your existing processes."
+      description: "We deploy your custom automation solutions with seamless integration and minimal disruption to your operations."
     },
     {
       number: "04",
       title: "Test & Optimize",
-      description: "We either approve or request revisions - we're dedicated to refining our builds until you're fully satisfied."
+      description: "Through rigorous testing and refinement, we ensure optimal performance before full deployment and continue optimizing based on results."
     },
     {
       number: "05",
       title: "Become an Industry Leader",
-      description: "Continue requesting as many workflow automations and AI applications as you wish, and transform your organization into a formidable industry leader."
+      description: "Scale your automation capabilities with ongoing support, unlimited requests, and continuous innovation to maintain your competitive edge."
     }
   ];
 
