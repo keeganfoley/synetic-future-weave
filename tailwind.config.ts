@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -173,7 +172,7 @@ export default {
 				},
 				'slide-beam': {
 					'0%': {
-						transform: 'translateX(-100px)',
+						transform: 'translateX(-150px)',
 						opacity: '0'
 					},
 					'50%': {
@@ -181,7 +180,7 @@ export default {
 						opacity: '1'
 					},
 					'100%': {
-						transform: 'translateX(100px)',
+						transform: 'translateX(150px)',
 						opacity: '0'
 					}
 				}
@@ -197,7 +196,7 @@ export default {
 				'fade-in-right': 'fade-in-right 0.8s ease-out',
 				'underline-reveal': 'underline-reveal 1.2s ease-out',
 				'orbital-line': 'orbital-line 30s linear infinite',
-				'slide-beam': 'slide-beam 3s ease-in-out infinite'
+				'slide-beam': 'slide-beam 4s ease-in-out infinite'
 			}
 		}
 	},
