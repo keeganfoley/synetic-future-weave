@@ -29,17 +29,17 @@ const Index = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="section-divider mb-1"></div>
           
-          <div className="space-y-1">
-            {/* Logo with animation and glimmer effect */}
+          <div className="space-y-0">
+            {/* Logo with animation and subtle oval glimmer effect */}
             <div className="relative inline-block">
-              {/* Subtle glimmer background */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-cosmic-gold/20 to-transparent blur-lg animate-pulse-subtle opacity-60"></div>
-              <div className="absolute inset-0 rounded-full bg-cosmic-gold/10 animate-gentle-float blur-xl"></div>
+              {/* Subtle oval glimmer background */}
+              <div className="absolute inset-0 w-full h-3/4 top-1/8 rounded-full bg-gradient-to-r from-transparent via-cosmic-gold/10 to-transparent blur-2xl animate-pulse-subtle opacity-40 transform scale-x-150"></div>
+              <div className="absolute inset-0 w-full h-2/3 top-1/6 rounded-full bg-cosmic-gold/5 animate-gentle-float blur-3xl transform scale-x-125"></div>
               
               <img 
                 src="/lovable-uploads/861140cd-aa95-4467-9a29-edc6c270f44c.png" 
                 alt="SyneticAI Logo" 
-                className="relative h-64 w-auto mx-auto opacity-90 hover:opacity-100 transition-all duration-500 z-10"
+                className="relative h-64 w-auto mx-auto opacity-90 hover:opacity-100 transition-all duration-500 z-10 object-cover"
               />
             </div>
             
