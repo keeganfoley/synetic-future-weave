@@ -39,7 +39,7 @@ const HeroSection = () => {
         </div>
 
         <div className={`mt-12 md:mt-20 transition-all duration-1500 delay-1400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <button onClick={scrollToNextSection} className="elite-cta-button-hero-mobile text-lg md:text-xl group relative">
+          <button onClick={scrollToNextSection} className="elite-cta-button-hero-mobile md:text-xl group relative text-lg">
             <span className="relative z-10 inline-flex items-center">
               Explore Solutions
               <svg className="ml-3 md:ml-4 w-5 h-5 md:w-6 md:h-6 transition-transform duration-500 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
