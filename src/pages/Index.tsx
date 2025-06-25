@@ -27,9 +27,9 @@ const Index = () => {
         <div className="footer-stardust"></div>
         
         <div className="max-w-4xl mx-auto text-center">
-          <div className="section-divider mb-16"></div>
+          <div className="section-divider mb-8"></div>
           
-          <div className="space-y-8">
+          <div className="space-y-4">
             {/* Logo with animation */}
             <div className="relative inline-block">
               <img 
