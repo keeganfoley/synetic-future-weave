@@ -9,7 +9,7 @@ const ProcessSection = () => {
     {
       number: "01",
       title: "Discovery",
-      description: "We analyze your current workflows to identify bottlenecks and automation opportunities that will maximize your operational efficiency."
+      description: "We help growth-minded businesses eliminate manual work, reduce overhead, and serve customers faster—using intelligent automation."
     },
     {
       number: "02", 
