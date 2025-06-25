@@ -28,9 +28,7 @@ const MainSections = () => {
         <div className="light-trails-bg"></div>
         
         <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-6xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-blink-animation">
-            Automate the Impossible
-          </h2>
+          <h2 className="text-4xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-blink-animation md:text-5xl">Work Less. Earn More.</h2>
           
           <div className="space-y-6 mb-12 scroll-fade-in stagger-1">
             <p className="text-xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
