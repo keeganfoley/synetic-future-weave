@@ -28,10 +28,8 @@ const HeroSection = () => {
       {/* Hero Content */}
       <div className={`text-center z-10 px-4 md:px-8 transition-all duration-2000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <h1 className="font-heading font-light mb-8 md:mb-12 leading-[0.8] tracking-tight">
-          <span className="block text-3xl md:text-5xl lg:text-7xl text-cosmic-gold mb-6 md:mb-8 shimmer-reveal-animation">Drive more revenue. Cut costly tasks.</span>
-          <span className="block text-2xl md:text-4xl lg:text-6xl text-cosmic-white mb-8 md:mb-12 shimmer-reveal-animation delay-500">
-            Automation Without Friction.
-          </span>
+          <span className="block text-3xl md:text-5xl text-cosmic-gold mb-6 md:mb-8 shimmer-reveal-animation lg:text-5xl">Drive more revenue. Cut costly tasks.</span>
+          <span className="block text-2xl md:text-4xl text-cosmic-white mb-8 md:mb-12 shimmer-reveal-animation delay-500 lg:text-8xl">Scale with AI.</span>
           <div className="hero-beam-underline-enhanced"></div>
         </h1>
         
