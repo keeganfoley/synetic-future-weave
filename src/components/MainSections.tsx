@@ -1,12 +1,8 @@
-
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import ProcessSection from './ProcessSection';
-
 const MainSections = () => {
   useScrollReveal();
-
-  return (
-    <>
+  return <>
       {/* Our Purpose Section (Combined Vision + Mission) */}
       <section id="purpose" className="py-32 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-8 text-center">
@@ -17,9 +13,7 @@ const MainSections = () => {
           </h2>
           
           <div className="space-y-8 scroll-fade-in stagger-1">
-            <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
-              We build intelligent automation that liberates time and erases complexity.
-            </p>
+            <p className="text-xl text-cosmic-white/90 leading-relaxed font-light tracking-wide md:text-3xl">We build automation that saves time and multiplies output.</p>
             <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
               Systems that think. Automation with grace. Time returned.
             </p>
@@ -53,12 +47,7 @@ const MainSections = () => {
             <button className="elite-cta-button-glass text-lg group relative">
               <span className="relative z-10 inline-flex items-center">
                 Get Started
-                <svg 
-                  className="ml-4 w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
+                <svg className="ml-4 w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
@@ -70,17 +59,12 @@ const MainSections = () => {
             <p className="text-cosmic-white/60 text-sm tracking-wider">
               Free consultation within 24 hours
             </p>
-            <a 
-              href="mailto:team@syneticai.com" 
-              className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium block email-glow-hover"
-            >
+            <a href="mailto:team@syneticai.com" className="text-cosmic-gold hover:text-cosmic-white transition-colors duration-500 text-lg font-medium tracking-wider text-glow-subtle hover:text-glow-premium block email-glow-hover">
               team@syneticai.com
             </a>
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default MainSections;
