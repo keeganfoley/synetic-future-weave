@@ -1,0 +1,214 @@
+
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft, Send } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+import OptimizedBackground from '../components/OptimizedBackground';
+import AnimatedBackground from '../components/AnimatedBackground';
+
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Please enter a valid email address'),
+  company: z.string().min(2, 'Company name must be at least 2 characters'),
+  industry: z.string().min(1, 'Please select an industry'),
+  notes: z.string().optional(),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
+const industries = [
+  'Technology',
+  'Healthcare',
+  'Finance',
+  'Manufacturing',
+  'Retail',
+  'Education',
+  'Real Estate',
+  'Legal',
+  'Consulting',
+  'Marketing',
+  'Other'
+];
+
+const ContactForm = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema)
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    console.log('Form submitted:', data);
+    
+    toast({
+      title: "Success!",
+      description: "We've received your information and will be in touch within 24 hours.",
+    });
+    
+    reset();
+    setIsSubmitting(false);
+    
+    // Navigate back to home after a short delay
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
+  };
+
+  return (
+    <div className="relative min-h-screen">
+      <OptimizedBackground />
+      <AnimatedBackground />
+      
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="w-full max-w-2xl">
+          {/* Back button */}
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/')}
+            className="mb-8 text-cosmic-white hover:text-cosmic-gold transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+          </Button>
+
+          <Card className="glass-nav border-cosmic-gold/30">
+            <CardHeader className="text-center">
+              <CardTitle className="text-3xl font-heading font-light text-cosmic-gold text-glow-premium">
+                Get Started
+              </CardTitle>
+              <p className="text-cosmic-white/80 mt-4">
+                Tell us about your business and we'll show you how automation can transform your operations.
+              </p>
+            </CardHeader>
+            
+            <CardContent className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-cosmic-white/90">
+                      Full Name *
+                    </Label>
+                    <Input
+                      id="name"
+                      {...register('name')}
+                      className="bg-cosmic-dark/50 border-cosmic-gold/30 text-cosmic-white placeholder:text-cosmic-white/50 focus:border-cosmic-gold"
+                      placeholder="John Doe"
+                    />
+                    {errors.name && (
+                      <p className="text-red-400 text-sm">{errors.name.message}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-cosmic-white/90">
+                      Email Address *
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      {...register('email')}
+                      className="bg-cosmic-dark/50 border-cosmic-gold/30 text-cosmic-white placeholder:text-cosmic-white/50 focus:border-cosmic-gold"
+                      placeholder="john@company.com"
+                    />
+                    {errors.email && (
+                      <p className="text-red-400 text-sm">{errors.email.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="company" className="text-cosmic-white/90">
+                      Company Name *
+                    </Label>
+                    <Input
+                      id="company"
+                      {...register('company')}
+                      className="bg-cosmic-dark/50 border-cosmic-gold/30 text-cosmic-white placeholder:text-cosmic-white/50 focus:border-cosmic-gold"
+                      placeholder="Your Company"
+                    />
+                    {errors.company && (
+                      <p className="text-red-400 text-sm">{errors.company.message}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="industry" className="text-cosmic-white/90">
+                      Industry *
+                    </Label>
+                    <select
+                      id="industry"
+                      {...register('industry')}
+                      className="flex h-10 w-full rounded-md border border-cosmic-gold/30 bg-cosmic-dark/50 px-3 py-2 text-cosmic-white focus:border-cosmic-gold focus:outline-none"
+                    >
+                      <option value="" className="bg-cosmic-dark text-cosmic-white">Select Industry</option>
+                      {industries.map((industry) => (
+                        <option key={industry} value={industry} className="bg-cosmic-dark text-cosmic-white">
+                          {industry}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.industry && (
+                      <p className="text-red-400 text-sm">{errors.industry.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="notes" className="text-cosmic-white/90">
+                    Additional Notes
+                  </Label>
+                  <Textarea
+                    id="notes"
+                    {...register('notes')}
+                    rows={4}
+                    className="bg-cosmic-dark/50 border-cosmic-gold/30 text-cosmic-white placeholder:text-cosmic-white/50 focus:border-cosmic-gold resize-none"
+                    placeholder="Tell us about your current challenges, goals, or any specific automation needs..."
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full elite-cta-button-glass text-lg group relative"
+                >
+                  <span className="relative z-10 inline-flex items-center">
+                    {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                    {!isSubmitting && <Send className="ml-2 w-5 h-5" />}
+                  </span>
+                  <div className="cta-sonar-pulse"></div>
+                </Button>
+              </form>
+
+              <div className="text-center text-cosmic-white/60 text-sm">
+                We'll respond within 24 hours with a personalized consultation
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ContactForm;

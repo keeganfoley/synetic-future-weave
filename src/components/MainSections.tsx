@@ -1,7 +1,16 @@
+
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useNavigate } from 'react-router-dom';
 import ProcessSection from './ProcessSection';
+
 const MainSections = () => {
   useScrollReveal();
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/contact');
+  };
+
   return <>
       {/* Our Purpose Section (Combined Vision + Mission) */}
       <section id="purpose" className="py-32 relative overflow-hidden">
@@ -31,14 +40,17 @@ const MainSections = () => {
           <h2 className="text-4xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-blink-animation md:text-5xl">Work Less. Earn More.</h2>
           
           <div className="space-y-6 mb-12 scroll-fade-in stagger-1">
-            <p className="text-cosmic-white/90 leading-relaxed font-light tracking-wide text-2xl">Let’s talk. You’ll leave with time and money back.</p>
+            <p className="text-cosmic-white/90 leading-relaxed font-light tracking-wide text-2xl">Let's talk. You'll leave with time and money back.</p>
             <p className="text-lg text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
               Let's explore the possibilities.
             </p>
           </div>
 
           <div className="scroll-fade-in stagger-2">
-            <button className="elite-cta-button-glass text-lg group relative">
+            <button 
+              onClick={handleGetStarted}
+              className="elite-cta-button-glass text-lg group relative"
+            >
               <span className="relative z-10 inline-flex items-center">
                 Get Started
                 <svg className="ml-4 w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,4 +73,5 @@ const MainSections = () => {
       </section>
     </>;
 };
+
 export default MainSections;
