@@ -35,7 +35,7 @@ const HeroSection = () => {
         
         <div className={`space-y-4 md:space-y-6 transition-all duration-1500 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-lg md:text-xl lg:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide hero-subtext-line">Automation built for business growth.</p>
-          <p className="text-lg md:text-xl lg:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide hero-subtext-line text-glow-subtle">Faster execution, smarter workflows, higher ROI.</p>
+          <p className="text-lg md:text-xl lg:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide hero-subtext-line text-glow-subtle">Faster execution. Smarter workflows. Higher ROI.</p>
         </div>
 
         <div className={`mt-12 md:mt-20 transition-all duration-1500 delay-1400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
