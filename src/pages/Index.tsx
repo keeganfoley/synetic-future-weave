@@ -30,9 +30,15 @@ const Index = () => {
           <div className="section-divider mb-16"></div>
           
           <div className="space-y-8">
-            <h3 className="text-3xl font-heading font-light text-cosmic-gold text-glow-subtle">
-              SyneticAI
-            </h3>
+            {/* Logo with animation */}
+            <div className="relative inline-block">
+              <img 
+                src="/lovable-uploads/861140cd-aa95-4467-9a29-edc6c270f44c.png" 
+                alt="SyneticAI Logo" 
+                className="h-12 w-auto mx-auto opacity-90 hover:opacity-100 transition-all duration-500 animate-gentle-float"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-cosmic-gold/20 to-transparent rounded-lg blur-xl animate-pulse-subtle"></div>
+            </div>
             
             <p className="text-lg text-cosmic-white/80 font-light tracking-wide">
               Real Automations. Real ROI
