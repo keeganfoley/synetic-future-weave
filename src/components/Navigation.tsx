@@ -35,8 +35,8 @@ const Navigation = () => {
       }`}>
         {/* Background Moving Beam */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/2 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-cosmic-gold/20 to-transparent opacity-60"></div>
-          <div className="absolute top-1/2 -translate-y-1/2 w-64 h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold/40 to-transparent blur-sm animate-[slide-beam_6s_ease-in-out_infinite] opacity-80"></div>
+          <div className="absolute top-1/2 -translate-y-1/2 w-full h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold/50 to-transparent"></div>
+          <div className="absolute top-1/2 -translate-y-1/2 w-96 h-1 bg-gradient-to-r from-transparent via-cosmic-gold/80 to-transparent blur-sm animate-[slide-beam_6s_ease-in-out_infinite]"></div>
         </div>
 
         <div className="max-w-8xl mx-auto px-8 lg:px-16 relative z-10">
