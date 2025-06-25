@@ -1,5 +1,3 @@
-
-
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
@@ -16,7 +14,7 @@ const ProcessSection = () => {
     {
       number: "02", 
       title: "Strategy",
-      description: "Our team designs a tailored AI automation roadmap aligned with your business objectives and existing infrastructure."
+      description: "We map out a strategy to reduce costs, accelerate fulfillment, or increase customer retention using AI."
     },
     {
       number: "03",
@@ -103,4 +101,3 @@ const ProcessSection = () => {
 };
 
 export default ProcessSection;
-
