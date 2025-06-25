@@ -35,12 +35,13 @@ const Navigation = () => {
       }`}>
         <div className="max-w-8xl mx-auto px-8 lg:px-16 relative z-10">
           <div className="flex items-center justify-between h-24 py-4">
-            {/* Logo with Subtle Beam Effect */}
+            {/* Logo with Enhanced Beam Effect */}
             <div className="flex-shrink-0 relative">
-              {/* Subtle Horizontal Beam Effect */}
-              <div className="absolute inset-0 -inset-x-16 flex items-center overflow-hidden">
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-cosmic-gold/15 to-transparent opacity-40"></div>
-                <div className="absolute w-32 h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold/25 to-transparent blur-sm animate-[slide-beam_4s_ease-in-out_infinite]"></div>
+              {/* Enhanced Horizontal Beam Effect - More Visible */}
+              <div className="absolute inset-0 -inset-x-20 flex items-center justify-center overflow-hidden">
+                <div className="w-80 h-px bg-gradient-to-r from-transparent via-cosmic-gold/40 to-transparent"></div>
+                <div className="absolute w-40 h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold/70 to-transparent blur-[1px] animate-[slide-beam_4s_ease-in-out_infinite]"></div>
+                <div className="absolute w-20 h-1 bg-gradient-to-r from-transparent via-cosmic-gold/90 to-transparent blur-sm animate-[slide-beam_4s_ease-in-out_infinite_0.5s]"></div>
               </div>
               
               <img 
