@@ -31,9 +31,7 @@ const MainSections = () => {
           <h2 className="text-4xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-blink-animation md:text-5xl">Work Less. Earn More.</h2>
           
           <div className="space-y-6 mb-12 scroll-fade-in stagger-1">
-            <p className="text-xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
-              Ready to transform your business with intelligent automation?
-            </p>
+            <p className="text-cosmic-white/90 leading-relaxed font-light tracking-wide text-2xl">Let’s talk. You’ll leave with time and money back.</p>
             <p className="text-lg text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
               Let's explore the possibilities.
             </p>
