@@ -35,7 +35,7 @@ const Index = () => {
             </h3>
             
             <p className="text-lg text-cosmic-white/80 font-light tracking-wide">
-              Automation Without Friction
+              Real Automations. Real ROI
             </p>
             
             <div className="space-y-4">
