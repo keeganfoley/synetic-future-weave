@@ -30,12 +30,16 @@ const Index = () => {
           <div className="section-divider mb-1"></div>
           
           <div className="space-y-1">
-            {/* Logo with animation */}
+            {/* Logo with animation and glimmer effect */}
             <div className="relative inline-block">
+              {/* Subtle glimmer background */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-cosmic-gold/20 to-transparent blur-lg animate-pulse-subtle opacity-60"></div>
+              <div className="absolute inset-0 rounded-full bg-cosmic-gold/10 animate-gentle-float blur-xl"></div>
+              
               <img 
                 src="/lovable-uploads/861140cd-aa95-4467-9a29-edc6c270f44c.png" 
                 alt="SyneticAI Logo" 
-                className="h-48 w-auto mx-auto opacity-90 hover:opacity-100 transition-all duration-500"
+                className="relative h-64 w-auto mx-auto opacity-90 hover:opacity-100 transition-all duration-500 z-10"
               />
             </div>
             
