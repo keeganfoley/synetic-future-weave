@@ -33,7 +33,13 @@ const Navigation = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         isScrolled ? 'glass-nav' : ''
       }`}>
-        <div className="max-w-8xl mx-auto px-8 lg:px-16">
+        {/* Background Moving Beam */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/2 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-cosmic-gold/20 to-transparent opacity-60"></div>
+          <div className="absolute top-1/2 -translate-y-1/2 w-64 h-0.5 bg-gradient-to-r from-transparent via-cosmic-gold/40 to-transparent blur-sm animate-[slide-beam_6s_ease-in-out_infinite] opacity-80"></div>
+        </div>
+
+        <div className="max-w-8xl mx-auto px-8 lg:px-16 relative z-10">
           <div className="flex items-center justify-between h-24 py-4">
             {/* Logo with Subtle Beam Effect */}
             <div className="flex-shrink-0 relative">
