@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
@@ -29,7 +30,7 @@ const ProcessSection = () => {
     {
       number: "05",
       title: "Become an Industry Leader",
-      description: "Scale your automation capabilities with ongoing support, unlimited requests, and continuous innovation to maintain your competitive edge."
+      description: "With ongoing AI improvements and support, you stay ahead of the curve while your competitors stay stuck."
     }
   ];
 
@@ -88,7 +89,7 @@ const ProcessSection = () => {
                   {step.title}
                 </h3>
                 
-                <p className="text-cosmic-white/80 text-sm leading-relaxed mb-4">
+                <p className="text-cosmic-gold/90 text-sm leading-relaxed mb-4">
                   {step.description}
                 </p>
               </div>
