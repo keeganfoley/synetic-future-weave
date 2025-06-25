@@ -14,9 +14,7 @@ const MainSections = () => {
           
           <div className="space-y-8 scroll-fade-in stagger-1">
             <p className="text-xl text-cosmic-white/90 leading-relaxed font-light tracking-wide md:text-3xl">We build automation that saves time and multiplies output.</p>
-            <p className="text-xl md:text-2xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle">
-              Systems that think. Automation with grace. Time returned.
-            </p>
+            <p className="text-xl text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle md:text-3xl">Efficiency in. Revenue out.</p>
           </div>
         </div>
       </section>
