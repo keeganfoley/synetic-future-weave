@@ -1,4 +1,5 @@
 
+
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
@@ -25,7 +26,7 @@ const ProcessSection = () => {
     {
       number: "04",
       title: "Test & Optimize",
-      description: "Through rigorous testing and refinement, we ensure optimal performance before full deployment and continue optimizing based on results."
+      description: "We test for impact—then fine-tune to ensure measurable improvements in speed, cost, or output."
     },
     {
       number: "05",
@@ -102,3 +103,4 @@ const ProcessSection = () => {
 };
 
 export default ProcessSection;
+
