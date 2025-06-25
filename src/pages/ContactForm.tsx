@@ -86,7 +86,7 @@ const ContactForm = () => {
       <div className="absolute inset-0">
         <OptimizedBackground />
         <AnimatedBackground />
-        <div className="absolute inset-0 backdrop-blur-md bg-cosmic-black/40"></div>
+        <div className="absolute inset-0 backdrop-blur-lg bg-cosmic-black/60"></div>
       </div>
       
       {/* Overlay backdrop that can be clicked to close */}
@@ -97,7 +97,7 @@ const ContactForm = () => {
 
       {/* Modal Content */}
       <div className="relative z-10 w-full max-w-2xl mx-4 animate-scale-in">
-        <Card className="glass-nav border-cosmic-gold/30 shadow-2xl backdrop-blur-xl bg-cosmic-black/80">
+        <Card className="glass-nav border-cosmic-gold/30 shadow-2xl backdrop-blur-xl bg-cosmic-black/90">
           <CardHeader className="text-center relative">
             {/* Close button */}
             <Button
@@ -127,7 +127,7 @@ const ContactForm = () => {
                   <Input
                     id="name"
                     {...register('name')}
-                    className="bg-cosmic-dark/50 border-cosmic-gold/30 text-cosmic-white placeholder:text-cosmic-white/50 focus:border-cosmic-gold transition-all duration-300"
+                    className="bg-cosmic-black/40 border-cosmic-gold/40 text-cosmic-gold placeholder:text-cosmic-gold/50 focus:border-cosmic-gold focus:text-cosmic-gold transition-all duration-300"
                     placeholder="John Doe"
                   />
                   {errors.name && (
@@ -143,7 +143,7 @@ const ContactForm = () => {
                     id="email"
                     type="email"
                     {...register('email')}
-                    className="bg-cosmic-dark/50 border-cosmic-gold/30 text-cosmic-white placeholder:text-cosmic-white/50 focus:border-cosmic-gold transition-all duration-300"
+                    className="bg-cosmic-black/40 border-cosmic-gold/40 text-cosmic-gold placeholder:text-cosmic-gold/50 focus:border-cosmic-gold focus:text-cosmic-gold transition-all duration-300"
                     placeholder="john@company.com"
                   />
                   {errors.email && (
@@ -160,7 +160,7 @@ const ContactForm = () => {
                   <Input
                     id="company"
                     {...register('company')}
-                    className="bg-cosmic-dark/50 border-cosmic-gold/30 text-cosmic-white placeholder:text-cosmic-white/50 focus:border-cosmic-gold transition-all duration-300"
+                    className="bg-cosmic-black/40 border-cosmic-gold/40 text-cosmic-gold placeholder:text-cosmic-gold/50 focus:border-cosmic-gold focus:text-cosmic-gold transition-all duration-300"
                     placeholder="Your Company"
                   />
                   {errors.company && (
@@ -175,11 +175,11 @@ const ContactForm = () => {
                   <select
                     id="industry"
                     {...register('industry')}
-                    className="flex h-10 w-full rounded-md border border-cosmic-gold/30 bg-cosmic-dark/50 px-3 py-2 text-cosmic-white focus:border-cosmic-gold focus:outline-none transition-all duration-300"
+                    className="flex h-10 w-full rounded-md border border-cosmic-gold/40 bg-cosmic-black/40 px-3 py-2 text-cosmic-gold focus:border-cosmic-gold focus:outline-none transition-all duration-300"
                   >
-                    <option value="" className="bg-cosmic-dark text-cosmic-white">Select Industry</option>
+                    <option value="" className="bg-cosmic-black text-cosmic-gold">Select Industry</option>
                     {industries.map((industry) => (
-                      <option key={industry} value={industry} className="bg-cosmic-dark text-cosmic-white">
+                      <option key={industry} value={industry} className="bg-cosmic-black text-cosmic-gold">
                         {industry}
                       </option>
                     ))}
@@ -198,7 +198,7 @@ const ContactForm = () => {
                   id="notes"
                   {...register('notes')}
                   rows={4}
-                  className="bg-cosmic-dark/50 border-cosmic-gold/30 text-cosmic-white placeholder:text-cosmic-white/50 focus:border-cosmic-gold resize-none transition-all duration-300"
+                  className="bg-cosmic-black/40 border-cosmic-gold/40 text-cosmic-gold placeholder:text-cosmic-gold/50 focus:border-cosmic-gold focus:text-cosmic-gold resize-none transition-all duration-300"
                   placeholder="Tell us about your current challenges, goals, or any specific automation needs..."
                 />
               </div>
@@ -206,13 +206,12 @@ const ContactForm = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full elite-cta-button-glass text-lg group relative"
+                className="w-full bg-cosmic-gold/20 border border-cosmic-gold/50 text-cosmic-gold hover:bg-cosmic-gold hover:text-cosmic-black transition-all duration-300 text-lg font-medium py-3 backdrop-blur-sm"
               >
                 <span className="relative z-10 inline-flex items-center">
                   {isSubmitting ? 'Submitting...' : 'Submit Request'}
                   {!isSubmitting && <Send className="ml-2 w-5 h-5" />}
                 </span>
-                <div className="cta-sonar-pulse"></div>
               </Button>
             </form>
 
