@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -960,9 +959,86 @@
   .animate-gentle-float {
     animation: gentle-float 8s ease-in-out infinite;
   }
+
+  /* Modern Golden Button with Beam Effects */
+  .modern-golden-button {
+    @apply relative bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 text-black rounded-2xl font-bold tracking-wider transition-all duration-700 overflow-hidden shadow-2xl;
+    font-family: 'Inter', 'Satoshi', sans-serif;
+    background-size: 200% 100%;
+    box-shadow: 
+      0 10px 40px rgba(255, 193, 7, 0.4),
+      0 0 60px rgba(255, 193, 7, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 193, 7, 0.8);
+  }
+
+  .modern-golden-button:hover {
+    background-position: 100% 0;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+      0 20px 60px rgba(255, 193, 7, 0.6),
+      0 0 100px rgba(255, 193, 7, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .modern-golden-button:disabled {
+    opacity: 0.8;
+    transform: none;
+    cursor: not-allowed;
+  }
+
+  .button-shine-beam {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+  }
+
+  .modern-golden-button:hover .button-shine-beam {
+    left: 100%;
+  }
+
+  .button-pulse-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    border-radius: 16px;
+    animation: golden-pulse-rings 3s ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .modern-golden-button:hover .button-pulse-rings {
+    opacity: 1;
+  }
 }
 
-/* Enhanced Keyframe Animations */
+/* Golden Button Pulse Animation */
+@keyframes golden-pulse-rings {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+}
+
+/* Existing Keyframe Animations */
 @keyframes shimmer-reveal {
   0% { 
     opacity: 0;

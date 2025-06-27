@@ -1,8 +1,9 @@
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Mail, Send } from 'lucide-react';
+import { Mail, Send, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -155,13 +156,24 @@ const NewsletterSection = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="elite-cta-button-glass text-lg group relative min-w-[200px]"
+                className="modern-golden-button text-lg font-semibold group relative min-w-[220px] h-16 overflow-hidden"
               >
-                <span className="relative z-10 inline-flex items-center">
-                  {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
-                  {!isSubmitting && <Send className="ml-3 w-5 h-5 transition-transform duration-500 group-hover:translate-x-1" />}
+                <div className="button-shine-beam"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-amber-300/30 to-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <span className="relative z-10 inline-flex items-center font-medium tracking-wide">
+                  {isSubmitting ? (
+                    <>
+                      <Sparkles className="mr-3 w-5 h-5 animate-spin" />
+                      Subscribing...
+                    </>
+                  ) : (
+                    <>
+                      Subscribe Now
+                      <Send className="ml-3 w-5 h-5 transition-transform duration-500 group-hover:translate-x-1 group-hover:scale-110" />
+                    </>
+                  )}
                 </span>
-                <div className="cta-sonar-pulse"></div>
+                <div className="button-pulse-rings"></div>
               </Button>
             </div>
           </form>
