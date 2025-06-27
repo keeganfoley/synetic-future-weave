@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -156,10 +155,8 @@ const NewsletterSection = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="modern-golden-button text-lg font-semibold group relative min-w-[220px] h-16 overflow-hidden"
+                className="elite-cta-button-hero-mobile text-lg font-medium group relative min-w-[220px] h-16 px-12 md:px-16"
               >
-                <div className="button-shine-beam"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-amber-300/30 to-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <span className="relative z-10 inline-flex items-center font-medium tracking-wide">
                   {isSubmitting ? (
                     <>
@@ -173,7 +170,7 @@ const NewsletterSection = () => {
                     </>
                   )}
                 </span>
-                <div className="button-pulse-rings"></div>
+                <div className="cta-sonar-rings"></div>
               </Button>
             </div>
           </form>
