@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -33,18 +32,46 @@ const NewsletterSection = () => {
   const onSubmit = async (data: NewsletterFormData) => {
     setIsSubmitting(true);
     
-    // Simulate newsletter subscription
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log('Newsletter subscription:', data);
-    
-    toast({
-      title: "Welcome to our AI newsletter!",
-      description: "You'll receive your first update within the next few days. Thank you for joining!",
-    });
-    
-    reset();
-    setIsSubmitting(false);
+    console.log('Newsletter subscription data:', data);
+
+    try {
+      // Send data to webhook
+      const webhookUrl = 'https://automation.syneticai.com/webhook-test/Lovable_news';
+      
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          timestamp: new Date().toISOString(),
+          source: 'newsletter_signup',
+          url: window.location.href,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Welcome to our AI newsletter!",
+          description: "You'll receive your first update within the next few days. Thank you for joining!",
+        });
+        reset();
+      } else {
+        throw new Error('Webhook request failed');
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      toast({
+        title: "Subscription Error",
+        description: "There was an issue subscribing you to our newsletter. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
