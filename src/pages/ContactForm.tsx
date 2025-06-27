@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -38,6 +37,8 @@ const industries = [
   'Other'
 ];
 
+const WEBHOOK_URL = 'https://automation.syneticai.com/webhook-test/lovable_values';
+
 const ContactForm = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -55,23 +56,51 @@ const ContactForm = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const webhookPayload = {
+      ...data,
+      timestamp: new Date().toISOString(),
+      source: 'lovable_contact_form',
+      url: window.location.href,
+      user_agent: navigator.userAgent,
+    };
+
+    console.log('Sending webhook payload:', webhookPayload);
     
-    console.log('Form submitted:', data);
-    
-    toast({
-      title: "Success!",
-      description: "We've received your information and will be in touch within 24 hours.",
-    });
-    
-    reset();
-    setIsSubmitting(false);
-    
-    // Navigate back to home after a short delay
-    setTimeout(() => {
-      navigate('/');
-    }, 2000);
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookPayload),
+      });
+
+      if (response.ok) {
+        console.log('Webhook sent successfully');
+        toast({
+          title: "Success!",
+          description: "We've received your information and will be in touch within 24 hours.",
+        });
+        
+        reset();
+        
+        // Navigate back to home after a short delay
+        setTimeout(() => {
+          navigate('/');
+        }, 2000);
+      } else {
+        throw new Error(`Webhook failed with status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Webhook error:', error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue submitting your form. Please try again or contact us directly at team@syneticai.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleBackdropClick = (e: React.MouseEvent) => {
