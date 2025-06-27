@@ -2,6 +2,7 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useNavigate } from 'react-router-dom';
 import ProcessSection from './ProcessSection';
+import NewsletterSection from './NewsletterSection';
 
 const MainSections = () => {
   useScrollReveal();
@@ -30,6 +31,9 @@ const MainSections = () => {
 
       {/* Process Section */}
       <ProcessSection />
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
 
       {/* Enhanced Contact Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
