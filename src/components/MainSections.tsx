@@ -32,9 +32,6 @@ const MainSections = () => {
       {/* Process Section */}
       <ProcessSection />
 
-      {/* Newsletter Section */}
-      <NewsletterSection />
-
       {/* Enhanced Contact Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
         {/* Light Trails Background */}
@@ -75,6 +72,9 @@ const MainSections = () => {
           </div>
         </div>
       </section>
+
+      {/* Newsletter Section - Now at the bottom */}
+      <NewsletterSection />
     </>;
 };
 

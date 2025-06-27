@@ -64,15 +64,12 @@ const NewsletterSection = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
-            Stay Ahead with AI
+            Join Our AI Newsletter
           </h2>
           
-          <div className="space-y-6 mb-12 scroll-fade-in stagger-1">
-            <p className="text-xl md:text-2xl text-cosmic-white/90 leading-relaxed font-light tracking-wide">
-              Join 5,000+ small business owners and creators who get our AI newsletter twice a week.
-            </p>
-            <p className="text-lg text-cosmic-gold/90 leading-relaxed font-light tracking-wide text-glow-subtle max-w-3xl mx-auto">
-              Discover useful AI updates, breakthrough tools to try, practical use cases, and strategies that actually work for real businesses like yours.
+          <div className="mb-12 scroll-fade-in stagger-1">
+            <p className="text-xl md:text-2xl text-cosmic-white leading-relaxed font-light tracking-wide max-w-3xl mx-auto">
+              Discover useful AI updates, breakthrough tools to try, practical use cases, and strategies that actually work.
             </p>
           </div>
         </div>
