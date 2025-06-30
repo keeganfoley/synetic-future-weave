@@ -56,27 +56,66 @@ const ContactForm = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
+    // Generate unique request ID for tracking
+    const requestId = `contact_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    
     const webhookPayload = {
       ...data,
       timestamp: new Date().toISOString(),
       source: 'lovable_contact_form',
       url: window.location.href,
       user_agent: navigator.userAgent,
+      request_id: requestId,
     };
 
-    console.log('Sending webhook payload:', webhookPayload);
+    console.log('=== WEBHOOK REQUEST START ===');
+    console.log('Request ID:', requestId);
+    console.log('Webhook URL:', WEBHOOK_URL);
+    console.log('Payload:', webhookPayload);
+    console.log('Request timestamp:', new Date().toISOString());
     
     try {
+      const startTime = Date.now();
+      
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'User-Agent': 'Lovable-ContactForm/1.0',
+          'X-Request-ID': requestId,
+          'Accept': 'application/json',
         },
         body: JSON.stringify(webhookPayload),
+        signal: AbortSignal.timeout(30000), // 30 second timeout
       });
 
+      const endTime = Date.now();
+      const responseTime = endTime - startTime;
+
+      console.log('=== WEBHOOK RESPONSE ===');
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+      console.log('Response time:', responseTime + 'ms');
+      console.log('Response OK:', response.ok);
+
+      let responseData;
+      try {
+        responseData = await response.text();
+        console.log('Response body:', responseData);
+        
+        // Try to parse as JSON if possible
+        try {
+          responseData = JSON.parse(responseData);
+          console.log('Parsed response data:', responseData);
+        } catch (e) {
+          console.log('Response is not JSON, keeping as text');
+        }
+      } catch (e) {
+        console.log('Could not read response body:', e);
+      }
+
       if (response.ok) {
-        console.log('Webhook sent successfully');
+        console.log('✅ Webhook sent successfully');
         toast({
           title: "Success!",
           description: "We've received your information and will be in touch within 24 hours.",
@@ -89,16 +128,32 @@ const ContactForm = () => {
           navigate('/');
         }, 2000);
       } else {
-        throw new Error(`Webhook failed with status: ${response.status}`);
+        console.error('❌ Webhook failed with status:', response.status);
+        throw new Error(`Webhook failed with status: ${response.status} - ${response.statusText}`);
       }
     } catch (error) {
-      console.error('Webhook error:', error);
+      console.log('=== WEBHOOK ERROR ===');
+      console.error('Error details:', error);
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      
+      let errorMessage = "There was an issue submitting your form. Please try again or contact us directly at team@syneticai.com";
+      
+      if (error.name === 'AbortError') {
+        errorMessage = "Request timed out. Please check your connection and try again.";
+        console.error('Request timed out after 30 seconds');
+      } else if (error.message.includes('Failed to fetch')) {
+        errorMessage = "Network error. Please check your connection and try again.";
+        console.error('Network/CORS error detected');
+      }
+      
       toast({
         title: "Submission Error",
-        description: "There was an issue submitting your form. Please try again or contact us directly at team@syneticai.com",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
+      console.log('=== WEBHOOK REQUEST END ===');
       setIsSubmitting(false);
     }
   };

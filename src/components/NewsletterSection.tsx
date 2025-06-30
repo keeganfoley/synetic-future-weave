@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -32,44 +33,100 @@ const NewsletterSection = () => {
   const onSubmit = async (data: NewsletterFormData) => {
     setIsSubmitting(true);
     
-    console.log('Newsletter subscription data:', data);
+    // Generate unique request ID for tracking
+    const requestId = `newsletter_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    
+    const webhookPayload = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      timestamp: new Date().toISOString(),
+      source: 'newsletter_signup',
+      url: window.location.href,
+      user_agent: navigator.userAgent,
+      request_id: requestId,
+    };
+
+    console.log('=== NEWSLETTER WEBHOOK REQUEST START ===');
+    console.log('Request ID:', requestId);
+    console.log('Webhook URL:', 'https://automation.syneticai.com/webhook/Lovable_news');
+    console.log('Payload:', webhookPayload);
+    console.log('Request timestamp:', new Date().toISOString());
 
     try {
-      // Send data to webhook
-      const webhookUrl = 'https://automation.syneticai.com/webhook/Lovable_news';
+      const startTime = Date.now();
       
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('https://automation.syneticai.com/webhook/Lovable_news', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'User-Agent': 'Lovable-Newsletter/1.0',
+          'X-Request-ID': requestId,
+          'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          timestamp: new Date().toISOString(),
-          source: 'newsletter_signup',
-          url: window.location.href,
-        }),
+        body: JSON.stringify(webhookPayload),
+        signal: AbortSignal.timeout(30000), // 30 second timeout
       });
 
+      const endTime = Date.now();
+      const responseTime = endTime - startTime;
+
+      console.log('=== NEWSLETTER WEBHOOK RESPONSE ===');
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+      console.log('Response time:', responseTime + 'ms');
+      console.log('Response OK:', response.ok);
+
+      let responseData;
+      try {
+        responseData = await response.text();
+        console.log('Response body:', responseData);
+        
+        // Try to parse as JSON if possible
+        try {
+          responseData = JSON.parse(responseData);
+          console.log('Parsed response data:', responseData);
+        } catch (e) {
+          console.log('Response is not JSON, keeping as text');
+        }
+      } catch (e) {
+        console.log('Could not read response body:', e);
+      }
+
       if (response.ok) {
+        console.log('✅ Newsletter webhook sent successfully');
         toast({
           title: "Welcome to our AI newsletter!",
           description: "You'll receive your first update within the next few days. Thank you for joining!",
         });
         reset();
       } else {
-        throw new Error('Webhook request failed');
+        console.error('❌ Newsletter webhook failed with status:', response.status);
+        throw new Error(`Newsletter webhook failed with status: ${response.status} - ${response.statusText}`);
       }
     } catch (error) {
-      console.error('Newsletter subscription error:', error);
+      console.log('=== NEWSLETTER WEBHOOK ERROR ===');
+      console.error('Error details:', error);
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      
+      let errorMessage = "There was an issue subscribing you to our newsletter. Please try again.";
+      
+      if (error.name === 'AbortError') {
+        errorMessage = "Request timed out. Please check your connection and try again.";
+        console.error('Newsletter request timed out after 30 seconds');
+      } else if (error.message.includes('Failed to fetch')) {
+        errorMessage = "Network error. Please check your connection and try again.";
+        console.error('Newsletter network/CORS error detected');
+      }
+      
       toast({
         title: "Subscription Error",
-        description: "There was an issue subscribing you to our newsletter. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
+      console.log('=== NEWSLETTER WEBHOOK REQUEST END ===');
       setIsSubmitting(false);
     }
   };
