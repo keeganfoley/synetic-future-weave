@@ -46,16 +46,16 @@ const NewsletterSection = () => {
       request_id: requestId,
     };
 
-    console.log('=== NEWSLETTER MAKE WEBHOOK REQUEST START ===');
+    console.log('=== NEWSLETTER N8N WEBHOOK REQUEST START ===');
     console.log('Request ID:', requestId);
-    console.log('Make Webhook URL:', 'https://hook.us2.make.com/shpnyvq17cy4duwmbvjihmbqaj13ptwq');
+    console.log('N8N Webhook URL:', 'https://automation.syneticai.com/webhook/Lovable_news');
     console.log('Payload:', webhookPayload);
     console.log('Request timestamp:', new Date().toISOString());
 
     try {
       const startTime = Date.now();
       
-      const response = await fetch('https://hook.us2.make.com/shpnyvq17cy4duwmbvjihmbqaj13ptwq', {
+      const response = await fetch('https://automation.syneticai.com/webhook/Lovable_news', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const NewsletterSection = () => {
       const endTime = Date.now();
       const responseTime = endTime - startTime;
 
-      console.log('=== NEWSLETTER MAKE WEBHOOK RESPONSE ===');
+      console.log('=== NEWSLETTER N8N WEBHOOK RESPONSE ===');
       console.log('Response status:', response.status);
       console.log('Response headers:', Object.fromEntries(response.headers.entries()));
       console.log('Response time:', responseTime + 'ms');
@@ -93,18 +93,18 @@ const NewsletterSection = () => {
       }
 
       if (response.ok) {
-        console.log('✅ Newsletter Make webhook sent successfully');
+        console.log('✅ Newsletter N8N webhook sent successfully');
         toast({
           title: "Welcome to our AI newsletter!",
           description: "You'll receive your first update within the next few days. Thank you for joining!",
         });
         reset();
       } else {
-        console.error('❌ Newsletter Make webhook failed with status:', response.status);
-        throw new Error(`Newsletter Make webhook failed with status: ${response.status} - ${response.statusText}`);
+        console.error('❌ Newsletter N8N webhook failed with status:', response.status);
+        throw new Error(`Newsletter N8N webhook failed with status: ${response.status} - ${response.statusText}`);
       }
     } catch (error) {
-      console.log('=== NEWSLETTER MAKE WEBHOOK ERROR ===');
+      console.log('=== NEWSLETTER N8N WEBHOOK ERROR ===');
       console.error('Error details:', error);
       console.error('Error name:', error.name);
       console.error('Error message:', error.message);
@@ -125,7 +125,7 @@ const NewsletterSection = () => {
         variant: "destructive",
       });
     } finally {
-      console.log('=== NEWSLETTER MAKE WEBHOOK REQUEST END ===');
+      console.log('=== NEWSLETTER N8N WEBHOOK REQUEST END ===');
       setIsSubmitting(false);
     }
   };
