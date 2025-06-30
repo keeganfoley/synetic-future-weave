@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -47,16 +46,16 @@ const NewsletterSection = () => {
       request_id: requestId,
     };
 
-    console.log('=== NEWSLETTER WEBHOOK REQUEST START ===');
+    console.log('=== NEWSLETTER MAKE WEBHOOK REQUEST START ===');
     console.log('Request ID:', requestId);
-    console.log('Webhook URL:', 'https://automation.syneticai.com/webhook/Lovable_news');
+    console.log('Make Webhook URL:', 'https://hook.us2.make.com/shpnyvq17cy4duwmbvjihmbqaj13ptwq');
     console.log('Payload:', webhookPayload);
     console.log('Request timestamp:', new Date().toISOString());
 
     try {
       const startTime = Date.now();
       
-      const response = await fetch('https://automation.syneticai.com/webhook/Lovable_news', {
+      const response = await fetch('https://hook.us2.make.com/shpnyvq17cy4duwmbvjihmbqaj13ptwq', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +70,7 @@ const NewsletterSection = () => {
       const endTime = Date.now();
       const responseTime = endTime - startTime;
 
-      console.log('=== NEWSLETTER WEBHOOK RESPONSE ===');
+      console.log('=== NEWSLETTER MAKE WEBHOOK RESPONSE ===');
       console.log('Response status:', response.status);
       console.log('Response headers:', Object.fromEntries(response.headers.entries()));
       console.log('Response time:', responseTime + 'ms');
@@ -94,18 +93,18 @@ const NewsletterSection = () => {
       }
 
       if (response.ok) {
-        console.log('✅ Newsletter webhook sent successfully');
+        console.log('✅ Newsletter Make webhook sent successfully');
         toast({
           title: "Welcome to our AI newsletter!",
           description: "You'll receive your first update within the next few days. Thank you for joining!",
         });
         reset();
       } else {
-        console.error('❌ Newsletter webhook failed with status:', response.status);
-        throw new Error(`Newsletter webhook failed with status: ${response.status} - ${response.statusText}`);
+        console.error('❌ Newsletter Make webhook failed with status:', response.status);
+        throw new Error(`Newsletter Make webhook failed with status: ${response.status} - ${response.statusText}`);
       }
     } catch (error) {
-      console.log('=== NEWSLETTER WEBHOOK ERROR ===');
+      console.log('=== NEWSLETTER MAKE WEBHOOK ERROR ===');
       console.error('Error details:', error);
       console.error('Error name:', error.name);
       console.error('Error message:', error.message);
@@ -126,7 +125,7 @@ const NewsletterSection = () => {
         variant: "destructive",
       });
     } finally {
-      console.log('=== NEWSLETTER WEBHOOK REQUEST END ===');
+      console.log('=== NEWSLETTER MAKE WEBHOOK REQUEST END ===');
       setIsSubmitting(false);
     }
   };
