@@ -36,7 +36,7 @@ const NewsletterSection = () => {
 
     try {
       // Send data to webhook
-      const webhookUrl = 'https://automation.syneticai.com/webhook-test/Lovable_news';
+      const webhookUrl = 'https://automation.syneticai.com/webhook/Lovable_news';
       
       const response = await fetch(webhookUrl, {
         method: 'POST',
