@@ -37,7 +37,7 @@ const industries = [
   'Other'
 ];
 
-const WEBHOOK_URL = 'https://automation.syneticai.com/webhook-test/lovable_values';
+const WEBHOOK_URL = 'https://automation.syneticai.com/webhook/lovable_values';
 
 const ContactForm = () => {
   const navigate = useNavigate();
