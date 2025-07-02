@@ -8,6 +8,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 
+/**
+ * Very‑small performance tweaks only:
+ * 1. Removed infinite CSS animations that forced continuous repaints.
+ * 2. Kept blur effects but froze them (static glow instead of pulsing).
+ * 3. Dropped JS‑driven typing class to avoid rapid DOM mutations.
+ * 4. Added `transform-gpu` + `will-change-transform` for cheap compositing.
+ */
+
 const newsletterSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
   lastName: z.string().min(2, 'Last name must be at least 2 characters'),
@@ -26,15 +34,16 @@ const NewsletterSection = () => {
     formState: { errors },
     reset
   } = useForm<NewsletterFormData>({
-    resolver: zodResolver(newsletterSchema)
+    resolver: zodResolver(newsletterSchema),
+    // Validate only after the user leaves each field (reduces on‑change renders)
+    mode: 'onBlur',
   });
 
   const onSubmit = async (data: NewsletterFormData) => {
     setIsSubmitting(true);
-    
-    // Generate unique request ID for tracking
+
     const requestId = `newsletter_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    
+
     const webhookPayload = {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -46,15 +55,17 @@ const NewsletterSection = () => {
       request_id: requestId,
     };
 
-    console.log('=== NEWSLETTER N8N WEBHOOK REQUEST START ===');
-    console.log('Request ID:', requestId);
-    console.log('N8N Webhook URL:', 'https://automation.syneticai.com/webhook/Lovable_news');
-    console.log('Payload:', webhookPayload);
-    console.log('Request timestamp:', new Date().toISOString());
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('=== NEWSLETTER N8N WEBHOOK REQUEST START ===');
+      console.log('Request ID:', requestId);
+      console.log('N8N Webhook URL:', 'https://automation.syneticai.com/webhook/Lovable_news');
+      console.log('Payload:', webhookPayload);
+      console.log('Request timestamp:', new Date().toISOString());
+    }
 
     try {
       const startTime = Date.now();
-      
+
       const response = await fetch('https://automation.syneticai.com/webhook/Lovable_news', {
         method: 'POST',
         headers: {
@@ -64,92 +75,65 @@ const NewsletterSection = () => {
           'Accept': 'application/json',
         },
         body: JSON.stringify(webhookPayload),
-        signal: AbortSignal.timeout(30000), // 30 second timeout
+        signal: AbortSignal.timeout(30000),
       });
 
       const endTime = Date.now();
       const responseTime = endTime - startTime;
 
-      console.log('=== NEWSLETTER N8N WEBHOOK RESPONSE ===');
-      console.log('Response status:', response.status);
-      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-      console.log('Response time:', responseTime + 'ms');
-      console.log('Response OK:', response.ok);
-
-      let responseData;
-      try {
-        responseData = await response.text();
-        console.log('Response body:', responseData);
-        
-        // Try to parse as JSON if possible
-        try {
-          responseData = JSON.parse(responseData);
-          console.log('Parsed response data:', responseData);
-        } catch (e) {
-          console.log('Response is not JSON, keeping as text');
-        }
-      } catch (e) {
-        console.log('Could not read response body:', e);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('=== NEWSLETTER N8N WEBHOOK RESPONSE ===');
+        console.log('Response status:', response.status);
+        console.log('Response time:', `${responseTime}ms`);
+        console.log('Response OK:', response.ok);
       }
 
       if (response.ok) {
-        console.log('✅ Newsletter N8N webhook sent successfully');
         toast({
-          title: "Welcome to our AI newsletter!",
+          title: 'Welcome to our AI newsletter!',
           description: "You'll receive your first update within the next few days. Thank you for joining!",
         });
         reset();
       } else {
-        console.error('❌ Newsletter N8N webhook failed with status:', response.status);
-        throw new Error(`Newsletter N8N webhook failed with status: ${response.status} - ${response.statusText}`);
+        throw new Error(`Newsletter N8N webhook failed with status: ${response.status}`);
       }
-    } catch (error) {
-      console.log('=== NEWSLETTER N8N WEBHOOK ERROR ===');
-      console.error('Error details:', error);
-      console.error('Error name:', error.name);
-      console.error('Error message:', error.message);
-      
-      let errorMessage = "There was an issue subscribing you to our newsletter. Please try again.";
-      
+    } catch (error: any) {
+      let errorMessage = 'There was an issue subscribing you to our newsletter. Please try again.';
       if (error.name === 'AbortError') {
-        errorMessage = "Request timed out. Please check your connection and try again.";
-        console.error('Newsletter request timed out after 30 seconds');
-      } else if (error.message.includes('Failed to fetch')) {
-        errorMessage = "Network error. Please check your connection and try again.";
-        console.error('Newsletter network/CORS error detected');
+        errorMessage = 'Request timed out. Please check your connection and try again.';
+      } else if (error.message?.includes('Failed to fetch')) {
+        errorMessage = 'Network error. Please check your connection and try again.';
       }
-      
-      toast({
-        title: "Subscription Error",
-        description: errorMessage,
-        variant: "destructive",
-      });
+      toast({ title: 'Subscription Error', description: errorMessage, variant: 'destructive' });
     } finally {
-      console.log('=== NEWSLETTER N8N WEBHOOK REQUEST END ===');
       setIsSubmitting(false);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('=== NEWSLETTER N8N WEBHOOK REQUEST END ===');
+      }
     }
   };
 
   return (
     <section id="newsletter" className="py-32 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-cosmic-gold/10 rounded-full blur-3xl animate-pulse-subtle opacity-30"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-cosmic-white/5 rounded-full blur-3xl animate-gentle-float opacity-40"></div>
+      {/* Static blurred glow elements – no infinite animation */}
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-cosmic-gold/10 rounded-full blur-3xl opacity-30 will-change-transform transform-gpu" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-cosmic-white/5 rounded-full blur-3xl opacity-40 will-change-transform transform-gpu" />
       </div>
-      
+
       <div className="max-w-4xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16">
           <div className="section-divider mb-16"></div>
-          
+
           <div className="inline-flex items-center justify-center w-20 h-20 bg-cosmic-gold/20 border border-cosmic-gold/40 rounded-full mb-8 scroll-fade-in">
             <Mail className="w-10 h-10 text-cosmic-gold" />
           </div>
-          
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
+
+          {/* Removed JS typing effect class to cut DOM churn */}
+          <h2 className="text-4xl md:text-5xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in">
             Join Our AI Newsletter
           </h2>
-          
+
           <div className="mb-12 scroll-fade-in stagger-1">
             <p className="text-xl md:text-2xl text-cosmic-white leading-relaxed font-light tracking-wide max-w-3xl mx-auto">
               Discover useful AI updates, breakthrough tools to try, practical use cases, and strategies that actually work.
@@ -170,9 +154,7 @@ const NewsletterSection = () => {
                   className="bg-cosmic-black/40 border-cosmic-gold/40 text-cosmic-gold placeholder:text-cosmic-gold/50 focus:border-cosmic-gold focus:text-cosmic-gold transition-all duration-300 h-12 text-base"
                   placeholder="John"
                 />
-                {errors.firstName && (
-                  <p className="text-red-400 text-sm">{errors.firstName.message}</p>
-                )}
+                {errors.firstName && <p className="text-red-400 text-sm">{errors.firstName.message}</p>}
               </div>
 
               <div className="space-y-2">
@@ -185,9 +167,7 @@ const NewsletterSection = () => {
                   className="bg-cosmic-black/40 border-cosmic-gold/40 text-cosmic-gold placeholder:text-cosmic-gold/50 focus:border-cosmic-gold focus:text-cosmic-gold transition-all duration-300 h-12 text-base"
                   placeholder="Doe"
                 />
-                {errors.lastName && (
-                  <p className="text-red-400 text-sm">{errors.lastName.message}</p>
-                )}
+                {errors.lastName && <p className="text-red-400 text-sm">{errors.lastName.message}</p>}
               </div>
             </div>
 
@@ -202,9 +182,7 @@ const NewsletterSection = () => {
                 className="bg-cosmic-black/40 border-cosmic-gold/40 text-cosmic-gold placeholder:text-cosmic-gold/50 focus:border-cosmic-gold focus:text-cosmic-gold transition-all duration-300 h-12 text-base"
                 placeholder="john@yourcompany.com"
               />
-              {errors.email && (
-                <p className="text-red-400 text-sm">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="text-red-400 text-sm">{errors.email.message}</p>}
             </div>
 
             <div className="text-center pt-4">
