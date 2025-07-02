@@ -1,26 +1,13 @@
+import { useScrollReveal } from './useScrollReveal';
 
-import { useEffect, useState } from 'react';
-
-export const useScrollAnimation = (threshold = 0.1) => {
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleElements(prev => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold }
-    );
-
-    const elements = document.querySelectorAll('[data-scroll-animation]');
-    elements.forEach(el => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, [threshold]);
-
-  return visibleElements;
-};
+/**
+ * Re‑uses the single global IntersectionObserver from useScrollReveal.
+ * Keeps the same API signature (selector, threshold) but no longer
+ * returns a Set because we don’t need per‑frame React state updates.
+ */
+export function useScrollAnimation(
+  selector: string = '[data-scroll-animation]',
+  threshold: number = 0.15
+) {
+  useScrollReveal(selector, threshold);
+}
