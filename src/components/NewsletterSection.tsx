@@ -242,7 +242,7 @@ const NewsletterSection = () => {
           <div className="flex flex-wrap justify-center gap-8 text-cosmic-white/70 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-cosmic-gold/60 rounded-full"></div>
-              <span>Twice weekly updates</span>
+              <span>Weekly Update</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-cosmic-gold/60 rounded-full"></div>
