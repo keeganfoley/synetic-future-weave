@@ -1,6 +1,5 @@
 
 import OptimizedBackground from '../components/OptimizedBackground';
-import AnimatedBackground from '../components/AnimatedBackground';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import MainSections from '../components/MainSections';
@@ -10,7 +9,6 @@ const Index = () => {
     <div className="relative min-h-screen">
       {/* Optimized Background */}
       <OptimizedBackground />
-      <AnimatedBackground />
       
       {/* Navigation */}
       <Navigation />

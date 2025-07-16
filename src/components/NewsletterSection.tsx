@@ -9,11 +9,9 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 
 /**
- * Very‑small performance tweaks only:
- * 1. Removed infinite CSS animations that forced continuous repaints.
- * 2. Kept blur effects but froze them (static glow instead of pulsing).
- * 3. Dropped JS‑driven typing class to avoid rapid DOM mutations.
- * 4. Added `transform-gpu` + `will-change-transform` for cheap compositing.
+ * High‑performance newsletter section with optimized glow effects.
+ * Removed inefficient blur animations in favor of static radial gradients.
+ * Uses GPU compositing for smooth scrolling performance.
  */
 
 const newsletterSchema = z.object({
@@ -115,10 +113,10 @@ const NewsletterSection = () => {
 
   return (
     <section id="newsletter" className="py-32 relative overflow-hidden">
-      {/* Static blurred glow elements – no infinite animation */}
+      {/* Optimized static glow elements – no blur, no infinite animation */}
       <div className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-cosmic-gold/10 rounded-full blur-3xl opacity-30 will-change-transform transform-gpu" />
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-cosmic-white/5 rounded-full blur-3xl opacity-40 will-change-transform transform-gpu" />
+        <div className="absolute top-20 left-10 w-96 h-96 rounded-full opacity-30 static-glow-gold will-change-transform transform-gpu" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full opacity-40 static-glow-white will-change-transform transform-gpu" />
       </div>
 
       <div className="max-w-4xl mx-auto px-8 relative z-10">

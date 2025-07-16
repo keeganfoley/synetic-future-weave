@@ -70,6 +70,14 @@
 }
 
 @layer components {
+  /* New Performant Glow Effects */
+  .static-glow-gold {
+    background-image: radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, transparent 70%);
+  }
+  .static-glow-white {
+    background-image: radial-gradient(circle, hsl(var(--foreground) / 0.05) 0%, transparent 70%);
+  }
+
   /* Enhanced Navigation Logo Styling */
   .logo-container-orbital {
     position: relative;
@@ -1398,11 +1406,3 @@
   opacity: 1;
   transform: translateX(0);
 }
-
-/* Optional stagger helpers */
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
-.stagger-5 { transition-delay: 0.5s; }
-

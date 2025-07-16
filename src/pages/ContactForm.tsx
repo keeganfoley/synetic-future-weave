@@ -11,7 +11,6 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import OptimizedBackground from '../components/OptimizedBackground';
-import AnimatedBackground from '../components/AnimatedBackground';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -169,7 +168,6 @@ const ContactForm = () => {
       {/* Blurred Background */}
       <div className="absolute inset-0">
         <OptimizedBackground />
-        <AnimatedBackground />
         <div className="absolute inset-0 backdrop-blur-lg bg-cosmic-black/60"></div>
       </div>
       
