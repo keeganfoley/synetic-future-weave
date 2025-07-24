@@ -1,16 +1,22 @@
-import { useEffect, useState } from 'react';
-const HeroSection = () => {
+import { useEffect, useState, memo, useCallback } from 'react';
+import CTAButton from './CTAButton';
+
+interface HeroSectionProps {
+  className?: string;
+}
+
+const HeroSection = memo<HeroSectionProps>(({ className }) => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
-  const scrollToNextSection = () => {
+  const scrollToNextSection = useCallback(() => {
     document.getElementById('purpose')?.scrollIntoView({
       behavior: 'smooth'
     });
-  };
-  return <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+  }, []);
+  return <section className={`min-h-screen flex items-center justify-center relative overflow-hidden ${className || ''}`}>
       {/* Simplified Background Elements */}
       <div className="absolute inset-0 moving-grid-bg"></div>
       <div className="absolute inset-0 digital-nebula"></div>
@@ -39,17 +45,19 @@ const HeroSection = () => {
         </div>
 
         <div className={`mt-12 md:mt-20 transition-all duration-1500 delay-1400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <button onClick={scrollToNextSection} className="elite-cta-button-hero-mobile md:text-xl group relative text-lg">
-            <span className="relative z-10 inline-flex items-center">
-              Explore Solutions
-              <svg className="ml-3 md:ml-4 w-5 h-5 md:w-6 md:h-6 transition-transform duration-500 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-            <div className="cta-sonar-rings"></div>
-          </button>
+          <CTAButton 
+            onClick={scrollToNextSection} 
+            variant="hero"
+            size="lg"
+            className="text-lg md:text-xl"
+          >
+            Explore Solutions
+          </CTAButton>
         </div>
       </div>
-    </section>;
-};
+    </section>
+});
+
+HeroSection.displayName = 'HeroSection';
+
 export default HeroSection;

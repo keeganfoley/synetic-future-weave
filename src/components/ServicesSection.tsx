@@ -2,6 +2,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
+interface Tool {
+  name: string;
+  usage: string;
+}
+
 const ServicesSection = () => {
   useScrollReveal();
   const [hoveredService, setHoveredService] = useState<number | null>(null);
@@ -55,7 +60,7 @@ const ServicesSection = () => {
     }
   ];
 
-  const handleToolClick = (tool: any) => {
+  const handleToolClick = (tool: Tool) => {
     setSelectedTool(selectedTool === tool.name ? null : tool.name);
   };
 

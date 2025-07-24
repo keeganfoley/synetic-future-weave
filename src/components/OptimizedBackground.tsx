@@ -1,5 +1,5 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 
 interface Star {
   x: number;
@@ -9,7 +9,15 @@ interface Star {
   speed: number;
 }
 
-const OptimizedBackground = () => {
+interface OptimizedBackgroundProps {
+  starCount?: number;
+  fps?: number;
+}
+
+const OptimizedBackground = memo<OptimizedBackgroundProps>(({ 
+  starCount = 30, 
+  fps = 24 
+}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stars = useRef<Star[]>([]);
   const animationFrame = useRef<number>();
@@ -37,9 +45,9 @@ const OptimizedBackground = () => {
     // Initialize fewer stars for better performance
     const initStars = () => {
       stars.current = [];
-      const starCount = Math.min(50, Math.floor((window.innerWidth * window.innerHeight) / 50000));
+      const dynamicStarCount = Math.min(starCount, Math.floor((window.innerWidth * window.innerHeight) / 50000));
       
-      for (let i = 0; i < starCount; i++) {
+      for (let i = 0; i < dynamicStarCount; i++) {
         stars.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -53,15 +61,17 @@ const OptimizedBackground = () => {
     initStars();
 
     const animate = (currentTime: number) => {
-      // Limit to 30fps for better performance
-      if (currentTime - lastTime.current < 33) {
+      // Dynamic FPS limiting
+      const frameInterval = 1000 / fps;
+      if (currentTime - lastTime.current < frameInterval) {
         animationFrame.current = requestAnimationFrame(animate);
         return;
       }
       lastTime.current = currentTime;
 
-      // Clear with slight transparency for trail effect
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+      // Clear canvas completely for better performance
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgb(10, 10, 10)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Draw simplified stars
@@ -114,9 +124,16 @@ const OptimizedBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 0, willChange: 'transform' }}
+      style={{ 
+        zIndex: 0, 
+        willChange: 'transform',
+        contain: 'paint layout',
+        backfaceVisibility: 'hidden'
+      }}
     />
   );
-};
+});
+
+OptimizedBackground.displayName = 'OptimizedBackground';
 
 export default OptimizedBackground;

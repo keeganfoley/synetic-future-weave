@@ -1,8 +1,11 @@
 
-import { useState } from 'react';
+import { useState, memo, useCallback } from 'react';
 import { Brain } from 'lucide-react';
+import { BaseComponentProps } from '@/types';
 
-const FloatingWidget = () => {
+type FloatingWidgetProps = BaseComponentProps;
+
+const FloatingWidget = memo<FloatingWidgetProps>(() => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -11,7 +14,7 @@ const FloatingWidget = () => {
         className={`glass-card p-4 cursor-pointer transition-all duration-500 ${
           isExpanded ? 'w-64' : 'w-16'
         }`}
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={useCallback(() => setIsExpanded(prev => !prev), [])}
       >
         <div className="flex items-center">
           <div className="text-cosmic-gold">
@@ -29,6 +32,8 @@ const FloatingWidget = () => {
       </div>
     </div>
   );
-};
+});
+
+FloatingWidget.displayName = 'FloatingWidget';
 
 export default FloatingWidget;

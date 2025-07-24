@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -22,7 +22,11 @@ const newsletterSchema = z.object({
 
 type NewsletterFormData = z.infer<typeof newsletterSchema>;
 
-const NewsletterSection = () => {
+interface NewsletterSectionProps {
+  className?: string;
+}
+
+const NewsletterSection = memo<NewsletterSectionProps>(({ className }) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -95,12 +99,14 @@ const NewsletterSection = () => {
       } else {
         throw new Error(`Newsletter N8N webhook failed with status: ${response.status}`);
       }
-    } catch (error: any) {
+    } catch (error) {
       let errorMessage = 'There was an issue subscribing you to our newsletter. Please try again.';
-      if (error.name === 'AbortError') {
-        errorMessage = 'Request timed out. Please check your connection and try again.';
-      } else if (error.message?.includes('Failed to fetch')) {
-        errorMessage = 'Network error. Please check your connection and try again.';
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          errorMessage = 'Request timed out. Please check your connection and try again.';
+        } else if (error.message?.includes('Failed to fetch')) {
+          errorMessage = 'Network error. Please check your connection and try again.';
+        }
       }
       toast({ title: 'Subscription Error', description: errorMessage, variant: 'destructive' });
     } finally {
@@ -112,7 +118,7 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section id="newsletter" className="py-32 relative overflow-hidden">
+    <section id="newsletter" className={`py-32 relative overflow-hidden ${className || ''}`}>
       {/* Optimized static glow elements – no blur, no infinite animation */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <div className="absolute top-20 left-10 w-96 h-96 rounded-full opacity-30 static-glow-gold will-change-transform transform-gpu" />
@@ -233,6 +239,8 @@ const NewsletterSection = () => {
       </div>
     </section>
   );
-};
+});
+
+NewsletterSection.displayName = 'NewsletterSection';
 
 export default NewsletterSection;

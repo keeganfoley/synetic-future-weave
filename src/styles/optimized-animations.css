@@ -1,0 +1,61 @@
+/* Optimized animations using GPU-accelerated properties only */
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Use transform and opacity only for better performance */
+.gpu-optimized {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Contain animations to prevent layout recalculations */
+.animation-container {
+  contain: layout style paint;
+  isolation: isolate;
+}
+
+/* Optimized fade animations */
+@keyframes optimized-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optimized slide animations */
+@keyframes optimized-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animations with performance hints */
+.fade-in-optimized {
+  animation: optimized-fade-in 0.6s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+.slide-right-optimized {
+  animation: optimized-slide-right 0.6s ease-out forwards;
+  will-change: transform, opacity;
+}

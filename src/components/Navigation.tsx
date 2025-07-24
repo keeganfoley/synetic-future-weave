@@ -1,38 +1,42 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
+import { throttle } from '@/utils/throttle';
+import { BaseComponentProps, NavLink } from '@/types';
 
-const Navigation = () => {
+type NavigationProps = BaseComponentProps;
+
+const Navigation = memo<NavigationProps>(({ className }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       setIsScrolled(window.scrollY > 80);
-    };
+    }, 100);
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: 'Purpose', href: '#purpose' },
     { name: 'Process', href: '#process' },
     { name: 'Contact', href: '#contact' }
   ];
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = useCallback((href: string) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMobileMenuOpen(false);
     }
-  };
+  }, []);
 
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         isScrolled ? 'glass-nav' : ''
-      }`}>
+      } ${className || ''}`}>
         <div className="max-w-8xl mx-auto px-8 lg:px-16 relative z-10">
           <div className="flex items-center justify-between h-24 py-4">
             {/* Logo with Enhanced Beam Effect */}
@@ -105,6 +109,8 @@ const Navigation = () => {
       </nav>
     </>
   );
-};
+});
+
+Navigation.displayName = 'Navigation';
 
 export default Navigation;

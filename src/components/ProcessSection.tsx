@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-const ProcessSection = () => {
+import { BaseComponentProps, ProcessStep } from '@/types';
+
+type ProcessSectionProps = BaseComponentProps;
+
+const ProcessSection = memo<ProcessSectionProps>(({ className }) => {
   useScrollReveal();
   const [clickedGlobe, setClickedGlobe] = useState(false);
-  const processSteps = [{
+  const processSteps: ProcessStep[] = [{
     number: "01",
     title: "Discovery",
     description: "We uncover the hidden costs in your operations—where time, labor, and revenue are leaking—and identify automation with immediate ROI."
@@ -24,7 +28,7 @@ const ProcessSection = () => {
     title: "Become an Industry Leader",
     description: "With ongoing AI improvements and support, you stay ahead of the curve while your competitors stay stuck."
   }];
-  return <section id="process" className="py-32 relative overflow-hidden">
+  return <section id="process" className={`py-32 relative overflow-hidden ${className || ''}`}>
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in typing-animation-enhanced">
@@ -72,6 +76,9 @@ const ProcessSection = () => {
             </div>)}
         </div>
       </div>
-    </section>;
-};
+    </section>
+});
+
+ProcessSection.displayName = 'ProcessSection';
+
 export default ProcessSection;

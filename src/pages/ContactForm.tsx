@@ -106,11 +106,11 @@ const ContactForm = () => {
         try {
           responseData = JSON.parse(responseData);
           console.log('Parsed response data:', responseData);
-        } catch (e) {
+        } catch {
           console.log('Response is not JSON, keeping as text');
         }
-      } catch (e) {
-        console.log('Could not read response body:', e);
+      } catch (error) {
+        console.log('Could not read response body:', error);
       }
 
       if (response.ok) {
