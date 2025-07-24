@@ -3,6 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { BaseComponentProps, ProcessStep } from '@/types';
 import { SectionProps } from '@/types/section.types';
 import SectionHeader from './ui/SectionHeader';
+import ProcessIcon from './ProcessIcon';
 
 const ProcessSection = forwardRef<HTMLElement, SectionProps>(({ className }, ref) => {
   useScrollReveal();
@@ -28,8 +29,11 @@ const ProcessSection = forwardRef<HTMLElement, SectionProps>(({ className }, ref
     title: "Become an Industry Leader",
     description: "With ongoing AI improvements and support, you stay ahead of the curve while your competitors stay stuck."
   }];
-  return <section ref={ref} id="process" className={`py-32 relative overflow-hidden ${className || ''}`}>
-      <div className="max-w-7xl mx-auto px-8">
+  return <section ref={ref} id="process" className={`py-40 relative overflow-hidden ${className || ''}`}>
+      {/* Luxury background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cosmic-black via-cosmic-charcoal/50 to-cosmic-black opacity-50" />
+      
+      <div className="max-w-7xl mx-auto px-8 relative">
         <SectionHeader 
           title="Our Process"
           subtitle="Ready to transform your business? Here's how we make it happen."
@@ -37,40 +41,44 @@ const ProcessSection = forwardRef<HTMLElement, SectionProps>(({ className }, ref
           className="mb-20"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
-          {processSteps.map((step, index) => <div key={step.number} className={`process-card-enhanced scroll-fade-in stagger-${index + 1}`}>
-              <div className="process-card-inner-enhanced">
-                <div className="process-number-enhanced">{step.number}</div>
-                
-                <div className="process-icon-enhanced">
-                  {index === 0 && <div className="discovery-ripple-enhanced"></div>}
-                  {index === 1 && <div className="strategy-lines-enhanced">
-                      <div className="strategy-line line-1"></div>
-                      <div className="strategy-line line-2"></div>
-                      <div className="strategy-line line-3"></div>
-                    </div>}
-                  {index === 2 && <div className="implementation-warp"></div>}
-                  {index === 3 && <div className="test-optimize-sparks">
-                      <div className="spark spark-1"></div>
-                      <div className="spark spark-2"></div>
-                      <div className="spark spark-3"></div>
-                      <div className="optimization-graph"></div>
-                    </div>}
-                  {index === 4 && <div className={`interactive-globe ${clickedGlobe ? 'globe-activated' : ''}`} onClick={() => setClickedGlobe(!clickedGlobe)}>
-                      <div className="globe-wireframe"></div>
-                      <div className="globe-orbit-1"></div>
-                      <div className="globe-orbit-2"></div>
-                    </div>}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-8">
+          {processSteps.map((step, index) => <div key={step.number} className={`process-card-luxury scroll-fade-in stagger-${index + 1} group`}>
+              {/* Metallic border gradient */}
+              <div className="process-card-border" />
+              
+              {/* Glass morphism card */}
+              <div className="process-card-inner-luxury">
+                {/* Premium number with metallic accent */}
+                <div className="process-number-luxury">
+                  <span className="process-number-text">{step.number}</span>
+                  <div className="process-number-glow" />
                 </div>
+                
+                {/* Tech visualization icon */}
+                <ProcessIcon 
+                  type={index === 0 ? 'discovery' : 
+                        index === 1 ? 'strategy' : 
+                        index === 2 ? 'implementation' : 
+                        index === 3 ? 'test' : 'leadership'} 
+                  index={index} 
+                />
 
-                <h3 className="text-xl font-heading font-light text-cosmic-gold mb-4">
+                {/* Title with luxury styling */}
+                <h3 className="process-title-luxury">
                   {step.title}
                 </h3>
                 
-                <p className="text-sm leading-relaxed mb-4 text-slate-300">
+                {/* Description with premium text effect */}
+                <p className="process-description-luxury">
                   {step.description}
                 </p>
+                
+                {/* Hover accent line */}
+                <div className="process-accent-line" />
               </div>
+              
+              {/* Hover glow effect */}
+              <div className="process-hover-glow" />
             </div>)}
         </div>
       </div>

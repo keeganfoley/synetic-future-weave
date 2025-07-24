@@ -116,7 +116,7 @@ const NewsletterSection = forwardRef<HTMLElement, SectionProps>(({ className }, 
   };
 
   return (
-    <section ref={ref} id="newsletter" className={`py-32 relative overflow-hidden ${className || ''}`}>
+    <section ref={ref} id="newsletter" className={`py-40 relative overflow-hidden ${className || ''}`}>
       {/* Optimized static glow elements – no blur, no infinite animation */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <div className="absolute top-20 left-10 w-96 h-96 rounded-full opacity-30 static-glow-gold will-change-transform transform-gpu" />

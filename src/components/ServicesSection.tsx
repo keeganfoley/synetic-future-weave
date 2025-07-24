@@ -65,7 +65,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="services" className="py-32 relative overflow-hidden">
+    <section id="services" className="py-40 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in typing-animation-enhanced">

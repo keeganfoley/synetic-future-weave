@@ -25,3 +25,15 @@ export interface FormSubmissionData {
   user_agent: string;
   request_id: string;
 }
+
+export interface CaseStudy {
+  id: string;
+  title: string;
+  subtitle: string;
+  company: string;
+  overview?: string;
+  challenge: string;
+  solution: string[];
+  results: string[];
+  images: string[];
+}

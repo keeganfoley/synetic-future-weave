@@ -12,7 +12,7 @@ const ContactSection = forwardRef<HTMLElement, SectionProps>(({ className }, ref
   };
 
   return (
-    <section ref={ref} id="contact" className={`py-32 relative overflow-hidden ${className || ''}`}>
+    <section ref={ref} id="contact" className={`py-40 relative overflow-hidden ${className || ''}`}>
       {/* Light Trails Background */}
       <div className="light-trails-bg"></div>
       

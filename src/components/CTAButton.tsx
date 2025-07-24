@@ -10,8 +10,8 @@ interface CTAButtonProps {
 
 const CTAButton = ({ onClick, children, className = '', variant = 'glass', icon }: CTAButtonProps) => {
   const baseClasses = variant === 'glass' 
-    ? 'elite-cta-button-glass text-lg group relative'
-    : 'elite-cta-button-hero-mobile text-lg font-medium group relative min-w-[220px] h-16 px-12 md:px-16';
+    ? 'elite-cta-button-glass text-lg group relative button-click-effect luxury-focus-ring luxury-transition-all'
+    : 'elite-cta-button-hero-mobile text-lg font-medium group relative min-w-[220px] h-16 px-12 md:px-16 button-click-effect luxury-focus-ring luxury-transition-all';
 
   return (
     <button 

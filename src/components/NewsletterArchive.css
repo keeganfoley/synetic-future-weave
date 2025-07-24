@@ -1,0 +1,88 @@
+/* Newsletter Archive Styles */
+.newsletter-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.newsletter-card:hover {
+  box-shadow: 
+    0 4px 12px rgba(184, 153, 93, 0.1),
+    0 8px 24px rgba(184, 153, 93, 0.08);
+}
+
+/* Content animation */
+.newsletter-content {
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s ease-out;
+}
+
+/* Link hover effect */
+.newsletter-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.newsletter-link:hover::before {
+  width: 100%;
+}
+
+/* Arrow animation */
+.newsletter-card button svg {
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Highlight animation */
+@keyframes highlight-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.newsletter-content ul li {
+  animation: highlight-fade 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.newsletter-content ul li:nth-child(1) { animation-delay: 0.1s; }
+.newsletter-content ul li:nth-child(2) { animation-delay: 0.15s; }
+.newsletter-content ul li:nth-child(3) { animation-delay: 0.2s; }
+.newsletter-content ul li:nth-child(4) { animation-delay: 0.25s; }
+.newsletter-content ul li:nth-child(5) { animation-delay: 0.3s; }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .newsletter-card button {
+    padding: 1.25rem;
+  }
+  
+  .newsletter-content {
+    padding: 0 1rem 1rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .newsletter-card,
+  .newsletter-card button svg,
+  .newsletter-content,
+  .newsletter-content ul li {
+    animation: none;
+    transition: none;
+  }
+}

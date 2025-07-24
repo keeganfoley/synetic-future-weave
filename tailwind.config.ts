@@ -65,14 +65,18 @@ export default {
 				},
 				cosmic: {
 					black: '#1a1a1a',
-					gold: '#d2af61',
+					gold: '#c9a961',
 					'deep-black': '#0e0e0e',
 					charcoal: '#222222',
-					white: '#eeeeee'
+					'charcoal-light': '#2a2a2a',
+					'charcoal-dark': '#1a1a1a',
+					white: '#eeeeee',
+					cream: '#FAF7F0',
+					ivory: '#FFFEF7'
 				}
 			},
 			fontFamily: {
-				'heading': ['DM Serif Display', 'serif'],
+				'heading': ['Playfair Display', 'DM Serif Display', 'serif'],
 				'body': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
 				'mono': ['Space Grotesk', 'monospace']
 			},
