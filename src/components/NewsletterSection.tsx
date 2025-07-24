@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState, memo, forwardRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import SectionHeader from './ui/SectionHeader';
+import { SectionProps } from '@/types/section.types';
 
 /**
  * High‑performance newsletter section with optimized glow effects.
@@ -22,11 +24,7 @@ const newsletterSchema = z.object({
 
 type NewsletterFormData = z.infer<typeof newsletterSchema>;
 
-interface NewsletterSectionProps {
-  className?: string;
-}
-
-const NewsletterSection = memo<NewsletterSectionProps>(({ className }) => {
+const NewsletterSection = forwardRef<HTMLElement, SectionProps>(({ className }, ref) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -118,7 +116,7 @@ const NewsletterSection = memo<NewsletterSectionProps>(({ className }) => {
   };
 
   return (
-    <section id="newsletter" className={`py-32 relative overflow-hidden ${className || ''}`}>
+    <section ref={ref} id="newsletter" className={`py-32 relative overflow-hidden ${className || ''}`}>
       {/* Optimized static glow elements – no blur, no infinite animation */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <div className="absolute top-20 left-10 w-96 h-96 rounded-full opacity-30 static-glow-gold will-change-transform transform-gpu" />
@@ -133,16 +131,13 @@ const NewsletterSection = memo<NewsletterSectionProps>(({ className }) => {
             <Mail className="w-10 h-10 text-cosmic-gold" />
           </div>
 
-          {/* Removed JS typing effect class to cut DOM churn */}
-          <h2 className="text-4xl md:text-5xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in">
-            Join Our AI Newsletter
-          </h2>
-
-          <div className="mb-12 scroll-fade-in stagger-1">
-            <p className="text-xl md:text-2xl text-cosmic-white leading-relaxed font-light tracking-wide max-w-3xl mx-auto">
-              Discover useful AI updates, breakthrough tools to try, practical use cases, and strategies that actually work.
-            </p>
-          </div>
+          <SectionHeader 
+            title="Join Our AI Newsletter"
+            subtitle="Discover useful AI updates, breakthrough tools to try, practical use cases, and strategies that actually work."
+            titleClassName="text-4xl md:text-5xl mb-8"
+            subtitleClassName="text-xl md:text-2xl text-cosmic-white leading-relaxed font-light tracking-wide max-w-3xl mx-auto mb-12"
+            animated={false}
+          />
         </div>
 
         <div className="elite-glass-card-3d p-8 md:p-12 scroll-fade-in stagger-2">

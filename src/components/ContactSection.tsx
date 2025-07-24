@@ -1,8 +1,10 @@
-import { FC, memo } from 'react';
+import { FC, memo, forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CTAButton from './CTAButton';
+import SectionHeader from './ui/SectionHeader';
+import { SectionProps } from '@/types/section.types';
 
-const ContactSection: FC = () => {
+const ContactSection = forwardRef<HTMLElement, SectionProps>(({ className }, ref) => {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
@@ -10,12 +12,16 @@ const ContactSection: FC = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section ref={ref} id="contact" className={`py-32 relative overflow-hidden ${className || ''}`}>
       {/* Light Trails Background */}
       <div className="light-trails-bg"></div>
       
       <div className="max-w-4xl mx-auto px-8 text-center">
-        <h2 className="text-4xl font-heading font-light mb-8 text-cosmic-gold text-glow-premium scroll-fade-in typing-blink-animation md:text-5xl">Work Less. Earn More.</h2>
+        <SectionHeader 
+          title="Work Less. Earn More."
+          titleClassName="text-4xl md:text-5xl mb-8 typing-blink-animation"
+          animated={false}
+        />
         
         <div className="space-y-6 mb-12 scroll-fade-in stagger-1">
           <p className="text-cosmic-white/90 leading-relaxed font-light tracking-wide text-2xl">Let's talk. You'll leave with time and money back.</p>
@@ -48,6 +54,8 @@ const ContactSection: FC = () => {
       </div>
     </section>
   );
-};
+});
+
+ContactSection.displayName = 'ContactSection';
 
 export default memo(ContactSection);

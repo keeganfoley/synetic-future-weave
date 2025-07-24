@@ -1,23 +1,49 @@
 
+import { useRef } from 'react';
 import OptimizedBackground from '../components/OptimizedBackground';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import MainSections from '../components/MainSections';
+import { SectionRefsProvider } from '@/context/SectionRefsContext';
+import { SectionRefs } from '@/types/section.types';
 
 const Index = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const purposeRef = useRef<HTMLElement>(null);
+  const processRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
+  const newsletterRef = useRef<HTMLElement>(null);
+
+  const sectionRefs: SectionRefs = {
+    hero: heroRef,
+    purpose: purposeRef,
+    process: processRef,
+    contact: contactRef,
+    newsletter: newsletterRef,
+  };
+
   return (
     <div className="relative min-h-screen">
       {/* Optimized Background */}
       <OptimizedBackground />
       
-      {/* Navigation */}
-      <Navigation />
-      
-      {/* Main Content */}
-      <main>
-        <HeroSection />
-        <MainSections />
-      </main>
+      <SectionRefsProvider refs={sectionRefs}>
+        {/* Navigation */}
+        <Navigation />
+        
+        {/* Main Content */}
+        <main>
+          <HeroSection />
+          <MainSections 
+            refs={{
+              purpose: purposeRef,
+              process: processRef,
+              contact: contactRef,
+              newsletter: newsletterRef,
+            }}
+          />
+        </main>
+      </SectionRefsProvider>
       
       {/* Enhanced Minimalist Footer */}
       <footer className="relative z-10 py-20 px-8 border-t border-cosmic-gold/30 glass-nav">

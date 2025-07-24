@@ -1,14 +1,17 @@
-import { FC, memo } from 'react';
+import { FC, memo, forwardRef } from 'react';
+import SectionHeader from './ui/SectionHeader';
+import { SectionProps } from '@/types/section.types';
 
-const PurposeSection: FC = () => {
+const PurposeSection = forwardRef<HTMLElement, SectionProps>(({ className }, ref) => {
   return (
-    <section id="purpose" className="py-32 relative overflow-hidden">
+    <section ref={ref} id="purpose" className={`py-32 relative overflow-hidden ${className || ''}`}>
       <div className="max-w-6xl mx-auto px-8 text-center">
         <div className="section-divider mb-16"></div>
 
-        <h2 className="text-4xl md:text-6xl font-heading font-light mb-12 text-cosmic-gold text-glow-premium scroll-fade-in typing-animation-enhanced">
-          Our Purpose
-        </h2>
+        <SectionHeader 
+          title="Our Purpose" 
+          titleClassName="mb-12"
+        />
         
         <div className="space-y-8 scroll-fade-in stagger-1">
           <p className="text-xl text-cosmic-white/90 leading-relaxed font-light tracking-wide md:text-3xl">We build automation that saves time and multiplies output.</p>
@@ -17,6 +20,8 @@ const PurposeSection: FC = () => {
       </div>
     </section>
   );
-};
+});
+
+PurposeSection.displayName = 'PurposeSection';
 
 export default memo(PurposeSection);

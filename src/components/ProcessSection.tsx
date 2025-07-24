@@ -1,10 +1,10 @@
-import { useState, memo } from 'react';
+import { useState, memo, forwardRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { BaseComponentProps, ProcessStep } from '@/types';
+import { SectionProps } from '@/types/section.types';
+import SectionHeader from './ui/SectionHeader';
 
-type ProcessSectionProps = BaseComponentProps;
-
-const ProcessSection = memo<ProcessSectionProps>(({ className }) => {
+const ProcessSection = forwardRef<HTMLElement, SectionProps>(({ className }, ref) => {
   useScrollReveal();
   const [clickedGlobe, setClickedGlobe] = useState(false);
   const processSteps: ProcessStep[] = [{
@@ -28,16 +28,14 @@ const ProcessSection = memo<ProcessSectionProps>(({ className }) => {
     title: "Become an Industry Leader",
     description: "With ongoing AI improvements and support, you stay ahead of the curve while your competitors stay stuck."
   }];
-  return <section id="process" className={`py-32 relative overflow-hidden ${className || ''}`}>
+  return <section ref={ref} id="process" className={`py-32 relative overflow-hidden ${className || ''}`}>
       <div className="max-w-7xl mx-auto px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-heading font-light mb-6 text-cosmic-white scroll-fade-in typing-animation-enhanced">
-            Our Process
-          </h2>
-          <p className="text-xl text-cosmic-white/80 font-light scroll-fade-in stagger-1">
-            Ready to transform your business? Here's how we make it happen.
-          </p>
-        </div>
+        <SectionHeader 
+          title="Our Process"
+          subtitle="Ready to transform your business? Here's how we make it happen."
+          titleClassName="text-cosmic-white"
+          className="mb-20"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {processSteps.map((step, index) => <div key={step.number} className={`process-card-enhanced scroll-fade-in stagger-${index + 1}`}>

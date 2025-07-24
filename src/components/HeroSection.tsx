@@ -1,5 +1,6 @@
 import { useEffect, useState, memo, useCallback } from 'react';
 import CTAButton from './CTAButton';
+import { useSectionRefs } from '@/context/SectionRefsContext';
 
 interface HeroSectionProps {
   className?: string;
@@ -7,15 +8,16 @@ interface HeroSectionProps {
 
 const HeroSection = memo<HeroSectionProps>(({ className }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { scrollToSection } = useSectionRefs();
+  
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
+  
   const scrollToNextSection = useCallback(() => {
-    document.getElementById('purpose')?.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }, []);
+    scrollToSection('purpose');
+  }, [scrollToSection]);
   return <section className={`min-h-screen flex items-center justify-center relative overflow-hidden ${className || ''}`}>
       {/* Simplified Background Elements */}
       <div className="absolute inset-0 moving-grid-bg"></div>

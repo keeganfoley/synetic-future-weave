@@ -1,13 +1,16 @@
 
 import { useState, useEffect, useCallback, memo } from 'react';
 import { throttle } from '@/utils/throttle';
-import { BaseComponentProps, NavLink } from '@/types';
+import { BaseComponentProps } from '@/types';
+import { useSectionRefs } from '@/context/SectionRefsContext';
+import { sectionConfig } from '@/config/sections.config';
 
 type NavigationProps = BaseComponentProps;
 
 const Navigation = memo<NavigationProps>(({ className }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollToSection } = useSectionRefs();
 
   useEffect(() => {
     const handleScroll = throttle(() => {
@@ -18,19 +21,17 @@ const Navigation = memo<NavigationProps>(({ className }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks: NavLink[] = [
-    { name: 'Purpose', href: '#purpose' },
-    { name: 'Process', href: '#process' },
-    { name: 'Contact', href: '#contact' }
-  ];
+  const navLinks = sectionConfig
+    .filter(section => ['purpose', 'process', 'contact'].includes(section.id))
+    .map(section => ({
+      id: section.id,
+      name: section.navLabel,
+    }));
 
-  const scrollToSection = useCallback((href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  }, []);
+  const handleNavClick = useCallback((sectionId: string) => {
+    scrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
+  }, [scrollToSection]);
 
   return (
     <>
@@ -59,8 +60,8 @@ const Navigation = memo<NavigationProps>(({ className }) => {
             <div className="hidden md:flex items-center space-x-12">
               {navLinks.map((link) => (
                 <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
                   className="nav-link-elite text-base font-light tracking-wide"
                 >
                   {link.name}
@@ -96,8 +97,8 @@ const Navigation = memo<NavigationProps>(({ className }) => {
             <div className="px-8 py-8 space-y-8">
               {navLinks.map((link) => (
                 <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
                   className="block nav-link-elite text-lg w-full text-left"
                 >
                   {link.name}
